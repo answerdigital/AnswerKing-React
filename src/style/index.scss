@@ -1,0 +1,73 @@
+// if using CSS library, import here
+@import './variables.scss';
+@import './ball-grid-beat.css';
+@import './ball-beat.css';
+
+body {
+  background: linear-gradient(180deg, $grey 7.61%, rgba($ruby, 0.77) 97.45%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: $white;
+  margin: 0px;
+  font-family: Euclid Square;
+}
+
+hr {
+  border: 1px solid $white;
+  background-color: $white;
+  margin: 12px 0px;
+}
+
+input,
+textarea {
+  background-color: $grey;
+  color: $white;
+  border: 2px solid $grey-blue;
+  resize: none;
+  padding: 4px;
+  display: block;
+  box-sizing: border-box;
+
+  &:hover,
+  &:focus {
+    outline: none !important;
+    border: 2px solid $yellow;
+  }
+}
+
+// Scroll bar
+::-webkit-scrollbar {
+  width: 4px;
+
+  @media screen and (min-width: $desktop) {
+    width: 8px;
+  }
+}
+
+// Scroll bar track
+::-webkit-scrollbar-track {
+  background: $light-grey;
+}
+
+// Scroll bar handle
+::-webkit-scrollbar-thumb {
+  background: $yellow;
+
+  &:hover {
+    background: $yellow;
+  }
+}
+
+// Helper class used primarily on menu categories/menu items
+.mw-960 {
+  max-width: 960px;
+  margin: auto;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}

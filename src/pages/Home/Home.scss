@@ -1,0 +1,19 @@
+@import '/src/style/variables.scss';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  &__message {
+    color: $yellow;
+    font-size: 32px;
+    margin: auto;
+    flex-grow: 0;
+    margin: 16px;
+    text-align: center;
+  }
+}

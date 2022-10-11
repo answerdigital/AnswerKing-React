@@ -1,0 +1,21 @@
+@import '/src/style/variables.scss';
+
+.answer_toast {
+  // For some reason I could not set css variables based on sass variables, forced to hard code.
+  // Either way this is a very hacky solution to styling the toasts
+  --toastify-color-success: #fdc002;
+  --toastify-icon-color-success: #fdc002;
+  --toastify-toast-background: #333f4c;
+  background-color: $grey !important;
+  border: 1px solid $yellow !important;
+  color: $white !important;
+}
+
+.answer_toast__progress {
+  background-color: $yellow !important;
+}
+
+.Toastify__close-button--light {
+  color: $yellow !important;
+  opacity: 1 !important;
+}

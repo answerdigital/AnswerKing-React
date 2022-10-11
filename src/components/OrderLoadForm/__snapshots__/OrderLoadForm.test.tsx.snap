@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderLoadForm component should match the snapshot 1`] = `
+<DocumentFragment>
+  <form
+    class="order_load_form"
+  >
+    <div
+      class="loading_overlay"
+    >
+      <div
+        class="loading_overlay__icon la-ball-grid-beat"
+      >
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
+    </div>
+    <p>
+      Load an existing order
+    </p>
+    <label
+      class="order_load_form__label"
+      for="order_load_form__input"
+    >
+      Order ID:
+    </label>
+    <input
+      class="order_load_form__input"
+      data-testid="order-load-id-input"
+      name="orderId"
+      step="1"
+      type="number"
+      value="1"
+    />
+    <button
+      class="btn order_load_form__button"
+      data-testid="order-load-submit-button"
+      type="submit"
+    >
+      Get Order
+    </button>
+  </form>
+</DocumentFragment>
+`;

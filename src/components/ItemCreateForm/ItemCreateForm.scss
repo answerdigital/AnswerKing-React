@@ -1,0 +1,26 @@
+@import '/src/style/variables.scss';
+
+.item_create_form {
+  background-color: rgba($grey, 0.8);
+  border: 1px $yellow solid;
+  padding: 8px;
+  margin-bottom: 16px;
+
+  &__button {
+    width: 100%;
+    margin: 8px 0px;
+  }
+
+  &__description {
+    font-weight: 500;
+  }
+
+  &__input {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  &__label {
+    margin-right: 8px;
+  }
+}

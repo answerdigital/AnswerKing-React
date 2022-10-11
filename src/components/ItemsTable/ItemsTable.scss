@@ -1,0 +1,29 @@
+@import '/src/style/variables.scss';
+
+.items_table {
+  width: 100%;
+  border-spacing: 0px;
+  background-color: rgba($grey, 0.8);
+  border: 1px $yellow solid;
+  border-collapse: collapse;
+
+  tr {
+    border-bottom: 1px solid $yellow;
+  }
+
+  th,
+  td {
+    padding: 12px 16px;
+  }
+
+  thead {
+    border-bottom: 2px solid $yellow;
+  }
+
+  &__hide_mobile {
+    display: none;
+    @media screen and (min-width: $desktop) {
+      display: table-cell;
+    }
+  }
+}

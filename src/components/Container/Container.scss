@@ -1,0 +1,11 @@
+@import '/src/style/variables.scss';
+
+.container {
+  box-sizing: border-box;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+
+  @media screen and (min-width: $desktop) {
+    height: calc(100vh - 62px);
+  }
+}

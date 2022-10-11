@@ -1,0 +1,12 @@
+@import '/src/style/variables.scss';
+
+.menu_categories__item {
+  color: $white;
+  text-decoration: none;
+  font-weight: 400;
+
+  &--active {
+    font-weight: 600;
+    color: $yellow;
+  }
+}

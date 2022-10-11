@@ -1,0 +1,31 @@
+@import '/src/style/variables.scss';
+
+.order_details {
+  font-size: 16px;
+
+  &__group {
+    display: flex;
+    justify-content: space-between;
+
+    &--items {
+      display: block;
+    }
+
+    &--total {
+      margin-top: 16px;
+      color: $yellow;
+      font-weight: 500;
+    }
+  }
+
+  &__item_quantity {
+    color: $yellow;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+}

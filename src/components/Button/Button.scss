@@ -1,0 +1,25 @@
+@import '/src/style/variables.scss';
+
+.btn {
+  background-color: $grey;
+  color: $yellow;
+  border: 2px solid $yellow;
+  padding: 6px 12px;
+  font-size: 16px;
+
+  &--small {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  &--large {
+    font-size: 20px;
+    padding: 8px 16px;
+  }
+
+  &:hover,
+  &--active {
+    color: $grey;
+    background-color: $yellow;
+  }
+}

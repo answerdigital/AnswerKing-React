@@ -1,0 +1,45 @@
+@import '/src/style/variables.scss';
+
+.item_card {
+  width: 160px;
+  background-color: $grey;
+  margin: 8px;
+
+  &__image {
+    width: 160px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 4px;
+  }
+
+  &__name,
+  &__price {
+    width: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__name {
+    color: $yellow;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+  }
+
+  &__quantity {
+    padding: 0px 12px;
+    color: $yellow;
+  }
+}

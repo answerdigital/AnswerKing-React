@@ -1,0 +1,14 @@
+@import '/src/style/variables.scss';
+
+.menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__items {
+    overflow-y: auto;
+    height: 100%;
+    padding: 8px;
+  }
+}

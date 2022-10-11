@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Component should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="error"
+  >
+    <div
+      class="error__title"
+    >
+      Error(s):
+    </div>
+    <ul
+      data-testid="error-list"
+    >
+      <li>
+        A test error
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

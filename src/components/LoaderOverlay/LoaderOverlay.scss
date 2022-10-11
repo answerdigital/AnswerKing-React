@@ -1,0 +1,22 @@
+@import '/src/style/variables.scss';
+
+.loading_overlay {
+  display: none;
+
+  &--enabled {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba($grey, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    color: $yellow;
+  }
+}
