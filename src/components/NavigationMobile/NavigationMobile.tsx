@@ -7,6 +7,7 @@ import { useOrder } from 'hooks/useOrder';
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
+import cn from 'classnames';
 
 interface Props {
   toggleOrderPanel(): void;
@@ -27,15 +28,37 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
         {order.isIdle ? <span>Place an order</span> : null}
       </Button>
       <div className="mobile_nav__items">
-        <NavLink activeClassName="mobile_nav__item--active" className="mobile_nav__item" exact to={RouteConstants.HOME}>
+        <NavLink
+          className={({ isActive }) =>
+            cn('mobile_nav__item', {
+              'mobile_nav__item--active': isActive,
+            })
+          }
+          end
+          to={RouteConstants.HOME}
+        >
           <img alt="Home Icon" className="mobile_nav__icon" src={IconHome} />
           <div className="mobile_nav__label">Home</div>
         </NavLink>
-        <NavLink activeClassName="mobile_nav__item--active" className="mobile_nav__item" to={RouteConstants.MENU}>
+        <NavLink
+          className={({ isActive }) =>
+            cn('mobile_nav__item', {
+              'mobile_nav__item--active': isActive,
+            })
+          }
+          to={RouteConstants.MENU}
+        >
           <img alt="Home Icon" className="mobile_nav__icon" src={IconMenu} />
           <div className="mobile_nav__label">Menu</div>
         </NavLink>
-        <NavLink activeClassName="mobile_nav__item--active" className="mobile_nav__item" to={RouteConstants.STAFF}>
+        <NavLink
+          className={({ isActive }) =>
+            cn('mobile_nav__item', {
+              'mobile_nav__item--active': isActive,
+            })
+          }
+          to={RouteConstants.STAFF}
+        >
           <img alt="Home Icon" className="mobile_nav__icon" src={IconStaff} />
           <div className="mobile_nav__label">Staff</div>
         </NavLink>

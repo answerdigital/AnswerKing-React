@@ -4,8 +4,9 @@ import { MenuPage } from 'pages/Menu/Menu';
 import { StaffPage } from 'pages/Staff/Staff';
 import React, { ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
+import { HelmetProvider } from 'react-helmet-async';
 
 const queryClient = new QueryClient();
 
@@ -13,13 +14,15 @@ export const App = (): ReactElement => {
   return (
     <Router>
       <QueryClientProvider client={queryClient}>
-        <Layout>
-          <Switch>
-            <Route component={MenuPage} exact path={RouteConstants.MENU} />
-            <Route component={StaffPage} exact path={RouteConstants.STAFF} />
-            <Route component={HomePage} path={RouteConstants.HOME} />
-          </Switch>
-        </Layout>
+        <HelmetProvider>
+          <Layout>
+            <Routes>
+              <Route element={<MenuPage />} path={RouteConstants.MENU} />
+              <Route element={<StaffPage />} path={RouteConstants.STAFF} />
+              <Route element={<HomePage />} path={RouteConstants.HOME} />
+            </Routes>
+          </Layout>
+        </HelmetProvider>
       </QueryClientProvider>
     </Router>
   );
