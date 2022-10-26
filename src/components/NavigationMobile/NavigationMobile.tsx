@@ -4,7 +4,7 @@ import IconMenu from 'assets/icon_menu.svg';
 import IconStaff from 'assets/icon_staff.svg';
 import { Button } from 'components/Button/Button';
 import { useOrder } from 'hooks/useOrder';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import cn from 'classnames';

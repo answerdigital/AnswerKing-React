@@ -3,7 +3,7 @@ import { Button } from 'components/Button/Button';
 import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useItems } from 'hooks/useItems';
-import React, { FormEvent, ReactElement, useState } from 'react';
+import { FormEvent, ReactElement, useState } from 'react';
 import { toast } from 'react-toastify';
 
 const NAME_MIN_LENGTH = 1;
@@ -120,7 +120,6 @@ export const ItemCreateForm = (): ReactElement => {
         rows={3}
         value={description}
       />
-
       <Button className="item_create_form__button" type="submit">
         Create
       </Button>

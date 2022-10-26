@@ -2,7 +2,7 @@ import './Navigation.scss';
 import AnswerLogo from 'assets/answer_logo.png';
 import { Button } from 'components/Button/Button';
 import { useOrder } from 'hooks/useOrder';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import cn from 'classnames';

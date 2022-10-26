@@ -3,7 +3,7 @@ import { Navigation } from 'components/Navigation/Navigation';
 import { NavigationMobile } from 'components/NavigationMobile/NavigationMobile';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
 import { ToastWrapper } from 'components/ToastWrapper/ToastWrapper';
-import React, { ReactElement, ReactNode, useState } from 'react';
+import { ReactElement, ReactNode, useState } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -20,7 +20,6 @@ export const Layout = ({ children }: Props): ReactElement => {
       <ToastWrapper />
       {orderPanelIsOpen && <OrderPanel toggleOrderPanel={handleToggle} />}
       <Container>{children}</Container>
-
       <NavigationMobile toggleOrderPanel={handleToggle} />
     </>
   );
