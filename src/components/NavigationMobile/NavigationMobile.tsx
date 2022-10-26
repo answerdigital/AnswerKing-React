@@ -30,9 +30,7 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
       <div className="mobile_nav__items">
         <NavLink
           className={({ isActive }) =>
-            cn('mobile_nav__item', {
-              'mobile_nav__item--active': isActive,
-            })
+            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
           }
           end
           to={RouteConstants.HOME}
@@ -42,9 +40,7 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn('mobile_nav__item', {
-              'mobile_nav__item--active': isActive,
-            })
+            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
           }
           to={RouteConstants.MENU}
         >
@@ -53,9 +49,7 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn('mobile_nav__item', {
-              'mobile_nav__item--active': isActive,
-            })
+            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
           }
           to={RouteConstants.STAFF}
         >

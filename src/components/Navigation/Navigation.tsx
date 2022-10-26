@@ -20,9 +20,7 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
       <div className="nav__items nav__section">
         <NavLink
           className={({ isActive }) =>
-            cn('nav__item', {
-              'nav__item--active': isActive,
-            })
+            cn('nav__item', { 'nav__item--active': isActive, })
           }
           end
           to={RouteConstants.HOME}
@@ -31,9 +29,7 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn('nav__item', {
-              'nav__item--active': isActive,
-            })
+            cn('nav__item', { 'nav__item--active': isActive, })
           }
           to={RouteConstants.MENU}
         >
@@ -41,9 +37,7 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn('nav__item', {
-              'nav__item--active': isActive,
-            })
+            cn('nav__item', { 'nav__item--active': isActive, })
           }
           to={RouteConstants.STAFF}
         >

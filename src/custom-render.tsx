@@ -1,5 +1,5 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
-import React, { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { QueryClient, QueryClientProvider, setLogger } from 'react-query';
 import { BrowserRouter as Router } from 'react-router-dom';
 

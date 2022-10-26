@@ -4,7 +4,7 @@ import { MenuCategories } from 'components/MenuCategories/MenuCategories';
 import { MenuItems } from 'components/MenuItems/MenuItems';
 import { useCategories } from 'hooks/useCategories';
 import { useItems } from 'hooks/useItems';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 export const MenuPage = (): ReactElement => {

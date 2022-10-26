@@ -2,7 +2,7 @@ import { Layout } from 'components/Layout/Layout';
 import { HomePage } from 'pages/Home/Home';
 import { MenuPage } from 'pages/Menu/Menu';
 import { StaffPage } from 'pages/Staff/Staff';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';

@@ -1,6 +1,4 @@
-const defaultHeaders: HeadersInit = {
-  'Content-Type': 'application/json',
-};
+const defaultHeaders: HeadersInit = { 'Content-Type': 'application/json', };
 
 const BASE_URL = 'https://localhost:5001/api';
 
