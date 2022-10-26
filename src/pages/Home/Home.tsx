@@ -1,15 +1,15 @@
 import './Home.scss';
 import { Button } from 'components/Button/Button';
 import React, { ReactElement } from 'react';
-import { Helmet } from 'react-helmet';
-import { useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 
 export const HomePage = (): ReactElement => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleClick = (): void => {
-    history.push(RouteConstants.MENU);
+    navigate(RouteConstants.MENU);
   };
 
   return (
