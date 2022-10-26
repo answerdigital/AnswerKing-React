@@ -10,12 +10,6 @@ export interface ProblemDetails {
   traceId: string;
 }
 
-export interface ValidationProblemDetails extends ProblemDetails {
-  errors: {
-    [Key in keyof any]: string[];
-  };
-}
-
 const getById = async (id: number): Promise<OrderDto> => {
   const response = await httpClient.get('/orders/' + id);
 

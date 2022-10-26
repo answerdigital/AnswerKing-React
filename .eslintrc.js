@@ -22,6 +22,19 @@ module.exports = {
     '@typescript-eslint'
   ],
   'rules': {
+
+    'react/jsx-no-bind': [0],
+    'react/require-default-props': [0],
+    'react/function-component-definition': [0],
+
+    '@typescript-eslint/explicit-function-return-type': [
+      2,
+      {
+        allowExpressions: true,
+      },
+    ],
+    'import/no-unresolved': [0],
+
     'react/prop-types': 'off',
     'indent': [
       'error',
