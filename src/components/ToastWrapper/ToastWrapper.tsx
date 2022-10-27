@@ -1,5 +1,5 @@
 import './ToastWrapper.scss';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Slide, ToastContainer } from 'react-toastify';
 
 export const ToastWrapper = (): ReactElement => {

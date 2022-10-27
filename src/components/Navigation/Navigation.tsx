@@ -2,7 +2,7 @@ import './Navigation.scss';
 import AnswerLogo from 'assets/answer_logo.png';
 import { Button } from 'components/Button/Button';
 import { useOrder } from 'hooks/useOrder';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import cn from 'classnames';
@@ -20,9 +20,7 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
       <div className="nav__items nav__section">
         <NavLink
           className={({ isActive }) =>
-            cn('nav__item', {
-              'nav__item--active': isActive,
-            })
+            cn('nav__item', { 'nav__item--active': isActive, })
           }
           end
           to={RouteConstants.HOME}
@@ -31,9 +29,7 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn('nav__item', {
-              'nav__item--active': isActive,
-            })
+            cn('nav__item', { 'nav__item--active': isActive, })
           }
           to={RouteConstants.MENU}
         >
@@ -41,9 +37,7 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn('nav__item', {
-              'nav__item--active': isActive,
-            })
+            cn('nav__item', { 'nav__item--active': isActive, })
           }
           to={RouteConstants.STAFF}
         >

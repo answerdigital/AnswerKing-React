@@ -1,6 +1,5 @@
 import { fireEvent } from '@testing-library/react';
 import { customRender } from 'custom-render';
-import React from 'react';
 import { OrderLoadForm } from './OrderLoadForm';
 
 // I'd like to have placed this inside the actual test, but jest says NO.

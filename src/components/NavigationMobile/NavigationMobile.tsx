@@ -4,7 +4,7 @@ import IconMenu from 'assets/icon_menu.svg';
 import IconStaff from 'assets/icon_staff.svg';
 import { Button } from 'components/Button/Button';
 import { useOrder } from 'hooks/useOrder';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import cn from 'classnames';
@@ -30,9 +30,7 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
       <div className="mobile_nav__items">
         <NavLink
           className={({ isActive }) =>
-            cn('mobile_nav__item', {
-              'mobile_nav__item--active': isActive,
-            })
+            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
           }
           end
           to={RouteConstants.HOME}
@@ -42,9 +40,7 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn('mobile_nav__item', {
-              'mobile_nav__item--active': isActive,
-            })
+            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
           }
           to={RouteConstants.MENU}
         >
@@ -53,9 +49,7 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn('mobile_nav__item', {
-              'mobile_nav__item--active': isActive,
-            })
+            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
           }
           to={RouteConstants.STAFF}
         >

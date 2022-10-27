@@ -1,7 +1,7 @@
 import './OrderDetails.scss';
 import { FormattedAddress } from 'components/FormattedAddress/FormattedAddress';
 import { OrderDto } from 'dtos/OrderDto';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 interface Props {
   order: OrderDto;

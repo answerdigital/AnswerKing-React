@@ -1,6 +1,6 @@
 import './Home.scss';
 import { Button } from 'components/Button/Button';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';

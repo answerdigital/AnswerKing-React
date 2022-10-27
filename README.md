@@ -9,3 +9,10 @@ You can add SCSS via `index.scss` or import them in your `.tsx` files as CSS Mod
 ## API
 
 If you are running your API locally, you will need to configure vite to proxy any requests to `/api` to your server. Check out `vite.config.ts`, it should have a place for you to put the address of your API server.
+
+## LINT
+
+Install extension ESLint. Enter 'npm run lint' to get a error list in the terminal.
+To disable rule on next line comment '// eslint-disable-next-line' followed by the rule name e.g '// eslint-disable-next-line no-alert'.
+See .eslintrc.jc for rules. 
+https://eslint.org/docs/latest/rules/

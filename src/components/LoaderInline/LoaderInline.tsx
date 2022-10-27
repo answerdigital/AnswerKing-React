@@ -1,5 +1,5 @@
 import './LoaderInline.scss';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 export const LoaderInline = (): ReactElement => {
   return (

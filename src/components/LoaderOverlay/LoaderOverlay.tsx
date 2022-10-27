@@ -1,6 +1,6 @@
 import './LoaderOverlay.scss';
 import cn from 'classnames';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 interface Props {
   isEnabled: boolean;
