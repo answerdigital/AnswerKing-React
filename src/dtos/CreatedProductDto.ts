@@ -1,7 +1,6 @@
 import { CategoryDto } from './CategoryDto';
 
-export interface ProductDto {
-  id: number;
+export interface CreatedProductDto {
   name?: string;
   price: number;
   description?: string;

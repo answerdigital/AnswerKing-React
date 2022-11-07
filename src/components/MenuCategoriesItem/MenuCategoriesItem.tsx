@@ -9,7 +9,8 @@ interface Props {
 }
 
 export const MenuCategoriesItem = ({ category }: Props): ReactElement => {
-  const isOnScreen = useOnScreen(category.name);
+  const name: string = category.name !== undefined ? category.name : '';
+  const isOnScreen = useOnScreen(name);
 
   return (
     <a

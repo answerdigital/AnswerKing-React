@@ -1,4 +1,5 @@
 import { ProductDto } from 'dtos/ProductDto';
+import { CreatedProductDto } from 'dtos/CreatedProductDto';
 import { httpClient } from 'utilities/http-client';
 
 const getAll = async (): Promise<ProductDto[]> => {
@@ -15,7 +16,7 @@ const getAll = async (): Promise<ProductDto[]> => {
   return await response.json();
 };
 
-const create = async (createDto: ProductDto): Promise<ProductDto> => {
+const create = async (createDto: CreatedProductDto): Promise<ProductDto> => {
   const response = await httpClient.post('/products', createDto);
 
   if (!response.ok) {

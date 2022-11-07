@@ -2,10 +2,9 @@ import './ItemsTable.scss';
 import { ItemsTableRow } from 'components/ItemsTableRow/ItemsTableRow';
 import { useItems } from 'hooks/useItems';
 import React, { ReactElement, useState } from 'react';
-import { ProductDto } from 'dtos/ProductDto';
 
 export const ItemsTable = (): ReactElement => {
-  const { data } = useItems().items;
+  const { items } = useItems();
 
   return (
     <table className="items_table">
@@ -20,8 +19,7 @@ export const ItemsTable = (): ReactElement => {
         </tr>
       </thead>
       <tbody>
-        {console.log(data)}
-        {data?.map((item) => (
+        {items.data?.map((item) => (
           <ItemsTableRow item={item} key={item.id} />
         ))}
       </tbody>

@@ -26,7 +26,7 @@ export const ItemsTableRow = ({ item }: Props): ReactElement => {
       <td className="text-right items_table__hide_mobile">£{item.price.toFixed(2)}</td>
       <td className="text-left items_table__hide_mobile">{item.description}</td>
       <td className="text-left items_table__hide_mobile">
-        {item.categories.map((category) => category.name).join(', ')}
+        {item.categories?.map((category) => category.name).join(', ')}
       </td>
       <td className="text-right">
         <span
