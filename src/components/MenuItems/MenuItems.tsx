@@ -1,12 +1,12 @@
 import './MenuItems.scss';
 import { ItemCard } from 'components/ItemCard/ItemCard';
 import { CategoryDto } from 'dtos/CategoryDto';
-import { ItemDto } from 'dtos/ItemDto';
+import { ProductDto } from 'dtos/ProductDto';
 import React, { ReactElement } from 'react';
 
 interface Props {
   category: CategoryDto;
-  items: ItemDto[];
+  items: ProductDto[];
 }
 
 export const MenuItems = ({ category, items }: Props): ReactElement => {

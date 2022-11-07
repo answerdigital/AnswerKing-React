@@ -1,25 +1,25 @@
-import { ItemCreateDto } from 'dtos/ItemCreateDto';
-import { ItemDto } from 'dtos/ItemDto';
+import { ProductCreateDto } from 'dtos/ProductCreateDto';
+import { ProductDto } from 'dtos/ProductDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { itemService } from 'services/itemService';
+import { productService } from 'services/productService';
 import { ProblemDetails } from 'services/orderService';
 
 interface UseItemsResult {
-  items: UseQueryResult<ItemDto[]>;
-  createItem: UseMutationResult<ItemDto, ProblemDetails, ItemCreateDto>;
+  items: UseQueryResult<ProductDto[]>;
+  createItem: UseMutationResult<ProductDto, ProblemDetails, ProductCreateDto>;
   removeItem: UseMutationResult<void, ProblemDetails, number>;
 }
 
 export const useItems = (): UseItemsResult => {
-  const items = useQuery<ItemDto[]>(['items'], itemService.getAll);
+  const items = useQuery<ProductDto[]>(['items'], productService.getAll);
 
-  const createItem = useMutation<ItemDto, ProblemDetails, ItemCreateDto>((createDto) => itemService.create(createDto), {
+  const createItem = useMutation<ProductDto, ProblemDetails, ProductCreateDto>((createDto) => productService.create(createDto), {
     onSuccess: () => {
       items.refetch();
     },
   });
 
-  const removeItem = useMutation<void, ProblemDetails, number>((id) => itemService.remove(id), {
+  const removeItem = useMutation<void, ProblemDetails, number>((id) => productService.remove(id), {
     onSuccess: () => {
       items.refetch();
     },

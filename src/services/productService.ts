@@ -1,9 +1,9 @@
-import { ItemCreateDto } from 'dtos/ItemCreateDto';
-import { ItemDto } from 'dtos/ItemDto';
+import { ProductCreateDto } from 'dtos/ProductCreateDto';
+import { ProductDto } from 'dtos/ProductDto';
 import { httpClient } from 'utilities/http-client';
 
-const getAll = async (): Promise<ItemDto[]> => {
-  const response = await httpClient.get('/items/');
+const getAll = async (): Promise<ProductDto[]> => {
+  const response = await httpClient.get('/products/');
 
   if (!response.ok) {
     try {
@@ -16,8 +16,8 @@ const getAll = async (): Promise<ItemDto[]> => {
   return await response.json();
 };
 
-const create = async (createDto: ItemCreateDto): Promise<ItemDto> => {
-  const response = await httpClient.post('/items', createDto);
+const create = async (createDto: ProductCreateDto): Promise<ProductDto> => {
+  const response = await httpClient.post('/products', createDto);
 
   if (!response.ok) {
     try {
@@ -31,11 +31,11 @@ const create = async (createDto: ItemCreateDto): Promise<ItemDto> => {
 };
 
 const remove = async (id: number): Promise<void> => {
-  const response = await httpClient.remove('/items/' + id);
+  const response = await httpClient.remove('/products/' + id);
 
   if (!response.ok) {
     return Promise.reject();
   }
 };
 
-export const itemService = { getAll, create, remove };
+export const productService = { getAll, create, remove };
