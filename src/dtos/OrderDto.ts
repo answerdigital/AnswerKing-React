@@ -1,9 +1,10 @@
-import { OrderItemDto } from './OrderItemDto';
+import { LineItemDto } from './LineItemDto';
 
 export interface OrderDto {
   id: number;
-  status: string;
-  address: string;
-  total: number;
-  items: OrderItemDto[];
+  createdOn: Date;
+  lastUpdated: Date;
+  orderStatus: number;
+  orderTotal: number;
+  lineItems: LineItemDto[];
 }

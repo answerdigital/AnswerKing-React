@@ -1,6 +1,6 @@
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 import { OrderDto } from 'dtos/OrderDto';
-import { OrderItemUpdateDto } from 'dtos/OrderItemUpdateDto';
+import { LineItemUpdateDto } from 'dtos/LineItemUpdateDto';
 import { httpClient } from 'utilities/http-client';
 
 export interface ProblemDetails {
@@ -54,7 +54,7 @@ const removeItem = async (orderId: number, itemId: number): Promise<void> => {
   }
 };
 
-const updateOrderItem = async (orderId: number, itemId: number, updateDto: OrderItemUpdateDto): Promise<void> => {
+const updateOrderItem = async (orderId: number, itemId: number, updateDto: LineItemUpdateDto): Promise<void> => {
   const response = await httpClient.put(`/orders/${orderId}/items/${itemId}`, updateDto);
 
   if (!response.ok) {
