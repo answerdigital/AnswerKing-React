@@ -1,13 +1,13 @@
 import './ItemCard.scss';
 import PlaceHolderImage from 'assets/burger_transparent.png';
 import { Button } from 'components/Button/Button';
-import { ItemDto } from 'dtos/ItemDto';
+import { ProductDto } from 'dtos/ProductDto';
 import { useOrder } from 'hooks/useOrder';
 import { ReactElement } from 'react';
 import { toast } from 'react-toastify';
 
 interface Props {
-  item: ItemDto;
+  item: ProductDto;
 }
 
 export const ItemCard = ({ item }: Props): ReactElement => {

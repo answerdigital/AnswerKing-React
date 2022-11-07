@@ -1,8 +1,8 @@
 import { CategoryDto } from './CategoryDto';
 
-export interface ItemDto {
+export interface ProductDto {
   id: number;
-  name: string;
+  name?: string;
   price: number;
   description?: string;
   categories: CategoryDto[];

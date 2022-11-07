@@ -1,11 +1,11 @@
 import './ItemsTableRow.scss';
-import { ItemDto } from 'dtos/ItemDto';
+import { ProductDto } from 'dtos/ProductDto';
 import { useItems } from 'hooks/useItems';
 import { ReactElement } from 'react';
 import { toast } from 'react-toastify';
 
 interface Props {
-  item: ItemDto;
+  item: ProductDto;
 }
 
 export const ItemsTableRow = ({ item }: Props): ReactElement => {
