@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import './Button.scss';
 import cn from 'classnames';
 import React, { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';

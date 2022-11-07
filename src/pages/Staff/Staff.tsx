@@ -1,8 +1,8 @@
 import './Staff.scss';
 import { ItemCreateForm } from 'components/ItemCreateForm/ItemCreateForm';
 import { ItemsTable } from 'components/ItemsTable/ItemsTable';
-import React, { ReactElement } from 'react';
-import { Helmet } from 'react-helmet';
+import { ReactElement } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 export const StaffPage = (): ReactElement => {
   return (

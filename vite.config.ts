@@ -1,6 +1,5 @@
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import cssModules from 'rollup-plugin-react-scoped-css';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -11,7 +10,7 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react(), cssModules()],
+  plugins: [react()],
   resolve: {
     alias: {
       assets: resolve(__dirname, 'src/assets'),

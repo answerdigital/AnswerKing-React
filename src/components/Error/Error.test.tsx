@@ -1,6 +1,5 @@
 import { fireEvent } from '@testing-library/react';
 import { customRender } from 'custom-render';
-import React from 'react';
 import { Error } from './Error';
 
 describe('Error Component', () => {

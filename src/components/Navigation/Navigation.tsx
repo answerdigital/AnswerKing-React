@@ -2,9 +2,10 @@ import './Navigation.scss';
 import AnswerLogo from 'assets/answer_logo.png';
 import { Button } from 'components/Button/Button';
 import { useOrder } from 'hooks/useOrder';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
+import cn from 'classnames';
 
 interface Props {
   toggleOrderPanel(): void;
@@ -17,13 +18,29 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
   return (
     <nav className="nav">
       <div className="nav__items nav__section">
-        <NavLink activeClassName="nav__item--active" className="nav__item" exact to={RouteConstants.HOME}>
+        <NavLink
+          className={({ isActive }) =>
+            cn('nav__item', { 'nav__item--active': isActive, })
+          }
+          end
+          to={RouteConstants.HOME}
+        >
           Home
         </NavLink>
-        <NavLink activeClassName="nav__item--active" className="nav__item" to={RouteConstants.MENU}>
+        <NavLink
+          className={({ isActive }) =>
+            cn('nav__item', { 'nav__item--active': isActive, })
+          }
+          to={RouteConstants.MENU}
+        >
           Menu
         </NavLink>
-        <NavLink activeClassName="nav__item--active" className="nav__item" to={RouteConstants.STAFF}>
+        <NavLink
+          className={({ isActive }) =>
+            cn('nav__item', { 'nav__item--active': isActive, })
+          }
+          to={RouteConstants.STAFF}
+        >
           Staff
         </NavLink>
       </div>

@@ -4,7 +4,7 @@ import { OrderCreateForm } from 'components/OrderCreateForm/OrderCreateForm';
 import { OrderDetails } from 'components/OrderDetails/OrderDetails';
 import { OrderLoadForm } from 'components/OrderLoadForm/OrderLoadForm';
 import { useOrder } from 'hooks/useOrder';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 interface Props {
   toggleOrderPanel(): void;

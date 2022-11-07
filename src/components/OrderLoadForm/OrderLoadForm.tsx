@@ -3,7 +3,7 @@ import { Button } from 'components/Button/Button';
 import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
-import React, { ChangeEvent, FormEvent, ReactElement, useState } from 'react';
+import { ChangeEvent, FormEvent, ReactElement, useState } from 'react';
 
 const idIsValid = (id: string): boolean => {
   return id.length > 0 && parseInt(id, 10) > 0;

@@ -3,7 +3,7 @@ import PlaceHolderImage from 'assets/burger_transparent.png';
 import { Button } from 'components/Button/Button';
 import { ProductDto } from 'dtos/ProductDto';
 import { useOrder } from 'hooks/useOrder';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { toast } from 'react-toastify';
 
 interface Props {

@@ -1,7 +1,7 @@
 import './MenuCategories.scss';
 import { MenuCategoriesItem } from 'components/MenuCategoriesItem/MenuCategoriesItem';
 import { CategoryDto } from 'dtos/CategoryDto';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 interface Props {
   categories: CategoryDto[];

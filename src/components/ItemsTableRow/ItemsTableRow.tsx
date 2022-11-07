@@ -1,7 +1,7 @@
 import './ItemsTableRow.scss';
 import { ProductDto } from 'dtos/ProductDto';
 import { useItems } from 'hooks/useItems';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { toast } from 'react-toastify';
 
 interface Props {
