@@ -28,11 +28,10 @@ export default defineConfig({
       strict: true,
     },
     proxy: {
-      // put url for the API here
-      // '/api': {
-      //   target: 'https://localhost:5001',
-      //   secure: false
-      // }
+      '/api': {
+        target: 'https://localhost:44333',
+        secure: false,
+      },
     },
   },
 });

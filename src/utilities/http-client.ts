@@ -1,8 +1,10 @@
 const defaultHeaders: HeadersInit = { 'Content-Type': 'application/json', };
 
-const BASE_URL = 'https://localhost:5001/api';
+const BASE_URL = '/api';
 
 const get = (url: string, headers?: HeadersInit): Promise<Response> => {
+  console.log('fetching...');
+
   return fetch(BASE_URL + url, {
     method: 'GET',
     headers: { ...defaultHeaders, ...(headers ?? {}) },
