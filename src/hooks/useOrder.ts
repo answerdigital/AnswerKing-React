@@ -1,12 +1,12 @@
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 import { OrderDto } from 'dtos/OrderDto';
-import { OrderItemUpdateDto } from 'dtos/OrderItemUpdateDto';
+import { LineItemUpdateDto } from 'dtos/LineItemUpdateDto';
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from 'react-query';
 import { orderService, ProblemDetails } from 'services/orderService';
 
 type AddItemToOrderArgs = { orderId: number; itemId: number };
 type RemoveItemFromOrderArgs = { orderId: number; itemId: number };
-type UpdateOrderItemArgs = { orderId: number; itemId: number; updateDto: OrderItemUpdateDto };
+type UpdateOrderItemArgs = { orderId: number; itemId: number; updateDto: LineItemUpdateDto };
 
 interface UseOrderResult {
   order: UseQueryResult<OrderDto>;
