@@ -6,8 +6,10 @@ import { httpClient } from 'utilities/http-client';
 export interface ProblemDetails {
   type: string;
   title: string;
+  detail?: string;
   status: number;
   traceId: string;
+  instance?: string;
 }
 
 const getById = async (id: number): Promise<OrderDto> => {
