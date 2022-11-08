@@ -1,9 +1,9 @@
 import { LineItemDto } from './LineItemDto';
 
 export enum OrderStatus {
-  Created,
-  Paid,
-  Cancelled,
+  Created = 'Created',
+  Paid = 'Paid',
+  Cancelled = 'Cancelled',
 }
 
 export interface OrderDto {
