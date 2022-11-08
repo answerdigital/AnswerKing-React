@@ -6,8 +6,10 @@ import { httpClient } from 'utilities/http-client';
 export interface ProblemDetails {
   type: string;
   title: string;
+  detail: string | null;
   status: number;
   traceId: string;
+  instance: string | null;
 }
 
 export interface ValidationProblemDetails extends ProblemDetails {
