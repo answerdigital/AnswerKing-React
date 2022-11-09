@@ -19,26 +19,20 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
     <nav className="nav">
       <div className="nav__items nav__section">
         <NavLink
-          className={({ isActive }) =>
-            cn('nav__item', { 'nav__item--active': isActive, })
-          }
+          className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })}
           end
           to={RouteConstants.HOME}
         >
           Home
         </NavLink>
         <NavLink
-          className={({ isActive }) =>
-            cn('nav__item', { 'nav__item--active': isActive, })
-          }
+          className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })}
           to={RouteConstants.MENU}
         >
           Menu
         </NavLink>
         <NavLink
-          className={({ isActive }) =>
-            cn('nav__item', { 'nav__item--active': isActive, })
-          }
+          className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })}
           to={RouteConstants.STAFF}
         >
           Staff
@@ -50,7 +44,7 @@ export const Navigation = ({ toggleOrderPanel, orderPanelIsOpen }: Props): React
 
       <div className="nav__section">
         <Button active={orderPanelIsOpen || order.isFetched} className="nav__order_total" onClick={toggleOrderPanel}>
-          {order.isFetched ? '£' + order.data?.total : null}
+          {order.isFetched ? '£' + order.data?.orderTotal : null}
           {order.isIdle ? 'Place an order' : null}
         </Button>
       </div>

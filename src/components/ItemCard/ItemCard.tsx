@@ -13,7 +13,7 @@ interface Props {
 export const ItemCard = ({ item }: Props): ReactElement => {
   const { order, addItemToOrder, removeItemFromOrder, updateOrderItemQuantity } = useOrder();
 
-  const quantity = order.data?.items.find((orderItem) => orderItem.id === item.id)?.quantity;
+  const quantity = order.data?.lineItems.find((lineItem) => lineItem.product.id === item.id)?.quantity;
 
   const handleAddItem = (orderId: number, itemId: number): void => {
     addItemToOrder.mutate(

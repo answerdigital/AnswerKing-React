@@ -22,16 +22,14 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
         {order.isFetched ? (
           <div className="mobile_nav__basket_total">
             <span>Order Total:</span>
-            <span>{`£${order.data?.total}`}</span>
+            <span>{`£${order.data?.orderTotal}`}</span>
           </div>
         ) : null}
         {order.isIdle ? <span>Place an order</span> : null}
       </Button>
       <div className="mobile_nav__items">
         <NavLink
-          className={({ isActive }) =>
-            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
-          }
+          className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })}
           end
           to={RouteConstants.HOME}
         >
@@ -39,18 +37,14 @@ export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
           <div className="mobile_nav__label">Home</div>
         </NavLink>
         <NavLink
-          className={({ isActive }) =>
-            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
-          }
+          className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })}
           to={RouteConstants.MENU}
         >
           <img alt="Home Icon" className="mobile_nav__icon" src={IconMenu} />
           <div className="mobile_nav__label">Menu</div>
         </NavLink>
         <NavLink
-          className={({ isActive }) =>
-            cn('mobile_nav__item', { 'mobile_nav__item--active': isActive, })
-          }
+          className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })}
           to={RouteConstants.STAFF}
         >
           <img alt="Home Icon" className="mobile_nav__icon" src={IconStaff} />
