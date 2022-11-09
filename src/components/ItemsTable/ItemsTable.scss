@@ -6,9 +6,12 @@
   background-color: rgba($grey, 0.8);
   border: 1px $yellow solid;
   border-collapse: collapse;
+  border-radius: 7px;
+  border-style: hidden;
 
   tr {
     border-bottom: 1px solid $yellow;
+    border-radius: 7px;
   }
 
   th,
@@ -18,6 +21,7 @@
 
   thead {
     border-bottom: 2px solid $yellow;
+    border-radius: 7px;
   }
 
   &__hide_mobile {

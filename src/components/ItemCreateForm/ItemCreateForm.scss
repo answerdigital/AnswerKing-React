@@ -5,10 +5,13 @@
   border: 1px $yellow solid;
   padding: 8px;
   margin-bottom: 16px;
+  border-radius: 7px;
+  border-style: hidden;
 
   &__button {
     width: 100%;
     margin: 8px 0px;
+    border-radius: 7px;
   }
 
   &__description {
