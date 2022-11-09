@@ -4,6 +4,7 @@ import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
 import { FormEvent, ReactElement, useState } from 'react';
+import { OrderCreateDto } from 'dtos/OrderCreateDto';
 
 export const OrderCreateForm = (): ReactElement => {
   const [validationMessage, setValidationMessage] = useState('');
@@ -11,8 +12,9 @@ export const OrderCreateForm = (): ReactElement => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    setValidationMessage('');
-    createOrder.mutate();
+    setValidationMessage('Unable to create order');
+    const orderCreateDto: OrderCreateDto = { lineItems: [] };
+    createOrder.mutate(orderCreateDto);
   };
 
   const handleErrorClear = (): void => {

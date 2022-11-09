@@ -3,13 +3,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        quietDeps: true,
-      },
-    },
-  },
+  css: {preprocessorOptions: {scss: {quietDeps: true}}},
   plugins: [react()],
   resolve: {
     alias: {
@@ -24,15 +18,13 @@ export default defineConfig({
     },
   },
   server: {
-    fs: {
-      strict: true,
-    },
+    fs: {strict: true,},
     proxy: {
-      // put url for the API here
-      // '/api': {
-      //   target: 'https://localhost:5001',
-      //   secure: false
-      // }
+      //put url for the API here:
+      '/api': {
+        target: 'https://localhost:44333/api',
+        secure: false,
+      },
     },
   },
 });

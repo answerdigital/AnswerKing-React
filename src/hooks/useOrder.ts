@@ -1,3 +1,4 @@
+import { OrderCreateDto } from 'dtos/OrderCreateDto';
 import { OrderDto } from 'dtos/OrderDto';
 import { LineItemUpdateDto } from 'dtos/LineItemUpdateDto';
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from 'react-query';
@@ -10,7 +11,7 @@ type UpdateOrderItemArgs = { orderId: number; itemId: number; updateDto: LineIte
 interface UseOrderResult {
   order: UseQueryResult<OrderDto>;
   getOrder: UseMutationResult<OrderDto, ProblemDetails, number>;
-  createOrder: UseMutationResult<OrderDto, ProblemDetails, void>;
+  createOrder: UseMutationResult<OrderDto, ProblemDetails, OrderCreateDto>;
   clearOrder(): void;
   addItemToOrder: UseMutationResult<void, void, AddItemToOrderArgs>;
   removeItemFromOrder: UseMutationResult<void, void, RemoveItemFromOrderArgs>;
@@ -28,11 +29,12 @@ export const useOrder = (): UseOrderResult => {
     },
   });
 
-  const createOrder = useMutation<OrderDto, ProblemDetails, void>(() => orderService.create(), {
-    onSuccess: (orderDto) => {
-      queryClient.setQueryData(['order'], orderDto);
-    },
-  });
+  const createOrder = useMutation<OrderDto, ProblemDetails, OrderCreateDto>(
+    (orderCreateDto) => orderService.create(orderCreateDto), {
+      onSuccess: (orderDto) => {
+        queryClient.setQueryData(['order'], orderDto);
+      },
+    });
 
   const clearOrder = (): Promise<void> => queryClient.resetQueries(['order']);
 
