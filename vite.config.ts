@@ -22,7 +22,7 @@ export default defineConfig({
     proxy: {
       //put url for the API here:
       '/api': {
-        target: 'https://localhost:44333/api',
+        target: 'https://localhost:44333',
         secure: false,
       },
     },
