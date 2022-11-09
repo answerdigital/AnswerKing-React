@@ -1,6 +1,8 @@
 .order_load_form {
   position: relative;
 
+  padding-top: 10%;
+
   &__button {
     width: 100%;
     margin: 8px 0px;
@@ -10,5 +12,9 @@
   &__input {
     width: 100%;
     padding: 4px;
+  }
+
+  &__description{
+    font-weight: bold;
   }
 }
