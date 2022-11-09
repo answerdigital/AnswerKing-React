@@ -12,7 +12,7 @@ export const OrderCreateForm = (): ReactElement => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    setValidationMessage('Unable to create order');
+    setValidationMessage('');
     const orderCreateDto: OrderCreateDto = { lineItems: [] };
     createOrder.mutate(orderCreateDto);
   };
