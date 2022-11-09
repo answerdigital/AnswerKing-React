@@ -1,5 +1,5 @@
-import { OrderItemDto } from './OrderItemDto';
+import { LineItemDto } from './LineItemDto';
 
 export interface OrderCreateDto {
-  lineItems: OrderItemDto[];
+  lineItems: LineItemDto[];
 }
