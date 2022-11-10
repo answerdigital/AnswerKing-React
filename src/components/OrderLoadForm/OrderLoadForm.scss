@@ -1,3 +1,5 @@
+@import '/src/style/variables.scss';
+
 .order_load_form {
   position: relative;
 
@@ -6,7 +8,7 @@
   &__button {
     width: 100%;
     margin: 8px 0px;
-    border-radius: 7px;
+    border-radius: $borderRadius;
   }
 
   &__input {

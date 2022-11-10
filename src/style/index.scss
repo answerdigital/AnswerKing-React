@@ -28,7 +28,7 @@ textarea {
   padding: 4px;
   display: block;
   box-sizing: border-box;
-  border-radius: 7px;
+  border-radius: $borderRadius;
 
   &:hover,
   &:focus {

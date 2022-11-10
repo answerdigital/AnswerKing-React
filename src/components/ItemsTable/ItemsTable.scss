@@ -7,12 +7,12 @@
   background-color: whitesmoke;
   border: 1px $yellow solid;
   border-collapse: collapse;
-  border-radius: 7px;
+  border-radius: $borderRadius;
   border-style: hidden;
 
   tr {
     border-bottom: 1px solid $yellow;
-    border-radius: 7px;
+    border-radius: $borderRadius;
   }
 
   th,
@@ -22,7 +22,7 @@
 
   thead {
     border-bottom: 2px solid $yellow;
-    border-radius: 7px;
+    border-radius: $borderRadius;
   }
 
   &__hide_mobile {
