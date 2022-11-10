@@ -15,7 +15,7 @@ export const OrderDetails = ({ order }: Props): ReactElement => {
       </div>
       <div className="order_details__group">
         <span className="order_details__label">Status:</span>
-        <span className="order_details__value">{order.status}</span>
+        <span className="order_details__value">{order.orderStatus}</span>
       </div>
       <div className="order_details__group order_details__group--items">
         <span className="order_details__label">Items:</span>
