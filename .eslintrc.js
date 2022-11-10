@@ -1,28 +1,25 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es2021': true
+  env: {
+    browser: true,
+    es2021: true,
   },
-  'extends': [
+  extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/jsx-runtime'
+    'plugin:react/jsx-runtime',
+    'prettier',
   ],
-  'parser': '@typescript-eslint/parser',
-  'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    'ecmaVersion': 12,
-    'sourceType': 'module'
+    ecmaVersion: 12,
+    sourceType: 'module',
   },
-  'plugins': [
-    'react',
-    '@typescript-eslint'
-  ],
-  'rules': {
-
+  plugins: ['react', '@typescript-eslint'],
+  rules: {
     'react/jsx-no-bind': [0],
     'react/require-default-props': [0],
     'react/function-component-definition': [0],
@@ -36,40 +33,29 @@ module.exports = {
     'import/no-unresolved': [0],
 
     'react/prop-types': 'off',
-    'indent': [
-      'error',
-      2
-    ],
-    'linebreak-style': [
-      'error',
-      'windows'
-    ],
-    'quotes': [
-      'error',
-      'single'
-    ],
-    'semi': [
-      'error',
-      'always'
-    ],
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'windows'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
     'max-len': [
-      'error',{
-        'code': 120
-      }
+      'error',
+      {
+        code: 120,
+      },
     ],
-    'object-curly-newline':
-    [
-      'error',{
-        "ObjectExpression": { 'multiline': true },
-        "ObjectPattern": { 'multiline': true },
-        "ImportDeclaration": 'never',
-        "ExportDeclaration": { 'multiline': true, 'minProperties': 3 }
-      }
-    ]
+    'object-curly-newline': [
+      'error',
+      {
+        ObjectExpression: { multiline: true },
+        ObjectPattern: { multiline: true },
+        ImportDeclaration: 'never',
+        ExportDeclaration: { multiline: true, minProperties: 3 },
+      },
+    ],
   },
-  'settings': {
-    'react': {
-      'version': 'detect'
-    }
-  }
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 };
