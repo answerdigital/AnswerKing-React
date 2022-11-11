@@ -11,8 +11,6 @@ export const StaffPage = (): ReactElement => {
         <title>Staff - Answer King</title>
       </Helmet>
       <div className="staff mw-960">
-        <h1>Staff</h1>
-        <h2>Items</h2>
         <ItemCreateForm />
         <ItemsTable />
       </div>

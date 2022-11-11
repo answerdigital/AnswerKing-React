@@ -6,12 +6,14 @@
   &__basket {
     height: 40px;
     background-color: $yellow;
-    color: $grey;
+    color: $white;
     font-size: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 98%;
+    margin-left: 1%;
+    margin-bottom: 1.5%;
 
     @media screen and (min-width: $desktop) {
       display: none;
@@ -46,7 +48,7 @@
     text-decoration: none;
     height: 100%;
     box-sizing: border-box;
-    padding-bottom: 4px;
+    padding-bottom: 10px;
 
     &--active,
     &:hover {

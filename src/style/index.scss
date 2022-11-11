@@ -4,12 +4,13 @@
 @import './ball-beat.css';
 
 body {
-  background: linear-gradient(180deg, $grey 7.61%, rgba($ruby, 0.77) 97.45%);
+  background: rgb(6,28,96);
+background: linear-gradient(157deg, rgba(6,28,96,1) 0%, rgba(23,16,124,0.9965568991268382) 48%, rgba(111,2,177,1) 98%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: $white;
   margin: 0px;
-  font-family: Euclid Square;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 hr {
@@ -20,13 +21,14 @@ hr {
 
 input,
 textarea {
-  background-color: $grey;
-  color: $white;
-  border: 2px solid $grey-blue;
+  background-color: $white;
+  color: $grey;
+  border: 2px solid $light-grey;
   resize: none;
   padding: 4px;
   display: block;
   box-sizing: border-box;
+  border-radius: $borderRadius;
 
   &:hover,
   &:focus {

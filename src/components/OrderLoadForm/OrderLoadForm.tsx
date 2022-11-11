@@ -38,7 +38,7 @@ export const OrderLoadForm = (): ReactElement => {
   return (
     <form className="order_load_form" onSubmit={handleSubmit}>
       <LoaderOverlay isEnabled={getOrder.isLoading} />
-      <p>Load an existing order</p>
+      <p className="order_load_form__description">Load an existing order</p>
       {getOrder.error ? (
         <Error onClear={handleErrorClear}>
           <li>{getOrder.error.title}</li>
