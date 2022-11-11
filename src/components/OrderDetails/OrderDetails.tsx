@@ -20,7 +20,7 @@ export const OrderDetails = ({ order }: Props): ReactElement => {
       <div className="order_details__group order_details__group--items">
         <span className="order_details__label">Items:</span>
         <div id="order_details__items">
-          {order.lineItems?.length ? (
+          {order.lineItems?.length > 0 ? (
             order.lineItems.map((lineItem) => (
               <div className="order_details__item" key={lineItem.product.id}>
                 <div className="order_details__item_group">
