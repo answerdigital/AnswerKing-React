@@ -13,12 +13,14 @@ interface UseItemsResult {
 export const useItems = (): UseItemsResult => {
   const items = useQuery<ProductDto[]>(['items'], productService.getAll);
 
-  const createItem = useMutation<ProductDto, ProblemDetails, CreatedProductDto>((createDto) =>
-    productService.create(createDto), {
-    onSuccess: () => {
-      items.refetch();
-    },
-  });
+  const createItem = useMutation<ProductDto, ProblemDetails, CreatedProductDto>(
+    (createDto) => productService.create(createDto),
+    {
+      onSuccess: () => {
+        items.refetch();
+      },
+    }
+  );
 
   const removeItem = useMutation<void, ProblemDetails, number>((id) => productService.remove(id), {
     onSuccess: () => {

@@ -6,7 +6,7 @@ interface Props {
   onClear?: () => void;
 }
 
-export const Error = ({children, onClear = undefined }: Props): ReactElement => {
+export const Error = ({ children, onClear = undefined }: Props): ReactElement => {
   return (
     <div className="error">
       {onClear ? (
@@ -22,9 +22,7 @@ export const Error = ({children, onClear = undefined }: Props): ReactElement => 
         </div>
       ) : null}
       <div className="error__title">Error(s):</div>
-      <ul data-testid="error-list">
-        {children ?? 'An unexpected error has occurred.'}
-      </ul>
+      <ul data-testid="error-list">{children ?? 'An unexpected error has occurred.'}</ul>
     </div>
   );
 };
