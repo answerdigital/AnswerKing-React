@@ -26,8 +26,8 @@ const getById = async (id: number): Promise<OrderDto> => {
   return await response.json();
 };
 
-const create = async (createDto: OrderCreateDto): Promise<OrderDto> => {
-  const response = await httpClient.post('/orders', createDto);
+const create = async (createOrderDto: OrderCreateDto): Promise<OrderDto> => {
+  const response = await httpClient.post('/orders/', createOrderDto);
 
   if (!response.ok) {
     try {

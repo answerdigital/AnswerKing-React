@@ -3,25 +3,18 @@ import { Button } from 'components/Button/Button';
 import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
-import { ChangeEvent, FormEvent, ReactElement, useState } from 'react';
+import { FormEvent, ReactElement, useState } from 'react';
+import { OrderCreateDto } from 'dtos/OrderCreateDto';
 
 export const OrderCreateForm = (): ReactElement => {
-  const [address, setAddress] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
   const { createOrder } = useOrder();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    if (address) {
-      setValidationMessage('');
-      createOrder.mutate({ address });
-    } else {
-      setValidationMessage('Address is required to create an order.');
-    }
-  };
-
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
-    setAddress(event.target.value);
+    setValidationMessage('');
+    const orderCreateDto: OrderCreateDto = { lineItems: [] };
+    createOrder.mutate(orderCreateDto);
   };
 
   const handleErrorClear = (): void => {
@@ -43,10 +36,6 @@ export const OrderCreateForm = (): ReactElement => {
           <li>{validationMessage}</li>
         </Error>
       ) : null}
-      <label className="order_create_form__label" htmlFor="order_create_form__input">
-        Address:
-      </label>
-      <textarea className="order_create_form__input" onChange={handleChange} rows={5} value={address} />
       <Button className="order_create_form__button" type="submit">
         Create Order
       </Button>
