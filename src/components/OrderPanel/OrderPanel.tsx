@@ -16,7 +16,7 @@ export const OrderPanel = ({ toggleOrderPanel }: Props): ReactElement => {
   const handleClear = (): void => clearOrder();
 
   return (
-    <div className= "translucent_overlay">
+    <div className="translucent_overlay">
       <div className="order_panel">
         <div
           className="order_panel__close"
@@ -25,17 +25,17 @@ export const OrderPanel = ({ toggleOrderPanel }: Props): ReactElement => {
           role="button"
           tabIndex={0}
         >
-        &times;
+          &times;
         </div>
         {order.data ? (
           <>
             <OrderDetails order={order.data} />
             <div className="order_panel__button_group">
               <Button className="order_panel__button" onClick={handleClear}>
-              Cancel
+                Cancel
               </Button>
               <Button active className="order_panel__button" onClick={handleClear}>
-               Checkout
+                Checkout
               </Button>
             </div>
           </>
