@@ -22,7 +22,9 @@ exports[`OrderLoadForm component should match the snapshot 1`] = `
         <div />
       </div>
     </div>
-    <p>
+    <p
+      class="order_load_form__description"
+    >
       Load an existing order
     </p>
     <label

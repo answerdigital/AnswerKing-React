@@ -1,20 +1,23 @@
 @import '/src/style/variables.scss';
 
 .btn {
-  background-color: $grey;
-  color: $yellow;
+  background-color: $yellow;
+  color: white;
   border: 2px solid $yellow;
   padding: 6px 12px;
   font-size: 16px;
+  border-radius: $borderRadius;
 
   &--small {
     font-size: 12px;
     padding: 4px 8px;
+    border-radius: $borderRadius;
   }
 
   &--large {
     font-size: 20px;
     padding: 8px 16px;
+    border-radius: $borderRadius;
   }
 
   &:hover,

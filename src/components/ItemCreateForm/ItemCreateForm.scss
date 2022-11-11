@@ -1,18 +1,24 @@
 @import '/src/style/variables.scss';
 
 .item_create_form {
-  background-color: rgba($grey, 0.8);
+  background-color: $form-background;
+  color: $grey;
   border: 1px $yellow solid;
   padding: 8px;
   margin-bottom: 16px;
+  margin-top:8px;
+  border-radius: $borderRadius;
+  border-style: hidden;
+  
 
   &__button {
     width: 100%;
     margin: 8px 0px;
+    border-radius: $borderRadius;
   }
 
   &__description {
-    font-weight: 500;
+    font-weight: bold;
   }
 
   &__input {

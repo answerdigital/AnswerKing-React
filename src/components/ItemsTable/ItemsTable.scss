@@ -2,13 +2,17 @@
 
 .items_table {
   width: 100%;
+  color: $grey;
   border-spacing: 0px;
-  background-color: rgba($grey, 0.8);
+  background-color: $form-background;
   border: 1px $yellow solid;
   border-collapse: collapse;
+  border-radius: $borderRadius;
+  border-style: hidden;
 
   tr {
     border-bottom: 1px solid $yellow;
+    border-radius: $borderRadius;
   }
 
   th,
@@ -18,6 +22,7 @@
 
   thead {
     border-bottom: 2px solid $yellow;
+    border-radius: $borderRadius;
   }
 
   &__hide_mobile {
