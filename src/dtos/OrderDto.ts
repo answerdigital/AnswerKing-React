@@ -2,7 +2,7 @@ import { LineItemDto } from './LineItemDto';
 
 export enum OrderStatus {
   Created = 'Created',
-  Paid = 'Paid',
+  Complete = 'Complete',
   Cancelled = 'Cancelled',
 }
 
