@@ -10,8 +10,7 @@ const NAME_MIN_LENGTH = 1;
 const NAME_MAX_LENGTH = 50;
 const VALIDATION_MSG_NAME =
   'Name is required, cannot contain special characters and must be less than 50 characters in length.';
-// eslint-disable-next-line no-useless-escape
-const REGEX = new RegExp(`^[\w_]{${NAME_MIN_LENGTH},${NAME_MAX_LENGTH}}$`);
+const REGEX = new RegExp(`^[\\w_]{${NAME_MIN_LENGTH},${NAME_MAX_LENGTH}}$`);
 const nameIsValid = (name: string): boolean => {
   return REGEX.test(name);
 };
