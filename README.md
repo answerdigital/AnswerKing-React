@@ -17,3 +17,7 @@ To disable rule on next line comment '// eslint-disable-next-line' followed by t
 See .eslintrc.jc for rules.
 To fix all lint errors 'npm run lint -- --fix'
 https://eslint.org/docs/latest/rules/
+
+## Prettier 
+To find errors 'Npm run prettier'
+To auto fix errors (danger) 'npx prettier --write <file>'
