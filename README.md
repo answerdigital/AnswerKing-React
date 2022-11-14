@@ -18,6 +18,7 @@ See .eslintrc.jc for rules.
 To fix all lint errors 'npm run lint -- --fix'
 https://eslint.org/docs/latest/rules/
 
-## Prettier 
+## Prettier
+
 To find errors 'Npm run prettier'
 To auto fix errors (danger) 'npx prettier --write <file>'
