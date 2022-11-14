@@ -11,7 +11,7 @@ const NAME_MAX_LENGTH = 50;
 const VALIDATION_MSG_NAME =
   'Name is required, cannot contain special characters and must be less than 50 characters in length.';
 const nameIsValid = (name: string): boolean => {
-  const REGEX = /^[A-z0-9 ]*$/;
+  const REGEX = /^[A-Za-z0-9 ]+$/;
   return name.length >= NAME_MIN_LENGTH && name.length <= NAME_MAX_LENGTH && !!name.match(REGEX);
 };
 
