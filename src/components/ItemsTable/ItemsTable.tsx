@@ -1,7 +1,7 @@
 import './ItemsTable.scss';
 import { ItemsTableRow } from 'components/ItemsTableRow/ItemsTableRow';
 import { useItems } from 'hooks/useItems';
-import { ReactElement} from 'react';
+import { ReactElement } from 'react';
 
 export const ItemsTable = (): ReactElement => {
   const { items } = useItems();
