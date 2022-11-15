@@ -2,7 +2,7 @@ import './MenuItems.scss';
 import { ItemCard } from 'components/ItemCard/ItemCard';
 import { CategoryDto } from 'dtos/CategoryDto';
 import { ProductDto } from 'dtos/ProductDto';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 interface Props {
   category: CategoryDto;
