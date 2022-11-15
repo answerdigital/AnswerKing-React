@@ -1,4 +1,4 @@
-import './productsTableRow.scss';
+import './ProductsTableRow.scss';
 import { ProductDto } from 'dtos/ProductDto';
 import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
