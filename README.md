@@ -12,13 +12,13 @@ If you are running your API locally, you will need to configure vite to proxy an
 
 ## LINT
 
-Install extension ESLint. Enter 'npm run lint' to get a error list in the terminal.
-To disable rule on next line comment '// eslint-disable-next-line' followed by the rule name e.g '// eslint-disable-next-line no-alert'.
+Install extension ESLint. Enter '''npm run lint''' to get a error list in the terminal.
+To disable rule on next line comment '''// eslint-disable-next-line''' followed by the rule name e.g '''// eslint-disable-next-line no-alert'''.
 See .eslintrc.jc for rules.
 To fix all lint errors 'npm run lint -- --fix'
 https://eslint.org/docs/latest/rules/
 
 ## Prettier
 
-To find errors 'Npm run prettier'
-To auto fix errors (danger) 'npx prettier --write <file>'
+To find errors '''Npm run prettier'''
+To auto fix errors (danger) '''npx prettier --write <file>'''
