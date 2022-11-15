@@ -1,4 +1,4 @@
-import './ItemCard.scss';
+import './ProductCard.scss';
 import PlaceHolderImage from 'assets/burger_transparent.png';
 import { Button } from 'components/Button/Button';
 import { ProductDto } from 'dtos/ProductDto';
@@ -7,20 +7,20 @@ import { ReactElement } from 'react';
 import { toast } from 'react-toastify';
 
 interface Props {
-  item: ProductDto;
+  product: ProductDto;
 }
 
-export const ItemCard = ({ item }: Props): ReactElement => {
+export const ProductCard = ({ product }: Props): ReactElement => {
   const { order, addItemToOrder, removeItemFromOrder, updateOrderItemQuantity } = useOrder();
 
-  const quantity = order.data?.lineItems.find((lineItem) => lineItem.product.id === item.id)?.quantity;
+  const quantity = order.data?.lineItems.find((lineItem) => lineItem.product.id === product.id)?.quantity;
 
   const handleAddItem = (orderId: number, itemId: number): void => {
     addItemToOrder.mutate(
       { orderId, itemId },
       {
         onSuccess: () => {
-          toast.success(`Added ${item.name} to Order.`);
+          toast.success(`Added ${product.name} to Order.`);
         },
       }
     );
@@ -32,7 +32,7 @@ export const ItemCard = ({ item }: Props): ReactElement => {
         { orderId, itemId },
         {
           onSuccess: () => {
-            toast.success(`Removed ${item.name} from Order.`);
+            toast.success(`Removed ${product.name} from Order.`);
           },
         }
       );
@@ -41,32 +41,32 @@ export const ItemCard = ({ item }: Props): ReactElement => {
       { orderId, itemId, updateDto: { quantity } },
       {
         onSuccess: () => {
-          toast.success(`Updated quantity of ${item.name} to ${quantity}.`);
+          toast.success(`Updated quantity of ${product.name} to ${quantity}.`);
         },
       }
     );
   };
 
   return (
-    <div className="item_card">
-      <img alt="burger" className="item_card__image" src={PlaceHolderImage} />
-      <div className="item_card__body">
-        <div className="item_card__name">{item.name}</div>
-        <div className="item_card__price">£{item.price}</div>
-        <div className="item_card__buttons">
+    <div className="product_card">
+      <img alt="burger" className="product_card__image" src={PlaceHolderImage} />
+      <div className="product_card__body">
+        <div className="product_card__name">{product.name}</div>
+        <div className="product_card__price">£{product.price}</div>
+        <div className="product_card__buttons">
           {order.data && quantity ? (
             <div>
-              <Button onClick={() => handleUpdateQuantity(order.data.id, item.id, quantity - 1)} size="small">
+              <Button onClick={() => handleUpdateQuantity(order.data.id, product.id, quantity - 1)} size="small">
                 -
               </Button>
-              <span className="item_card__quantity">{quantity}</span>
-              <Button onClick={() => handleUpdateQuantity(order.data.id, item.id, quantity + 1)} size="small">
+              <span className="product_card__quantity">{quantity}</span>
+              <Button onClick={() => handleUpdateQuantity(order.data.id, product.id, quantity + 1)} size="small">
                 +
               </Button>
             </div>
           ) : null}
           {order.data && !quantity ? (
-            <Button onClick={() => handleAddItem(order.data.id, item.id)} size="small">
+            <Button onClick={() => handleAddItem(order.data.id, product.id)} size="small">
               Add
             </Button>
           ) : null}

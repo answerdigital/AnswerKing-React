@@ -1,6 +1,6 @@
 import './Staff.scss';
-import { ItemCreateForm } from 'components/ItemCreateForm/ItemCreateForm';
-import { ItemsTable } from 'components/ItemsTable/ItemsTable';
+import { ProductCreateForm } from 'components/ProductCreateForm/ProductCreateForm';
+import { ProductsTable } from 'components/ProductsTable/ProductsTable';
 import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -11,8 +11,8 @@ export const StaffPage = (): ReactElement => {
         <title>Staff - Answer King</title>
       </Helmet>
       <div className="staff mw-960">
-        <ItemCreateForm />
-        <ItemsTable />
+        <ProductCreateForm />
+        <ProductsTable />
       </div>
     </>
   );

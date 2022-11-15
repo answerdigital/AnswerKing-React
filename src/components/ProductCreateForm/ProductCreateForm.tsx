@@ -1,8 +1,8 @@
-import './ItemCreateForm.scss';
+import './ProductCreateForm.scss';
 import { Button } from 'components/Button/Button';
 import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
-import { useItems } from 'hooks/useItems';
+import { useProducts } from 'hooks/useProducts';
 import { FormEvent, ReactElement, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -32,16 +32,16 @@ const descriptionIsValid = (description: string): boolean => {
   return description.length <= DESCRIPTION_MAX_LENGTH;
 };
 
-export const ItemCreateForm = (): ReactElement => {
+export const ProductCreateForm = (): ReactElement => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('0.00');
   const [description, setDescription] = useState('');
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
-  const { createItem } = useItems();
+  const { createProduct } = useProducts();
 
   const handleErrorClear = (): void => {
     setValidationErrors([]);
-    createItem.reset();
+    createProduct.reset();
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -61,11 +61,11 @@ export const ItemCreateForm = (): ReactElement => {
     // Initially I checked for validationErrors.length however theres a slight delay with the state updating,
     // and sometimes this request gets fired when it shouldn't.
     if (nameIsValid(name) && priceIsValid(price) && descriptionIsValid(description)) {
-      createItem.mutate(
+      createProduct.mutate(
         { name, price: parseFloat(price), description },
         {
-          onSuccess: (item) => {
-            toast.success(`Item "${item.name}" was succesfully added.`);
+          onSuccess: (product) => {
+            toast.success(`Product "${product.name}" was succesfully added.`);
           },
         }
       );
@@ -73,12 +73,12 @@ export const ItemCreateForm = (): ReactElement => {
   };
 
   return (
-    <form className="item_create_form" onSubmit={handleSubmit}>
+    <form className="product_create_form" onSubmit={handleSubmit}>
       <LoaderOverlay isEnabled={false} />
-      <p className="item_create_form__description">Create an item</p>
-      {createItem.error ? (
+      <p className="product_create_form__description">Create an product</p>
+      {createProduct.error ? (
         <Error onClear={handleErrorClear}>
-          <li>{createItem.error.title}</li>
+          <li>{createProduct.error.title}</li>
         </Error>
       ) : null}
       {validationErrors.length > 0 ? (
@@ -88,39 +88,39 @@ export const ItemCreateForm = (): ReactElement => {
           ))}
         </Error>
       ) : null}
-      <label className="item_create_form__label" htmlFor="item_create_form__name">
+      <label className="product_create_form__label" htmlFor="product_create_form__name">
         Name:
       </label>
       <input
-        className="item_create_form__input"
-        id="item_create_form__name"
+        className="product_create_form__input"
+        id="product_create_form__name"
         onChange={(event) => setName(event.target.value)}
         type="text"
         value={name}
       />
-      <label className="item_create_form__label" htmlFor="item_create_form_price">
+      <label className="product_create_form__label" htmlFor="product_create_form_price">
         Price:
       </label>
       <input
-        className="item_create_form__input"
-        id="item_create_form__price"
+        className="product_create_form__input"
+        id="product_create_form__price"
         min={0}
         onChange={(event) => setPrice(event.target.value)}
         step={0.01}
         type="number"
         value={price}
       />
-      <label className="item_create_form__label" htmlFor="item_create_form__description">
+      <label className="product_create_form__label" htmlFor="product_create_form__description">
         Description (Optional):
       </label>
       <textarea
-        className="item_create_form__input"
-        id="item_create_form__description"
+        className="product_create_form__input"
+        id="product_create_form__description"
         onChange={(event) => setDescription(event.target.value)}
         rows={3}
         value={description}
       />
-      <Button className="item_create_form__button" type="submit">
+      <Button className="product_create_form__button" type="submit">
         Create
       </Button>
     </form>
