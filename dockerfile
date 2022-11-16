@@ -1,5 +1,5 @@
 #build the app
-FROM node:19 as build
+FROM node:18 as build
 
 WORKDIR /app
 
