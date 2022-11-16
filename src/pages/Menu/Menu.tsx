@@ -3,15 +3,15 @@ import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { MenuCategories } from 'components/MenuCategories/MenuCategories';
 import { MenuItems } from 'components/MenuItems/MenuItems';
 import { useCategories } from 'hooks/useCategories';
-import { useItems } from 'hooks/useItems';
+import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 export const MenuPage = (): ReactElement => {
-  const { items } = useItems();
+  const { products } = useProducts();
   const { categories } = useCategories();
 
-  if (!categories.data || !items.data) {
+  if (!categories.data || !products.data) {
     return (
       <>
         <Helmet>
@@ -35,8 +35,8 @@ export const MenuPage = (): ReactElement => {
           {categories.data.map((category) => (
             <MenuItems
               category={category}
-              items={items.data.filter((item) =>
-                item.categories?.find((itemCategory) => itemCategory.id === category.id)
+              products={products.data.filter((product) =>
+                product.categories?.find((productCategory) => productCategory.id === category.id)
               )}
               key={category.id}
             />
