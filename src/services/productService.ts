@@ -218,6 +218,27 @@ const dummyData = (): any => {
 
   _products.push(Beer);
 
+  const Coffee: ProductDto = {
+    id: 14,
+    name: 'Coffee',
+    price: 1.00,
+    description: 'Cheap, strong and incredibly bitter',
+    categories: catArray3
+  };
+
+  _products.push(Coffee);
+
+  const IcedTea: ProductDto = {
+    id: 15,
+    name: 'IcedTea',
+    price: 1.00,
+    description: 'Tea blend with ice',
+    categories: catArray3
+  };
+
+  _products.push(IcedTea);
+
+
 
   return _products;
 
