@@ -111,7 +111,7 @@ export const ProductCreateForm = (): ReactElement => {
         value={price}
       />
       <label className="product_create_form__label" htmlFor="product_create_form__description">
-        Description (Optional):
+        Description:
       </label>
       <textarea
         className="product_create_form__input"
