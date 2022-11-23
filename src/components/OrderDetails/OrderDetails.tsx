@@ -1,10 +1,9 @@
 import './OrderDetails.scss';
-import { OrderDto } from 'dtos/OrderDto';
 import { ReactElement } from 'react';
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 
 interface Props {
-  state: OrderCreateDto
+  state: OrderCreateDto;
 }
 
 export const OrderDetails = ({ state }: Props): ReactElement => {

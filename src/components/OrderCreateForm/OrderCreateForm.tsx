@@ -5,15 +5,14 @@ import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
 import { FormEvent, ReactElement, useState } from 'react';
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
-import { orderService } from '../../services/orderService';
 
 interface Props {
   state: OrderCreateDto;
 }
 
-export const OrderCreateForm = ({state}: Props): ReactElement => {
+export const OrderCreateForm = ({ state }: Props): ReactElement => {
   const [validationMessage, setValidationMessage] = useState('');
-  const { createOrder, order} = useOrder();
+  const { createOrder, order } = useOrder();
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();

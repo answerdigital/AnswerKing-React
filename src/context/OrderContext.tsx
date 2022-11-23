@@ -9,21 +9,17 @@ const OrderContext = createContext<{
   dispatch: React.Dispatch<any>;
 }>({
   state: initialState,
-  dispatch: () => null
+  dispatch: () => null,
 });
 
 interface Props {
   children: React.ReactNode;
 }
 
-const OrderProvider: React.FC<Props> = ({children}) => {
+const OrderProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(orderReducer, initialState);
 
-  return (
-    <OrderContext.Provider value={{state, dispatch}}>
-      {children}
-    </OrderContext.Provider>
-  );
+  return <OrderContext.Provider value={{ state, dispatch }}>{children}</OrderContext.Provider>;
 };
 
 export { OrderContext, OrderProvider };

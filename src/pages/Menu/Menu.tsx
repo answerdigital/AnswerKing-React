@@ -9,7 +9,6 @@ import { Helmet } from 'react-helmet-async';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
 import { OrderContext } from '../../context/OrderContext';
 
-
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
   const { categories } = useCategories();
@@ -48,7 +47,7 @@ export const MenuPage = (): ReactElement => {
           ))}
         </div>
       </div>
-      <OrderPanel state={state}/>
+      <OrderPanel state={state} />
     </>
   );
 };
