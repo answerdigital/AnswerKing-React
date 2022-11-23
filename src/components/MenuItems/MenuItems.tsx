@@ -2,15 +2,16 @@ import './MenuItems.scss';
 import { ProductCard } from 'components/ProductCard/ProductCard';
 import { CategoryDto } from 'dtos/CategoryDto';
 import { ProductDto } from 'dtos/ProductDto';
-import { Dispatch, ReactElement, SetStateAction } from 'react';
+import { ReactElement } from 'react';
 
 interface Props {
   category: CategoryDto;
   products: ProductDto[];
-  dispatch: React.Dispatch<any>;
+  increase: React.Dispatch<ProductDto>;
+  decrease: React.Dispatch<ProductDto>;
 }
 
-export const MenuItems = ({ category, products, dispatch }: Props): ReactElement => {
+export const MenuItems = ({ category, products, increase, decrease }: Props): ReactElement => {
   if (products.length === 0) {
     return <div />;
   }
@@ -19,7 +20,7 @@ export const MenuItems = ({ category, products, dispatch }: Props): ReactElement
       <div className="menu_items__category">{category.name}s</div>
       <div className="menu_items">
         {products.map((product) => (
-          <ProductCard dispatch={dispatch} product={product} key={product.id} />
+          <ProductCard increase={increase} decrease={decrease} product={product} key={product.id} />
         ))}
         <div className="menu_items__filler" />
         <div className="menu_items__filler" />

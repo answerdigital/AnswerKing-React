@@ -3,19 +3,19 @@ import PlaceHolderImage from 'assets/burger_transparent.png';
 import { Button } from 'components/Button/Button';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement } from 'react';
-import { orderReducer, ActionType } from '../../context/orderReducer';
 
 interface Props {
   product: ProductDto;
-  dispatch: React.Dispatch<any>;
+  increase: React.Dispatch<ProductDto>;
+  decrease: React.Dispatch<ProductDto>;
 }
 
-export const ProductCard = ({ product, dispatch }: Props): ReactElement => {
+export const ProductCard = ({ product, increase, decrease }: Props): ReactElement => {
   const addClick = (product: ProductDto): void => {
-    dispatch({ type: ActionType.Increase, payload: product });
+    increase(product);
   };
   const decreaseClick = (product: ProductDto): void => {
-    dispatch({ type: ActionType.Decrease, payload: product });
+    decrease(product);
   };
   return (
     <div className="product_card">
@@ -25,12 +25,12 @@ export const ProductCard = ({ product, dispatch }: Props): ReactElement => {
         <div className="product_card__price">£{product.price}</div>
         <div className="product_card__buttons">
           <div>
-            <Button onClick={() => decreaseClick(product)} size="small">
-              -
-            </Button>
-            <span className="product_card__quantity"></span>
             <Button onClick={() => addClick(product)} size="small">
               +
+            </Button>
+            <span className="product_card__quantity"></span>
+            <Button onClick={() => decreaseClick(product)} size="small">
+              -
             </Button>
           </div>
         </div>
