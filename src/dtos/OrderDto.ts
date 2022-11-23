@@ -1,5 +1,4 @@
 import { LineItemDto } from './LineItemDto';
-import { ProductDto } from './ProductDto';
 
 export enum OrderStatus {
   Created = 'Created',

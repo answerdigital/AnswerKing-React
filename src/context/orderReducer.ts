@@ -20,6 +20,7 @@ export const orderReducer = (state: OrderCreateDto, action: Action): OrderCreate
     if (!existingItem) {
       return { lineItems: [...state.lineItems, { product: payload, quantity: 1, subTotal: payload.price }]};
     }
+
     return {
       lineItems: [
         ...state.lineItems.map((item) => {
@@ -50,6 +51,7 @@ export const orderReducer = (state: OrderCreateDto, action: Action): OrderCreate
         })
       ]
     };
+
   default:
     return state;
   }
