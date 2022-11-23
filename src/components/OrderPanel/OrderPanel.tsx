@@ -16,10 +16,6 @@ export const OrderPanel = ({ state }: Props): ReactElement => {
 
   const handleClear = (): void => clearOrder();
 
-  const submit = (event: FormEvent): void => {
-    event.preventDefault();
-    console.log('submit');
-  };
   return (
     <div className="order_panel">
       {state.lineItems.length > 0 ? (

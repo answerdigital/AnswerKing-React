@@ -14,7 +14,7 @@ export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
   const { categories } = useCategories();
   const { state, dispatch } = useContext(OrderContext);
-  console.log(state);
+
   if (!categories.data || !products.data) {
     return (
       <>
