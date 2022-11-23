@@ -6,14 +6,18 @@ import { useOrder } from 'hooks/useOrder';
 import { FormEvent, ReactElement, useState } from 'react';
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 
-export const OrderCreateForm = (): ReactElement => {
+interface Props {
+  state: OrderCreateDto;
+}
+
+export const OrderCreateForm = ({state}: Props): ReactElement => {
   const [validationMessage, setValidationMessage] = useState('');
   const { createOrder } = useOrder();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     setValidationMessage('');
-    const orderCreateDto: OrderCreateDto = { lineItems: [] };
+    const orderCreateDto: OrderCreateDto = { lineItems: state.lineItems };
     createOrder.mutate(orderCreateDto);
   };
 

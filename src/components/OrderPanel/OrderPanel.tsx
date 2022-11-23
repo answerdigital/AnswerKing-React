@@ -5,48 +5,38 @@ import { OrderDetails } from 'components/OrderDetails/OrderDetails';
 import { OrderLoadForm } from 'components/OrderLoadForm/OrderLoadForm';
 import { useOrder } from 'hooks/useOrder';
 import { ReactElement } from 'react';
+import { OrderCreateDto } from 'dtos/CreatedOrderDto';
 
 interface Props {
-  toggleOrderPanel(): void;
+  state: OrderCreateDto;
 }
 
-export const OrderPanel = ({ toggleOrderPanel }: Props): ReactElement => {
+export const OrderPanel = ({state}: Props): ReactElement => {
   const { order, clearOrder } = useOrder();
 
   const handleClear = (): void => clearOrder();
 
   return (
-    <div className="translucent_overlay">
-      <div className="order_panel">
-        <div
-          className="order_panel__close"
-          onClick={toggleOrderPanel}
-          onKeyDown={toggleOrderPanel}
-          role="button"
-          tabIndex={0}
-        >
-          &times;
-        </div>
-        {order.data ? (
-          <>
-            <OrderDetails order={order.data} />
-            <div className="order_panel__button_group">
-              <Button className="order_panel__button" onClick={handleClear}>
-                Cancel
-              </Button>
-              <Button active className="order_panel__button" onClick={handleClear}>
-                Checkout
-              </Button>
-            </div>
-          </>
-        ) : (
-          <>
-            <OrderLoadForm />
-            <hr />
-            <OrderCreateForm />
-          </>
-        )}
-      </div>
+    <div className="order_panel">
+      {state.lineItems.length > 0 ? (
+        <>
+          <OrderDetails state={state} />
+          <div className="order_panel__button_group">
+            <Button className="order_panel__button">
+              Cancel
+            </Button>
+            <Button active className="order_panel__button">
+              Checkout
+            </Button>
+          </div>
+        </>
+      ) : (
+        <>
+          <OrderLoadForm />
+          <hr />
+          <OrderCreateForm state={state}/>
+        </>
+      )}
     </div>
   );
 };

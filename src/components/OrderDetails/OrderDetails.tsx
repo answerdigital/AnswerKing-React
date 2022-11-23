@@ -1,27 +1,21 @@
 import './OrderDetails.scss';
 import { OrderDto } from 'dtos/OrderDto';
 import { ReactElement } from 'react';
+import { OrderCreateDto } from 'dtos/OrderCreateDto';
 
 interface Props {
-  order: OrderDto;
+  state: OrderCreateDto
 }
 
-export const OrderDetails = ({ order }: Props): ReactElement => {
+export const OrderDetails = ({ state }: Props): ReactElement => {
+  const total = state.lineItems.map((item) => item.subTotal).reduce((a, b) => a + b, 0);
   return (
     <div className="order_details">
-      <div className="order_details__group">
-        <span className="order_details__label">Order ID:</span>
-        <span className="order_details__value">{order.id}</span>
-      </div>
-      <div className="order_details__group">
-        <span className="order_details__label">Status:</span>
-        <span className="order_details__value">{order.orderStatus}</span>
-      </div>
       <div className="order_details__group order_details__group--items">
-        <span className="order_details__label">Items:</span>
+        <span className="order_details__label">Products:</span>
         <div id="order_details__items">
-          {order.lineItems?.length > 0 ? (
-            order.lineItems.map((lineItem) => (
+          {state.lineItems?.length > 0 ? (
+            state.lineItems.map((lineItem) => (
               <div className="order_details__item" key={lineItem.product.id}>
                 <div className="order_details__item_group">
                   <span className="order_details__item_quantity">{lineItem.quantity}x</span>
@@ -38,7 +32,7 @@ export const OrderDetails = ({ order }: Props): ReactElement => {
 
       <div className="order_details__group order_details__group--total">
         <span className="order_details__label">Total:</span>
-        <span className="order_details__value">£{order.orderTotal}</span>
+        <span className="order_details__value">£{total}</span>
       </div>
     </div>
   );

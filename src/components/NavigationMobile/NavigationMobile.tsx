@@ -9,16 +9,12 @@ import { NavLink } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import cn from 'classnames';
 
-interface Props {
-  toggleOrderPanel(): void;
-}
-
-export const NavigationMobile = ({ toggleOrderPanel }: Props): ReactElement => {
+export const NavigationMobile = (): ReactElement => {
   const { order } = useOrder();
 
   return (
     <nav className="mobile_nav">
-      <Button className="mobile_nav__basket" onClick={toggleOrderPanel} type="button">
+      <Button className="mobile_nav__basket" type="button">
         {order.isFetched ? (
           <div className="mobile_nav__basket_total">
             <span>Order Total:</span>
