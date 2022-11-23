@@ -1,5 +1,6 @@
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 import { ProductDto } from 'dtos/ProductDto';
+import { stringify } from 'querystring';
 
 export enum ActionType {
   Increase = 'ADD_ADDITIONAL_ITEM',
@@ -24,7 +25,7 @@ export const orderReducer = (state: OrderCreateDto, action: Action): OrderCreate
         ...state.lineItems.map((item) => {
           if(item.product.id === payload.id){
             const subtotal = item.product.price * item.quantity;
-            return {...item, quantity: item.quantity++, subTotal: subtotal };
+            return {...item, quantity: item.quantity++, subTotal: Math.round(subtotal * 1e2) / 1e2};
           }
           return item;
         })
@@ -40,7 +41,10 @@ export const orderReducer = (state: OrderCreateDto, action: Action): OrderCreate
       lineItems: [
         ...state.lineItems.map((item) => {
           if (item.product.id === payload.id) {
-            return { ...item, quantity: item.quantity-- , subTotal: item.subTotal - item.product.price };
+            return {
+              ...item, quantity: item.quantity-- ,
+              subTotal: Math.round((item.subTotal - item.product.price) *  1e2 ) / 1e2
+            };
           }
           return item;
         })

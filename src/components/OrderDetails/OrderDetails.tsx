@@ -32,7 +32,7 @@ export const OrderDetails = ({ state }: Props): ReactElement => {
 
       <div className="order_details__group order_details__group--total">
         <span className="order_details__label">Total:</span>
-        <span className="order_details__value">£{total}</span>
+        <span className="order_details__value">£{Math.round(total * 1e2) / 1e2}</span>
       </div>
     </div>
   );
