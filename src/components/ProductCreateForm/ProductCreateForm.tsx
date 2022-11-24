@@ -61,7 +61,7 @@ export const ProductCreateForm = (): ReactElement => {
 
     // Initially I checked for validationErrors.length however theres a slight delay with the state updating,
     // and sometimes this request gets fired when it shouldn't.
-    if (1 + 1) {
+    if (nameIsValid(name) && priceIsValid(price) && descriptionIsValid(description)) {
       createProduct.mutate(
         { name, price: parseFloat(price), description },
         {
@@ -77,7 +77,6 @@ export const ProductCreateForm = (): ReactElement => {
   };
 
   const handleServerErrors = (problems: productProblemDetails): void => {
-    console.log(problems);
     if(problems.errors.name){
       toast.error(problems.errors.name[0]);
     }
