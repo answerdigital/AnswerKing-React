@@ -6,28 +6,28 @@ import { Action, ActionType, orderReducer } from './orderReducer';
 const initialState = { lineItems: [] };
 
 interface ILocalOrderHook {
-  state: OrderCreateDto;
+  localOrder: OrderCreateDto;
   increase: (product: ProductDto) => void;
   decrease: (product: ProductDto) => void;
 }
 
 interface ILocalOrderContext {
-  state: OrderCreateDto;
+  localOrder: OrderCreateDto;
   dispatch: React.Dispatch<Action>;
 }
 
 export const OrderContext = createContext<ILocalOrderContext>({
-  state: initialState,
+  localOrder: initialState,
   dispatch: () => null,
 });
 
 export const useLocalOrder = (): ILocalOrderHook => {
-  const [state, dispatch] = useReducer(orderReducer, initialState);
+  const [localOrder, dispatch] = useReducer(orderReducer, initialState);
 
   const increase = (product: ProductDto): void => dispatch({ type: ActionType.Increase, payload: product });
   const decrease = (product: ProductDto): void => dispatch({ type: ActionType.Decrease, payload: product });
 
-  return { state, increase, decrease };
+  return { localOrder, increase, decrease };
 };
 
 interface Props {
@@ -35,7 +35,7 @@ interface Props {
 }
 
 export const OrderProvider: React.FC<Props> = ({ children }) => {
-  const [state, dispatch] = useReducer(orderReducer, initialState);
+  const [localOrder, dispatch] = useReducer(orderReducer, initialState);
 
-  return <OrderContext.Provider value={{ state, dispatch }}>{children}</OrderContext.Provider>;
+  return <OrderContext.Provider value={{ localOrder, dispatch }}>{children}</OrderContext.Provider>;
 };

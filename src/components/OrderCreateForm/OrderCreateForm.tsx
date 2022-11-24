@@ -7,16 +7,16 @@ import { FormEvent, ReactElement, useState } from 'react';
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 
 interface Props {
-  state: OrderCreateDto;
+  localOrder: OrderCreateDto;
 }
 
-export const OrderCreateForm = ({ state }: Props): ReactElement => {
+export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
   const [validationMessage, setValidationMessage] = useState('');
   const { createOrder, order } = useOrder();
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    const orderCreateDto: OrderCreateDto = { lineItems: state.lineItems };
+    const orderCreateDto: OrderCreateDto = localOrder;
     createOrder.mutate(orderCreateDto);
   };
 

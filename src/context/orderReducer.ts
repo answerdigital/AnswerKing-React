@@ -11,18 +11,18 @@ export type Action = {
   payload: ProductDto;
 };
 
-export const orderReducer = (state: OrderCreateDto, action: Action): OrderCreateDto => {
+export const orderReducer = (localOrder: OrderCreateDto, action: Action): OrderCreateDto => {
   const { type, payload } = action;
-  const existingItem = state.lineItems.find((item) => item.product.id === payload.id);
+  const existingItem = localOrder.lineItems.find((item) => item.product.id === payload.id);
   switch (type) {
     case ActionType.Increase:
       if (!existingItem) {
-        return { lineItems: [...state.lineItems, { product: payload, quantity: 1, subTotal: payload.price }] };
+        return { lineItems: [...localOrder.lineItems, { product: payload, quantity: 1, subTotal: payload.price }] };
       }
 
       return {
         lineItems: [
-          ...state.lineItems.map((item) => {
+          ...localOrder.lineItems.map((item) => {
             if (item.product.id === payload.id) {
               const subtotal = item.product.price * item.quantity;
               return { ...item, quantity: item.quantity++, subTotal: Math.round(subtotal * 1e2) / 1e2 };
@@ -34,12 +34,12 @@ export const orderReducer = (state: OrderCreateDto, action: Action): OrderCreate
 
     case ActionType.Decrease:
       if (existingItem?.quantity === 0) {
-        return { lineItems: [...state.lineItems.filter((item) => item.product.id !== payload.id)] };
+        return { lineItems: [...localOrder.lineItems.filter((item) => item.product.id !== payload.id)] };
       }
 
       return {
         lineItems: [
-          ...state.lineItems.map((item) => {
+          ...localOrder.lineItems.map((item) => {
             if (item.product.id === payload.id) {
               return {
                 ...item,
@@ -53,6 +53,6 @@ export const orderReducer = (state: OrderCreateDto, action: Action): OrderCreate
       };
 
     default:
-      return state;
+      return localOrder;
   }
 };

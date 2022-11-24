@@ -12,7 +12,7 @@ import { useLocalOrder } from '../../context/OrderContext';
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
   const { categories } = useCategories();
-  const { state, increase, decrease } = useLocalOrder();
+  const { localOrder, increase, decrease } = useLocalOrder();
 
   if (!categories.data || !products.data) {
     return (
@@ -48,7 +48,7 @@ export const MenuPage = (): ReactElement => {
           ))}
         </div>
       </div>
-      <OrderPanel state={state} />
+      <OrderPanel localOrder={localOrder} />
     </>
   );
 };

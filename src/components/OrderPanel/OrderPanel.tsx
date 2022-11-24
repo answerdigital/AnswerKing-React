@@ -6,24 +6,24 @@ import { ReactElement } from 'react';
 import { OrderCreateDto } from 'dtos/CreatedOrderDto';
 
 interface Props {
-  state: OrderCreateDto;
+  localOrder: OrderCreateDto;
 }
 
-export const OrderPanel = ({ state }: Props): ReactElement => {
+export const OrderPanel = ({ localOrder }: Props): ReactElement => {
   const { order, clearOrder } = useOrder();
 
   const handleClear = (): void => clearOrder();
 
   return (
     <div className="order_panel">
-      {state.lineItems.length > 0 ? (
+      {localOrder.lineItems.length > 0 ? (
         <>
-          <OrderDetails state={state} />
-          <OrderCreateForm state={state} />
+          <OrderDetails localOrder={localOrder} />
+          <OrderCreateForm localOrder={localOrder} />
         </>
       ) : (
         <>
-          <OrderCreateForm state={state} />
+          <OrderCreateForm localOrder={localOrder} />
         </>
       )}
     </div>
