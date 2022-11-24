@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const ProductCard = ({ product }: Props): ReactElement => {
-  const {increase, decrease} = useLocalOrderContext();
+  const { increase, decrease } = useLocalOrderContext();
   const addClick = (product: ProductDto): void => {
     increase(product);
   };

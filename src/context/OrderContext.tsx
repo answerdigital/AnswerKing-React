@@ -16,7 +16,7 @@ interface ILocalOrder {
 export const LocalOrderContext = createContext<ILocalOrder>({
   localOrder: { lineItems: initialLineItems },
   increase: () => null,
-  decrease: () => null
+  decrease: () => null,
 });
 
 export const useLocalOrder = (): ILocalOrder => {
@@ -33,8 +33,8 @@ interface Props {
 }
 
 export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
-  const {localOrder, increase, decrease} = useLocalOrder();
-  return <LocalOrderContext.Provider value={{localOrder, increase, decrease}}>{children}</LocalOrderContext.Provider>;
+  const { localOrder, increase, decrease } = useLocalOrder();
+  return <LocalOrderContext.Provider value={{ localOrder, increase, decrease }}>{children}</LocalOrderContext.Provider>;
 };
 
-export const useLocalOrderContext = ():ILocalOrder => useContext(LocalOrderContext);
+export const useLocalOrderContext = (): ILocalOrder => useContext(LocalOrderContext);

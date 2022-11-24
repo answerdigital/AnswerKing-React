@@ -12,7 +12,7 @@ import { useLocalOrderContext } from '../../context/OrderContext';
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
   const { categories } = useCategories();
-  const {localOrder} = useLocalOrderContext();
+  const { localOrder } = useLocalOrderContext();
 
   if (!categories.data || !products.data) {
     return (
