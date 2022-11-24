@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { HelmetProvider } from 'react-helmet-async';
+import { LocalOrderProvider } from './context/OrderContext';
 
 const queryClient = new QueryClient();
 
@@ -14,15 +15,17 @@ export const App = (): ReactElement => {
   return (
     <Router>
       <QueryClientProvider client={queryClient}>
-        <HelmetProvider>
-          <Layout>
-            <Routes>
-              <Route element={<MenuPage />} path={RouteConstants.MENU} />
-              <Route element={<StaffPage />} path={RouteConstants.STAFF} />
-              <Route element={<HomePage />} path={RouteConstants.HOME} />
-            </Routes>
-          </Layout>
-        </HelmetProvider>
+        <LocalOrderProvider>
+          <HelmetProvider>
+            <Layout>
+              <Routes>
+                <Route element={<MenuPage />} path={RouteConstants.MENU} />
+                <Route element={<StaffPage />} path={RouteConstants.STAFF} />
+                <Route element={<HomePage />} path={RouteConstants.HOME} />
+              </Routes>
+            </Layout>
+          </HelmetProvider>
+        </LocalOrderProvider>
       </QueryClientProvider>
     </Router>
   );

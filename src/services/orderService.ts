@@ -40,28 +40,4 @@ const create = async (createOrderDto: OrderCreateDto): Promise<OrderDto> => {
   return await response.json();
 };
 
-const addItem = async (orderId: number, itemId: number): Promise<void> => {
-  const response = await httpClient.post(`/orders/${orderId}/items/${itemId}`, {});
-
-  if (!response.ok) {
-    return Promise.reject();
-  }
-};
-
-const removeItem = async (orderId: number, itemId: number): Promise<void> => {
-  const response = await httpClient.remove(`/orders/${orderId}/items/${itemId}`, {});
-
-  if (!response.ok) {
-    return Promise.reject();
-  }
-};
-
-const updateOrderItem = async (orderId: number, itemId: number, updateDto: LineItemUpdateDto): Promise<void> => {
-  const response = await httpClient.put(`/orders/${orderId}/items/${itemId}`, updateDto);
-
-  if (!response.ok) {
-    return Promise.reject();
-  }
-};
-
-export const orderService = { getById, create, addItem, removeItem, updateOrderItem };
+export const orderService = { getById, create };
