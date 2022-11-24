@@ -22,7 +22,7 @@ export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
     const orderCreateDto: OrderCreateDto = localOrder;
     createOrder.mutate(orderCreateDto);
 
-    if(!createOrder.error){
+    if (!createOrder.error) {
       navigate(RouteConstants.CHECKOUT);
     }
   };
