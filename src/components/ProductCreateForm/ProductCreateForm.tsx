@@ -70,20 +70,20 @@ export const ProductCreateForm = (): ReactElement => {
           },
           onError: (problems: productProblemDetails) => {
             handleServerErrors(problems);
-          }
+          },
         }
       );
     }
   };
 
   const handleServerErrors = (problems: productProblemDetails): void => {
-    if(problems.errors.name){
+    if (problems.errors.name) {
       toast.error(problems.errors.name[0]);
     }
-    if(problems.errors.price){
+    if (problems.errors.price) {
       toast.error(problems.errors.price[0]);
     }
-    if(problems.errors.description){
+    if (problems.errors.description) {
       toast.error(problems.errors.description[0]);
     }
   };

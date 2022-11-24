@@ -4,11 +4,11 @@ import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-
 import { productService } from 'services/productService';
 import { ProblemDetails } from 'services/orderService';
 
-export interface productProblemDetails extends ProblemDetails{
-  errors: errors
+export interface productProblemDetails extends ProblemDetails {
+  errors: errors;
 }
 
-export interface errors{
+export interface errors {
   name: string[];
   price: string[];
   description: string[];
