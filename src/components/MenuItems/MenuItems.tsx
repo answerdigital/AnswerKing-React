@@ -7,11 +7,9 @@ import { ReactElement } from 'react';
 interface Props {
   category: CategoryDto;
   products: ProductDto[];
-  increase: React.Dispatch<ProductDto>;
-  decrease: React.Dispatch<ProductDto>;
 }
 
-export const MenuItems = ({ category, products, increase, decrease }: Props): ReactElement => {
+export const MenuItems = ({ category, products }: Props): ReactElement => {
   if (products.length === 0) {
     return <div />;
   }
@@ -20,7 +18,7 @@ export const MenuItems = ({ category, products, increase, decrease }: Props): Re
       <div className="menu_items__category">{category.name}s</div>
       <div className="menu_items">
         {products.map((product) => (
-          <ProductCard increase={increase} decrease={decrease} product={product} key={product.id} />
+          <ProductCard product={product} key={product.id} />
         ))}
         <div className="menu_items__filler" />
         <div className="menu_items__filler" />

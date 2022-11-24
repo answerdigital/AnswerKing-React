@@ -3,14 +3,14 @@ import PlaceHolderImage from 'assets/burger_transparent.png';
 import { Button } from 'components/Button/Button';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement } from 'react';
+import { useLocalOrderContext } from '../../context/OrderContext';
 
 interface Props {
   product: ProductDto;
-  increase: React.Dispatch<ProductDto>;
-  decrease: React.Dispatch<ProductDto>;
 }
 
-export const ProductCard = ({ product, increase, decrease }: Props): ReactElement => {
+export const ProductCard = ({ product }: Props): ReactElement => {
+  const {increase, decrease} = useLocalOrderContext();
   const addClick = (product: ProductDto): void => {
     increase(product);
   };

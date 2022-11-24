@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { HelmetProvider } from 'react-helmet-async';
-import { OrderProvider } from './context/OrderContext';
+import { LocalOrderProvider } from './context/OrderContext';
 
 const queryClient = new QueryClient();
 
@@ -15,7 +15,7 @@ export const App = (): ReactElement => {
   return (
     <Router>
       <QueryClientProvider client={queryClient}>
-        <OrderProvider>
+        <LocalOrderProvider>
           <HelmetProvider>
             <Layout>
               <Routes>
@@ -25,7 +25,7 @@ export const App = (): ReactElement => {
               </Routes>
             </Layout>
           </HelmetProvider>
-        </OrderProvider>
+        </LocalOrderProvider>
       </QueryClientProvider>
     </Router>
   );

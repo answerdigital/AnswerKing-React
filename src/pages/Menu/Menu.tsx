@@ -7,12 +7,12 @@ import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
-import { useLocalOrder } from '../../context/OrderContext';
+import { useLocalOrderContext } from '../../context/OrderContext';
 
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
   const { categories } = useCategories();
-  const { localOrder, increase, decrease } = useLocalOrder();
+  const {localOrder} = useLocalOrderContext();
 
   if (!categories.data || !products.data) {
     return (
@@ -38,8 +38,6 @@ export const MenuPage = (): ReactElement => {
           {categories.data.map((category) => (
             <MenuItems
               category={category}
-              increase={increase}
-              decrease={decrease}
               products={products.data.filter((product) =>
                 product.categories?.find((productCategory) => productCategory.id === category.id)
               )}
