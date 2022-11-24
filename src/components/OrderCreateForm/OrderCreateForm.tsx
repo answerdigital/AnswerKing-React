@@ -5,6 +5,8 @@ import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
 import { FormEvent, ReactElement, useState } from 'react';
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
+import { useNavigate } from 'react-router-dom';
+import { RouteConstants } from 'utilities/route-constants';
 
 interface Props {
   localOrder: OrderCreateDto;
@@ -13,11 +15,16 @@ interface Props {
 export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
   const [validationMessage, setValidationMessage] = useState('');
   const { createOrder, order } = useOrder();
+  const navigate = useNavigate();
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
     const orderCreateDto: OrderCreateDto = localOrder;
     createOrder.mutate(orderCreateDto);
+
+    if(!createOrder.error){
+      navigate(RouteConstants.CHECKOUT);
+    }
   };
 
   return (

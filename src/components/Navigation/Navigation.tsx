@@ -29,6 +29,12 @@ export const Navigation = (): ReactElement => {
         >
           Staff
         </NavLink>
+        <NavLink
+          className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })}
+          to={RouteConstants.CHECKOUT}
+        >
+          Checkout
+        </NavLink>
       </div>
       <div className="nav__section">
         <img alt="Logo" className="nav__logo" src={AnswerLogo} />
