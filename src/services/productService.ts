@@ -3,7 +3,7 @@ import { CreatedProductDto } from 'dtos/CreatedProductDto';
 import { httpClient } from 'utilities/http-client';
 
 const getAll = async (): Promise<ProductDto[]> => {
-  const response = await httpClient.get('/products/');
+  const response = await httpClient.get('/products');
 
   if (!response.ok) {
     try {

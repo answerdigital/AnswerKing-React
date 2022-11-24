@@ -2,7 +2,7 @@ import { CategoryDto } from 'dtos/CategoryDto';
 import { httpClient } from 'utilities/http-client';
 
 const getAll = async (): Promise<CategoryDto[]> => {
-  const response = await httpClient.get('/categories/');
+  const response = await httpClient.get('/categories');
 
   if (!response.ok) {
     try {
