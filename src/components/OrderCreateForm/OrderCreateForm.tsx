@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
-  const { createOrder} = useOrder();
+  const { createOrder } = useOrder();
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();

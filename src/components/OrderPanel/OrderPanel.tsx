@@ -9,7 +9,6 @@ interface Props {
 }
 
 export const OrderPanel = ({ localOrder }: Props): ReactElement => {
-
   return (
     <div className="order_panel">
       {localOrder.lineItems.length > 0 ? (
