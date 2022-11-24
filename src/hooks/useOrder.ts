@@ -1,6 +1,5 @@
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 import { OrderDto } from 'dtos/OrderDto';
-import { LineItemUpdateDto } from 'dtos/LineItemUpdateDto';
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from 'react-query';
 import { orderService, ProblemDetails } from 'services/orderService';
 
