@@ -3,8 +3,8 @@ import { Button } from 'components/Button/Button';
 import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useProducts } from 'hooks/useProducts';
-import { FormEvent, JSXElementConstructor, MutableRefObject, ReactElement, useRef, useState } from 'react';
-import { Id, toast, ToastContainer } from 'react-toastify';
+import { FormEvent,ReactElement, useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 import { productProblemDetails } from 'hooks/useProducts';
 
 const NAME_MIN_LENGTH = 1;
