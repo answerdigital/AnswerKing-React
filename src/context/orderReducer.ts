@@ -56,4 +56,3 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
       return localOrder;
   }
 };
-
