@@ -3,7 +3,7 @@ import { Button } from 'components/Button/Button';
 import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useProducts } from 'hooks/useProducts';
-import { FormEvent,ReactElement, useRef, useState } from 'react';
+import { FormEvent, ReactElement, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { productProblemDetails } from 'hooks/useProducts';
 
@@ -82,16 +82,34 @@ export const ProductCreateForm = (): ReactElement => {
   const handleServerErrors = (problems: productProblemDetails): void => {
     const errorList = [];
 
-    errorList.push(<div>{problems.title}<br/><br/></div>);
+    errorList.push(
+      <div>
+        {problems.title}
+        <br />
+        <br />
+      </div>
+    );
 
     if (problems.errors.name) {
-      errorList.push(<li>{problems.errors.name[0]} <br/></li>);
+      errorList.push(
+        <li>
+          {problems.errors.name[0]} <br />
+        </li>
+      );
     }
     if (problems.errors.price) {
-      errorList.push(<li>{problems.errors.price[0]} <br/></li>);
+      errorList.push(
+        <li>
+          {problems.errors.price[0]} <br />
+        </li>
+      );
     }
     if (problems.errors.description) {
-      errorList.push(<li>{problems.errors.description[0]} <br/></li>);
+      errorList.push(
+        <li>
+          {problems.errors.description[0]} <br />
+        </li>
+      );
     }
 
     toastId.current = toast.error(<ul>{errorList}</ul>) as number;
