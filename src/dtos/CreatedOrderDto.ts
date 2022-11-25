@@ -1,5 +1,9 @@
-import { LineItemDto } from './LineItemDto';
 
-export interface OrderCreateDto {
-  lineItems: LineItemDto[];
+interface CreatedLineItems {
+  productId: number;
+  quantity: number;
+}
+
+export interface CreatedOrderDto {
+  lineItems: CreatedLineItems[];
 }

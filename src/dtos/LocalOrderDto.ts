@@ -1,5 +1,5 @@
 import { LineItemDto } from './LineItemDto';
 
-export interface OrderCreateDto {
+export interface LocalOrderDto {
   lineItems: LineItemDto[];
 }
