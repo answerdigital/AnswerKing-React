@@ -3,7 +3,7 @@ import { Button } from 'components/Button/Button';
 import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useProducts } from 'hooks/useProducts';
-import { FormEvent, ReactElement, useState } from 'react';
+import { FormEvent, ReactElement, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { productProblemDetails } from 'hooks/useProducts';
 
@@ -40,10 +40,12 @@ export const ProductCreateForm = (): ReactElement => {
   const [description, setDescription] = useState('');
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const { createProduct } = useProducts();
+  const toastId = useRef(0);
 
   const handleErrorClear = (): void => {
     setValidationErrors([]);
     createProduct.reset();
+    toast.dismiss(toastId.current);
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -78,15 +80,39 @@ export const ProductCreateForm = (): ReactElement => {
   };
 
   const handleServerErrors = (problems: productProblemDetails): void => {
+    const errorList = [];
+
+    errorList.push(
+      <div>
+        {problems.title}
+        <br />
+        <br />
+      </div>
+    );
+
     if (problems.errors.name) {
-      toast.error(problems.errors.name[0]);
+      errorList.push(
+        <li>
+          {problems.errors.name[0]} <br />
+        </li>
+      );
     }
     if (problems.errors.price) {
-      toast.error(problems.errors.price[0]);
+      errorList.push(
+        <li>
+          {problems.errors.price[0]} <br />
+        </li>
+      );
     }
     if (problems.errors.description) {
-      toast.error(problems.errors.description[0]);
+      errorList.push(
+        <li>
+          {problems.errors.description[0]} <br />
+        </li>
+      );
     }
+
+    toastId.current = toast.error(<ul>{errorList}</ul>) as number;
   };
 
   return (
