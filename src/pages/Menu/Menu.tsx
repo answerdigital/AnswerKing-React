@@ -20,7 +20,7 @@ export const MenuPage = (): ReactElement => {
         <Helmet>
           <title>Menu - Answer King</title>
         </Helmet>
-        <div className="menu">
+        <div className="">
           <LoaderOverlay isEnabled />
         </div>
       </>
@@ -31,10 +31,10 @@ export const MenuPage = (): ReactElement => {
       <Helmet>
         <title>Menu - Answer King</title>
       </Helmet>
-      <div className="menu">
+      <div className="bg-black">
         <MenuCategories categories={categories.data} />
 
-        <div className="menu__items">
+        <div className="">
           {categories.data.map((category) => (
             <MenuItems
               category={category}

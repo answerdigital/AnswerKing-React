@@ -2,7 +2,7 @@
   "name": "react-boilerplate",
   "version": "0.0.0",
   "scripts": {
-    "dev": "npm run watch:css && vite",
+    "dev": "start npm run watch:css && vite",
     "build": "tsc && npm run build:css && vite build",
     "serve": "vite preview",
     "test": "jest",
@@ -11,7 +11,7 @@
     "prettier": "prettier --check ./",
     "format": "prettier --write ./",
     "build:css": "postcss src/style/tailwind.css -o src/style/main.css",
-    "watch:css": "postcss src/style/tailwind.css -o src/style/main.css"
+    "watch:css": "postcss src/style/tailwind.css -o src/style/main.css --watch"
   },
   "dependencies": {
     "autoprefixer": "^10.4.13",
