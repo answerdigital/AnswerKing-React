@@ -25,10 +25,11 @@ const priceIsValid = (priceString: string): boolean => {
 };
 
 const DESCRIPTION_MAX_LENGTH = 500;
-const VALIDATION_MSG_DESC = 'Description must be less than 500 characters in length.';
+const VALIDATION_MSG_DESC = 'Description is required and must be less than 500 characters in length.';
+
 const descriptionIsValid = (description: string): boolean => {
   if (!description) {
-    return true;
+    return false;
   }
   return description.length <= DESCRIPTION_MAX_LENGTH;
 };
