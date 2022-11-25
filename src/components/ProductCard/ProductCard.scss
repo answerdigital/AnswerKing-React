@@ -1,12 +1,18 @@
 @import '/src/style/variables.scss';
 
 .product_card {
-  width: 160px;
+  width: 240px;
   background-color: $grey;
   margin: 8px;
+  border-radius: $borderRadius;
+  box-shadow: rgba(0, 0, 10, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background-color: $form-background;
 
   &__image {
-    width: 160px;
+    width: 100%;
+
+    border-top-left-radius: $borderRadius;
+    border-top-right-radius: $borderRadius;
   }
 
   &__body {
@@ -14,7 +20,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    height: 75px;
     padding: 4px;
   }
 
@@ -25,11 +31,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $grey;
   }
 
-  &__name {
-    color: $yellow;
-  }
+  // &__name {
+  //   color: $yellow;
+  // }
 
   &__buttons {
     display: flex;

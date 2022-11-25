@@ -5,6 +5,7 @@ import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useProducts } from 'hooks/useProducts';
 import { FormEvent, ReactElement, useState } from 'react';
 import { toast } from 'react-toastify';
+import { productProblemDetails } from 'hooks/useProducts';
 
 const NAME_MIN_LENGTH = 1;
 const NAME_MAX_LENGTH = 50;
@@ -67,8 +68,23 @@ export const ProductCreateForm = (): ReactElement => {
           onSuccess: (product) => {
             toast.success(`Product "${product.name}" was succesfully added.`);
           },
+          onError: (problems: productProblemDetails) => {
+            handleServerErrors(problems);
+          },
         }
       );
+    }
+  };
+
+  const handleServerErrors = (problems: productProblemDetails): void => {
+    if (problems.errors.name) {
+      toast.error(problems.errors.name[0]);
+    }
+    if (problems.errors.price) {
+      toast.error(problems.errors.price[0]);
+    }
+    if (problems.errors.description) {
+      toast.error(problems.errors.description[0]);
     }
   };
 
@@ -76,11 +92,6 @@ export const ProductCreateForm = (): ReactElement => {
     <form className="product_create_form" onSubmit={handleSubmit}>
       <LoaderOverlay isEnabled={false} />
       <p className="product_create_form__description">Create an product</p>
-      {createProduct.error ? (
-        <Error onClear={handleErrorClear}>
-          <li>{createProduct.error.title}</li>
-        </Error>
-      ) : null}
       {validationErrors.length > 0 ? (
         <Error onClear={handleErrorClear}>
           {validationErrors.map((error) => (
@@ -104,14 +115,13 @@ export const ProductCreateForm = (): ReactElement => {
       <input
         className="product_create_form__input"
         id="product_create_form__price"
-        min={0}
         onChange={(event) => setPrice(event.target.value)}
         step={0.01}
         type="number"
         value={price}
       />
       <label className="product_create_form__label" htmlFor="product_create_form__description">
-        Description (Optional):
+        Description:
       </label>
       <textarea
         className="product_create_form__input"

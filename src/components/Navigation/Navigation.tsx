@@ -1,6 +1,5 @@
 import './Navigation.scss';
 import AnswerLogo from 'assets/answer_logo.png';
-import { useOrder } from 'hooks/useOrder';
 import { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
