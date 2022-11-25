@@ -1,9 +1,8 @@
 import './OrderCreateForm.scss';
 import { Button } from 'components/Button/Button';
-import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
-import { FormEvent, ReactElement, useState } from 'react';
+import { FormEvent, ReactElement } from 'react';
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 
 interface Props {
@@ -11,8 +10,7 @@ interface Props {
 }
 
 export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
-  const [validationMessage, setValidationMessage] = useState('');
-  const { createOrder, order } = useOrder();
+  const { createOrder } = useOrder();
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();

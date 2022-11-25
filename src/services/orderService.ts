@@ -1,6 +1,5 @@
 import { OrderCreateDto } from 'dtos/OrderCreateDto';
 import { OrderDto } from 'dtos/OrderDto';
-import { LineItemUpdateDto } from 'dtos/LineItemUpdateDto';
 import { httpClient } from 'utilities/http-client';
 
 export interface ProblemDetails {
