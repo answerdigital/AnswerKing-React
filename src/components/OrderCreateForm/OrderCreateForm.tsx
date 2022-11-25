@@ -12,8 +12,7 @@ interface Props {
 }
 
 export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
-  const [validationMessage, setValidationMessage] = useState('');
-  const { createOrder, order } = useOrder();
+  const { createOrder } = useOrder();
   const navigate = useNavigate();
 
   const handleSubmit = (event: FormEvent): void => {
