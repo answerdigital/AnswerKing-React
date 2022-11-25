@@ -15,7 +15,7 @@ export const MenuItems = ({ category, products }: Props): ReactElement => {
   }
   return (
     <div className="mw-960" id={category.name}>
-      <div className="menu_items__category">{category.name}s</div>
+      <div className="menu_items__category">{category.name}</div>
       <div className="menu_items">
         {products.map((product) => (
           <ProductCard product={product} key={product.id} />

@@ -17,7 +17,7 @@ export const MenuCategoriesItem = ({ category }: Props): ReactElement => {
       className={cn('menu_categories__item', { 'menu_categories__item--active': isOnScreen })}
       href={'#' + category.name}
     >
-      {category.name}s
+      {category.name}
     </a>
   );
 };
