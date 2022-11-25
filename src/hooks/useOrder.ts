@@ -22,7 +22,7 @@ export const useOrder = (): UseOrderResult => {
   });
 
   const createOrder = useMutation<OrderDto, ProblemDetails, CreatedOrderDto>(
-    (CreatedOrderDto) => orderService.create(CreatedOrderDto),
+    (createdOrderDto) => orderService.create(createdOrderDto),
     {
       onSuccess: (orderDto) => {
         queryClient.setQueryData(['order'], orderDto);
