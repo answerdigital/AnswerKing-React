@@ -10,6 +10,8 @@ import { RouteConstants } from 'utilities/route-constants';
 import { HelmetProvider } from 'react-helmet-async';
 import { LocalOrderProvider } from '.../../context/OrderContext';
 
+import './style/main.css';
+
 const queryClient = new QueryClient();
 
 export const App = (): ReactElement => {
