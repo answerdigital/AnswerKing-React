@@ -5,7 +5,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 export const ToastWrapper = (): ReactElement => {
   return (
     <ToastContainer
-      autoClose={4000}
+      autoClose={false}
       hideProgressBar
       newestOnTop
       position="bottom-right"

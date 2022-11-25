@@ -64,7 +64,7 @@ export const ProductCreateForm = (): ReactElement => {
 
     // Initially I checked for validationErrors.length however theres a slight delay with the state updating,
     // and sometimes this request gets fired when it shouldn't.
-    if (nameIsValid(name) && priceIsValid(price) && descriptionIsValid(description)) {
+    if (true) {
       createProduct.mutate(
         { name, price: parseFloat(price), description },
         {
