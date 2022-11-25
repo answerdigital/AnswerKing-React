@@ -5,5 +5,5 @@ export interface ProductDto {
   name: string;
   price: number;
   description: string;
-  categories?: CategoryDto[];
+  categories?: number[];
 }
