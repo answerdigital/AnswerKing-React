@@ -3,12 +3,13 @@ import { Button } from 'components/Button/Button';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
 import { FormEvent, ReactElement } from 'react';
-import { OrderCreateDto } from 'dtos/OrderCreateDto';
+import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
+import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 
 interface Props {
-  localOrder: OrderCreateDto;
+  localOrder: LocalOrderDto;
 }
 
 export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
@@ -17,8 +18,11 @@ export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    const orderCreateDto: OrderCreateDto = localOrder;
-    createOrder.mutate(orderCreateDto);
+
+    const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
+    const createdOrder: CreatedOrderDto = { lineItems: orderLineItems };
+
+    createOrder.mutate(createdOrder);
 
     if (!createOrder.error) {
       navigate(RouteConstants.CHECKOUT);

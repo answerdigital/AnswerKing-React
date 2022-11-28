@@ -1,12 +1,12 @@
-import { OrderCreateDto } from 'dtos/OrderCreateDto';
-import { OrderDto } from 'dtos/OrderDto';
+import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
+import { OrderDto } from 'dtos/Order/OrderDto';
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from 'react-query';
 import { orderService, ProblemDetails } from 'services/orderService';
 
 interface UseOrderResult {
   order: UseQueryResult<OrderDto>;
   getOrder: UseMutationResult<OrderDto, ProblemDetails, number>;
-  createOrder: UseMutationResult<OrderDto, ProblemDetails, OrderCreateDto>;
+  createOrder: UseMutationResult<OrderDto, ProblemDetails, CreatedOrderDto>;
   clearOrder(): void;
 }
 
@@ -21,8 +21,8 @@ export const useOrder = (): UseOrderResult => {
     },
   });
 
-  const createOrder = useMutation<OrderDto, ProblemDetails, OrderCreateDto>(
-    (orderCreateDto) => orderService.create(orderCreateDto),
+  const createOrder = useMutation<OrderDto, ProblemDetails, CreatedOrderDto>(
+    (createdOrderDto) => orderService.create(createdOrderDto),
     {
       onSuccess: (orderDto) => {
         queryClient.setQueryData(['order'], orderDto);

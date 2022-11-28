@@ -1,4 +1,4 @@
-import { OrderCreateDto } from 'dtos/OrderCreateDto';
+import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { ProductDto } from 'dtos/ProductDto';
 
 export enum ActionType {
@@ -11,7 +11,7 @@ export type Action = {
   payload: ProductDto;
 };
 
-export const orderReducer = (localOrder: OrderCreateDto, action: Action): OrderCreateDto => {
+export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOrderDto => {
   const { type, payload } = action;
   const existingItem = localOrder.lineItems.find((item) => item.product.id === payload.id);
   switch (type) {

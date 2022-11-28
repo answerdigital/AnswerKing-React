@@ -1,9 +1,9 @@
 import './OrderDetails.scss';
 import { ReactElement } from 'react';
-import { OrderCreateDto } from 'dtos/OrderCreateDto';
+import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 
 interface Props {
-  localOrder: OrderCreateDto;
+  localOrder: LocalOrderDto;
 }
 
 export const OrderDetails = ({ localOrder }: Props): ReactElement => {

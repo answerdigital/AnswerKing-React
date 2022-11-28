@@ -1,5 +1,5 @@
 import { LineItemDto } from 'dtos/LineItemDto';
-import { OrderCreateDto } from 'dtos/OrderCreateDto';
+import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { ProductDto } from 'dtos/ProductDto';
 import { createContext, useContext, useReducer } from 'react';
 import { ActionType, orderReducer } from './orderReducer';
@@ -8,7 +8,7 @@ const initialLineItems: LineItemDto[] = [];
 const initialOrder = { lineItems: initialLineItems };
 
 interface ILocalOrder {
-  localOrder: OrderCreateDto;
+  localOrder: LocalOrderDto;
   increase: (product: ProductDto) => void;
   decrease: (product: ProductDto) => void;
 }

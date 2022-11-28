@@ -1,4 +1,4 @@
-import { OrderDto } from 'dtos/OrderDto';
+import { OrderDto } from 'dtos/Order/OrderDto';
 import { ReactElement } from 'react';
 import { UseQueryResult } from 'react-query';
 
