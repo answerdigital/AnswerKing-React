@@ -1,6 +1,6 @@
 import './OrderDetails.scss';
 import { ReactElement } from 'react';
-import { LocalOrderDto } from 'dtos/LocalOrderDto';
+import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 
 interface Props {
   localOrder: LocalOrderDto;

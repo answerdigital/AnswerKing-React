@@ -1,5 +1,5 @@
 import { LineItemDto } from 'dtos/LineItemDto';
-import { LocalOrderDto } from 'dtos/LocalOrderDto';
+import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { ProductDto } from 'dtos/ProductDto';
 import { createContext, useContext, useReducer } from 'react';
 import { ActionType, orderReducer } from './orderReducer';

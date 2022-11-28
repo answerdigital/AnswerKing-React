@@ -1,5 +1,5 @@
-import { CreatedOrderDto } from 'dtos/CreatedOrderDto';
-import { OrderDto } from 'dtos/OrderDto';
+import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
+import { OrderDto } from 'dtos/Order/OrderDto';
 import { httpClient } from 'utilities/http-client';
 
 export interface ProblemDetails {

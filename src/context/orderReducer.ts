@@ -1,4 +1,4 @@
-import { LocalOrderDto } from 'dtos/LocalOrderDto';
+import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { ProductDto } from 'dtos/ProductDto';
 
 export enum ActionType {
