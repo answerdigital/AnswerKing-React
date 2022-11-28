@@ -27,3 +27,5 @@ https://eslint.org/docs/latest/rules/
 To find errors `Npm run prettier`
 
 To auto fix errors (danger) `npx prettier --write <file>`
+
+to fix all errors in certain file types `npx prettier --write '**/*.{ts,tsx}'`
