@@ -2,7 +2,7 @@ import './OrderCreateForm.scss';
 import { Button } from 'components/Button/Button';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
-import { FormEvent, ReactElement, useCallback, useEffect } from 'react';
+import { FormEvent, ReactElement, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
