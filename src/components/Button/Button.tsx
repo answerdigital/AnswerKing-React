@@ -16,7 +16,7 @@ export const Button = ({
   id = undefined,
   onClick = undefined,
   size = 'medium',
-  type = 'button'
+  type = 'button',
 }: Props): ReactElement => {
   return (
     <button
