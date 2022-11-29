@@ -5,7 +5,6 @@ import { useProducts } from 'hooks/useProducts';
 
 export const ProductsTable = (): ReactElement => {
   const { products } = useProducts();
-  console.log(products);
   return (
     <table className="products_table">
       <thead>

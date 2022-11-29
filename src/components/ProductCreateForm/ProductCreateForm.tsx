@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { ExtendedProblemDetails } from '../../dtos/ProblemDetailsDto';
 import { useCategories } from 'hooks/useCategories';
 import { ProductDto } from 'dtos/ProductDto';
+import { CategoryDto } from 'dtos/CategoryDto';
 
 const NAME_MIN_LENGTH = 1;
 const NAME_MAX_LENGTH = 50;
@@ -43,7 +44,7 @@ export const ProductCreateForm = (): ReactElement => {
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const { categories, updateCategory } = useCategories();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const { createProduct } = useProducts();
+  const { createProduct, products } = useProducts();
   const toastId = useRef(0);
 
   const handleErrorClear = (): void => {
@@ -74,11 +75,8 @@ export const ProductCreateForm = (): ReactElement => {
         {
           onSuccess: (product) => {
             toast.success(`Product "${product.name}" was succesfully added.`);
-            addCategoryToProduct(product);
-            setName('');
-            setDescription('');
-            setPrice('');
-            setSelectedCategories([]);
+            updateCategoryInProduct(selectedCategories, categories.data, product);
+            emptyForm();
           },
           onError: (problems: ExtendedProblemDetails) => {
             handleServerErrors(problems);
@@ -124,18 +122,30 @@ export const ProductCreateForm = (): ReactElement => {
     toastId.current = toast.error(<ul>{errorList}</ul>) as number;
   };
 
-  const addCategoryToProduct = (product: ProductDto): void => {
-    if (selectedCategories && categories) {
-      selectedCategories.forEach((id) => {
-        const category = categories.data?.find((cat) => cat.id === parseFloat(id));
+  const updateCategoryInProduct = async (
+    selectedCategories: string[],
+    categories: CategoryDto[] | undefined,
+    product: ProductDto
+  ): Promise<void> => {
+    Promise.allSettled(
+      selectedCategories.map(async (id) => {
+        const idNum = parseFloat(id);
+        const category = categories?.find((cat) => cat.id === idNum);
         category?.products?.push(product.id);
-        const idNumber = parseFloat(id);
-
         if (category) {
-          updateCategory.mutate({ id: idNumber, category: category });
+          updateCategory.mutate({ id: idNum, category });
         }
-      });
-    }
+      })
+    ).then((results) =>
+      results.every((element) => (element.status === 'fulfilled' ? products.refetch() : console.log(results)))
+    );
+  };
+
+  const emptyForm = (): void => {
+    setName('');
+    setDescription('');
+    setPrice('');
+    setSelectedCategories([]);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
