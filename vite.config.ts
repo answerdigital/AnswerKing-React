@@ -15,6 +15,7 @@ export default defineConfig({
       services: resolve(__dirname, 'src/services'),
       style: resolve(__dirname, 'src/style'),
       utilities: resolve(__dirname, 'src/utilities'),
+      context: resolve(__dirname, 'src/context'),
     },
   },
   server: {

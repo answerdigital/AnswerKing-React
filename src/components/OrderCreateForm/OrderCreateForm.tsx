@@ -2,18 +2,15 @@ import './OrderCreateForm.scss';
 import { Button } from 'components/Button/Button';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
-import { FormEvent, ReactElement } from 'react';
-import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
+import { FormEvent, ReactElement, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
+import { useLocalOrder } from 'context/OrderContext';
 
-interface Props {
-  localOrder: LocalOrderDto;
-}
-
-export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
-  const { createOrder } = useOrder();
+export const OrderCreateForm = (): ReactElement => {
+  const { order, createOrder, updateOrder } = useOrder();
+  const { localOrder, setOrderId } = useLocalOrder();
   const navigate = useNavigate();
 
   const handleSubmit = (event: FormEvent): void => {
@@ -22,12 +19,24 @@ export const OrderCreateForm = ({ localOrder }: Props): ReactElement => {
     const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
     const createdOrder: CreatedOrderDto = { lineItems: orderLineItems };
 
-    createOrder.mutate(createdOrder);
+    if (!localOrder.id) {
+      createOrder.mutate(createdOrder);
+    } else {
+      updateOrder.mutate({ id: localOrder.id, updatedOrder: createdOrder });
+    }
 
-    if (!createOrder.error) {
+    if (!createOrder.error || !updateOrder.error) {
       navigate(RouteConstants.CHECKOUT);
     }
   };
+
+  useEffect(() => {
+    if (!order.data?.id) {
+      return;
+    }
+
+    setOrderId(order.data.id);
+  }, [order.data?.id]);
 
   return (
     <form className="order_create_form" onSubmit={handleSubmit}>

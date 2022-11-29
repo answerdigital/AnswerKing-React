@@ -39,4 +39,18 @@ const create = async (createOrderDto: CreatedOrderDto): Promise<OrderDto> => {
   return await response.json();
 };
 
-export const orderService = { getById, create };
+const update = async (id: number, orderDto: CreatedOrderDto): Promise<OrderDto> => {
+  const response = await httpClient.put(`/orders/${id}`, orderDto);
+
+  if (!response.ok) {
+    try {
+      return Promise.reject(await response.json());
+    } catch {
+      return Promise.reject();
+    }
+  }
+
+  return await response.json();
+};
+
+export const orderService = { getById, create, update };
