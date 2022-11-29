@@ -8,7 +8,7 @@ export const OrderPanel = (): ReactElement => {
   const { localOrder } = useLocalOrder();
 
   return (
-    <div className="order_panel" onClick={() => console.log(localOrder)}>
+    <div className="order_panel">
       {localOrder.lineItems.length > 0 ? (
         <>
           <OrderDetails />
