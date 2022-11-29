@@ -1,3 +1,4 @@
+import './Menu.scss';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { MenuCategories } from 'components/MenuCategories/MenuCategories';
 import { MenuItems } from 'components/MenuItems/MenuItems';
@@ -19,7 +20,7 @@ export const MenuPage = (): ReactElement => {
         <Helmet>
           <title>Menu - Answer King</title>
         </Helmet>
-        <div className="">
+        <div className="menu">
           <LoaderOverlay isEnabled />
         </div>
       </>
@@ -30,10 +31,10 @@ export const MenuPage = (): ReactElement => {
       <Helmet>
         <title>Menu - Answer King</title>
       </Helmet>
-      <div className="">
+      <div className="menu">
         <MenuCategories categories={categories.data} />
 
-        <div className="">
+        <div className="menu__items">
           {categories.data.map((category) => (
             <MenuItems
               category={category}
