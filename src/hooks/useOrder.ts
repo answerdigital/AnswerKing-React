@@ -1,7 +1,8 @@
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { OrderDto } from 'dtos/Order/OrderDto';
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from 'react-query';
-import { orderService, ProblemDetails } from 'services/orderService';
+import { orderService } from 'services/orderService';
+import { ProblemDetails } from '../dtos/ProblemDetailsDto';
 
 interface UseOrderResult {
   order: UseQueryResult<OrderDto>;

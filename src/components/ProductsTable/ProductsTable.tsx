@@ -1,11 +1,12 @@
 import './ProductsTable.scss';
 import { ProductsTableRow } from 'components/ProductsTableRow/ProductsTableRow';
-import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
+import { useProducts } from 'hooks/useProducts';
+import { useCategories } from 'hooks/useCategories';
 
 export const ProductsTable = (): ReactElement => {
   const { products } = useProducts();
-
+  console.log(products);
   return (
     <table className="products_table">
       <thead>
@@ -20,7 +21,7 @@ export const ProductsTable = (): ReactElement => {
       </thead>
       <tbody>
         {products.data?.map((product) => (
-          <ProductsTableRow product={product} key={product.id} />
+          <ProductsTableRow key={product.id} product={product}/>
         ))}
       </tbody>
     </table>
