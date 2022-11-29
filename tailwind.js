@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   presets: [],
   darkMode: 'media', // or 'class'
   theme: {
@@ -242,9 +242,7 @@ module.exports = {
       200: '2',
     },
     container: {},
-    content: {
-      none: 'none',
-    },
+    content: { none: 'none' },
     cursor: {
       auto: 'auto',
       default: 'default',
@@ -378,16 +376,8 @@ module.exports = {
         '"Noto Color Emoji"',
       ],
       serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-      mono: [
-        'ui-monospace',
-        'SFMono-Regular',
-        'Menlo',
-        'Monaco',
-        'Consolas',
-        '"Liberation Mono"',
-        '"Courier New"',
-        'monospace',
-      ],
+      mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      roboto: ['roboto', 'sans-serif'],
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -874,8 +864,7 @@ module.exports = {
     transitionProperty: {
       none: 'none',
       all: 'all',
-      DEFAULT:
-        'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
+      DEFAULT: 'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
       colors: 'color, background-color, border-color, text-decoration-color, fill, stroke',
       opacity: 'opacity',
       shadow: 'box-shadow',
@@ -968,4 +957,4 @@ module.exports = {
     'disabled',
   ],
   plugins: [],
-}
+};

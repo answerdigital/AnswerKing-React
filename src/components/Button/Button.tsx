@@ -1,4 +1,3 @@
-import './Button.scss';
 import cn from 'classnames';
 import React, { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
@@ -27,11 +26,15 @@ export const Button = ({
 }: Props): ReactElement => {
   return (
     <button
-      className={cn('btn', className, {
-        'btn--small': size === 'small',
-        'btn--large': size === 'large',
-        'btn--active': active,
-      })}
+      className={cn(
+        'bg-[#FFC600] border-solid border-[#FFC600] rounded-md py-1.5 px-3 text-white border-2 text-[16px] hover:text-[#5A6675] hover:cursor-pointer',
+        className,
+        {
+          'text-[12px] py-1 px-2': size === 'small',
+          'text-[20px] py-2 px-4': size === 'large',
+          'text-[#5A6675] cursor-pointer': active,
+        }
+      )}
       data-testid={dataTestId}
       disabled={disabled}
       id={id}
