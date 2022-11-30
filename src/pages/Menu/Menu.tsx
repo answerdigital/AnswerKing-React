@@ -7,12 +7,10 @@ import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
-import { useLocalOrderContext } from '../../context/OrderContext';
 
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
   const { categories } = useCategories();
-  const { localOrder } = useLocalOrderContext();
 
   if (!categories.data || !products.data) {
     return (
@@ -44,7 +42,7 @@ export const MenuPage = (): ReactElement => {
           ))}
         </div>
       </div>
-      <OrderPanel localOrder={localOrder} />
+      <OrderPanel />
     </>
   );
 };

@@ -1,12 +1,10 @@
 import './OrderDetails.scss';
 import { ReactElement } from 'react';
-import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
+import { useLocalOrder } from 'context/OrderContext';
 
-interface Props {
-  localOrder: LocalOrderDto;
-}
+export const OrderDetails = (): ReactElement => {
+  const { localOrder } = useLocalOrder();
 
-export const OrderDetails = ({ localOrder }: Props): ReactElement => {
   const total = localOrder.lineItems.map((item) => item.subTotal).reduce((a, b) => a + b, 0);
   return (
     <div className="order_details">
