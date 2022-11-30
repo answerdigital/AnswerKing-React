@@ -21,7 +21,7 @@ export default defineConfig({
     fs: { strict: true },
     proxy: {
       '/api': {
-        target: 'https://localhost:5001', //<-- add url for the API here:
+        target: 'https://localhost:44333', //<-- add url for the API here:
         secure: false,
       },
     },

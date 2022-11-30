@@ -9,23 +9,13 @@ export const Navigation = (): ReactElement => {
   return (
     <nav className="nav">
       <div className="nav__items nav__section">
-        <NavLink
-          className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })}
-          end
-          to={RouteConstants.HOME}
-        >
+        <NavLink className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })} end to={RouteConstants.HOME}>
           Home
         </NavLink>
-        <NavLink
-          className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })}
-          to={RouteConstants.MENU}
-        >
+        <NavLink className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })} to={RouteConstants.MENU}>
           Menu
         </NavLink>
-        <NavLink
-          className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })}
-          to={RouteConstants.STAFF}
-        >
+        <NavLink className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })} to={RouteConstants.STAFF}>
           Staff
         </NavLink>
       </div>
