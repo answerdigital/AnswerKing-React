@@ -121,11 +121,7 @@ export const ProductCreateForm = (): ReactElement => {
     toastId.current = toast.error(<ul>{errorList}</ul>) as number;
   };
 
-  const updateCategoryInProduct = async (
-    selectedCategories: string[],
-    categories: CategoryDto[] | undefined,
-    product: ProductDto
-  ): Promise<void> => {
+  const updateCategoryInProduct = async (selectedCategories: string[], categories: CategoryDto[] | undefined, product: ProductDto): Promise<void> => {
     Promise.allSettled(
       selectedCategories.map(async (id) => {
         const idNum = parseFloat(id);
@@ -135,9 +131,7 @@ export const ProductCreateForm = (): ReactElement => {
           updateCategory.mutate({ id: idNum, category });
         }
       })
-    ).then((results) =>
-      results.every((element) => (element.status === 'fulfilled' ? products.refetch() : console.log(results)))
-    );
+    ).then((results) => results.every((element) => (element.status === 'fulfilled' ? products.refetch() : console.log(results))));
   };
 
   const emptyForm = (): void => {

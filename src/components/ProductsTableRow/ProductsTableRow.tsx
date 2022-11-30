@@ -9,9 +9,9 @@ interface Props {
 
 export const ProductsTableRow = ({ product }: Props): ReactElement => {
   const { categories } = useCategories();
-  const categoriesByProduct = [
-    ...new Set(categories.data?.filter((element) => product.categories?.includes(element.id))),
-  ].map((category) => category.name);
+  const categoriesByProduct = [...new Set(categories.data?.filter((element) => product.categories?.includes(element.id)))].map(
+    (category) => category.name
+  );
   return (
     <>
       <tr key={product.id}>
