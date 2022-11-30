@@ -24,25 +24,15 @@ export const NavigationMobile = (): ReactElement => {
         {order.isIdle ? <span>Place an order</span> : null}
       </Button>
       <div className="mobile_nav__items">
-        <NavLink
-          className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })}
-          end
-          to={RouteConstants.HOME}
-        >
+        <NavLink className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })} end to={RouteConstants.HOME}>
           <img alt="Home Icon" className="mobile_nav__icon" src={IconHome} />
           <div className="mobile_nav__label">Home</div>
         </NavLink>
-        <NavLink
-          className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })}
-          to={RouteConstants.MENU}
-        >
+        <NavLink className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })} to={RouteConstants.MENU}>
           <img alt="Home Icon" className="mobile_nav__icon" src={IconMenu} />
           <div className="mobile_nav__label">Menu</div>
         </NavLink>
-        <NavLink
-          className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })}
-          to={RouteConstants.STAFF}
-        >
+        <NavLink className={({ isActive }) => cn('mobile_nav__item', { 'mobile_nav__item--active': isActive })} to={RouteConstants.STAFF}>
           <img alt="Home Icon" className="mobile_nav__icon" src={IconStaff} />
           <div className="mobile_nav__label">Staff</div>
         </NavLink>

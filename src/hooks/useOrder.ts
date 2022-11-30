@@ -26,14 +26,11 @@ export const useOrder = (): UseOrderResult => {
     },
   });
 
-  const createOrder = useMutation<OrderDto, ProblemDetails, CreatedOrderDto>(
-    (createdOrderDto) => orderService.create(createdOrderDto),
-    {
-      onSuccess: (orderDto) => {
-        queryClient.setQueryData(['order'], orderDto);
-      },
-    }
-  );
+  const createOrder = useMutation<OrderDto, ProblemDetails, CreatedOrderDto>((createdOrderDto) => orderService.create(createdOrderDto), {
+    onSuccess: (orderDto) => {
+      queryClient.setQueryData(['order'], orderDto);
+    },
+  });
 
   const clearOrder = (): Promise<void> => queryClient.resetQueries(['order']);
 

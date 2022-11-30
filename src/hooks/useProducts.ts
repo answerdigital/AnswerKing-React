@@ -23,14 +23,11 @@ interface UseProductsResult {
 export const useProducts = (): UseProductsResult => {
   const products = useQuery<ProductDto[]>(['items'], productService.getAll);
 
-  const createProduct = useMutation<ProductDto, productProblemDetails, CreatedProductDto>(
-    (createDto) => productService.create(createDto),
-    {
-      onSuccess: () => {
-        products.refetch();
-      },
-    }
-  );
+  const createProduct = useMutation<ProductDto, productProblemDetails, CreatedProductDto>((createDto) => productService.create(createDto), {
+    onSuccess: () => {
+      products.refetch();
+    },
+  });
 
   const removeProduct = useMutation<void, productProblemDetails, number>((id) => productService.remove(id), {
     onSuccess: () => {

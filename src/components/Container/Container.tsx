@@ -1,4 +1,3 @@
-import './Container.scss';
 import { ReactElement, ReactNode } from 'react';
 
 interface Props {
@@ -6,5 +5,5 @@ interface Props {
 }
 
 export const Container = ({ children }: Props): ReactElement => {
-  return <div className="container">{children}</div>;
+  return <div className="self-center mx-96 box-border h-full">{children}</div>;
 };

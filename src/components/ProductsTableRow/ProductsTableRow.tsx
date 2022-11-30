@@ -29,13 +29,7 @@ export const ProductsTableRow = ({ product }: Props): ReactElement => {
       {/*  {product.categories?.map((category) => category.name).join(', ')}*/}
       {/*</td>*/}
       <td className="text-right">
-        <span
-          className="products_table_row__delete"
-          onClick={handleDelete}
-          onKeyDown={handleDelete}
-          role="button"
-          tabIndex={0}
-        >
+        <span className="products_table_row__delete" onClick={handleDelete} onKeyDown={handleDelete} role="button" tabIndex={0}>
           Delete
         </span>
       </td>
