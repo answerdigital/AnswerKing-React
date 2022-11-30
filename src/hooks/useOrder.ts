@@ -34,13 +34,10 @@ export const useOrder = (): UseOrderResult => {
 
   const clearOrder = (): Promise<void> => queryClient.resetQueries(['order']);
 
-  const updateOrder = useMutation<OrderDto, ProblemDetails, UpdateOrderProps>(
-    (props) => orderService.update(props.id, props.updatedOrder),
-    {
-      onSuccess: (orderResult) => {
-        queryClient.setQueryData(['order'], orderResult);
-      },
-    }
-  );
+  const updateOrder = useMutation<OrderDto, ProblemDetails, UpdateOrderProps>((props) => orderService.update(props.id, props.updatedOrder), {
+    onSuccess: (orderResult) => {
+      queryClient.setQueryData(['order'], orderResult);
+    },
+  });
   return { order, getOrder, createOrder, clearOrder, updateOrder };
 };

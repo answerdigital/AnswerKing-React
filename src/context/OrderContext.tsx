@@ -40,11 +40,7 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: ActionType.SetOrderId, payload: { orderId: id } });
   };
 
-  return (
-    <LocalOrderContext.Provider value={{ localOrder, increase, decrease, setOrderId }}>
-      {children}
-    </LocalOrderContext.Provider>
-  );
+  return <LocalOrderContext.Provider value={{ localOrder, increase, decrease, setOrderId }}>{children}</LocalOrderContext.Provider>;
 };
 
 export const useLocalOrder = (): ILocalOrder => useContext(LocalOrderContext);

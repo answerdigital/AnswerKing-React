@@ -34,10 +34,7 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
       if (!existingItem) {
         return {
           ...localOrder,
-          lineItems: [
-            ...localOrder.lineItems,
-            { product: productPayload, quantity: 1, subTotal: productPayload.price },
-          ],
+          lineItems: [...localOrder.lineItems, { product: productPayload, quantity: 1, subTotal: productPayload.price }],
         };
       }
 
