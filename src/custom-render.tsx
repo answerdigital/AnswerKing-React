@@ -29,5 +29,4 @@ export function Wrapper({ children }: Props): ReactElement {
   );
 }
 
-export const customRender = (ui: ReactElement, options?: RenderOptions): RenderResult =>
-  render(ui, { wrapper: Wrapper, ...options });
+export const customRender = (ui: ReactElement, options?: RenderOptions): RenderResult => render(ui, { wrapper: Wrapper, ...options });

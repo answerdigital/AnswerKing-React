@@ -15,13 +15,14 @@ export default defineConfig({
       services: resolve(__dirname, 'src/services'),
       style: resolve(__dirname, 'src/style'),
       utilities: resolve(__dirname, 'src/utilities'),
+      context: resolve(__dirname, 'src/context'),
     },
   },
   server: {
     fs: { strict: true },
     proxy: {
       '/api': {
-        target: 'https://localhost:5001', //<-- add url for the API here:
+        target: 'https://localhost:44333', //<-- add url for the API here:
         secure: false,
       },
     },

@@ -4,10 +4,15 @@ import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResul
 import { orderService } from 'services/orderService';
 import { ProblemDetails } from '../dtos/ProblemDetailsDto';
 
+interface UpdateOrderProps {
+  id: number;
+  updatedOrder: CreatedOrderDto;
+}
 interface UseOrderResult {
   order: UseQueryResult<OrderDto>;
   getOrder: UseMutationResult<OrderDto, ProblemDetails, number>;
   createOrder: UseMutationResult<OrderDto, ProblemDetails, CreatedOrderDto>;
+  updateOrder: UseMutationResult<OrderDto, ProblemDetails, UpdateOrderProps>;
   clearOrder(): void;
 }
 
@@ -22,16 +27,18 @@ export const useOrder = (): UseOrderResult => {
     },
   });
 
-  const createOrder = useMutation<OrderDto, ProblemDetails, CreatedOrderDto>(
-    (createdOrderDto) => orderService.create(createdOrderDto),
-    {
-      onSuccess: (orderDto) => {
-        queryClient.setQueryData(['order'], orderDto);
-      },
-    }
-  );
+  const createOrder = useMutation<OrderDto, ProblemDetails, CreatedOrderDto>((createdOrderDto) => orderService.create(createdOrderDto), {
+    onSuccess: (orderDto) => {
+      queryClient.setQueryData(['order'], orderDto);
+    },
+  });
 
   const clearOrder = (): Promise<void> => queryClient.resetQueries(['order']);
 
-  return { order, getOrder, createOrder, clearOrder };
+  const updateOrder = useMutation<OrderDto, ProblemDetails, UpdateOrderProps>((props) => orderService.update(props.id, props.updatedOrder), {
+    onSuccess: (orderResult) => {
+      queryClient.setQueryData(['order'], orderResult);
+    },
+  });
+  return { order, getOrder, createOrder, clearOrder, updateOrder };
 };

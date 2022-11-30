@@ -10,14 +10,7 @@ export const Error = ({ children, onClear = undefined }: Props): ReactElement =>
   return (
     <div className="error">
       {onClear ? (
-        <div
-          className="error__close"
-          data-testid="error-clear"
-          onClick={onClear}
-          onKeyDown={onClear}
-          role="button"
-          tabIndex={0}
-        >
+        <div className="error__close" data-testid="error-clear" onClick={onClear} onKeyDown={onClear} role="button" tabIndex={0}>
           &times;
         </div>
       ) : null}

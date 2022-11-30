@@ -12,8 +12,7 @@ import { CategoryDto } from 'dtos/CategoryDto';
 
 const NAME_MIN_LENGTH = 1;
 const NAME_MAX_LENGTH = 50;
-const VALIDATION_MSG_NAME =
-  'Name is required, cannot contain special characters and must be less than 50 characters in length.';
+const VALIDATION_MSG_NAME = 'Name is required, cannot contain special characters and must be less than 50 characters in length.';
 const REGEX = new RegExp(`^[a-zA-Z0-9 ]{${NAME_MIN_LENGTH},${NAME_MAX_LENGTH}}$`);
 const nameIsValid = (name: string): boolean => {
   return REGEX.test(name);
