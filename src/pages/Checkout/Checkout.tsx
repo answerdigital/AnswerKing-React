@@ -3,9 +3,13 @@ import { useOrder } from 'hooks/useOrder';
 import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from 'components/Button/Button';
+import { useNavigate } from 'react-router-dom';
+import { RouteConstants } from 'utilities/route-constants';
 
 export const CheckoutPage = (): ReactElement => {
   const { order } = useOrder();
+  const navigate = useNavigate();
+
   return (
     <div>
       <Helmet>
@@ -16,7 +20,9 @@ export const CheckoutPage = (): ReactElement => {
         {order.isIdle ? <div>No order has been created</div> : null}
       </div>
       <Button size="small">Pay</Button>
-      <Button size="small">Edit</Button>
+      <Button size="small" onClick={() => navigate(RouteConstants.MENU)}>
+        Edit
+      </Button>
       <Button size="small">Cancel</Button>
     </div>
   );

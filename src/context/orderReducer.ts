@@ -4,26 +4,45 @@ import { ProductDto } from 'dtos/ProductDto';
 export enum ActionType {
   Increase = 'ADD_ADDITIONAL_ITEM',
   Decrease = 'DECREASE_ITEM',
+  SetOrderId = 'SET_ORDER_ID',
 }
+
+type ActionPayload = {
+  product?: ProductDto;
+  orderId?: number;
+};
 
 export type Action = {
   type: ActionType;
-  payload: ProductDto;
+  payload: ActionPayload;
 };
 
 export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOrderDto => {
   const { type, payload } = action;
-  const existingItem = localOrder.lineItems.find((item) => item.product.id === payload.id);
+
+  const productPayload = payload.product;
+  const orderIdPayload = payload.orderId;
+
+  const existingItem = localOrder.lineItems.find((item) => item.product.id === productPayload?.id);
+
   switch (type) {
     case ActionType.Increase:
+      if (!productPayload) {
+        return localOrder;
+      }
+
       if (!existingItem) {
-        return { lineItems: [...localOrder.lineItems, { product: payload, quantity: 1, subTotal: payload.price }] };
+        return {
+          ...localOrder,
+          lineItems: [...localOrder.lineItems, { product: productPayload, quantity: 1, subTotal: productPayload.price }],
+        };
       }
 
       return {
+        ...localOrder,
         lineItems: [
           ...localOrder.lineItems.map((item) => {
-            if (item.product.id === payload.id) {
+            if (item.product.id === productPayload.id) {
               const subtotal = item.product.price * item.quantity;
               return { ...item, quantity: item.quantity++, subTotal: Math.round(subtotal * 1e2) / 1e2 };
             }
@@ -33,14 +52,22 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
       };
 
     case ActionType.Decrease:
+      if (!productPayload) {
+        return localOrder;
+      }
+
       if (existingItem?.quantity === 0) {
-        return { lineItems: [...localOrder.lineItems.filter((item) => item.product.id !== payload.id)] };
+        return {
+          ...localOrder,
+          lineItems: [...localOrder.lineItems.filter((item) => item.product.id !== productPayload.id)],
+        };
       }
 
       return {
+        ...localOrder,
         lineItems: [
           ...localOrder.lineItems.map((item) => {
-            if (item.product.id === payload.id) {
+            if (item.product.id === productPayload.id) {
               return {
                 ...item,
                 quantity: item.quantity--,
@@ -51,6 +78,13 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
           }),
         ],
       };
+
+    case ActionType.SetOrderId:
+      if (!orderIdPayload) {
+        return localOrder;
+      }
+
+      return { ...localOrder, id: orderIdPayload };
 
     default:
       return localOrder;
