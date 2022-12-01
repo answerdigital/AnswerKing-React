@@ -17,7 +17,10 @@
     "jsx": "react-jsx",
     "rootDir": "src",
     "baseUrl": "src",
-    "types": ["cypress"]
+    "types": ["cypress", "node", "jest"]
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": [
+    "./src/**/*.test.tsx"
+  ]
 }
