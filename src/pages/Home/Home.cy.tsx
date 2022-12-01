@@ -7,7 +7,7 @@ describe('HomePage tests', () => {
     CustomMount(<HomePage />);
   });
 
-  it('Navigates to meny when "Menu" button is clicked', () => {
+  it('Navigates to menu when "Menu" button is clicked', () => {
     CustomMount(<HomePage />);
 
     cy.get('button').click();
