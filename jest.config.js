@@ -8,5 +8,5 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/cypress/'],
   moduleNameMapper: {
     '^.+\\.(css|less|scss)$': 'babel-jest',
-  }
+  },
 };
