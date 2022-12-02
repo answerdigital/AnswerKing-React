@@ -12,6 +12,7 @@ interface ILocalOrder {
   increase: (product: ProductDto) => void;
   decrease: (product: ProductDto) => void;
   setOrderId: (id: number) => void;
+  removeLocalOrder: () => void;
 }
 
 const LocalOrderContext = createContext<ILocalOrder>({
@@ -19,6 +20,7 @@ const LocalOrderContext = createContext<ILocalOrder>({
   increase: () => null,
   decrease: () => null,
   setOrderId: () => null,
+  removeLocalOrder: () => null
 });
 
 interface Props {
@@ -40,7 +42,11 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: ActionType.SetOrderId, payload: { orderId: id } });
   };
 
-  return <LocalOrderContext.Provider value={{ localOrder, increase, decrease, setOrderId }}>{children}</LocalOrderContext.Provider>;
+  const removeLocalOrder = (): void => {
+    dispatch({type: ActionType.RemoveLocalOrder, payload: {}});
+  };
+
+  return <LocalOrderContext.Provider value={{ localOrder, increase, decrease, setOrderId, removeLocalOrder }}>{children}</LocalOrderContext.Provider>;
 };
 
 export const useLocalOrder = (): ILocalOrder => useContext(LocalOrderContext);
