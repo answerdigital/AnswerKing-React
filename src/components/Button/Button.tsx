@@ -21,12 +21,12 @@ export const Button = ({
   return (
     <button
       className={cn(
-        'bg-[#FFC600] border-solid border-[#FFC600] rounded-md py-1.5 px-3 text-white border-2 text-[16px] hover:text-[#5A6675] hover:cursor-pointer',
+        'bg-[#FFC600] border-solid border-[#FFC600] border-2 transition duration-500 hover:cursor-pointer',
         className,
         {
-          'text-[12px] py-1 px-2': size === 'small',
-          'text-[20px] py-2 px-4': size === 'large',
-          'text-[#5A6675] cursor-pointer': active,
+          'text-[12px] py-1 px-2 rounded-md text-white': size === 'small',
+          'text-[20px] py-2.5 px-12 rounded-full text-[#333F4C] hover:bg-[#333F4C] hover:border-[#333F4C] hover:text-white font-bold': size === 'large',
+          'cursor-pointer bg-[#5A6675]': active,
         }
       )}
       data-testid={dataTestId}
