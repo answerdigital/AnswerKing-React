@@ -5,7 +5,7 @@ export enum ActionType {
   Increase = 'ADD_ADDITIONAL_ITEM',
   Decrease = 'DECREASE_ITEM',
   SetOrderId = 'SET_ORDER_ID',
-  RemoveLocalOrder = 'REMOVE_ORDER'
+  RemoveLocalOrder = 'REMOVE_ORDER',
 }
 
 type ActionPayload = {
@@ -88,7 +88,7 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
       return { ...localOrder, id: orderIdPayload };
 
     case ActionType.RemoveLocalOrder:
-      return localOrder = { lineItems: []};
+      return (localOrder = { lineItems: [] });
 
     default:
       return localOrder;
