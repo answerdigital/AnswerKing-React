@@ -4,6 +4,7 @@ import { httpClient } from 'utilities/http-client';
 
 const getAll = async (): Promise<ProductDto[]> => {
   const response = await httpClient.get('/products');
+
   if (!response.ok) {
     try {
       return Promise.reject(await response.json());
