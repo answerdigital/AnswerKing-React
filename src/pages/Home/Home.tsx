@@ -20,7 +20,9 @@ export const HomePage = (): ReactElement => {
       <div className="grid grid-cols-2 gap-2">
         <div className="flex flex-col justify-center items-center ml-44 mt-20">
           <div className="text-white text-[80px] text-center mb-10">
-            <h3 className='font-poly leading-tight'>The Answer to <br></br> your cravings</h3>
+            <h3 className="font-poly leading-tight">
+              The Answer to <br></br> your cravings
+            </h3>
           </div>
           <Button onClick={handleClick} size="large">
             Order Now
