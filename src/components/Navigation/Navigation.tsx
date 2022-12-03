@@ -1,26 +1,17 @@
-import './Navigation.scss';
-import AnswerLogo from 'assets/answer_logo.png';
 import { ReactElement } from 'react';
-import { NavLink } from 'react-router-dom';
-import { RouteConstants } from 'utilities/route-constants';
-import cn from 'classnames';
+import AnswerLogo from 'assets/logo.png';
 
 export const Navigation = (): ReactElement => {
   return (
-    <nav className="nav">
-      <div className="nav__items nav__section">
-        <NavLink className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })} end to={RouteConstants.HOME}>
-          Home
-        </NavLink>
-        <NavLink className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })} to={RouteConstants.MENU}>
-          Menu
-        </NavLink>
-        <NavLink className={({ isActive }) => cn('nav__item', { 'nav__item--active': isActive })} to={RouteConstants.STAFF}>
-          Staff
-        </NavLink>
-      </div>
-      <div className="nav__section">
-        <img alt="Logo" className="nav__logo" src={AnswerLogo} />
+    <nav className="bg-[#5A6675] p-5">
+      <div className="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="/" className="ml-16">
+          <img src={AnswerLogo} className="h-[60.18px] w-[170px]"></img>
+        </a>
+        <div className="md:order-2 mr-16">
+          <p className="mt-4 lg:inline-block lg:mt-0 mr-10 text-base">Contact: 07936 286319</p>
+          <button className="bg-[#A2AAB6] py-[8px] px-[40px] rounded-[25px] text-black hover:cursor-pointer">Log in</button>
+        </div>
       </div>
     </nav>
   );
