@@ -378,6 +378,7 @@ module.exports = {
       serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
       roboto: ['roboto', 'sans-serif'],
+      poly: ['Poly', 'serif'],
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
