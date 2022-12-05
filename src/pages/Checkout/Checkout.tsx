@@ -5,10 +5,24 @@ import { Helmet } from 'react-helmet-async';
 import { Button } from 'components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
+import { toast } from 'react-toastify';
+import { useLocalOrder } from 'context/OrderContext';
 
 export const CheckoutPage = (): ReactElement => {
-  const { order } = useOrder();
+  const { order, removeOrder } = useOrder();
+  const { removeLocalOrder } = useLocalOrder();
   const navigate = useNavigate();
+
+  const cancelOrder = (): void => {
+    if (order.data) {
+      removeOrder.mutate(order.data.id, {
+        onSuccess: () => {
+          removeLocalOrder();
+          toast.success('Order was succesfully cancelled.');
+        },
+      });
+    }
+  };
 
   return (
     <div>
@@ -23,7 +37,9 @@ export const CheckoutPage = (): ReactElement => {
       <Button size="small" onClick={() => navigate(RouteConstants.MENU)}>
         Edit
       </Button>
-      <Button size="small">Cancel</Button>
+      <Button size="small" onClick={cancelOrder}>
+        Cancel
+      </Button>
     </div>
   );
 };
