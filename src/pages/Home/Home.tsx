@@ -18,8 +18,8 @@ export const HomePage = (): ReactElement => {
         <title>Home - Answer King</title>
       </Helmet>
       <div className="grid grid-cols-2 gap-2">
-        <div className="flex flex-col justify-center items-center ml-44 mt-20">
-          <div className="text-white text-[80px] text-center mb-10">
+        <div className="ml-44 mt-20 flex flex-col items-center justify-center">
+          <div className="mb-10 text-center text-[80px] text-white">
             <h3 className="font-poly leading-tight">
               The Answer to <br></br> your cravings
             </h3>
