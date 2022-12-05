@@ -5,5 +5,5 @@ interface Props {
 }
 
 export const Container = ({ children }: Props): ReactElement => {
-  return <div className="self-center mx-96 box-border h-full">{children}</div>;
+  return <div className="self-center box-border">{children}</div>;
 };
