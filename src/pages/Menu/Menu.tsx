@@ -36,7 +36,9 @@ export const MenuPage = (): ReactElement => {
           {categories.data.map((category) => (
             <MenuItems
               category={category}
-              products={products.data.filter((product) => product.categories?.find((categoryId) => categoryId === category.id))}
+              products={products.data.filter(
+                (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === category.id)
+              )}
               key={category.id}
             />
           ))}
