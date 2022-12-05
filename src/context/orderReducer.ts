@@ -88,7 +88,7 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
       return { ...localOrder, id: orderIdPayload };
 
     case ActionType.RemoveLocalOrder:
-      return ({ lineItems: [] });
+      return { lineItems: [] };
 
     default:
       return localOrder;
