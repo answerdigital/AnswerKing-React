@@ -9,7 +9,6 @@ export const Navigation = (): ReactElement => {
           <img src={AnswerLogo} className="h-[60.18px] w-[170px]"></img>
         </a>
         <div className="md:order-2 mr-16">
-          <p className="mt-4 lg:inline-block lg:mt-0 mr-10 text-base">Contact: 07936 286319</p>
           <button className="bg-[#A2AAB6] py-[8px] px-[40px] rounded-[25px] text-black hover:cursor-pointer">Log in</button>
         </div>
       </div>
