@@ -2,8 +2,9 @@ import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { ProductDto } from 'dtos/ProductDto';
 
 export enum ActionType {
-  Increase = 'ADD_ADDITIONAL_ITEM',
-  Decrease = 'DECREASE_ITEM',
+  AddToLocalOrder = 'ADD_TO_LOCAL_ORDER',
+  IncreaseProductQuantity = 'INCREASE_PRODUCT_QUANTITY',
+  DecreaseProductQuantityOrRemove = 'DECREASE_PRODUCT_QUANTITY_OR_REMOVE',
   SetOrderId = 'SET_ORDER_ID',
   RemoveLocalOrder = 'REMOVE_ORDER',
 }
@@ -25,18 +26,20 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
   const orderIdPayload = payload.orderId;
 
   const existingItem = localOrder.lineItems.find((item) => item.product.id === productPayload?.id);
-
   switch (type) {
-    case ActionType.Increase:
-      if (!productPayload) {
+    case ActionType.AddToLocalOrder:
+      if (!productPayload || existingItem) {
         return localOrder;
       }
 
-      if (!existingItem) {
-        return {
-          ...localOrder,
-          lineItems: [...localOrder.lineItems, { product: productPayload, quantity: 1, subTotal: productPayload.price }],
-        };
+      return {
+        ...localOrder,
+        lineItems: [...localOrder.lineItems, { product: productPayload, quantity: 1, subTotal: productPayload.price }],
+      };
+
+    case ActionType.IncreaseProductQuantity:
+      if (!productPayload) {
+        return localOrder;
       }
 
       return {
@@ -52,7 +55,7 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
         ],
       };
 
-    case ActionType.Decrease:
+    case ActionType.DecreaseProductQuantityOrRemove:
       if (!productPayload) {
         return localOrder;
       }
