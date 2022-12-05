@@ -42,7 +42,7 @@ exports[`OrderLoadForm component should match the snapshot 1`] = `
       value="1"
     />
     <button
-      class="border-2 border-solid border-[#FFC600] bg-[#FFC600] transition duration-500 hover:cursor-pointer order_load_form__button"
+      class="bg-[#FFC600] border-solid border-[#FFC600] font-poppins border-2 transition rounded-full duration-500 hover:bg-[#333F4C] hover:border-[#333F4C] hover:text-white hover:cursor-pointer order_load_form__button bg-transparent py-0.5 px-5 mx-5 border-transparent hover:bg-[#A2AAB6] text-[22px] hover:border-[#A2AAB6] focus:bg-[#A2AAB6] focus:border-[#A2AAB6]"
       data-testid="order-load-submit-button"
       type="submit"
     >
