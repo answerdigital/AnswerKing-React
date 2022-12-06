@@ -31,7 +31,7 @@ export const MenuPage = (): ReactElement => {
         <title>Menu - Answer King</title>
       </Helmet>
       <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
-      <div className="grid grid-cols-12 mt-10">
+      <div className="mt-10 grid grid-cols-12">
         <div className="col-span-1"></div>
         <div className="col-span-8 text-center">
           <MenuItems

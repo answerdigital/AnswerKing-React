@@ -40,14 +40,14 @@ export const OrderCreateForm = (): ReactElement => {
   }, [order.data?.id]);
 
   return (
-    <div className="mt-auto text-center px-5">
-      <div className="flex mb-5 text-[20px]">
+    <div className="mt-auto px-5 text-center">
+      <div className="mb-5 flex text-[20px]">
         <span className="">Total: </span>
         <span className="ml-auto">£{Math.round(total * 1e2) / 1e2}</span>
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
         <LoaderOverlay isEnabled={createOrder.isLoading} />
-        <Button size="large" className="text-1 font-normal py-2 px-24" type="submit">
+        <Button size="large" className="text-1 py-2 px-24 font-normal" type="submit">
           Checkout
         </Button>
       </form>

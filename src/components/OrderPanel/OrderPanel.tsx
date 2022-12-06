@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 
 export const OrderPanel = (): ReactElement => {
   return (
-    <div className="container flex flex-col py-5 px-5 bg-white text-black min-h-[680px] max-h-full max-h-none w-[370px] rounded-xl">
+    <div className="max-h-none container flex max-h-full min-h-[680px] w-[370px] flex-col rounded-xl bg-white py-5 px-5 text-black">
       <OrderDetails />
       <OrderCreateForm />
     </div>

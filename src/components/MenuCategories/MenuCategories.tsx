@@ -10,8 +10,8 @@ interface Props {
 
 export const MenuCategories = ({ categories, setSelectedCategory, selectedCategory }: Props): ReactElement => {
   return (
-    <div className="flex flex-col items-center mt-5">
-      <h2 className="text-[46px] leading=[54px] mb-3">Menu</h2>
+    <div className="mt-5 flex flex-col items-center">
+      <h2 className="leading=[54px] mb-3 text-[46px]">Menu</h2>
       <div className="mt-5">
         <div>
           {categories.map((category) => (

@@ -11,13 +11,13 @@ interface Props {
 export const ProductCard = ({ product }: Props): ReactElement => {
   const { addToLocalOrder } = useLocalOrder();
   return (
-    <div className="max-w-sm bg-white border-gray-200 rounded-lg shadow-md w-[245px] h-[340px] dark:bg-gray-800 dark:border-gray-700 mb-7">
-      <img alt="burger" className="rounded-t-lg h-[200px] w-full" src={PlaceHolderImage} />
+    <div className="mb-7 h-[340px] w-[245px] max-w-sm rounded-lg border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
+      <img alt="burger" className="h-[200px] w-full rounded-t-lg" src={PlaceHolderImage} />
       <div className="p-4">
-        <h5 className="text-2xl mb-1 text-center font-bold tracking-tight text-gray-900 dark:text-white">{product.name}</h5>
-        <p className="mb-3 text-center font-poly text-gray-700 dark:text-gray-400">{product.description}</p>
+        <h5 className="mb-1 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{product.name}</h5>
+        <p className="font-poly mb-3 text-center text-gray-700 dark:text-gray-400">{product.description}</p>
         <div className="flex px-3">
-          <p className="text-black flex-1 mt-0.5 font-poppins">£{product.price}</p>
+          <p className="font-poppins mt-0.5 flex-1 text-black">£{product.price}</p>
           <Button onClick={() => addToLocalOrder(product)} size="small">
             Add to order
           </Button>
