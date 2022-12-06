@@ -23,8 +23,8 @@ export const ProductsTableRow = ({ product }: Props): ReactElement => {
     <tr>
       <td className="text-left">{product.id}</td>
       <td className="text-left">{product.name}</td>
-      <td className="text-right products_table__hide_mobile">£{product.price.toFixed(2)}</td>
-      <td className="text-left products_table__hide_mobile">{product.description}</td>
+      <td className="products_table__hide_mobile text-right">£{product.price.toFixed(2)}</td>
+      <td className="products_table__hide_mobile text-left">{product.description}</td>
       {/*<td className="text-left products_table__hide_mobile">*/}
       {/*  {product.categories?.map((category) => category.name).join(', ')}*/}
       {/*</td>*/}
