@@ -21,15 +21,15 @@ export const Button = ({
   return (
     <button
       className={cn(
-        'bg-[#FFC600] border-solid border-[#FFC600] font-poppins border-2 transition',
-        'rounded-full duration-500 hover:bg-[#333F4C] hover:border-[#333F4C] hover:text-white',
+        'font-poppins border-2 border-solid border-[#FFC600] bg-[#FFC600] transition',
+        'rounded-full duration-500 hover:border-[#333F4C] hover:bg-[#333F4C] hover:text-white',
         'hover:cursor-pointer',
         className,
         {
-          'text-[14px] py-1 px-5 text-[#333F4C]': size === 'small',
-          'bg-transparent py-0.5 px-5 mx-5 border-transparent hover:bg-[#A2AAB6] text-[22px] hover:border-[#A2AAB6] focus:bg-[#A2AAB6] focus:border-[#A2AAB6]':
+          'py-1 px-5 text-[14px] text-[#333F4C]': size === 'small',
+          'mx-5 border-transparent bg-transparent py-0.5 px-5 text-[22px] hover:border-[#A2AAB6] hover:bg-[#A2AAB6] focus:border-[#A2AAB6] focus:bg-[#A2AAB6]':
             size === 'medium',
-          'text-[20px] py-2.5 px-12 text-[#333F4C] font-bold': size === 'large',
+          'py-2.5 px-12 text-[20px] font-bold text-[#333F4C]': size === 'large',
           'cursor-pointer bg-[#5A6675]': active,
         }
       )}

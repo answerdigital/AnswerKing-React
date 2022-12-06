@@ -7,16 +7,16 @@ export const OrderDetails = (): ReactElement => {
   const { localOrder, decreaseProductQuantityOrRemove, increaseProductQuantity } = useLocalOrder();
   return (
     <div>
-      <h1 className="text-[26px] font-bold mb-7 text-center">Order Summary</h1>
+      <h1 className="mb-7 text-center text-[26px] font-bold">Order Summary</h1>
       <div>
         {localOrder.lineItems?.length > 0 ? (
           localOrder.lineItems.map((lineItem) => (
             <div key={lineItem.product.id} className="text-[16px]">
-              <div className="grid grid-cols-6 mb-3 mt-3" key={lineItem.product.id}>
+              <div className="mb-3 mt-3 grid grid-cols-6" key={lineItem.product.id}>
                 <div className="col-span-2">
                   <span className="">{lineItem.product.name}</span>
                 </div>
-                <div className="flex items-center justify-center col-span-3">
+                <div className="col-span-3 flex items-center justify-center">
                   <button onClick={() => increaseProductQuantity(lineItem.product)}>
                     <FontAwesomeIcon icon={faPlusSquare} className="h-[22px] w-[22px]" />
                   </button>
