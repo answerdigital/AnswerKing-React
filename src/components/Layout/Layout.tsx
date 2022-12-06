@@ -1,6 +1,5 @@
 import { Container } from 'components/Container/Container';
 import { Navigation } from 'components/Navigation/Navigation';
-import { NavigationMobile } from 'components/NavigationMobile/NavigationMobile';
 import { ToastWrapper } from 'components/ToastWrapper/ToastWrapper';
 import { ReactElement, ReactNode } from 'react';
 
@@ -14,7 +13,6 @@ export const Layout = ({ children }: Props): ReactElement => {
       <Navigation />
       <ToastWrapper />
       <Container>{children}</Container>
-      <NavigationMobile />
     </>
   );
 };

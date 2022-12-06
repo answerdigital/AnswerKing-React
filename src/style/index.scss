@@ -1,11 +1,7 @@
 // if using CSS library, import here
 @import './variables.scss';
-@import './ball-grid-beat.css';
-@import './ball-beat.css';
 
 body {
-  background: rgb(6, 28, 96);
-  background: linear-gradient(157deg, rgba(6, 28, 96, 1) 0%, rgba(23, 16, 124, 0) 48%, rgba(111, 2, 177, 1) 98%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: $white;

@@ -4,4 +4,5 @@ export interface ProductDto {
   price: number;
   description: string;
   categories?: number[];
+  retired: boolean;
 }

@@ -11,9 +11,9 @@ export const ProductsTable = (): ReactElement => {
         <tr>
           <th className="text-left">ID</th>
           <th className="text-left">Name</th>
-          <th className="text-right products_table__hide_mobile">Price</th>
-          <th className="text-left products_table__hide_mobile">Description</th>
-          <th className="text-left products_table__hide_mobile">Categories</th>
+          <th className="products_table__hide_mobile text-right">Price</th>
+          <th className="products_table__hide_mobile text-left">Description</th>
+          <th className="products_table__hide_mobile text-left">Categories</th>
           <th />
         </tr>
       </thead>

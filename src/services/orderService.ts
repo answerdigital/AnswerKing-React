@@ -44,4 +44,12 @@ const update = async (id: number, orderDto: CreatedOrderDto): Promise<OrderDto> 
   return await response.json();
 };
 
-export const orderService = { getById, create, update };
+const remove = async (id: number): Promise<void> => {
+  const response = await httpClient.remove(`/orders/${id}`);
+
+  if (!response.ok) {
+    return Promise.reject();
+  }
+};
+
+export const orderService = { getById, create, update, remove };

@@ -13,6 +13,7 @@ interface UseOrderResult {
   getOrder: UseMutationResult<OrderDto, ProblemDetails, number>;
   createOrder: UseMutationResult<OrderDto, ProblemDetails, CreatedOrderDto>;
   updateOrder: UseMutationResult<OrderDto, ProblemDetails, UpdateOrderProps>;
+  removeOrder: UseMutationResult<void, ProblemDetails, number>;
   clearOrder(): void;
 }
 
@@ -40,5 +41,12 @@ export const useOrder = (): UseOrderResult => {
       queryClient.setQueryData(['order'], orderResult);
     },
   });
-  return { order, getOrder, createOrder, clearOrder, updateOrder };
+
+  const removeOrder = useMutation<void, ProblemDetails, number>((id) => orderService.remove(id), {
+    onSuccess: () => {
+      clearOrder();
+    },
+  });
+
+  return { order, getOrder, createOrder, clearOrder, updateOrder, removeOrder };
 };

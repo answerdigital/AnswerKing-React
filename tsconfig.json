@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -16,7 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "rootDir": "src",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
   "include": ["./src"]
 }

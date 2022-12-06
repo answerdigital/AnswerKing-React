@@ -20,15 +20,11 @@ export const Button = ({
 }: Props): ReactElement => {
   return (
     <button
-      className={cn(
-        'bg-[#FFC600] border-solid border-[#FFC600] rounded-md py-1.5 px-3 text-white border-2 text-[16px] hover:text-[#5A6675] hover:cursor-pointer',
-        className,
-        {
-          'text-[12px] py-1 px-2': size === 'small',
-          'text-[20px] py-2 px-4': size === 'large',
-          'text-[#5A6675] cursor-pointer': active,
-        }
-      )}
+      className={cn('border-2 border-solid border-[#FFC600] bg-[#FFC600] transition duration-500 hover:cursor-pointer', className, {
+        'rounded-md py-1 px-2 text-[12px] text-white': size === 'small',
+        'rounded-full py-2.5 px-12 text-[20px] font-bold text-[#333F4C] hover:border-[#333F4C] hover:bg-[#333F4C] hover:text-white': size === 'large',
+        'cursor-pointer bg-[#5A6675]': active,
+      })}
       data-testid={dataTestId}
       disabled={disabled}
       id={id}
