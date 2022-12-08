@@ -30,7 +30,7 @@ export const OrderDetails = (): ReactElement => {
                   </button>
                 </div>
                 <div className="col-span-1 ml-auto">
-                  <span>£{lineItem.subTotal}</span>
+                  <span>£{(lineItem.subTotal * 1e2) / 1e2}</span>
                 </div>
               </div>
               <hr className="h-[1px]"></hr>
