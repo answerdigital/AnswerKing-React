@@ -1,35 +1,44 @@
-import './OrderDetails.scss';
 import { ReactElement } from 'react';
 import { useLocalOrder } from 'context/OrderContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare, faMinusSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 export const OrderDetails = (): ReactElement => {
-  const { localOrder } = useLocalOrder();
-
-  const total = localOrder.lineItems.map((item) => item.subTotal).reduce((a, b) => a + b, 0);
+  const { localOrder, decreaseProductQuantityOrRemove, increaseProductQuantity } = useLocalOrder();
   return (
-    <div className="order_details">
-      <div className="order_details__group order_details__group--items">
-        <span className="order_details__label">Products:</span>
-        <div id="order_details__items">
-          {localOrder.lineItems?.length > 0 ? (
-            localOrder.lineItems.map((lineItem) => (
-              <div className="order_details__item" key={lineItem.product.id}>
-                <div className="order_details__item_group">
-                  <span className="order_details__item_quantity">{lineItem.quantity}x</span>
-                  <span className="order_details__item_name">{lineItem.product.name}</span>
+    <div>
+      <h1 className="mb-7 text-center text-[26px] font-bold">Order Summary</h1>
+      <div>
+        {localOrder.lineItems?.length > 0 ? (
+          localOrder.lineItems.map((lineItem) => (
+            <div key={lineItem.product.id} className="text-[16px]">
+              <div className="mb-3 mt-3 grid grid-cols-6" key={lineItem.product.id}>
+                <div className="col-span-2">
+                  <span className="">{lineItem.product.name}</span>
                 </div>
-                <span className="order_details__item_price">£{lineItem.subTotal}</span>
+                <div className="col-span-3 flex items-center justify-center">
+                  <button onClick={() => increaseProductQuantity(lineItem.product)}>
+                    <FontAwesomeIcon icon={faPlusSquare} className="h-[22px] w-[22px]" />
+                  </button>
+                  <span className="mx-3 mb-1">{lineItem.quantity}</span>
+                  <button onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
+                    {lineItem.quantity === 1 ? (
+                      <FontAwesomeIcon icon={faTrashCan} className="h-[22px] w-[22px]" />
+                    ) : (
+                      <FontAwesomeIcon icon={faMinusSquare} className="h-[22px] w-[22px]" />
+                    )}
+                  </button>
+                </div>
+                <div className="col-span-1 ml-auto">
+                  <span>£{(lineItem.subTotal * 1e2) / 1e2}</span>
+                </div>
               </div>
-            ))
-          ) : (
-            <p>There are no items in your order.</p>
-          )}
-        </div>
-      </div>
-
-      <div className="order_details__group order_details__group--total">
-        <span className="order_details__label">Total:</span>
-        <span className="order_details__value">£{Math.round(total * 1e2) / 1e2}</span>
+              <hr className="h-[1px]"></hr>
+            </div>
+          ))
+        ) : (
+          <p>There are no items in your order.</p>
+        )}
       </div>
     </div>
   );

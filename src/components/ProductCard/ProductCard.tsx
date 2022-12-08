@@ -1,4 +1,3 @@
-import './ProductCard.scss';
 import PlaceHolderImage from 'assets/burger_transparent.png';
 import { Button } from 'components/Button/Button';
 import { ProductDto } from 'dtos/ProductDto';
@@ -10,24 +9,18 @@ interface Props {
 }
 
 export const ProductCard = ({ product }: Props): ReactElement => {
-  const { increase, decrease } = useLocalOrder();
-
+  const { addToLocalOrder } = useLocalOrder();
   return (
-    <div className="product_card">
-      <img alt="burger" className="product_card__image" src={PlaceHolderImage} />
-      <div className="product_card__body">
-        <div className="product_card__name">{product.name}</div>
-        <div className="product_card__price">£{product.price}</div>
-        <div className="product_card__buttons">
-          <div>
-            <Button onClick={() => increase(product)} size="small">
-              +
-            </Button>
-            <span className="product_card__quantity"></span>
-            <Button onClick={() => decrease(product)} size="small">
-              -
-            </Button>
-          </div>
+    <div className="mb-7 h-[340px] w-[245px] max-w-sm rounded-lg border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
+      <img alt="burger" className="h-[200px] w-full rounded-t-lg" src={PlaceHolderImage} />
+      <div className="p-4">
+        <h5 className="mb-1 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{product.name}</h5>
+        <p className="font-poly mb-3 text-center text-gray-700 dark:text-gray-400">{product.description}</p>
+        <div className="flex px-3">
+          <p className="font-poppins mt-0.5 flex-1 text-black">£{(product.price * 1e2) / 1e2}</p>
+          <Button onClick={() => addToLocalOrder(product)} size="small">
+            Add to order
+          </Button>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import './OrderCreateForm.scss';
 import { Button } from 'components/Button/Button';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
@@ -12,6 +11,8 @@ export const OrderCreateForm = (): ReactElement => {
   const { order, createOrder, updateOrder } = useOrder();
   const { localOrder, setOrderId } = useLocalOrder();
   const navigate = useNavigate();
+
+  const total = localOrder.lineItems.map((item) => item.subTotal).reduce((a, b) => a + b, 0);
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
@@ -39,11 +40,17 @@ export const OrderCreateForm = (): ReactElement => {
   }, [order.data?.id]);
 
   return (
-    <form className="order_create_form" onSubmit={handleSubmit}>
-      <LoaderOverlay isEnabled={createOrder.isLoading} />
-      <Button className="order_create_form__button" type="submit">
-        Checkout
-      </Button>
-    </form>
+    <div className="mt-auto px-5 text-center">
+      <div className="mb-5 flex text-[20px]">
+        <span className="">Total: </span>
+        <span className="ml-auto">£{Math.round(total * 1e2) / 1e2}</span>
+      </div>
+      <form className="mb-1" onSubmit={handleSubmit}>
+        <LoaderOverlay isEnabled={createOrder.isLoading} />
+        <Button size="large" className="text-1 py-2 px-24 font-normal" type="submit">
+          Checkout
+        </Button>
+      </form>
+    </div>
   );
 };

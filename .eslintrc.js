@@ -37,6 +37,7 @@ module.exports = {
     indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
+    'jsx-quotes': [2, 'prefer-double'],
     semi: ['error', 'always'],
     'max-len': [
       'error',
