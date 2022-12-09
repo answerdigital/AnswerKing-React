@@ -62,7 +62,6 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
   };
 
   const handleChange = (): void => {
-    console.log('Local Order Changed');
     if (localOrder.lineItems.length) {
       const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
       const createdOrder: CreatedOrderDto = { lineItems: orderLineItems };

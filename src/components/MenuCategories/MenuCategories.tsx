@@ -1,7 +1,7 @@
 import { CategoryDto } from 'dtos/CategoryDto';
 import { Dispatch, ReactElement, SetStateAction } from 'react';
 import { Button } from 'components/Button/Button';
-
+import cn from 'classnames';
 interface Props {
   setSelectedCategory: Dispatch<SetStateAction<number>>;
   selectedCategory: number;
@@ -18,7 +18,8 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
             <Button
               key={category.id}
               size="medium"
-              className={category.id === selectedCategory ? 'border-[#A2AAB6] bg-[#A2AAB6]' : ''}
+              colour="clear"
+              className={category.id === selectedCategory ? 'border-[#A2AAB6] bg-[#A2AAB6] text-[#ffffff]' : 'text-[#ffffff]'}
               onClick={() => setSelectedCategory(category.id)}
             >
               {category.name}
