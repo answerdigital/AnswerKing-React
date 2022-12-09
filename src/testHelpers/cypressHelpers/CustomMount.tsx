@@ -2,11 +2,16 @@ import { ReactElement } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { mount } from 'cypress/react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 const CustomMount = (component: ReactElement): void => {
   mount(
     <Router>
-      <HelmetProvider>{component}</HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <HelmetProvider>{component}</HelmetProvider>
+      </QueryClientProvider>
     </Router>
   );
 };
