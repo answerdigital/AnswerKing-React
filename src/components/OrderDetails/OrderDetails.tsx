@@ -7,7 +7,6 @@ export const OrderDetails = (): ReactElement => {
   const { localOrder, decreaseProductQuantityOrRemove, increaseProductQuantity } = useLocalOrder();
   return (
     <div>
-      <h1 className="mb-7 text-center text-[26px] font-bold">Order Summary</h1>
       <div>
         {localOrder.lineItems?.length > 0 ? (
           localOrder.lineItems.map((lineItem) => (

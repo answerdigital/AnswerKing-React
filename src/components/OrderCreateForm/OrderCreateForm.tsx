@@ -16,6 +16,16 @@ export const OrderCreateForm = (): ReactElement => {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
+
+    const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
+    const createdOrder: CreatedOrderDto = { lineItems: orderLineItems };
+
+    if (!localOrder.id) {
+      createOrder.mutate(createdOrder);
+    } else {
+      updateOrder.mutate({ id: localOrder.id, updatedOrder: createdOrder });
+    }
+
     navigate(RouteConstants.CHECKOUT);
   };
 
