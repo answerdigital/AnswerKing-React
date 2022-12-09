@@ -45,7 +45,7 @@ export const CheckoutOrderDetails = (): ReactElement => {
                   </button>
                 </div>
                 <div className="col-span-2 ml-auto">
-                  <span>£{lineItem.subTotal}</span>
+                  <span>£{(lineItem.subTotal * 1e2) / 1e2}</span>
                 </div>
                 <div className="col-span-1 ml-auto">
                   <button
