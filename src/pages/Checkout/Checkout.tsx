@@ -1,5 +1,5 @@
 import { useOrder } from 'hooks/useOrder';
-import { ReactElement, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
@@ -7,9 +7,10 @@ import { toast } from 'react-toastify';
 import { useLocalOrder } from 'context/OrderContext';
 import { CheckoutOrderDetails } from 'components/CheckoutOrderDetails/CheckoutOrderDetails';
 import { Button } from 'components/Button/Button';
+import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 
 export const CheckoutPage = (): ReactElement => {
-  const { order, removeOrder } = useOrder();
+  const { order, removeOrder, updateOrder, createOrder } = useOrder();
   const { localOrder, removeLocalOrder } = useLocalOrder();
   const navigate = useNavigate();
 
@@ -27,6 +28,27 @@ export const CheckoutPage = (): ReactElement => {
   const placeOrder = (): void => {
     //TODO: user should be moved to a payment form
   };
+
+  const handleChange = (): void => {
+    if (localOrder.lineItems.length) {
+      const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
+      const createdOrder: CreatedOrderDto = { lineItems: orderLineItems };
+      if (localOrder.id) {
+        updateOrder.mutate({ id: localOrder.id, updatedOrder: createdOrder });
+      } else {
+        createOrder.mutate(createdOrder);
+      }
+    } else {
+      if (localOrder.id) {
+        removeOrder.mutate(localOrder.id);
+        localOrder.id = undefined;
+      }
+    }
+  };
+
+  useEffect(() => {
+    handleChange();
+  }, [localOrder]);
 
   return (
     <>

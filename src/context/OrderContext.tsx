@@ -1,9 +1,7 @@
 import { LineItemDto } from 'dtos/LineItemDto';
-import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { ProductDto } from 'dtos/ProductDto';
-import { useOrder } from 'hooks/useOrder';
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import { ActionType, orderReducer } from './orderReducer';
 
 const initialLineItems: LineItemDto[] = [];
@@ -35,7 +33,6 @@ interface Props {
 
 export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
   const [localOrder, dispatch] = useReducer(orderReducer, initialOrder);
-  const { updateOrder, createOrder, removeOrder } = useOrder();
 
   const addToLocalOrder = (product: ProductDto): void => {
     dispatch({ type: ActionType.AddToLocalOrder, payload: { product: product } });
@@ -60,27 +57,6 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
   const removeLocalOrder = (): void => {
     dispatch({ type: ActionType.RemoveLocalOrder, payload: {} });
   };
-
-  const handleChange = (): void => {
-    if (localOrder.lineItems.length) {
-      const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
-      const createdOrder: CreatedOrderDto = { lineItems: orderLineItems };
-      if (localOrder.id) {
-        updateOrder.mutate({ id: localOrder.id, updatedOrder: createdOrder });
-      } else {
-        createOrder.mutate(createdOrder);
-      }
-    } else {
-      if (localOrder.id) {
-        removeOrder.mutate(localOrder.id);
-        localOrder.id = undefined;
-      }
-    }
-  };
-
-  useEffect(() => {
-    handleChange();
-  }, [localOrder]);
 
   return (
     <LocalOrderContext.Provider
