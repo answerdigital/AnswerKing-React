@@ -7,47 +7,56 @@ import cn from 'classnames';
 export const CheckoutOrderDetails = (): ReactElement => {
   const { localOrder, removeProduct } = useLocalOrder();
 
-  const iconClass = `border rounded
-  bg-gray-200
-  h-[22px] w-[22px]
-  px-1 py-1`;
+  const iconClass = 'border rounded bg-gray-200 p-2';
 
-  const binClass = cn(iconClass, 'hover:text-red-700 focus:outline-none');
+  const tableElement = 'whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900';
+
+  const binClass = cn(iconClass, 'hover:text-red-700');
+
+  const GBPFormat = new Intl.NumberFormat('en-UK', {
+    style: 'currency',
+    currency: 'GBP',
+  });
 
   return (
     <div className="font-sans text-[16px]">
-      <div>
-        {localOrder.lineItems?.length > 0 ? (
-          localOrder.lineItems.map((lineItem) => (
-            <div key={lineItem.product.id}>
-              <div className="flex" key={lineItem.product.id}>
-                <div className="min-w-[10%] text-center">
-                  <span className={iconClass}>{lineItem.quantity}</span>
-                </div>
-                <div className="grow">
-                  <span>{lineItem.product.name}</span>
-                </div>
-                <div className="min-w-[10%]">
-                  <span>£{(lineItem.subTotal * 1e2) / 1e2}</span>
-                </div>
-                <div className="min-w-[10%]">
-                  <button
-                    onClick={() => {
-                      removeProduct(lineItem.product);
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faTrashCan} className={binClass} />
-                  </button>
-                </div>
-              </div>
-              <hr className="h-[1px]"></hr>
+      <div className="flex flex-col">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div className="overflow-hidden">
+              <table className="min-w-full table-fixed">
+                <tbody>
+                  {localOrder.lineItems?.length > 0 ? (
+                    localOrder.lineItems.map((lineItem) => (
+                      <tr key={lineItem.product.id} className="border-b">
+                        <td className={tableElement}>
+                          <span className={cn(iconClass, 'rounded bg-gray-200 text-center')}>{lineItem.quantity}</span>
+                        </td>
+                        <td className={cn(tableElement, 'w-2/3')}>
+                          <span>{lineItem.product.name}</span>
+                        </td>
+                        <td className={tableElement}>
+                          <button
+                            onClick={() => {
+                              removeProduct(lineItem.product);
+                            }}
+                          >
+                            <FontAwesomeIcon icon={faTrashCan} className={binClass} size="sm" />
+                          </button>
+                        </td>
+                        <td className={tableElement}>
+                          <span>{GBPFormat.format(lineItem.subTotal)}</span>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <p className="text-[16px]">There are no items in your order.</p>
+                  )}
+                </tbody>
+              </table>
             </div>
-          ))
-        ) : (
-          <div className="text-[16px]">
-            <p>There are no items in your order.</p>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
