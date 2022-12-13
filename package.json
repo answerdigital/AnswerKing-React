@@ -41,7 +41,7 @@
     "@types/node": "^18.11.5",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.45.0",
     "@vitejs/plugin-react": "^2.1.0",
     "cypress": "^11.2.0",
