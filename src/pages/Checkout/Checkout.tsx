@@ -7,14 +7,26 @@ import { useLocalOrder } from 'context/OrderContext';
 import { CheckoutOrderDetails } from 'components/CheckoutOrderDetails/CheckoutOrderDetails';
 import { Button } from 'components/Button/Button';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
+import { toast } from 'react-toastify';
 
 export const CheckoutPage = (): ReactElement => {
-  const { removeOrder, updateOrder, createOrder } = useOrder();
-  const { localOrder } = useLocalOrder();
+  const { order, removeOrder, updateOrder, createOrder } = useOrder();
+  const { localOrder, removeLocalOrder } = useLocalOrder();
   const navigate = useNavigate();
 
   const placeOrder = (): void => {
     //TODO: user should be moved to a payment form
+  };
+
+  const cancelOrder = (): void => {
+    if (order.data) {
+      removeOrder.mutate(order.data.id, {
+        onSuccess: () => {
+          removeLocalOrder();
+          toast.success('Order was succesfully cancelled.');
+        },
+      });
+    }
   };
 
   const handleLocalOrderChange = (): void => {
@@ -55,13 +67,23 @@ export const CheckoutPage = (): ReactElement => {
             <span className="font-bold">{GBPFormat.format(localOrder.lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0))}</span>
           </div>
           <div className="flex w-full">
+            {localOrder.lineItems?.length > 0 && (
+              <Button
+                size="small"
+                colour="red"
+                className={'flex-1 grow border border-solid border-[#A2AAB6]'}
+                onClick={cancelOrder}
+              >
+                Cancel
+              </Button>
+            )}
             <Button
               size="small"
               colour="clear"
               className={'flex-1 grow border border-solid border-[#A2AAB6]'}
               onClick={() => navigate(RouteConstants.MENU)}
             >
-              Cancel
+              Edit
             </Button>
             {localOrder.lineItems?.length > 0 && (
               <Button size="small" colour="yellow" className={'flex-1 grow'} onClick={() => placeOrder}>

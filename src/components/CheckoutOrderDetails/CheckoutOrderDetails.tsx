@@ -1,17 +1,14 @@
 import { ReactElement } from 'react';
 import { useLocalOrder } from 'context/OrderContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import cn from 'classnames';
 
 export const CheckoutOrderDetails = (): ReactElement => {
-  const { localOrder, removeProduct } = useLocalOrder();
+  const { localOrder } = useLocalOrder();
 
   const iconClass = 'border rounded bg-gray-200 p-2';
 
   const tableElement = 'whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900';
 
-  const binClass = cn(iconClass, 'hover:text-red-700');
 
   const GBPFormat = new Intl.NumberFormat('en-UK', {
     style: 'currency',
@@ -34,15 +31,6 @@ export const CheckoutOrderDetails = (): ReactElement => {
                         </td>
                         <td className={cn(tableElement, 'w-2/3')}>
                           <span>{lineItem.product.name}</span>
-                        </td>
-                        <td className={tableElement}>
-                          <button
-                            onClick={() => {
-                              removeProduct(lineItem.product);
-                            }}
-                          >
-                            <FontAwesomeIcon icon={faTrashCan} className={binClass} size="sm" />
-                          </button>
                         </td>
                         <td className={tableElement}>
                           <span>{GBPFormat.format(lineItem.subTotal)}</span>

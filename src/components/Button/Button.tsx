@@ -5,7 +5,7 @@ interface Props extends React.ComponentPropsWithoutRef<'button'> {
   active?: boolean;
   'data-testid'?: string;
   size?: 'small' | 'medium' | 'large';
-  colour?: 'yellow' | 'grey' | 'clear';
+  colour?: 'yellow' | 'grey' | 'red' | 'clear';
 }
 
 export const Button = ({
@@ -34,6 +34,7 @@ export const Button = ({
           'bg-transparent': colour === 'clear',
           'border-2 border-solid border-[#A2AAB6] bg-[#A2AAB6]': colour === 'grey',
           'border-2 border-solid border-[#FFC600] bg-[#FFC600]': colour === 'yellow',
+          'border-2 border-solid border-[#f76d6d] bg-[#f76d6d]': colour === 'red',
           'cursor-pointer bg-[#5A6675]': active,
         }
       )}
