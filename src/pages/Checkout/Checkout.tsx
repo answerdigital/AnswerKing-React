@@ -8,6 +8,7 @@ import { CheckoutOrderDetails } from 'components/CheckoutOrderDetails/CheckoutOr
 import { Button } from 'components/Button/Button';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { toast } from 'react-toastify';
+import { GBPFormat } from 'utilities/GBPFormat';
 
 export const CheckoutPage = (): ReactElement => {
   const { order, removeOrder, updateOrder, createOrder } = useOrder();
@@ -42,11 +43,6 @@ export const CheckoutPage = (): ReactElement => {
 
   useEffect(handleLocalOrderChange, [localOrder]);
 
-  const GBPFormat = new Intl.NumberFormat('en-UK', {
-    style: 'currency',
-    currency: 'GBP',
-  });
-
   return (
     <>
       <Helmet>
@@ -68,12 +64,7 @@ export const CheckoutPage = (): ReactElement => {
           </div>
           <div className="flex w-full">
             {localOrder.lineItems?.length > 0 && (
-              <Button
-                size="small"
-                colour="red"
-                className={'flex-1 grow border border-solid border-[#A2AAB6]'}
-                onClick={cancelOrder}
-              >
+              <Button size="small" colour="red" className={'flex-1 grow border border-solid border-[#A2AAB6]'} onClick={cancelOrder}>
                 Cancel
               </Button>
             )}

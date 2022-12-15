@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import { useLocalOrder } from 'context/OrderContext';
 import cn from 'classnames';
+import { GBPFormat } from 'utilities/GBPFormat';
 
 export const CheckoutOrderDetails = (): ReactElement => {
   const { localOrder } = useLocalOrder();
@@ -8,12 +9,6 @@ export const CheckoutOrderDetails = (): ReactElement => {
   const iconClass = 'border rounded bg-gray-200 p-2';
 
   const tableElement = 'whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900';
-
-
-  const GBPFormat = new Intl.NumberFormat('en-UK', {
-    style: 'currency',
-    currency: 'GBP',
-  });
 
   return (
     <div className="font-sans text-[16px]">
