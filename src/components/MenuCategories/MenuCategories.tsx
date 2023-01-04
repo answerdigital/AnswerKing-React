@@ -19,7 +19,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
               key={category.id}
               size="medium"
               colour="clear"
-              className={category.id === selectedCategory ? 'border-[#A2AAB6] bg-[#A2AAB6] text-[#ffffff]' : 'text-[#ffffff]'}
+              className={cn('text-[#ffffff]', category.id === selectedCategory && 'border-[#A2AAB6] bg-[#A2AAB6]')}
               onClick={() => setSelectedCategory(category.id)}
             >
               {category.name}

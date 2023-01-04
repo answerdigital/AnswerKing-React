@@ -4,11 +4,10 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
-import { CheckoutOrderDetails } from 'components/CheckoutOrderDetails/CheckoutOrderDetails';
+import { OrderDetails } from 'components/OrderDetails/OrderDetails';
 import { Button } from 'components/Button/Button';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { toast } from 'react-toastify';
-import { GBPFormat } from 'utilities/GBPFormat';
 
 export const CheckoutPage = (): ReactElement => {
   const { order, removeOrder, updateOrder, createOrder } = useOrder();
@@ -30,6 +29,7 @@ export const CheckoutPage = (): ReactElement => {
     }
   };
 
+  //This function is largely depreciated, it pushes any change to the local order to the remote order while the checkout is open which is currently only cancel/delete.
   const handleLocalOrderChange = (): void => {
     if (localOrder.lineItems.length) {
       const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
@@ -51,16 +51,12 @@ export const CheckoutPage = (): ReactElement => {
       <div className="flex h-[46rem] flex-col items-center font-sans">
         <h1 className="flex h-1/6 items-center text-3xl">Checkout</h1>
         <form
-          className="flex w-1/2 grow flex-col items-center rounded-lg bg-white p-6 p-6 font-sans text-gray-900"
+          className="flex w-1/2 grow flex-col items-center justify-between rounded-lg bg-white p-6 p-6 font-sans text-gray-900"
           onSubmit={(e) => e.preventDefault()}
         >
-          <div className="w-full flex-grow">
-            <h1 className="text-xl font-bold">Order</h1>
-            {localOrder.lineItems?.length > 0 ? <CheckoutOrderDetails /> : <p>No Items in your order.</p>}
-          </div>
-          <div className="flex h-[10%] w-full justify-between">
-            <span className="font-bold">Total:</span>
-            <span className="font-bold">{GBPFormat.format(localOrder.lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0))}</span>
+          <div className="h-5/6 w-full">
+            <h1 className="text-xl font-bold">Your Order</h1>
+            {localOrder.lineItems?.length > 0 ? <OrderDetails items={localOrder.lineItems} /> : <p>No Items in your order.</p>}
           </div>
           <div className="flex w-full">
             {localOrder.lineItems?.length > 0 && (
