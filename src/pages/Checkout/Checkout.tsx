@@ -70,7 +70,7 @@ export const CheckoutPage = (): ReactElement => {
               className={'flex-1 grow border border-solid border-[#A2AAB6]'}
               onClick={() => navigate(RouteConstants.MENU)}
             >
-              Edit
+              {localOrder.lineItems?.length > 0 ? 'Edit' : 'Go Back'}
             </Button>
             {localOrder.lineItems?.length > 0 && (
               <Button size="small" colour="yellow" className={'flex-1 grow'} onClick={() => placeOrder}>
