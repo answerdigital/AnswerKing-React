@@ -26,9 +26,7 @@ export const OrderCreateForm = (): ReactElement => {
       updateOrder.mutate({ id: localOrder.id, updatedOrder: createdOrder });
     }
 
-    if (!createOrder.error || !updateOrder.error) {
-      navigate(RouteConstants.CHECKOUT);
-    }
+    navigate(RouteConstants.CHECKOUT);
   };
 
   useEffect(() => {
@@ -47,7 +45,7 @@ export const OrderCreateForm = (): ReactElement => {
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
         <LoaderOverlay isEnabled={createOrder.isLoading} />
-        <Button size="large" className="text-1 py-2 px-24 font-normal" type="submit">
+        <Button size="large" className="text-1 py-2 px-24 font-normal" type="submit" colour="yellow">
           Checkout
         </Button>
       </form>

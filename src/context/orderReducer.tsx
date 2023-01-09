@@ -5,6 +5,7 @@ export enum ActionType {
   AddToLocalOrder = 'ADD_TO_LOCAL_ORDER',
   IncreaseProductQuantity = 'INCREASE_PRODUCT_QUANTITY',
   DecreaseProductQuantityOrRemove = 'DECREASE_PRODUCT_QUANTITY_OR_REMOVE',
+  RemoveProduct = 'REMOVE_PRODUCT',
   SetOrderId = 'SET_ORDER_ID',
   RemoveLocalOrder = 'REMOVE_ORDER',
 }
@@ -81,6 +82,15 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
             return item;
           }),
         ],
+      };
+
+    case ActionType.RemoveProduct:
+      if (!productPayload) {
+        return localOrder;
+      }
+      return {
+        ...localOrder,
+        lineItems: [...localOrder.lineItems.filter((item) => item.product.id !== productPayload.id)],
       };
 
     case ActionType.SetOrderId:
