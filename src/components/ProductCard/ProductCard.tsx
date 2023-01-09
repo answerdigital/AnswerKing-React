@@ -18,7 +18,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
         <p className="font-poly mb-3 text-center text-gray-700 dark:text-gray-400">{product.description}</p>
         <div className="flex px-3">
           <p className="font-poppins mt-0.5 flex-1 text-black">£{(product.price * 1e2) / 1e2}</p>
-          <Button onClick={() => addToLocalOrder(product)} size="small">
+          <Button onClick={() => addToLocalOrder(product)} size="small" colour="yellow">
             Add to order
           </Button>
         </div>

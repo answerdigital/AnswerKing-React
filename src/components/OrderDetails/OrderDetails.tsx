@@ -1,44 +1,43 @@
 import { ReactElement } from 'react';
-import { useLocalOrder } from 'context/OrderContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare, faMinusSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import cn from 'classnames';
+import { GBPFormat } from 'utilities/GBPFormat';
+import { LineItemDto } from 'dtos/LineItemDto';
 
-export const OrderDetails = (): ReactElement => {
-  const { localOrder, decreaseProductQuantityOrRemove, increaseProductQuantity } = useLocalOrder();
+interface Props {
+  items: LineItemDto[];
+}
+
+export const OrderDetails = ({ items }: Props): ReactElement => {
+  const iconClass = 'border rounded bg-gray-200 p-2';
+
+  const tableElement = 'whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900';
+
   return (
-    <div>
-      <h1 className="mb-7 text-center text-[26px] font-bold">Order Summary</h1>
-      <div>
-        {localOrder.lineItems?.length > 0 ? (
-          localOrder.lineItems.map((lineItem) => (
-            <div key={lineItem.product.id} className="text-[16px]">
-              <div className="mb-3 mt-3 grid grid-cols-6" key={lineItem.product.id}>
-                <div className="col-span-2">
-                  <span className="">{lineItem.product.name}</span>
-                </div>
-                <div className="col-span-3 flex items-center justify-center">
-                  <button onClick={() => increaseProductQuantity(lineItem.product)}>
-                    <FontAwesomeIcon icon={faPlusSquare} className="h-[22px] w-[22px]" />
-                  </button>
-                  <span className="mx-3 mb-1">{lineItem.quantity}</span>
-                  <button onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
-                    {lineItem.quantity === 1 ? (
-                      <FontAwesomeIcon icon={faTrashCan} className="h-[22px] w-[22px]" />
-                    ) : (
-                      <FontAwesomeIcon icon={faMinusSquare} className="h-[22px] w-[22px]" />
-                    )}
-                  </button>
-                </div>
-                <div className="col-span-1 ml-auto">
-                  <span>£{(lineItem.subTotal * 1e2) / 1e2}</span>
-                </div>
-              </div>
-              <hr className="h-[1px]"></hr>
-            </div>
-          ))
-        ) : (
-          <p>There are no items in your order.</p>
-        )}
+    <div className="flex h-full flex-col items-center justify-between">
+      <table className="w-full table-fixed">
+        <tbody className="flex-none">
+          {items.length > 0 ? (
+            items.map((lineItem) => (
+              <tr key={lineItem.product.id} className="border-b">
+                <td className={tableElement}>
+                  <span className={cn(iconClass, 'rounded bg-gray-200 text-center')}>{lineItem.quantity}</span>
+                </td>
+                <td className={cn(tableElement, 'w-2/3')}>
+                  <span>{lineItem.product.name}</span>
+                </td>
+                <td className={tableElement}>
+                  <span>{GBPFormat.format(lineItem.subTotal)}</span>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <p className="text-[16px]">No items in order.</p>
+          )}
+        </tbody>
+      </table>
+      <div className="flex w-full justify-between">
+        <span className="font-bold">Total:</span>
+        <span className="font-bold">{GBPFormat.format(items.reduce((partialSum, a) => partialSum + a.subTotal, 0))}</span>
       </div>
     </div>
   );
