@@ -24,7 +24,7 @@ export const HomePage = (): ReactElement => {
               The Answer to <br></br> your cravings
             </h3>
           </div>
-          <Button onClick={handleClick} size="large">
+          <Button onClick={handleClick} size="large" colour="yellow">
             Order Now
           </Button>
         </div>
