@@ -41,8 +41,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
 
-      - name: Upload to S3 Bucket Without JS Files
-        run: aws s3 sync ./dist/ s3://answerking-bucket-react --exclude "*.js" --delete
-
-      - name: Upload JS file to S3
-        run: aws s3 sync ./dist/ s3://answerking-bucket-react --exclude "*" --include "*.js" --content-type application/javascript
+      - name: Upload to S3 Bucket
+        run: npm run upload
