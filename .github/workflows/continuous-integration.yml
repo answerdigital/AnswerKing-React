@@ -39,6 +39,3 @@ jobs:
 
       - name: Upload JS files to S3
         run: aws s3 sync ./dist/ s3://answerking-bucket-react --exclude `"*`" --include `"*.js`" --content-type application/javascript
-
-
-
