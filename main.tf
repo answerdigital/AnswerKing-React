@@ -60,50 +60,11 @@ resource "aws_s3_bucket_public_access_block" "react" {
   restrict_public_buckets = true
 }
 
-locals {
-  s3_origin_id    = "S3-origin-react-app"
-  certificate_arn = "arn:aws:acm:us-east-1:409973623162:certificate/3672e181-0091-4469-a7ca-3676705ff426"
-}
-
-# Upload the React app to the S3 bucket
-resource "aws_s3_bucket_object" "index_html" {
-  bucket       = aws_s3_bucket.react.id
-  key          = "index.html"
-  source       = "dist/index.html"
-  content_type = "text/html"
-}
-
-resource "aws_s3_bucket_object" "css_files" {
-  bucket       = aws_s3_bucket.react.id
-  key          = "/assets/index-650b95c4.css"
-  source       = "dist/assets/index-650b95c4.css"
-  content_type = "text/css"
-}
-
-resource "aws_s3_bucket_object" "js_files" {
-  bucket       = aws_s3_bucket.react.id
-  key          = "/assets/index-2c7a1f24.js"
-  source       = "dist/assets/index-2c7a1f24.js"
-  content_type = "application/javascript"
-}
-
-resource "aws_s3_bucket_object" "image_files" {
-  count  = length(var.image_filenames)
-  bucket = aws_s3_bucket.react.id
-  key    = "/assets/${var.image_filenames[count.index]}"
-  source = "dist/assets/${var.image_filenames[count.index]}"
-}
-
-variable "image_filenames" {
-  type = list(string)
-  default = [
-    "burger_transparent-e8cf04d5.png",
-    "burgerhome-3f16d8ea.png",
-    "logo-204f0d5a.png"
-  ]
-}
-
 # Cloudfront Distribution
+locals {
+  certificate_arn = ""
+}
+
 resource "aws_cloudfront_origin_access_identity" "react" {
   comment = "react"
 }
