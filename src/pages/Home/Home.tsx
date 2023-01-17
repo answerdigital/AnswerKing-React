@@ -22,9 +22,9 @@ export const HomePage = (): ReactElement => {
       <div className="grid grid-cols-2 gap-2">
         <div className="ml-44 mt-20 flex flex-col items-center justify-center">
           <div className="mb-10 text-center text-[80px] text-white">
-            <h3 className="font-poly leading-tight italic">
+            <h3 className="font-poly italic leading-tight">
               The
-              <img src={Logo} alt="logo" className="inline-block ml-5 mb-4 h-12"/>
+              <img src={Logo} alt="logo" className="ml-5 mb-4 inline-block h-12" />
               <span className="font-poppins not-italic">nswer</span> to <br></br> your cravings
             </h3>
           </div>
@@ -36,7 +36,7 @@ export const HomePage = (): ReactElement => {
           <img className="mt-20 h-[600px]" alt="burger-home-image" src={BurgerHome}></img>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
