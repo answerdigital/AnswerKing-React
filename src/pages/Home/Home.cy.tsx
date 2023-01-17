@@ -1,6 +1,6 @@
 import { RouteConstants } from 'utilities/route-constants';
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import HomePage from './Home';
+import { HomePage } from './Home';
 
 describe('HomePage tests', () => {
   it('mounts', () => {

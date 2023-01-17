@@ -21,5 +21,3 @@ export const Footer = (): ReactElement => {
     </>
   );
 };
-
-export default Footer;

@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import BurgerHome from 'assets/burgerhome.png';
-import Footer from '../../components/Footer/Footer';
 import Logo from 'assets/icon_a.svg';
+import { Footer } from 'components/Footer/Footer';
 
 export const HomePage = (): ReactElement => {
   const navigate = useNavigate();
@@ -40,5 +40,3 @@ export const HomePage = (): ReactElement => {
     </>
   );
 };
-
-export default HomePage;
