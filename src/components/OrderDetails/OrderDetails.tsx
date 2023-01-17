@@ -8,21 +8,19 @@ interface Props {
 }
 
 export const OrderDetails = ({ items }: Props): ReactElement => {
-  const iconClass = 'border rounded bg-gray-200 p-2';
+  const iconClass = 'border rounded bg-gray-200 p-2 text-[12px]';
 
-  const tableElement = 'whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900';
+  const tableElement = 'whitespace-nowrap px-6 py-4 font-medium text-[#333F4C]';
 
   return (
     <div className="flex h-full flex-col items-center justify-between">
       <table className="w-full table-fixed">
-        <tbody className="flex-none">
+        <tbody className="flex">
           {items.length > 0 ? (
             items.map((lineItem) => (
               <tr key={lineItem.product.id} className="border-b">
                 <td className={tableElement}>
-                  <span className={cn(iconClass, 'rounded bg-gray-200 text-center')}>{lineItem.quantity}</span>
-                </td>
-                <td className={cn(tableElement, 'w-2/3')}>
+                  <span className={cn(iconClass, 'rounded bg-gray-200 text-center mr-4')}>{lineItem.quantity}</span>
                   <span>{lineItem.product.name}</span>
                 </td>
                 <td className={tableElement}>
@@ -35,9 +33,15 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
           )}
         </tbody>
       </table>
-      <div className="flex w-full justify-between">
-        <span className="font-bold">Total:</span>
-        <span className="font-bold">{GBPFormat.format(items.reduce((partialSum, a) => partialSum + a.subTotal, 0))}</span>
+      <div className="w-full text-[22px] text-[#333F4C]">
+        <div className="flex justify-between w-full text-[#5A6675] text-[15px]">
+          <span className="">Service Charge:</span>
+          <span className="">£0.50</span>
+        </div>
+        <div className="flex justify-between w-full font-bold mt-2">
+          <span>Total:</span>
+          <span>{GBPFormat.format(items.reduce((partialSum, a) => partialSum + a.subTotal, 0))}</span>
+        </div>
       </div>
     </div>
   );
