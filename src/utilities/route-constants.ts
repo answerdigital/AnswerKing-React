@@ -3,4 +3,7 @@ export const RouteConstants = {
   MENU: '/menu',
   STAFF: '/staff',
   CHECKOUT: '/checkout',
+  ALLERGEN_BOARD: '/allergens',
+  LANGUAGE: '/language',
+  POLICIES: '/policy',
 };
