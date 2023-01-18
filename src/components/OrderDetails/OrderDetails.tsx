@@ -17,7 +17,7 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
 
   return (
     <div className="flex h-full flex-col items-center justify-between">
-      <table className="w-full justify-between table-fixed">
+      <table className="w-full table-fixed justify-between">
         <tbody className="">
           {items.length > 0 ? (
             items.map((lineItem) => (
@@ -28,7 +28,7 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
                 </td>
                 <td className={cn(tableElement, 'text-right')}>
                   <span className="mr-8 rounded bg-[#E4EAEB] p-2 text-[17px]">
-                    <FontAwesomeIcon className="cursor-pointer" icon={faTrash} onClick={() => removeProduct(lineItem.product)}/>
+                    <FontAwesomeIcon className="cursor-pointer" icon={faTrash} onClick={() => removeProduct(lineItem.product)} />
                   </span>
                   <span>{GBPFormat.format(lineItem.subTotal)}</span>
                 </td>

@@ -18,7 +18,7 @@ export const CheckoutDetailsForm = (): ReactElement => {
         <h1 className="mb-3 text-2xl font-bold text-[#333F4C]">Order</h1>
         {localOrder.lineItems?.length > 0 ? <OrderDetails items={localOrder.lineItems} /> : <p>Your order is empty.</p>}
       </div>
-      <div className="w-full text-[22px] text-[#333F4C] border-t pt-5">
+      <div className="w-full border-t pt-5 text-[22px] text-[#333F4C]">
         {localOrder.lineItems?.length > 0 ? (
           <div className="flex w-full justify-between text-[15px] text-[#5A6675]">
             <span className="">Service Charge:</span>
