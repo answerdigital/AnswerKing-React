@@ -1,10 +1,11 @@
-import { ReactElement } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import cn from 'classnames';
 import { GBPFormat } from 'utilities/GBPFormat';
 import { LineItemDto } from 'dtos/LineItemDto';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useLocalOrder } from 'context/OrderContext';
+import { ProductDto } from 'dtos/ProductDto';
 
 interface Props {
   items: LineItemDto[];
@@ -14,6 +15,12 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
   const { removeProduct } = useLocalOrder();
   const iconClass = 'border rounded bg-gray-200 p-2 px-4 text-[19px] font-[400]';
   const tableElement = 'whitespace-nowrap px-6 py-4 font-medium text-[#333F4C] text-[17px]';
+
+  function removeSelectedProduct(product: ProductDto): MouseEventHandler<SVGSVGElement> {
+    return () => {
+      removeProduct(product);
+    };
+  }
 
   return (
     <div className="flex h-full flex-col items-center justify-between">
@@ -28,7 +35,7 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
                 </td>
                 <td className={cn(tableElement, 'text-right')}>
                   <span className="mr-8 rounded bg-[#E4EAEB] p-2 text-[17px]">
-                    <FontAwesomeIcon className="cursor-pointer" icon={faTrash} onClick={() => removeProduct(lineItem.product)} />
+                    <FontAwesomeIcon className="cursor-pointer" icon={faTrash} onClick={removeSelectedProduct(lineItem.product)} />
                   </span>
                   <span>{GBPFormat.format(lineItem.subTotal)}</span>
                 </td>
