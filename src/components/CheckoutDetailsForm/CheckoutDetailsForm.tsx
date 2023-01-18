@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
 import { GBPFormat } from 'utilities/GBPFormat';
@@ -9,6 +9,13 @@ import { useNavigate } from 'react-router-dom';
 export const CheckoutDetailsForm = (): ReactElement => {
   const { localOrder } = useLocalOrder();
   const navigate = useNavigate();
+
+  function navigateToMenu(): MouseEventHandler<HTMLElement> {
+    return () => {
+      navigate(RouteConstants.MENU);
+    };
+  }
+
   return (
     <form
       className="mb-10 flex h-[580px] w-[600px] grow flex-col items-center justify-between rounded-lg bg-white p-6 text-gray-900"
@@ -36,7 +43,7 @@ export const CheckoutDetailsForm = (): ReactElement => {
         <Button
           colour="white"
           className="border: 1px solid #333F4C mr-3 h-[45px] w-[120px] rounded-[25px] border border-solid border-[#A2AAB6] text-[16px]"
-          onClick={() => navigate(RouteConstants.MENU)}
+          onClick={navigateToMenu()}
         >
           Back
         </Button>
