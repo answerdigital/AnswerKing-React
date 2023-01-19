@@ -14,7 +14,7 @@ interface Props {
 export const OrderDetails = ({ items }: Props): ReactElement => {
   const { removeProduct } = useLocalOrder();
   const iconClass = 'border rounded bg-gray-200 p-2 px-4 text-[19px] font-[400]';
-  const tableElement = 'whitespace-nowrap px-6 py-4 font-medium text-[#333F4C] text-[17px]';
+  const tableElement = 'py-4 text-[#333F4C] font-[400] text-[17px]';
 
   function removeSelectedProduct(product: ProductDto): MouseEventHandler<SVGSVGElement> {
     return () => {
@@ -25,17 +25,17 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
   return (
     <div className="flex h-full flex-col items-center justify-between">
       <table className="w-full table-fixed justify-between">
-        <tbody className="">
+        <tbody>
           {items.length > 0 ? (
             items.map((lineItem) => (
-              <tr key={lineItem.product.id} className="border-b pb-1">
+              <tr key={lineItem.product.id} className="border-b">
                 <td className={tableElement}>
                   <span className={cn(iconClass, 'mr-4 rounded bg-gray-200 text-center')}>{lineItem.quantity}</span>
                   <span>{lineItem.product.name}</span>
                 </td>
                 <td className={cn(tableElement, 'text-right')}>
                   <span className="mr-8 rounded bg-[#E4EAEB] p-2 text-[17px]">
-                    <FontAwesomeIcon className="cursor-pointer" icon={faTrash} onClick={removeSelectedProduct(lineItem.product)} />
+                    <FontAwesomeIcon className="cursor-pointer hover:text-red-600" icon={faTrash} onClick={removeSelectedProduct(lineItem.product)} />
                   </span>
                   <span>{GBPFormat.format(lineItem.subTotal)}</span>
                 </td>
