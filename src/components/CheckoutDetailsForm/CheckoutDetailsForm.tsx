@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const CheckoutDetailsForm = (): ReactElement => {
   const { localOrder } = useLocalOrder();
-  const [serviceCharge, setServiceCharge] = useState<number>(0.5);
+  const [ serviceCharge ] = useState<number>(0.5);
   const navigate = useNavigate();
   const lineItemConditional = localOrder.lineItems?.length > 0;
 
