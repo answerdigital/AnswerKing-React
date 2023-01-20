@@ -13,8 +13,8 @@ interface Props {
 
 export const OrderDetails = ({ items }: Props): ReactElement => {
   const { removeProduct } = useLocalOrder();
-  const iconClass = 'border rounded bg-gray-200 p-2 px-4 text-[19px] font-[400]';
-  const tableElement = 'py-4 text-[#333F4C] font-[400] text-[17px]';
+  const iconClass = 'w-[30px] h-[30px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
+  const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
 
   function removeSelectedProduct(product: ProductDto): MouseEventHandler<SVGSVGElement> {
     return () => {
@@ -28,16 +28,22 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
         <tbody>
           {items.length > 0 ? (
             items.map((lineItem) => (
-              <tr key={lineItem.product.id} className="border-b">
-                <td className={tableElement}>
-                  <span className={cn(iconClass, 'mr-4 rounded bg-gray-200 text-center')}>{lineItem.quantity}</span>
-                  <span>{lineItem.product.name}</span>
+              <tr key={lineItem.product.id} className="flex w-full justify-between [&:not(:last-child)]:border-b">
+                <td className={cn(tableElement, 'flex')}>
+                  <span className={cn(iconClass, 'rounded text-center text-[14px]')}>{lineItem.quantity}</span>
+                  <span className="self-center">{lineItem.product.name}</span>
                 </td>
-                <td className={cn(tableElement, 'text-right')}>
-                  <span className="mr-8 rounded bg-[#E4EAEB] p-2 text-[17px]">
-                    <FontAwesomeIcon className="cursor-pointer hover:text-red-600" icon={faTrash} onClick={removeSelectedProduct(lineItem.product)} />
-                  </span>
-                  <span>{GBPFormat.format(lineItem.subTotal)}</span>
+                <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
+                  <div className={cn(iconClass)}>
+                    <FontAwesomeIcon
+                      className="h-[16px] w-[15px] cursor-pointer hover:text-red-600"
+                      icon={faTrash}
+                      onClick={removeSelectedProduct(lineItem.product)}
+                    />
+                  </div>
+                  <div className="left-8 flex h-[21px] w-[50px] items-center justify-center">
+                    <span className="text-center">{GBPFormat.format(lineItem.subTotal)}</span>
+                  </div>
                 </td>
               </tr>
             ))
