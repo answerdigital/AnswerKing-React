@@ -11,22 +11,25 @@ interface Props {
 export const MenuCategories = ({ categories, setSelectedCategory, selectedCategory }: Props): ReactElement => {
   return (
     <div className="mt-5 flex flex-col items-center">
-      <h2 className="leading=[54px] mb-3 text-[46px]">Menu</h2>
-      <div className="mt-5">
+      <p className="font-poppins text-[36px] font-thin">Menu</p>
+      <div className="mt-5 w-[80%] divide-y-2 divide-slate-700">
         <div>
           {categories.map((category) => (
             <Button
               key={category.id}
               size="medium"
               colour="clear"
-              className={cn('text-[#ffffff]', category.id === selectedCategory && 'border-[#A2AAB6] bg-[#A2AAB6]')}
+              className={cn(
+                'font-poppins text-base font-thin text-[#ffffff]',
+                category.id === selectedCategory && 'border-[#333F4C] bg-[#A2AAB6] text-gray-900'
+              )}
               onClick={() => setSelectedCategory(category.id)}
             >
               {category.name}
             </Button>
           ))}
         </div>
-        <hr className="mt-5 mb-10 w-[100%]"></hr>
+        <div className="mt-5"></div>
       </div>
     </div>
   );

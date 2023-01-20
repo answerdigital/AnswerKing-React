@@ -30,17 +30,20 @@ export const MenuPage = (): ReactElement => {
       <Helmet>
         <title>Menu - Answer King</title>
       </Helmet>
-      <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
-      <div className="mt-10 grid grid-cols-12">
+      <div className="grid grid-cols-12">
         <div className="col-span-1"></div>
         <div className="col-span-8 text-center">
+          <div className="mb-5">
+            <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
+          </div>
+          <div className="font-poly mb-6 text-lg italic text-gray-300">Served on a brioche bun with house fries and fresh salad</div>
           <MenuItems
             products={products.data.filter(
               (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
             )}
           />
         </div>
-        <div className="col-span-3">
+        <div className="col-span-3 mt-32">
           <OrderPanel />
         </div>
       </div>

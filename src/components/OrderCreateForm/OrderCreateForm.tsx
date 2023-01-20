@@ -39,14 +39,23 @@ export const OrderCreateForm = (): ReactElement => {
 
   return (
     <div className="mt-auto px-5 text-center">
-      <div className="mb-5 flex text-[20px]">
-        <span className="">Total: </span>
-        <span className="ml-auto">£{Math.round(total * 1e2) / 1e2}</span>
+      <hr className="mb-2"></hr>
+      <div className="mb-3 flex text-xs">
+        <span className="font-thin text-gray-800">Service charge: </span>
+        <span className="ml-auto font-thin text-gray-800">£0.50</span>
+      </div>
+      <div className="mb-5 flex text-xs">
+        <span className="font-thin text-gray-800">Delivery fee: </span>
+        <span className="ml-auto font-thin text-gray-800">£2.00</span>
+      </div>
+      <div className="mb-5 flex text-xl">
+        <span className="font-semibold text-gray-800">Total: </span>
+        <span className="ml-auto font-semibold text-gray-800">£{Math.round(total * 1e2) / 1e2}</span>
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
         <LoaderOverlay isEnabled={createOrder.isLoading} />
-        <Button size="large" className="text-1 py-2 px-24 font-normal" type="submit" colour="yellow">
-          Checkout
+        <Button size="large" className="text-1 font-poppins w-full py-2 px-4 text-sm font-semibold" type="submit" colour="yellow">
+          Go to checkout
         </Button>
       </form>
     </div>
