@@ -6,6 +6,8 @@ interface Props extends React.ComponentPropsWithoutRef<'button'> {
   'data-testid'?: string;
   size?: 'small' | 'medium' | 'large';
   colour?: 'yellow' | 'grey' | 'red' | 'clear';
+  bg?: 'dark' | 'light';
+  hover?: boolean;
 }
 
 export const Button = ({
@@ -19,24 +21,28 @@ export const Button = ({
   size = 'medium',
   type = 'button',
   colour = 'grey',
+  bg = 'light',
+  hover = true,
 }: Props): ReactElement => {
   return (
     <button
       className={cn(
-        className,
-        'font-poppins text-[#333F4C]',
-        'rounded-full transition duration-500 hover:border-[#333F4C] hover:bg-[#333F4C] hover:text-white',
-        'hover:cursor-pointer',
+        'font-poppins',
+        'rounded-full transition duration-500',
         {
           'py-1 px-5 text-[14px] ': size === 'small',
           'py-0.5 px-5 text-[22px]': size === 'medium',
           'py-2.5 px-12 text-[20px] font-bold': size === 'large',
-          'bg-transparent': colour === 'clear',
+          'border-2 border-solid border-transparent bg-transparent': colour === 'clear',
           'border-2 border-solid border-[#A2AAB6] bg-[#A2AAB6]': colour === 'grey',
           'border-2 border-solid border-[#FFC600] bg-[#FFC600]': colour === 'yellow',
           'border-2 border-solid border-[#f76d6d] bg-[#f76d6d]': colour === 'red',
           'cursor-pointer bg-[#5A6675]': active,
-        }
+          'text-[#333F4C]': colour !== 'clear' && bg !== 'dark',
+          'text-[#A2AAB6]': colour === 'clear' && bg === 'dark',
+          'hover:cursor-pointer hover:border-[#333F4C] hover:bg-[#333F4C] hover:text-white': hover,
+        },
+        className
       )}
       data-testid={dataTestId}
       disabled={disabled}
