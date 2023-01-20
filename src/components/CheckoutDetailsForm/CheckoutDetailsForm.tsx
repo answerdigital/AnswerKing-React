@@ -46,10 +46,7 @@ export const CheckoutDetailsForm = (): ReactElement => {
         >
           Back
         </Button>
-        <Button
-          className=" h-[45px] w-[416px] rounded-[25px] border-[#FFC600] bg-[#FFC600] text-[16px]"
-          disabled={!lineItemConditional}
-        >
+        <Button className=" h-[45px] w-[416px] rounded-[25px] border-[#FFC600] bg-[#FFC600] text-[16px]" disabled={!lineItemConditional}>
           Confirm & Continue
         </Button>
       </div>
