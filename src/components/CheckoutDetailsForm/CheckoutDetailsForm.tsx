@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement } from 'react';
+import { MouseEventHandler, ReactElement, useState } from 'react';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
 import { GBPFormat } from 'utilities/GBPFormat';
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const CheckoutDetailsForm = (): ReactElement => {
   const { localOrder } = useLocalOrder();
+  const [serviceCharge, setServiceCharge] = useState<number>(0.5);
   const navigate = useNavigate();
   const lineItemConditional = localOrder.lineItems?.length > 0;
 
@@ -26,16 +27,23 @@ export const CheckoutDetailsForm = (): ReactElement => {
       <div className="h-5/6 w-full grow">
         <h1 className="mb-3 text-[20px] font-bold text-[#333F4C]">Order</h1>
         {lineItemConditional && <OrderDetails items={localOrder.lineItems} />}
-        <p className={cn(lineItemConditional ? 'opacity-0' : 'opacity-100', 'text-black transition-all duration-300')}> Your order is empty. </p>
+        <p
+          className={cn(
+            lineItemConditional ? 'opacity-0' : 'opacity-100',
+            'relative top-2/4 transform text-center text-black transition-all duration-300'
+          )}
+        >
+          Your order is empty
+        </p>
       </div>
       <div className={cn(lineItemConditional ? 'opacity-100' : 'opacity-0', 'mb-3 w-full border-t pt-5 text-[22px] transition-all duration-300')}>
         <div className="flex w-full justify-between text-[10px] text-[#5A6675]">
           <span className="">Service Charge:</span>
-          <span className="">£0.50</span>
+          <span className="">{GBPFormat.format(serviceCharge)}</span>
         </div>
         <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
           <span>Total:</span>
-          <span>{GBPFormat.format(localOrder.lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0))}</span>
+          <span>{GBPFormat.format(localOrder.lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + serviceCharge)}</span>
         </div>
       </div>
       <div className="h-6/6 flex w-full font-[400]">
@@ -46,7 +54,10 @@ export const CheckoutDetailsForm = (): ReactElement => {
         >
           Back
         </Button>
-        <Button className=" h-[45px] w-[416px] rounded-[25px] border-[#FFC600] bg-[#FFC600] text-[16px]" disabled={!lineItemConditional}>
+        <Button
+          className="h-[45px] w-[416px] rounded-[25px] border-[#FFC600] bg-[#FFC600] text-[16px] disabled:pointer-events-none disabled:contrast-200 disabled:grayscale"
+          disabled={!lineItemConditional}
+        >
           Confirm & Continue
         </Button>
       </div>
