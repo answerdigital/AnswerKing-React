@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement, useState } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
 import { GBPFormat } from 'utilities/GBPFormat';
@@ -49,7 +49,6 @@ export const CheckoutDetailsForm = (): ReactElement => {
         <Button
           className=" h-[45px] w-[416px] rounded-[25px] border-[#FFC600] bg-[#FFC600] text-[16px]"
           disabled={!lineItemConditional}
-          onClick={() => console.log('hello')}
         >
           Confirm & Continue
         </Button>
