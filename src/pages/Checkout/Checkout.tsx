@@ -1,4 +1,5 @@
 import { CheckoutDetails } from 'components/CheckoutDetails/CheckoutDetails';
+import { PageTransition } from 'components/PageTransition/PageTransition';
 import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -8,7 +9,9 @@ export const CheckoutPage = (): ReactElement => {
       <Helmet>
         <title>Checkout - Answer King</title>
       </Helmet>
-      <CheckoutDetails />
+      <PageTransition>
+        <CheckoutDetails />
+      </PageTransition>
     </>
   );
 };

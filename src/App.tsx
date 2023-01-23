@@ -5,30 +5,32 @@ import { StaffPage } from 'pages/Staff/Staff';
 import { CheckoutPage } from 'pages/Checkout/Checkout';
 import { ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation  } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { HelmetProvider } from 'react-helmet-async';
 import { LocalOrderProvider } from '.../../context/OrderContext';
+import { AnimatePresence } from 'framer-motion';
 
 const queryClient = new QueryClient();
 
 export const App = (): ReactElement => {
+  const location = useLocation();
   return (
-    <Router>
-      <QueryClientProvider client={queryClient}>
-        <LocalOrderProvider>
-          <HelmetProvider>
-            <Layout>
-              <Routes>
+    <QueryClientProvider client={queryClient}>
+      <LocalOrderProvider>
+        <HelmetProvider>
+          <Layout>
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
                 <Route element={<MenuPage />} path={RouteConstants.MENU} />
                 <Route element={<StaffPage />} path={RouteConstants.STAFF} />
                 <Route element={<HomePage />} path={RouteConstants.HOME} />
                 <Route element={<CheckoutPage />} path={RouteConstants.CHECKOUT} />
               </Routes>
-            </Layout>
-          </HelmetProvider>
-        </LocalOrderProvider>
-      </QueryClientProvider>
-    </Router>
+            </AnimatePresence>
+          </Layout>
+        </HelmetProvider>
+      </LocalOrderProvider>
+    </QueryClientProvider>
   );
 };

@@ -3,6 +3,7 @@ import { ProductCreateForm } from 'components/ProductCreateForm/ProductCreateFor
 import { ProductsTable } from 'components/ProductsTable/ProductsTable';
 import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { PageTransition } from 'components/PageTransition/PageTransition';
 
 export const StaffPage = (): ReactElement => {
   return (
@@ -10,10 +11,12 @@ export const StaffPage = (): ReactElement => {
       <Helmet>
         <title>Staff - Answer King</title>
       </Helmet>
-      <div className="staff mw-960">
-        <ProductCreateForm />
-        <ProductsTable />
-      </div>
+      <PageTransition>
+        <div className="staff mw-960">
+          <ProductCreateForm />
+          <ProductsTable />
+        </div>
+      </PageTransition>
     </>
   );
 };

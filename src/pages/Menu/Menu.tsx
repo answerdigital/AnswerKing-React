@@ -7,6 +7,7 @@ import { useProducts } from 'hooks/useProducts';
 import { ReactElement, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
+import { PageTransition } from 'components/PageTransition/PageTransition';
 
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
@@ -30,20 +31,22 @@ export const MenuPage = (): ReactElement => {
       <Helmet>
         <title>Menu - Answer King</title>
       </Helmet>
-      <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
-      <div className="mt-10 grid grid-cols-12">
-        <div className="col-span-1"></div>
-        <div className="col-span-8 text-center">
-          <MenuItems
-            products={products.data.filter(
-              (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
-            )}
-          />
+      <PageTransition>
+        <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
+        <div className="mt-10 grid grid-cols-12">
+          <div className="col-span-1"></div>
+          <div className="col-span-8 text-center">
+            <MenuItems
+              products={products.data.filter(
+                (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
+              )}
+            />
+          </div>
+          <div className="col-span-3">
+            <OrderPanel />
+          </div>
         </div>
-        <div className="col-span-3">
-          <OrderPanel />
-        </div>
-      </div>
+      </PageTransition>
     </>
   );
 };
