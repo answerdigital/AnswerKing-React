@@ -43,7 +43,7 @@ export const MenuPage = (): ReactElement => {
             )}
           />
         </div>
-        <div className="col-span-3 mt-32">
+        <div className="col-span-3 mt-[25%]">
           <OrderPanel />
         </div>
       </div>

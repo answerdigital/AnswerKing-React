@@ -12,16 +12,16 @@ export const LocalOrderDetails = (): ReactElement => {
           localOrder.lineItems.map((lineItem) => (
             <div key={lineItem.product.id} className="text-[16px]">
               <div className="mb-3 mt-3 grid grid-cols-12" key={lineItem.product.id}>
-                <div className="text-poppins col-span-1 flex items-center justify-center rounded bg-gray-200 text-sm">{lineItem.quantity}</div>
+                <div className="col-span-1 flex items-center justify-center rounded bg-gray-200 text-sm">{lineItem.quantity}</div>
                 <div className="col-span-7 py-1.5 pl-6 text-xs text-gray-700">
                   <span className="">{lineItem.product.name}</span>
                 </div>
-                <div className="text-poppins col-span-1 flex items-center justify-center rounded bg-gray-200 text-sm">
+                <div className="col-span-1 flex items-center justify-center rounded bg-gray-200 text-sm">
                   <button className="h-[27px] w-[27px]" onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
                     <FontAwesomeIcon icon={faTrash} className="h-[16px] w-[16px] pt-1 text-gray-700" />
                   </button>
                 </div>
-                <div className="text-poppins col-span-2 ml-auto flex items-center justify-center text-xs font-medium">
+                <div className="col-span-2 ml-auto flex items-center justify-center text-xs font-medium">
                   <span>£{(lineItem.subTotal * 1e2) / 1e2}</span>
                 </div>
               </div>
