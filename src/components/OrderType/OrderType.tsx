@@ -13,7 +13,7 @@ export const OrderType = (): ReactElement => {
             className={`font-poppins rounded-xl ${activeButton == 1 ? 'bg-[#ffffff]' : ''} px-4 text-[#333F4C] hover:cursor-pointer hover:bg-gray-50`}
           >
             Delivery
-            <span className="pl-2 text-[10px] font-thin">20-35 Mins</span>
+            <span className="pl-2 text-[10px] font-[300]">20-35 Mins</span>
           </button>
         </div>
         <div className="col-span-1 ml-auto mr-1 pt-1">
@@ -22,7 +22,7 @@ export const OrderType = (): ReactElement => {
             className={`font-poppins rounded-xl ${activeButton == 2 ? 'bg-[#ffffff]' : ''} px-4 text-[#333F4C] hover:cursor-pointer hover:bg-gray-50`}
           >
             Collection
-            <span className="pl-2 text-[10px] font-thin">20 Mins</span>
+            <span className="pl-2 text-[10px] font-[300]">20 Mins</span>
           </button>
         </div>
       </div>

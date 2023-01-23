@@ -36,14 +36,14 @@ export const MenuPage = (): ReactElement => {
           <div className="mb-5">
             <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
           </div>
-          <div className="font-poly mb-6 text-lg italic text-gray-300">Served on a brioche bun with house fries and fresh salad</div>
+          <div className="font-poly mb-6 text-lg italic text-[#E4EAEB]">Served on a brioche bun with house fries and fresh salad</div>
           <MenuItems
             products={products.data.filter(
               (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
             )}
           />
         </div>
-        <div className="col-span-3 mt-32">
+        <div className="col-span-3 mt-[25%]">
           <OrderPanel />
         </div>
       </div>

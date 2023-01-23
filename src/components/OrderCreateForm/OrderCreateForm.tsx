@@ -41,12 +41,12 @@ export const OrderCreateForm = (): ReactElement => {
     <div className="mt-auto px-5 text-center">
       <hr className="mb-2"></hr>
       <div className="mb-3 flex text-xs">
-        <span className="font-thin text-gray-800">Service charge: </span>
-        <span className="ml-auto font-thin text-gray-800">£0.50</span>
+        <span className="font-[300] text-gray-800">Service charge: </span>
+        <span className="ml-auto font-[300] text-gray-800">£0.50</span>
       </div>
       <div className="mb-5 flex text-xs">
-        <span className="font-thin text-gray-800">Delivery fee: </span>
-        <span className="ml-auto font-thin text-gray-800">£2.00</span>
+        <span className="font-[300] text-gray-800">Delivery fee: </span>
+        <span className="ml-auto font-[300] text-gray-800">£2.00</span>
       </div>
       <div className="mb-5 flex text-xl">
         <span className="font-semibold text-gray-800">Total: </span>
