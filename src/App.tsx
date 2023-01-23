@@ -5,7 +5,7 @@ import { StaffPage } from 'pages/Staff/Staff';
 import { CheckoutPage } from 'pages/Checkout/Checkout';
 import { ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Route, Routes, useLocation  } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { HelmetProvider } from 'react-helmet-async';
 import { LocalOrderProvider } from '.../../context/OrderContext';
