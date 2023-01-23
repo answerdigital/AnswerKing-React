@@ -10,10 +10,3 @@ dist-ssr
 cypress/videos
 cypress/screenshots
 
-# Terraform
-.terraform
-.terraform.*
-*.tfstate
-*.tfstate.*
-**/.terraform/*
-*.tfvars.json
