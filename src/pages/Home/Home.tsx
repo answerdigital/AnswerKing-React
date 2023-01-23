@@ -28,7 +28,7 @@ export const HomePage = (): ReactElement => {
               <span className="font-poppins not-italic">nswer</span> to <br></br> your cravings
             </h3>
           </div>
-          <Button onClick={handleClick} size="large" colour="yellow">
+          <Button onClick={handleClick} size="large" colour="yellow" data-testid="order">
             Order Now
           </Button>
         </div>

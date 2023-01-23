@@ -17,7 +17,7 @@
     "jsx": "react-jsx",
     "rootDir": "src",
     "baseUrl": "src",
-    "types": ["node", "jest", "@testing-library/jest-dom"]
+    "types": ["node", "jest", "@testing-library/jest-dom", "cypress"]
   },
   "include": ["./src"]
 }

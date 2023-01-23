@@ -1,0 +1,7 @@
+{
+  "experimentalRunEvents":true,
+  "env": {
+    "headersBlocklist": ["ignore-me-globally"],
+    "ignoreDefaultBlocklist": true
+  }
+}
