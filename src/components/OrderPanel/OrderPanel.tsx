@@ -13,14 +13,17 @@ export const OrderPanel = (): ReactElement => {
         <LocalOrderDetails />
         <OrderCreateForm />
       </div>
-      <div className="grid w-[357px] grid-cols-12 mt-[16px] text-sm text-gray-400">
+      <div className="mt-[16px] grid w-[357px] grid-cols-12 text-sm text-gray-400">
         <button
           onClick={() => navigate(RouteConstants.HOME)}
           className="font-poppins col-span-6 mr-[5px] rounded-full border border-gray-400 py-2 leading-[21px] text-[#A2AAB6]"
         >
           Back to start screen
         </button>
-        <button onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)} className="col-span-6 ml-[5px] rounded-full border border-gray-400 py-2 leading-[21px] text-[#A2AAB6]">
+        <button
+          onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}
+          className="col-span-6 ml-[5px] rounded-full border border-gray-400 py-2 leading-[21px] text-[#A2AAB6]"
+        >
           View Allergen board
         </button>
       </div>

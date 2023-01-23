@@ -9,8 +9,7 @@ export const LocalOrderDetails = (): ReactElement => {
   const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
   const { localOrder, decreaseProductQuantityOrRemove } = useLocalOrder();
   return (
-
-    <div className="flex flex-col items-center justify-between grow">
+    <div className="flex grow flex-col items-center justify-between">
       <table className="w-full table-fixed justify-between">
         <tbody>
           {localOrder.lineItems?.length > 0 ? (
@@ -22,7 +21,7 @@ export const LocalOrderDetails = (): ReactElement => {
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
                   <div className="items-center justify-center"></div>
-                  <button  onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
+                  <button onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
                     <TrashIcon product={lineItem.product} />
                   </button>
                   <div className="left-8 flex h-[21px] w-[50px] items-center justify-center">

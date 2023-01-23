@@ -12,12 +12,12 @@ interface Props {
 export const ProductCard = ({ product }: Props): ReactElement => {
   const { addToLocalOrder } = useLocalOrder();
 
-  function addToOrder (): void {
+  function addToOrder(): void {
     addToLocalOrder(product);
   }
 
   return (
-    <div className="mx-auto mb-7 h-[365px] w-[247px] rounded-lg border-gray-200 bg-white shadow-md relative">
+    <div className="relative mx-auto mb-7 h-[365px] w-[247px] rounded-lg border-gray-200 bg-white shadow-md">
       <img alt="burger" className="h-[200px] w-full rounded-t-lg" src={PlaceHolderImage} />
       {product.name === 'Nurturation Burger' && <Badge background={'bg-[#333F4C]'}>New</Badge>}
       <div className="p-4">
@@ -26,10 +26,10 @@ export const ProductCard = ({ product }: Props): ReactElement => {
           {product.description.length > 50 ? product.description.substring(0, 50) + '...' : product.description}
         </p>
       </div>
-      <div className="flex absolute mx-auto px-[30px] bottom-[20px]">
-        <p className="mt-0.5 flex items-center justify-center text-[14px] text-[#333F4C] pr-[25px]">£{(product.price * 1e2) / 1e2}</p>
-        <Button onClick={addToOrder} size="medium" colour="yellow" className="text-sm font-[400] py-[5px]">
-            Add to order
+      <div className="absolute bottom-[20px] mx-auto flex px-[30px]">
+        <p className="mt-0.5 flex items-center justify-center pr-[17px] text-[14px] text-[#333F4C]">£{(product.price * 1e2) / 1e2}</p>
+        <Button onClick={addToOrder} size="small" colour="yellow" className="py-[5px] text-[14px] font-[400]">
+          Add to order
         </Button>
       </div>
     </div>
