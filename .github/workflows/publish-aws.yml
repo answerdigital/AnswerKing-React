@@ -1,4 +1,4 @@
-name: Publish AWS
+name: Publish Build to AWS S3
 
 on:
   push:
