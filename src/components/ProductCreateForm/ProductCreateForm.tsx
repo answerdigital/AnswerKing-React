@@ -1,4 +1,3 @@
-import './ProductCreateForm.scss';
 import { Button } from 'components/Button/Button';
 import { Error } from 'components/Error/Error';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
@@ -50,7 +49,7 @@ export const ProductCreateForm = (): ReactElement => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     handleErrorClear();
-
+    return;
     if (!nameIsValid(name)) {
       setValidationErrors((errors) => [...errors, VALIDATION_MSG_NAME]);
     }

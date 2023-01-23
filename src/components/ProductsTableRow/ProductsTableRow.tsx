@@ -4,6 +4,7 @@ import { ReactElement } from 'react';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import cn from 'classnames';
 
 interface Props {
   product: ProductDto;
@@ -21,7 +22,7 @@ export const ProductsTableRow = ({ product, padding }: Props): ReactElement => {
     });
   };
 
-  const iconClass = '';
+  const iconClass = cn('bg-gray-300 border-gray-300 rounded border-4 m-1');
 
   return (
     <tr>
@@ -31,10 +32,7 @@ export const ProductsTableRow = ({ product, padding }: Props): ReactElement => {
       <td className={'text-center ' + padding}>None</td>
       <td className={'text-center ' + padding}>£{product.price.toFixed(2)}</td>
       <td className={'text-center ' + padding}>None</td>
-      {/*<td className="text-left products_table__hide_mobile">*/}
-      {/*  {product.categories?.map((category) => category.name).join(', ')}*/}
-      {/*</td>*/}
-      <td className={'flex justify-evenly ' + padding}>
+      <td className={'flex justify-evenly' + padding}>
         <FontAwesomeIcon icon={faPen} role="button" className={iconClass} />
         <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} onKeyDown={handleDelete} role="button" className={iconClass} />
       </td>
