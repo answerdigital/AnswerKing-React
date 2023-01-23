@@ -2,8 +2,8 @@ name: Publish AWS
 
 on:
   push:
-  branches:
-    - main
+    branches:
+      - main
 
 jobs:
   build:
