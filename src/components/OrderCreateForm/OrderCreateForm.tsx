@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { useLocalOrder } from 'context/OrderContext';
+import { GBPFormat } from 'utilities/GBPFormat';
 
 export const OrderCreateForm = (): ReactElement => {
   const { order, createOrder, updateOrder } = useOrder();
@@ -40,17 +41,13 @@ export const OrderCreateForm = (): ReactElement => {
   return (
     <div className="mt-auto px-5 text-center">
       <hr className="mb-2"></hr>
-      <div className="mb-3 flex text-xs">
-        <span className="font-[300] text-gray-800">Service charge: </span>
-        <span className="ml-auto font-[300] text-gray-800">£0.50</span>
+      <div className="flex w-full justify-between text-[10px] text-[#5A6675]">
+        <span className="">Service Charge:</span>
+        <span className="">{GBPFormat.format(0.5)}</span>
       </div>
-      <div className="mb-5 flex text-xs">
-        <span className="font-[300] text-gray-800">Delivery fee: </span>
-        <span className="ml-auto font-[300] text-gray-800">£2.00</span>
-      </div>
-      <div className="mb-5 flex text-xl">
-        <span className="font-semibold text-gray-800">Total: </span>
-        <span className="ml-auto font-semibold text-gray-800">£{Math.round(total * 1e2) / 1e2}</span>
+      <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
+        <span>Total:</span>
+        <span>{GBPFormat.format(total)}</span>
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
         <LoaderOverlay isEnabled={createOrder.isLoading} />
