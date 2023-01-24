@@ -8,7 +8,7 @@ export const OrderPanel = (): ReactElement => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="container flex min-h-[618px] w-[357px] grow flex-col rounded-xl bg-white py-5 px-5 text-black">
+      <div className="container flex min-h-[550px] w-[357px] grow flex-col rounded-xl bg-white py-5 px-5 text-black">
         <h1 className="mt-2 mb-3 text-center text-xl font-semibold">Order Summary</h1>
         <LocalOrderDetails />
         <OrderCreateForm />
