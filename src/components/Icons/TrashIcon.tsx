@@ -9,7 +9,7 @@ interface Props {
 
 export const TrashIcon = ({ product }: Props): ReactElement => {
   const { removeProduct } = useLocalOrder();
-  const iconClass = 'w-[30px] h-[30px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
+  const iconClass = 'w-[35px] h-[35px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
   function removeSelectedProduct(): MouseEventHandler<HTMLElement> {
     return () => {
       removeProduct(product);
@@ -17,18 +17,18 @@ export const TrashIcon = ({ product }: Props): ReactElement => {
   }
   return (
     <div className={cn(iconClass)}>
-      <div className="group cursor-pointer" onClick={removeSelectedProduct()}>
+      <div className="group cursor-pointer justify-center text-center" onClick={removeSelectedProduct()}>
         <svg
           className="duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]"
-          width="12"
-          height="3"
+          width="15"
+          height="5"
           viewBox="0 0 12 3"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path className="group-hover:group-hover:fill-red-600" d="M8.75 1H11.5V3H0.5V1H3.25L4.03571 0H7.96428L8.75 1Z" fill="#333F4C" />
         </svg>
-        <svg className="ml-[1.3px]" width="9px" height="10px" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="ml-[1.5px]" width="12px" height="14px" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             className="group-hover:fill-red-600"
             d="M0.5 8.57143C0.5 8.95031 0.658035 9.31367 0.93934
