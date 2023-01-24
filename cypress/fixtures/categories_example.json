@@ -1,13 +1,24 @@
 [
   {
-    "id": 0,
-    "name": "string",
-    "description": "string",
-    "createdOn": "2023-01-23T14:57:43.256Z",
-    "lastUpdated": "2023-01-23T14:57:43.256Z",
+    "id": 1,
+    "name": "Seafood",
+    "description": "Food from the oceans",
+    "createdOn": "2023-01-05T16:53:22.859+00:00",
+    "lastUpdated": "2023-01-06T06:53:22.859+00:00",
     "products": [
-      0
+      1
     ],
-    "retired": true
+    "retired": false
+  },
+  {
+    "id": 2,
+    "name": "Sundries",
+    "description": "Things that go with things.",
+    "createdOn": "2023-01-04T16:53:22.867+00:00",
+    "lastUpdated": "2023-01-05T10:53:22.867+00:00",
+    "products": [
+      2
+    ],
+    "retired": false
   }
 ]
