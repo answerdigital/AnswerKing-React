@@ -22,6 +22,9 @@ export const MenuPage = (): ReactElement => {
       </PageLayout>
     );
   }
+
+  const selectedCategoryDescription = categories.data.find((category) => category.id == selectedCategory)?.description;
+
   return (
     <PageLayout title={'Menu - Answer King'}>
       <div className="grid grid-cols-12">
@@ -30,7 +33,7 @@ export const MenuPage = (): ReactElement => {
           <div className="mb-5">
             <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
           </div>
-          <div className="font-poly mb-6 text-lg italic text-[#E4EAEB]">Served on a brioche bun with house fries and fresh salad</div>
+          <div className="font-poly mb-6 text-lg italic text-[#E4EAEB]">{selectedCategoryDescription}</div>
           <MenuItems
             products={products.data.filter(
               (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
