@@ -2,7 +2,7 @@ import PlaceHolderImage from 'assets/burger_transparent.png';
 import { Badge } from 'components/Badge/Badge';
 import { Button } from 'components/Button/Button';
 import { ProductDto } from 'dtos/ProductDto';
-import { MouseEventHandler, ReactElement, useCallback } from 'react';
+import { ReactElement, useCallback } from 'react';
 import { useLocalOrder } from '../../context/OrderContext';
 
 interface Props {
