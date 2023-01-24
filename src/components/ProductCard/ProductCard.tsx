@@ -2,7 +2,7 @@ import PlaceHolderImage from 'assets/burger_transparent.png';
 import { Badge } from 'components/Badge/Badge';
 import { Button } from 'components/Button/Button';
 import { ProductDto } from 'dtos/ProductDto';
-import { MouseEventHandler, ReactElement } from 'react';
+import { MouseEventHandler, ReactElement, useCallback } from 'react';
 import { useLocalOrder } from '../../context/OrderContext';
 
 interface Props {
@@ -12,11 +12,9 @@ interface Props {
 export const ProductCard = ({ product }: Props): ReactElement => {
   const { addToLocalOrder } = useLocalOrder();
 
-  function addToOrder(): MouseEventHandler<HTMLElement> {
-    return () => {
-      addToLocalOrder(product);
-    };
-  }
+  const addToOrder = useCallback(() => {
+    addToLocalOrder(product);
+  }, [addToLocalOrder, product]);
 
   return (
     <div className="relative mx-auto mb-7 h-[365px] w-[247px] rounded-lg border-gray-200 bg-white shadow-md">
