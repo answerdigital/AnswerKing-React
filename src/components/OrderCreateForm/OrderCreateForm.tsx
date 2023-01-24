@@ -51,7 +51,7 @@ export const OrderCreateForm = (): ReactElement => {
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
         <LoaderOverlay isEnabled={createOrder.isLoading} />
-        <Button size="large" className="text-1 font-poppins w-full py-2 px-4 text-sm font-semibold" type="submit" colour="yellow">
+        <Button size="large" className="text-1 font-poppins w-full py-2 px-4 text-sm font-[300]" type="submit" colour="yellow">
           Go to checkout
         </Button>
       </form>

@@ -20,7 +20,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
               size="medium"
               colour="clear"
               className={cn(
-                'h-[32px] w-[112px] px-[20px] text-[16px] font-[300] text-[#ffffff]',
+                'h-[32px] w-[152px] px-[20px] text-[16px] font-[300] text-[#ffffff]',
                 category.id === selectedCategory && 'border-[#333F4C] bg-[#A2AAB6] text-gray-900'
               )}
               onClick={() => setSelectedCategory(category.id)}
