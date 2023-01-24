@@ -12,6 +12,7 @@ export const OrderCreateForm = (): ReactElement => {
   const { order, createOrder, updateOrder } = useOrder();
   const { localOrder, setOrderId } = useLocalOrder();
   const navigate = useNavigate();
+  const noProductsInBasket = localOrder.lineItems?.length === 0;
 
   const total = localOrder.lineItems.map((item) => item.subTotal).reduce((a, b) => a + b, 0);
 
@@ -51,7 +52,13 @@ export const OrderCreateForm = (): ReactElement => {
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
         <LoaderOverlay isEnabled={createOrder.isLoading} />
-        <Button size="large" className="text-1 font-poppins w-full py-2 px-4 text-sm font-[300]" type="submit" colour="yellow">
+        <Button
+          disabled={noProductsInBasket}
+          size="large"
+          className="text-1 font-poppins w-full py-2 px-4 text-sm font-[300] disabled:pointer-events-none disabled:opacity-[0.5]"
+          type="submit"
+          colour="yellow"
+        >
           Go to checkout
         </Button>
       </form>

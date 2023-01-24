@@ -31,8 +31,8 @@ export const MenuPage = (): ReactElement => {
         <title>Menu - Answer King</title>
       </Helmet>
       <div className="grid grid-cols-12">
-        <div className="col-span-1"></div>
-        <div className="col-span-8 text-center">
+        <div className="col-span-2"></div>
+        <div className="col-span-6 pl-[100px] text-center">
           <div className="mb-5">
             <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
           </div>
@@ -43,9 +43,10 @@ export const MenuPage = (): ReactElement => {
             )}
           />
         </div>
-        <div className="col-span-3 mt-[145px]">
+        <div className="col-span-2 mt-[145px] pl-[20px]">
           <OrderPanel />
         </div>
+        <div className="col-span-1"></div>
       </div>
     </>
   );

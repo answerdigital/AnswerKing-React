@@ -3,4 +3,5 @@ export interface CategoryDto {
   name?: string;
   description?: string;
   products?: number[];
+  retired?: boolean;
 }

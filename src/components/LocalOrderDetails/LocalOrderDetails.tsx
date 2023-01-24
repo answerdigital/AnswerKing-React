@@ -12,7 +12,7 @@ export const LocalOrderDetails = (): ReactElement => {
     <div className="flex grow flex-col items-center justify-between">
       <table className="w-full table-fixed justify-between">
         <tbody>
-          {localOrder.lineItems?.length > 0 ? (
+          {localOrder.lineItems?.length > 0 &&
             localOrder.lineItems.map((lineItem) => (
               <tr key={lineItem.product.id} className="flex w-full justify-between [&:not(:last-child)]:border-b">
                 <td className={cn(tableElement, 'flex')}>
@@ -29,12 +29,7 @@ export const LocalOrderDetails = (): ReactElement => {
                   </div>
                 </td>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td className="text-[16px]">No items in order.</td>
-            </tr>
-          )}
+            ))}
         </tbody>
       </table>
     </div>
