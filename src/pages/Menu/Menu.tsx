@@ -5,8 +5,8 @@ import { MenuItems } from 'components/MenuItems/MenuItems';
 import { useCategories } from 'hooks/useCategories';
 import { useProducts } from 'hooks/useProducts';
 import { ReactElement, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
+import { PageLayout } from 'components/PageLayout/PageLayout';
 
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
@@ -15,21 +15,15 @@ export const MenuPage = (): ReactElement => {
 
   if (!categories.data || !products.data) {
     return (
-      <>
-        <Helmet>
-          <title>Menu - Answer King</title>
-        </Helmet>
+      <PageLayout title={'Menu - Answer King'}>
         <div className="menu">
           <LoaderOverlay isEnabled />
         </div>
-      </>
+      </PageLayout>
     );
   }
   return (
-    <>
-      <Helmet>
-        <title>Menu - Answer King</title>
-      </Helmet>
+    <PageLayout title={'Menu - Answer King'}>
       <div className="grid grid-cols-12">
         <div className="col-span-2"></div>
         <div className="col-span-6 pl-[100px] text-center">
@@ -48,6 +42,6 @@ export const MenuPage = (): ReactElement => {
         </div>
         <div className="col-span-1"></div>
       </div>
-    </>
+    </PageLayout>
   );
 };

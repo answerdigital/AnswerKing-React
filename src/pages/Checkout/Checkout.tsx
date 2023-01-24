@@ -1,14 +1,11 @@
 import { CheckoutDetails } from 'components/CheckoutDetails/CheckoutDetails';
+import { PageLayout } from 'components/PageLayout/PageLayout';
 import { ReactElement } from 'react';
-import { Helmet } from 'react-helmet-async';
 
 export const CheckoutPage = (): ReactElement => {
   return (
-    <>
-      <Helmet>
-        <title>Checkout - Answer King</title>
-      </Helmet>
+    <PageLayout title={'Checkout - Answer King'}>
       <CheckoutDetails />
-    </>
+    </PageLayout>
   );
 };

@@ -1,11 +1,11 @@
 import { Button } from 'components/Button/Button';
 import { ReactElement } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import BurgerHome from 'assets/burgerhome.png';
 import Logo from 'assets/icon_a.svg';
 import { Footer } from 'components/Footer/Footer';
+import { PageLayout } from 'components/PageLayout/PageLayout';
 
 export const HomePage = (): ReactElement => {
   const navigate = useNavigate();
@@ -15,10 +15,7 @@ export const HomePage = (): ReactElement => {
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Home - Answer King</title>
-      </Helmet>
+    <PageLayout title={'Home - Answer King'}>
       <div className="grid grid-cols-2 gap-2">
         <div className="ml-44 mt-20 flex flex-col items-center justify-center">
           <div className="mb-10 text-center text-[80px] text-white">
@@ -37,6 +34,6 @@ export const HomePage = (): ReactElement => {
         </div>
       </div>
       <Footer />
-    </>
+    </PageLayout>
   );
 };
