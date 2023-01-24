@@ -5,9 +5,8 @@ import { MenuItems } from 'components/MenuItems/MenuItems';
 import { useCategories } from 'hooks/useCategories';
 import { useProducts } from 'hooks/useProducts';
 import { ReactElement, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
-import { PageTransition } from 'components/PageTransition/PageTransition';
+import { PageLayout } from 'components/PageLayout/PageLayout';
 
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
@@ -16,37 +15,29 @@ export const MenuPage = (): ReactElement => {
 
   if (!categories.data || !products.data) {
     return (
-      <>
-        <Helmet>
-          <title>Menu - Answer King</title>
-        </Helmet>
+      <PageLayout title={'Menu - Answer King'}>
         <div className="menu">
           <LoaderOverlay isEnabled />
         </div>
-      </>
+      </PageLayout>
     );
   }
   return (
-    <>
-      <Helmet>
-        <title>Menu - Answer King</title>
-      </Helmet>
-      <PageTransition>
-        <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
-        <div className="mt-10 grid grid-cols-12">
-          <div className="col-span-1"></div>
-          <div className="col-span-8 text-center">
-            <MenuItems
-              products={products.data.filter(
-                (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
-              )}
-            />
-          </div>
-          <div className="col-span-3">
-            <OrderPanel />
-          </div>
+    <PageLayout title={'Menu - Answer King'}>
+      <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
+      <div className="mt-10 grid grid-cols-12">
+        <div className="col-span-1"></div>
+        <div className="col-span-8 text-center">
+          <MenuItems
+            products={products.data.filter(
+              (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
+            )}
+          />
         </div>
-      </PageTransition>
-    </>
+        <div className="col-span-3">
+          <OrderPanel />
+        </div>
+      </div>
+    </PageLayout>
   );
 };
