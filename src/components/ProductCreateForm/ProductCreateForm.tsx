@@ -5,6 +5,9 @@ import { useProducts } from 'hooks/useProducts';
 import { FormEvent, ReactElement, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { productProblemDetails } from 'hooks/useProducts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { Dropdown } from 'components/Dropdown/Dropdown';
 
 const NAME_MIN_LENGTH = 1;
 const NAME_MAX_LENGTH = 50;
@@ -39,6 +42,10 @@ export const ProductCreateForm = (): ReactElement => {
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const { createProduct } = useProducts();
   const toastId = useRef(0);
+
+  //Placeholder Data
+  const tags = ['Vegan', 'Vegetarian', 'Good Food', 'Nut-Free', 'Gluten-Free', 'Breakfast Menu'];
+  const categories = ['Mains', 'Sides', 'Drinks'];
 
   const handleErrorClear = (): void => {
     setValidationErrors([]);
@@ -114,50 +121,77 @@ export const ProductCreateForm = (): ReactElement => {
   };
 
   return (
-    <form className="product_create_form" onSubmit={handleSubmit}>
+    <form className="flex w-full flex-col items-center" onSubmit={handleSubmit}>
+      <div className="flex w-full flex-none">
+        <div className="flex w-1/2 flex-col items-center justify-start">
+          <div className="flex aspect-video w-5/6 items-center justify-center bg-gray-200">
+            <FontAwesomeIcon icon={faPen} />
+          </div>
+          <label className="w-full text-left" htmlFor="product_create_form_category">
+            Category
+          </label>
+          <Dropdown options={categories} className="w-full" id="product_create_form_category" />
+        </div>
+        <div className="w-1/2">
+          <div className="w-full">
+            <div className="w-full">
+              <label className="w-full" htmlFor="product_create_form_name">
+                Name:
+              </label>
+              <input className="w-full" id="product_create_form_name" onChange={(event) => setName(event.target.value)} type="text" value={name} />
+            </div>
+            <div className="w-full">
+              <label className="w-full" htmlFor="product_create_form_desc">
+                Description:
+              </label>
+              <textarea
+                className="w-full"
+                id="product_create_form_desc"
+                onChange={(event) => setDescription(event.target.value)}
+                rows={3}
+                value={description}
+              />
+            </div>
+          </div>
+          <div className="flex w-full">
+            <div className="flex w-1/2 flex-col">
+              <label className="w-max" htmlFor="product_create_form__price">
+                Price:
+              </label>
+              <input
+                className=""
+                id="product_create_form__price"
+                onChange={(event) => setPrice(event.target.value)}
+                step={0.01}
+                type="number"
+                value={price}
+              />
+            </div>
+            <div className="flex w-1/2 flex-col">
+              <label className="w-max" htmlFor="product_create_form__stock">
+                Stock:
+              </label>
+              <input className="" id="product_create_form__stock" step={1} type="number" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex w-full flex-col justify-start">
+        <a>Tags</a>
+        <div className="grid w-full grid-cols-5 text-sm">
+          {tags.map((tag, i) => {
+            return (
+              <div key={i} className="">
+                <input type="checkbox" id={'tag' + i} />
+                <label htmlFor={'tag' + i}>{tag}</label>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       <LoaderOverlay isEnabled={false} />
-      <p className="product_create_form__description">Create an product</p>
-      {validationErrors.length > 0 ? (
-        <Error onClear={handleErrorClear}>
-          {validationErrors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </Error>
-      ) : null}
-      <label className="product_create_form__label" htmlFor="product_create_form__name">
-        Name:
-      </label>
-      <input
-        className="product_create_form__input"
-        id="product_create_form__name"
-        onChange={(event) => setName(event.target.value)}
-        type="text"
-        value={name}
-      />
-      <label className="product_create_form__label" htmlFor="product_create_form_price">
-        Price:
-      </label>
-      <input
-        className="product_create_form__input"
-        id="product_create_form__price"
-        onChange={(event) => setPrice(event.target.value)}
-        step={0.01}
-        type="number"
-        value={price}
-      />
-      <label className="product_create_form__label" htmlFor="product_create_form__description">
-        Description:
-      </label>
-      <textarea
-        className="product_create_form__input"
-        id="product_create_form__description"
-        onChange={(event) => setDescription(event.target.value)}
-        rows={3}
-        value={description}
-      />
-      <Button className="product_create_form__button" type="submit">
-        Create
-      </Button>
     </form>
   );
 };
