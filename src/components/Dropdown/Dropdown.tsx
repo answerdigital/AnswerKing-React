@@ -17,10 +17,7 @@ export const Dropdown = ({
 
   return (
     <div className={className} id={id} data-testid={dataTestId}>
-      <select
-        className="w-full appearance-none rounded-md border bg-white p-2.5 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
-        defaultValue={selected}
-      >
+      <select className="w-full rounded-md border bg-white text-center" defaultValue={selected}>
         {options.map((op, i) => {
           return (
             <option key={i} onClick={() => setSelected(op)}>
