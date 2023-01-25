@@ -1,9 +1,13 @@
+import '@pactflow/pact-cypress-adapter';
+import fs from 'fs';
+
 context('this does something', () => {
   before(() => {
-    cy.visit('http://localhost:5173');
+    cy.visit('http://localhost:5144');
   });
 
   it('should create a contract upon utilizing an API mock', () => {
+
     cy.setupPact('answer-king-ui', 'answer-king-api');
     cy.intercept('GET', '**/api/categories', { fixture: 'categories_example.json' }).as('categories');
     cy.get('[data-testid=order]').click();

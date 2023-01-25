@@ -1,7 +1,0 @@
-{
-  "experimentalRunEvents":true,
-  "env": {
-    "headersBlocklist": ["access-control-allow-origin", "access-control-allow-credentials"],
-    "ignoreDefaultBlocklist": true
-  }
-}
