@@ -12,6 +12,7 @@ export enum ActionType {
 
 type ActionPayload = {
   product?: ProductDto;
+  quantity?: number;
   orderId?: number;
 };
 
@@ -24,65 +25,71 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
   const { type, payload } = action;
 
   const productPayload = payload.product;
+  const lineItemQuantity = payload.quantity;
   const orderIdPayload = payload.orderId;
 
   const existingItem = localOrder.lineItems.find((item) => item.product.id === productPayload?.id);
   switch (type) {
     case ActionType.AddToLocalOrder:
-      if (!productPayload || existingItem) {
+      if (!productPayload || !lineItemQuantity) {
         return localOrder;
       }
 
-      return {
-        ...localOrder,
-        lineItems: [...localOrder.lineItems, { product: productPayload, quantity: 1, subTotal: productPayload.price }],
-      };
+      const subtotal = Math.round(productPayload.price * lineItemQuantity * 1e2) / 1e2;
 
-    case ActionType.IncreaseProductQuantity:
-      if (!productPayload) {
-        return localOrder;
-      }
-
-      return {
-        ...localOrder,
-        lineItems: [
-          ...localOrder.lineItems.map((item) => {
-            if (item.product.id === productPayload.id) {
-              const subtotal = item.product.price * item.quantity;
-              return { ...item, quantity: item.quantity++, subTotal: Math.round(subtotal * 1e2) / 1e2 };
-            }
-            return item;
-          }),
-        ],
-      };
-
-    case ActionType.DecreaseProductQuantityOrRemove:
-      if (!productPayload) {
-        return localOrder;
-      }
-
-      if (existingItem?.quantity === 0) {
+      if (lineItemQuantity === 0) {
         return {
           ...localOrder,
           lineItems: [...localOrder.lineItems.filter((item) => item.product.id !== productPayload.id)],
         };
       }
 
+      if (existingItem) {
+        return {
+          ...localOrder,
+          lineItems: [
+            ...localOrder.lineItems.map((item) => {
+              if (item.product.id === productPayload.id) {
+                return { ...item, quantity: lineItemQuantity, subTotal: subtotal };
+              }
+              return item;
+            }),
+          ],
+        };
+      }
+
       return {
         ...localOrder,
-        lineItems: [
-          ...localOrder.lineItems.map((item) => {
-            if (item.product.id === productPayload.id) {
-              return {
-                ...item,
-                quantity: item.quantity--,
-                subTotal: Math.round((item.subTotal - item.product.price) * 1e2) / 1e2,
-              };
-            }
-            return item;
-          }),
-        ],
+        lineItems: [...localOrder.lineItems, { product: productPayload, quantity: lineItemQuantity, subTotal: subtotal }],
       };
+
+      // case ActionType.DecreaseProductQuantityOrRemove:
+      //   if (!productPayload) {
+      //     return localOrder;
+      //   }
+
+      //   if (existingItem?.quantity === 0) {
+      //     return {
+      //       ...localOrder,
+      //       lineItems: [...localOrder.lineItems.filter((item) => item.product.id !== productPayload.id)],
+      //     };
+      //   }
+
+      //   return {
+      //     ...localOrder,
+      //     lineItems: [
+      //       ...localOrder.lineItems.map((item) => {
+      //         if (item.product.id === productPayload.id) {
+      //           return {
+      //             ...item,
+      //             quantity: item.quantity--,
+      //             subTotal: Math.round((item.subTotal - item.product.price) * 1e2) / 1e2,
+      //           };
+      //         }
+      //         return item;
+      //       }),
+      //     ],
+      //   };
 
     case ActionType.RemoveProduct:
       if (!productPayload) {
