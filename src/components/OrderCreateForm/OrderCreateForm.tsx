@@ -40,9 +40,9 @@ export const OrderCreateForm = (): ReactElement => {
   }, [order.data?.id]);
 
   return (
-    <div className="mt-auto px-5 text-center">
+    <div className="mt-auto px-2 text-center">
       <hr className="mb-2"></hr>
-      <div className="flex w-full justify-between text-[10px] text-[#5A6675]">
+      <div className="flex w-full justify-between text-[12px] text-[#5A6675]">
         <span className="">Service Charge:</span>
         <span className="">{GBPFormat.format(0.5)}</span>
       </div>
@@ -55,7 +55,7 @@ export const OrderCreateForm = (): ReactElement => {
         <Button
           disabled={noProductsInBasket}
           size="large"
-          className="text-1 font-poppins w-full py-2 px-4 text-sm font-[300] disabled:pointer-events-none disabled:opacity-[0.5]"
+          className="text-1 font-poppins w-full py-2 px-2 text-sm font-[300] disabled:pointer-events-none disabled:opacity-[0.5]"
           type="submit"
           colour="yellow"
         >

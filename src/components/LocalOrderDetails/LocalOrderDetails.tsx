@@ -3,10 +3,10 @@ import { useLocalOrder } from 'context/OrderContext';
 import { GBPFormat } from 'utilities/GBPFormat';
 import cn from 'classnames';
 import { TrashIcon } from 'components/Icons/TrashIcon';
+import { QuantityIcon } from 'components/Icons/QuantityIcon';
 
 export const LocalOrderDetails = (): ReactElement => {
-  const iconClass = 'w-[30px] h-[30px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
-  const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
+  const tableElement = 'py-4 text-[#333F4C] font-[400] text-[14.5px] leading-[18px]';
   const { localOrder, decreaseProductQuantityOrRemove } = useLocalOrder();
   return (
     <div className="flex grow flex-col items-center justify-between">
@@ -16,7 +16,7 @@ export const LocalOrderDetails = (): ReactElement => {
             localOrder.lineItems.map((lineItem) => (
               <tr key={lineItem.product.id} className="flex w-full justify-between [&:not(:last-child)]:border-b">
                 <td className={cn(tableElement, 'flex')}>
-                  <span className={cn(iconClass, 'rounded text-center text-[14px]')}>{lineItem.quantity}</span>
+                  <QuantityIcon quantity={lineItem.quantity} />
                   <span className="self-center">{lineItem.product.name}</span>
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>

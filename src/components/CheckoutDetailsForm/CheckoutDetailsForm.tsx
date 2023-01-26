@@ -22,7 +22,7 @@ export const CheckoutDetailsForm = (): ReactElement => {
 
   return (
     <form
-      className="mb-10 flex h-[580px] w-[600px] grow flex-col items-center justify-between rounded-[16px] bg-white p-[24px]"
+      className="mb-10 flex h-[65vh] w-[35%] grow flex-col items-center justify-between rounded-[16px] bg-white p-[24px]"
       onSubmit={(e) => e.preventDefault()}
     >
       <div className="h-5/6 w-full grow">
@@ -54,7 +54,7 @@ export const CheckoutDetailsForm = (): ReactElement => {
       <div className="mb-3 w-full text-[22px] transition-all duration-300">
         <hr className="mb-6 px-1"></hr>
         {lineItemsExist ? (
-          <div className={cn(lineItemsExist ? 'opacity-100' : 'opacity-0', 'flex w-full justify-between text-[10px] text-[#5A6675]')}>
+          <div className={cn(lineItemsExist ? 'opacity-100' : 'opacity-0', 'flex w-full justify-between text-[11px] text-[#5A6675]')}>
             <span className="">Service Charge:</span>
             <span className="">{GBPFormat.format(serviceCharge)}</span>
           </div>
