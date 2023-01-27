@@ -20,8 +20,6 @@ interface ILocalOrder {
 const LocalOrderContext = createContext<ILocalOrder>({
   localOrder: { lineItems: initialLineItems },
   addToLocalOrder: () => null,
-  // increaseProductQuantity: () => null,
-  // decreaseProductQuantityOrRemove: () => null,
   removeProduct: () => null,
   setOrderId: () => null,
   removeLocalOrder: () => null,
@@ -37,19 +35,6 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
   const addToLocalOrder = (product: ProductDto, quantity: number): void => {
     dispatch({ type: ActionType.AddToLocalOrder, payload: { product: product, quantity: quantity } });
   };
-
-  // const increaseProductQuantity = (product: ProductDto): void => {
-  //   dispatch({ type: ActionType.IncreaseProductQuantity, payload: { product: product } });
-  // };
-
-  // const decreaseProductQuantityOrRemove = (product: ProductDto): void => {
-  //   dispatch({ type: ActionType.DecreaseProductQuantityOrRemove, payload: { product: product } });
-  // };
-
-  // const checkQuantity = (product: ProductDto) => {
-  //   const existingItem = localOrder.lineItems.find((item) => item.product.id === product.id);
-  //   const quantity = {existingItem ? existingItem.quantity : 0};
-  // };
 
   const removeProduct = (product: ProductDto): void => {
     dispatch({ type: ActionType.RemoveProduct, payload: { product: product } });
