@@ -21,7 +21,7 @@ export const MenuProductModal = ({ product, disableShow }: Props): ReactElement 
     setCounter((counter) => counter + 1);
   };
   const decrease = (): void => {
-    counter == 0 ? null : setCounter((counter) => counter - 1);
+    counter ? setCounter((counter) => counter - 1) : null;
   };
 
   const addToOrder = useCallback(() => {
@@ -34,7 +34,8 @@ export const MenuProductModal = ({ product, disableShow }: Props): ReactElement 
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-auto overflow-y-auto" onClick={() => disableShow(false)}>
+      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-auto overflow-y-auto
+       bg-black bg-opacity-25 outline-none focus:outline-none" onClick={() => disableShow(false)}>
         <div
           className="min-h-5/6 relative mb-7 flex w-5/12 flex-col items-center justify-between gap-2 rounded-2xl bg-white p-6 shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
           onClick={(e) => e.stopPropagation()}

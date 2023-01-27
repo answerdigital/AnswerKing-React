@@ -10,8 +10,6 @@ const initialOrder = { lineItems: initialLineItems };
 interface ILocalOrder {
   localOrder: LocalOrderDto;
   addToLocalOrder: (product: ProductDto, quantity: number) => void;
-  // increaseProductQuantity: (product: ProductDto) => void;
-  // decreaseProductQuantityOrRemove: (product: ProductDto) => void;
   removeProduct: (product: ProductDto) => void;
   setOrderId: (id: number) => void;
   removeLocalOrder: () => void;
