@@ -11,9 +11,12 @@ interface Props {
 }
 
 export const MenuProductModal = ({ product, disableShow }: Props): ReactElement => {
-  const { addToLocalOrder } = useLocalOrder();
-
-  const [counter, setCounter] = useState(1);
+  const { addToLocalOrder, removeProduct, localOrder } = useLocalOrder();
+  const checkQuantity = (product: ProductDto): number => {
+    const existingItem = localOrder.lineItems.find((item) => item.product.id === product.id);
+    return existingItem ? existingItem.quantity: 1;
+  };
+  const [counter, setCounter] = useState(checkQuantity(product));
   const increase = (): void => {
     setCounter((counter) => counter + 1);
   };
@@ -25,18 +28,19 @@ export const MenuProductModal = ({ product, disableShow }: Props): ReactElement 
     addToLocalOrder(product, counter);
   }, [addToLocalOrder, product, counter]);
 
-  const ingredients = ['Patty', 'Bun', 'Lettuce', 'Ketchup', 'Hummus', 'Tahini'];
-  const addOns = ['Patty', 'Olives', 'Tofu', 'Hummus', 'Tahini'];
+  // const ingredients = ['Patty', 'Bun', 'Lettuce', 'Ketchup', 'Hummus', 'Tahini'];
+  // const addOns = ['Patty', 'Olives', 'Tofu', 'Hummus', 'Tahini'];
   const allergens = ['Milk', 'Peanuts', 'Celery', 'Soy', 'Gluten'];
 
 
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-25 outline-none focus:outline-none">
-        <div className="relative mb-7 flex w-6/12	h-5/6 flex-col items-center justify-between gap-2 rounded-2xl bg-white p-6 shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-auto"  onClick={() => disableShow(false)} >
+        <div className="relative mb-7 flex w-5/12 min-h-5/6 flex-col items-center justify-between gap-2 rounded-2xl bg-white p-6 shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
+          onClick={e => e.stopPropagation()}>
           <div className="flex flex-row gap-6">
-            <img alt="burger" className="h-[172.41px] w-[264px] grow rounded-lg" src={PlaceHolderImage} />
+            <img alt="burger" className="h-[172.41px] min-w-[264px] grow rounded-lg" src={PlaceHolderImage} />
             <div className="flex flex-col items-start gap-2 p-4">
               <h5 className="font-poppins text-xl font-semibold text-[#333F4C]">{product.name}</h5>
               <p className="font-poppins text-left text-[#333F4C]">{product.description}</p>
@@ -54,9 +58,11 @@ export const MenuProductModal = ({ product, disableShow }: Props): ReactElement 
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-items-start p-0 gap-2">
+
+          {/* Ingredients and AddOns
+          <div className="flex flex-col w-full justify-items-start p-0 gap-2">
             <div className="font-poly italic font-normal text-base text-left text-[#A2AAB6]">Ingredients</div>
-            <div className="flex flex-row justify-items-start">
+            <div className="flex flex-row flex-wrap justify-items-start">
               {ingredients.map((ingredient) => (
                 <>
                   <CheckBoxIcon checked={true} />
@@ -67,9 +73,9 @@ export const MenuProductModal = ({ product, disableShow }: Props): ReactElement 
               ))}
             </div>
           </div>
-          <div className="flex flex-col justify-items-start p-0 gap-2">
+          <div className="flex flex-col w-full justify-items-start p-0 gap-2">
             <div className="font-poly italic font-normal text-base text-left text-[#A2AAB6]">Additional (£1 each)</div>
-            <div className="flex flex-row justify-items-start">
+            <div className="flex flex-row flex-wrap justify-items-start">
               {addOns.map((addOn) => (
                 <>
                   <CheckBoxIcon checked={false} />
@@ -79,8 +85,8 @@ export const MenuProductModal = ({ product, disableShow }: Props): ReactElement 
                 </>
               ))}
             </div>
-          </div>
-          <div className="flex flex-col justify-items-start p-0 gap-2">
+          </div> */}
+          <div className="flex flex-col w-full justify-items-start p-0 gap-2">
             <div className="font-poly italic font-normal text-base text-left text-[#A2AAB6]">Contains Allergens</div>
             <div className="flex flex-row justify-items-start">
               {allergens.map((allergen) => (
@@ -97,21 +103,34 @@ export const MenuProductModal = ({ product, disableShow }: Props): ReactElement 
             <Button className="flex grow justify-center border-2 border-solid border-[#A2AAB6] gap-2.5py-4 px-3" size="small" colour="clear" onClick={() => disableShow(false)}>
               Cancel
             </Button>
-            <Button
-              onClick={() => {
-                addToOrder();
-                disableShow(false);
-              }}
-              size="small"
-              colour="yellow"
-              className="flex grow justify-center gap-2.5py-4 px-3"
-            >
+            {counter > 0 ? (
+              <Button
+                onClick={() => {
+                  addToOrder();
+                  disableShow(false);
+                }}
+                size="small"
+                colour="yellow"
+                className="flex grow justify-center gap-2.5py-4 px-3"
+              >
               Add to order £{(product.price * counter * 1e2) / 1e2}
-            </Button>
+              </Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  removeProduct(product);                  ;
+                  disableShow(false);
+                }}
+                size="small"
+                colour="yellow"
+                className="flex grow justify-center gap-2.5py-4 px-3"
+              >
+              Remove from order
+              </Button>
+            )}
           </div>
         </div>
       </div>
-      <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
     </>
   );
 };
