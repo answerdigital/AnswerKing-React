@@ -35,8 +35,6 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
         return localOrder;
       }
 
-      const subtotal = Math.round(productPayload.price * lineItemQuantity * 1e2) / 1e2;
-
       if (lineItemQuantity === 0) {
         return {
           ...localOrder,
@@ -50,7 +48,7 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
           lineItems: [
             ...localOrder.lineItems.map((item) => {
               if (item.product.id === productPayload.id) {
-                return { ...item, quantity: lineItemQuantity, subTotal: subtotal };
+                return { ...item, quantity: lineItemQuantity, subTotal: Math.round(productPayload.price * lineItemQuantity * 1e2) / 1e2 };
               }
               return item;
             }),
@@ -60,36 +58,11 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
 
       return {
         ...localOrder,
-        lineItems: [...localOrder.lineItems, { product: productPayload, quantity: lineItemQuantity, subTotal: subtotal }],
+        lineItems: [
+          ...localOrder.lineItems,
+          { product: productPayload, quantity: lineItemQuantity, subTotal: Math.round(productPayload.price * lineItemQuantity * 1e2) / 1e2 },
+        ],
       };
-
-      // case ActionType.DecreaseProductQuantityOrRemove:
-      //   if (!productPayload) {
-      //     return localOrder;
-      //   }
-
-      //   if (existingItem?.quantity === 0) {
-      //     return {
-      //       ...localOrder,
-      //       lineItems: [...localOrder.lineItems.filter((item) => item.product.id !== productPayload.id)],
-      //     };
-      //   }
-
-      //   return {
-      //     ...localOrder,
-      //     lineItems: [
-      //       ...localOrder.lineItems.map((item) => {
-      //         if (item.product.id === productPayload.id) {
-      //           return {
-      //             ...item,
-      //             quantity: item.quantity--,
-      //             subTotal: Math.round((item.subTotal - item.product.price) * 1e2) / 1e2,
-      //           };
-      //         }
-      //         return item;
-      //       }),
-      //     ],
-      //   };
 
     case ActionType.RemoveProduct:
       if (!productPayload) {
