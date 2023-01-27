@@ -52,7 +52,7 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
   // };
 
   const removeProduct = (product: ProductDto): void => {
-    dispatch({ type: ActionType.RemoveProduct, payload: { product: product, quantity: 0 } });
+    dispatch({ type: ActionType.RemoveProduct, payload: { product: product } });
   };
 
   const setOrderId = (id: number): void => {

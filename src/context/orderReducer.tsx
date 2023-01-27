@@ -31,7 +31,7 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
   const existingItem = localOrder.lineItems.find((item) => item.product.id === productPayload?.id);
   switch (type) {
     case ActionType.AddToLocalOrder:
-      if (!productPayload || !lineItemQuantity) {
+      if (!productPayload || lineItemQuantity == undefined) {
         return localOrder;
       }
 
