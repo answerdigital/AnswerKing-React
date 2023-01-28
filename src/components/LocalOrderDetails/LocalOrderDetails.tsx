@@ -21,9 +21,7 @@ export const LocalOrderDetails = (): ReactElement => {
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
                   <div className="items-center justify-center"></div>
-                  <button onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
-                    <TrashIcon product={lineItem.product} />
-                  </button>
+                  <TrashIcon product={lineItem.product} />
                   <div className="left-8 flex h-[21px] w-[50px] items-center justify-center">
                     <span className="text-center">{GBPFormat.format(lineItem.subTotal)}</span>
                   </div>
