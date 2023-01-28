@@ -7,7 +7,7 @@ import { TrashIcon } from 'components/Icons/TrashIcon';
 export const LocalOrderDetails = (): ReactElement => {
   const iconClass = 'w-[30px] h-[30px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
   const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
-  const { localOrder, decreaseProductQuantityOrRemove } = useLocalOrder();
+  const { localOrder } = useLocalOrder();
   return (
     <div className="flex grow flex-col items-center justify-between">
       <table className="w-full table-fixed justify-between">

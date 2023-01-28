@@ -1,5 +1,4 @@
 import { Button } from 'components/Button/Button';
-import { PageTransition } from 'components/PageTransition/PageTransition';
 import { useLocalOrder } from 'context/OrderContext';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useCallback } from 'react';
