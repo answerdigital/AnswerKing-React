@@ -21,10 +21,12 @@ export const ProductCard = ({ product }: Props): ReactElement => {
       <img alt="burger" className="h-[50%] w-full rounded-t-lg object-cover" src={PlaceHolderImage} />
       {product && <BadgeIcon>New</BadgeIcon>}
       <div className="p-5">
-        <h5 className="mb-1 text-center text-xl font-bold tracking-tight text-[#333F4C]">{product.name}</h5>
-        <p className="font-poly mb-3 text-center text-base font-[400] italic text-[#333F4C]">
-          {product.description.length > 50 ? product.description.substring(0, 50) + '...' : product.description}
-        </p>
+        <h5 className="mb-2 text-center text-xl font-bold tracking-tight text-[#333F4C]">{product.name}</h5>
+        <div className="flex justify-center text-center">
+          <p className="font-poly self-center text-base font-[400] italic text-[#333F4C]">
+            {product.description.length > 50 ? product.description.substring(0, 50) + '...' : product.description}
+          </p>
+        </div>
       </div>
       <div className="absolute bottom-5 flex w-full justify-between px-7 text-center">
         <p className="flex items-center justify-center text-[14px] text-[#333F4C]">£{(product.price * 1e2) / 1e2}</p>

@@ -7,6 +7,7 @@ import { useProducts } from 'hooks/useProducts';
 import { ReactElement, useState } from 'react';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
 import { PageLayout } from 'components/PageLayout/PageLayout';
+import { motion } from 'framer-motion';
 
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
@@ -23,6 +24,14 @@ export const MenuPage = (): ReactElement => {
     );
   }
 
+  const tabContentVariant = {
+    active: {
+      display: 'block',
+      transition: { staggerChildren: 0.2 }
+    },
+    inactive: { display: 'none' }
+  };
+
   const selectedCategoryDescription = categories.data.find((category) => category.id == selectedCategory)?.description;
 
   return (
@@ -37,11 +46,19 @@ export const MenuPage = (): ReactElement => {
         <div className="col-span-2"></div>
         <div className="col-span-6 text-center">
           <div className="font-poly mt-5 mb-6 text-lg italic text-[#E4EAEB]">{selectedCategoryDescription}</div>
-          <MenuItems
-            products={products.data.filter(
-              (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
-            )}
-          />
+          <motion.div
+            role="tabpanel"
+            id={selectedCategory.toString()}
+            variants={tabContentVariant}
+            animate={selectedCategory ? 'active' : 'inactive'}
+            initial="inactive"
+          >
+            <MenuItems
+              products={products.data.filter(
+                (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
+              )}
+            />
+          </motion.div>
         </div>
         <div className="col-span-2 ml-[7%]">
           <OrderPanel />
