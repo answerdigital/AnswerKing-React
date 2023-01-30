@@ -6,6 +6,7 @@ import { StaffInventory } from 'components/StaffBody/Inventory';
 import { StaffCategories } from 'components/StaffBody/Categories';
 import { StaffTags } from 'components/StaffBody/Tags';
 import { StaffOrders } from 'components/StaffBody/Orders';
+import { SearchContextProvider } from 'components/Search/SearchContext';
 
 export interface ISection {
   title: string;
@@ -27,7 +28,9 @@ export const StaffPage = (): ReactElement => {
       <div className="staff font-poppins font-300 flex h-full flex-col items-center">
         <a className="items-center p-6 text-4xl">Administrator</a>
         <StaffNavBar setSelectedSection={setselectedSection} selectedSection={selectedSection} sections={sections} className="p-6" />
-        {sections.map((section) => (section.title === selectedSection.title ? section.component : null))}
+        <SearchContextProvider>
+          {sections.map((section) => (section.title === selectedSection.title ? section.component : null))}
+        </SearchContextProvider>
       </div>
     </PageLayout>
   );

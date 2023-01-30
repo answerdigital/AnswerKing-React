@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 
-interface Props extends React.ComponentPropsWithoutRef<'button'> {
+interface Props extends React.ComponentPropsWithoutRef<'select'> {
   'data-testid'?: string;
   options: string[];
 }
