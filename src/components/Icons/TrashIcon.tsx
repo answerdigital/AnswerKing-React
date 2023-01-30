@@ -1,5 +1,5 @@
 import { ProductDto } from 'dtos/ProductDto';
-import {  ReactElement, useState } from 'react';
+import { ReactElement, useState } from 'react';
 import cn from 'classnames';
 import { DeleteProductModal } from 'components/Modals/DeleteProductModal';
 
@@ -12,7 +12,7 @@ export const TrashIcon = ({ product }: Props): ReactElement => {
   const iconClass = 'w-[35px] h-[35px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
   return (
     <>
-      {isOpen && <DeleteProductModal product={product} setIsOpen={setIsOpen}/>}
+      {isOpen && <DeleteProductModal product={product} setIsOpen={setIsOpen} />}
       <div className={cn(iconClass)} onClick={() => setIsOpen(true)}>
         <div className="group cursor-pointer justify-center text-center">
           <svg
