@@ -35,13 +35,6 @@ export const orderReducer = (localOrder: LocalOrderDto, action: Action): LocalOr
         return localOrder;
       }
 
-      if (lineItemQuantity === 0) {
-        return {
-          ...localOrder,
-          lineItems: [...localOrder.lineItems.filter((item) => item.product.id !== productPayload.id)],
-        };
-      }
-
       if (existingItem) {
         return {
           ...localOrder,
