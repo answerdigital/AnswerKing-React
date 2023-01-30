@@ -19,7 +19,6 @@ export const ProductsTable = (): ReactElement => {
           <th className={'text-center ' + padding}>Price</th>
           <th className={'text-center ' + padding}>Sold</th>
           <th />
-          <th />
         </tr>
       </thead>
       <tbody className="font-poppins font-200 divide-y text-sm">

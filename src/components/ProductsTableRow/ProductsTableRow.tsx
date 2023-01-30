@@ -38,8 +38,6 @@ export const ProductsTableRow = ({ product, padding }: Props): ReactElement => {
       <td className={'text-center ' + padding}>None</td>
       <td className={padding}>
         <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(product)} role="button" className={iconClass} />
-      </td>
-      <td className={padding}>
         <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} onKeyDown={handleDelete} role="button" className={iconClass} />
       </td>
     </tr>
