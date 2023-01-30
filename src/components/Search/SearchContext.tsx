@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 
 interface ISearchContext {
   searchString: string;
@@ -13,8 +13,9 @@ interface Props {
 
 export const SearchContextProvider: React.FC<Props> = ({ children }) => {
   const [searchString, setSearchString] = useState<string>('');
+  const contextValues: ISearchContext = useMemo(() => ({ searchString: searchString, setSearchString: setSearchString }), [searchString]);
 
-  return <SearchContext.Provider value={{ searchString: searchString, setSearchString: setSearchString }}>{children}</SearchContext.Provider>;
+  return <SearchContext.Provider value={contextValues}>{children}</SearchContext.Provider>;
 };
 
 export const useSearch = (): ISearchContext => useContext(SearchContext);

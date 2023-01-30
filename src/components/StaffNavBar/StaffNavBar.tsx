@@ -12,13 +12,13 @@ interface Props {
 export const StaffNavBar = ({ className, sections, setSelectedSection, selectedSection }: Props): ReactElement => {
   return (
     <div className={className}>
-      {sections.map((section, id) =>
+      {sections.map((section) =>
         section.title === selectedSection.title ? (
-          <Button key={id} hover={false} size="medium" colour={'grey'} onClick={() => setSelectedSection(section)} className="mx-10">
+          <Button key={section.title} hover={false} size="medium" colour={'grey'} onClick={() => setSelectedSection(section)} className="mx-10">
             {section.title}
           </Button>
         ) : (
-          <Button key={id} size="medium" colour={'clear'} onClick={() => setSelectedSection(section)} className="mx-10">
+          <Button key={section.title} size="medium" colour={'clear'} onClick={() => setSelectedSection(section)} className="mx-10">
             {section.title}
           </Button>
         )

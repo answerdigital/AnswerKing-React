@@ -6,8 +6,6 @@ import { StaffInventory } from 'components/StaffBody/Inventory';
 import { StaffCategories } from 'components/StaffBody/Categories';
 import { StaffTags } from 'components/StaffBody/Tags';
 import { StaffOrders } from 'components/StaffBody/Orders';
-import { SearchContextProvider } from 'components/Search/SearchContext';
-import { ProductFormContextProvider } from 'components/ProductCreateForm/ProductFormContext';
 
 export interface ISection {
   title: string;

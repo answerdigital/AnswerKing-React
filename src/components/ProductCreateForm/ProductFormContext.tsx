@@ -1,5 +1,5 @@
 import { ProductDto } from 'dtos/ProductDto';
-import { createContext, useContext, useState, useRef } from 'react';
+import { createContext, useContext, useState, useRef, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { productProblemDetails, useProducts } from 'hooks/useProducts';
 import { ProductForm } from './ProductForm';
@@ -173,16 +173,19 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
     toastId.current = toast.error(<ul>{errorList}</ul>) as number;
   };
 
+  const contextValues: IProductFormContext = useMemo(
+    () => ({
+      startEditing: editProduct,
+      startNew: newProduct,
+      useFormProduct: [formProduct, setFormProduct],
+      closeForm: closeForm,
+      saveForm: saveForm,
+    }),
+    [initialProduct, formProduct]
+  );
+
   return (
-    <ProductFormContext.Provider
-      value={{
-        startEditing: editProduct,
-        startNew: newProduct,
-        useFormProduct: [formProduct, setFormProduct],
-        closeForm: closeForm,
-        saveForm: saveForm,
-      }}
-    >
+    <ProductFormContext.Provider value={contextValues}>
       {formOpen ? (
         <>
           <ProductForm />

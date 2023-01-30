@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import React, { ReactElement, useState } from 'react';
 
 interface Props extends React.ComponentPropsWithoutRef<'button'> {
@@ -18,9 +17,9 @@ export const Dropdown = ({
   return (
     <div className={className} id={id} data-testid={dataTestId}>
       <select className="w-full rounded-md border bg-white text-center" defaultValue={selected}>
-        {options.map((op, i) => {
+        {options.map((op) => {
           return (
-            <option key={i} onClick={() => setSelected(op)}>
+            <option key={op} onClick={() => setSelected(op)}>
               {op}
             </option>
           );

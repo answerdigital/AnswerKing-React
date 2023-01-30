@@ -95,7 +95,7 @@ export const ProductForm = (): ReactElement => {
           <a className="col-span-4 italic text-gray-400">Tags</a>
           {tags.map((tag, i) => {
             return (
-              <div key={i}>
+              <div key={tag.name}>
                 <input
                   type="checkbox"
                   className=""

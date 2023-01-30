@@ -1,10 +1,7 @@
-import { Button } from 'components/Button/Button';
-import { ProductForm } from 'components/ProductCreateForm/ProductForm';
-import { ProductFormContextProvider, useProductFormContext } from 'components/ProductCreateForm/ProductFormContext';
+import { ProductFormContextProvider } from 'components/ProductCreateForm/ProductFormContext';
 import { ProductsTable } from 'components/ProductsTable/ProductsTable';
-import { Search } from 'components/Search/Search';
 import { SearchContextProvider } from 'components/Search/SearchContext';
-import { ReactElement, useState } from 'react';
+import { ReactElement } from 'react';
 
 export const StaffInventory = (): ReactElement => {
   return (
