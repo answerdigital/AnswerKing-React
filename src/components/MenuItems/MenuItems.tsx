@@ -15,11 +15,11 @@ export const MenuItems = ({ products }: Props): ReactElement => {
   const cardVariant = {
     active: {
       opacity: 1,
-      transition: { duration: 1 }
+      transition: { duration: 1 },
     },
     inactive: {
-      opacity: 0.30,
-      transition: { duration: 0.5 }
+      opacity: 0.3,
+      transition: { duration: 0.5 },
     },
   };
 

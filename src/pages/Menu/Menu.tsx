@@ -27,9 +27,9 @@ export const MenuPage = (): ReactElement => {
   const tabContentVariant = {
     active: {
       display: 'block',
-      transition: { staggerChildren: 0.2 }
+      transition: { staggerChildren: 0.2 },
     },
-    inactive: { display: 'none' }
+    inactive: { display: 'none' },
   };
 
   const selectedCategoryDescription = categories.data.find((category) => category.id == selectedCategory)?.description;

@@ -12,7 +12,7 @@ export const LocalOrderDetails = (): ReactElement => {
   const { localOrder, decreaseProductQuantityOrRemove } = useLocalOrder();
   const lineItemsExist = localOrder.lineItems?.length > 0;
   return (
-    <div className="flex relative grow flex-col items-center justify-between">
+    <div className="relative flex grow flex-col items-center justify-between">
       <ComponentTransition lineItemsExist={lineItemsExist}>
         <div className="absolute top-[30%] left-[27%]">
           <img src={CheckoutBurgerImg} className="h-[60%] w-[90%] opacity-80"></img>
