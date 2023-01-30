@@ -45,23 +45,23 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
             onClick={() => disableShow(false)}
           >
             <div
-              className="relative flex w-5/6 lg:w-3/5 xl:w-[35%] h-4/5 lg:h-fit flex-col items-center justify-between rounded-2xl bg-white p-6 shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
+              className="relative flex h-4/5 w-5/6 flex-col items-center justify-between rounded-2xl bg-white p-6 shadow-[0_4px_4px_rgba(0,0,0,0.25)] lg:h-fit lg:w-3/5 xl:w-[35%]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex flex-row gap-6">
-                <img alt="burger" className="h-[172.41px] min-w-[264px] grow p-2 rounded" src={PlaceHolderImage} />
+                <img alt="burger" className="h-[172.41px] w-[264px] grow rounded-[12px] border-0 p-2" src={PlaceHolderImage} />
                 <div className="flex flex-col items-start gap-2 p-4">
                   <h5 className="font-poppins text-xl font-[600] text-[#333F4C]">{product.name}</h5>
-                  <p className="font-poly italic text-left text-[#333F4C]">{product.description}</p>
+                  <p className="font-poly text-left italic text-[#333F4C]">{product.description}</p>
                   <div className="flex w-full items-center justify-between gap-2">
                     <div className="font-semibold text-[#333F4C]">V, Ve, GF</div>
                     <div className="flex flex-row items-center justify-between gap-2 text-[#333F4C]">
                       <button className="flex h-10 w-10 items-center gap-3.5 rounded-md bg-[#E4EAEB] p-4" onClick={decrease}>
-                    -
+                        -
                       </button>
                       <div>{counter}</div>
                       <button className="flex h-10 w-10 items-center gap-3.5 rounded-md bg-[#E4EAEB] p-4" onClick={increase}>
-                    +
+                        +
                       </button>
                     </div>
                   </div>
@@ -88,7 +88,7 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
                   colour="clear"
                   onClick={() => disableShow(false)}
                 >
-              Cancel
+                  Cancel
                 </Button>
                 {counter > 0 ? (
                   <Button
@@ -100,7 +100,7 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
                     colour="yellow"
                     className="gap-2.5py-4 flex grow justify-center px-3"
                   >
-                Add to order £{(product.price * counter * 1e2) / 1e2}
+                    Add to order £{(product.price * counter * 1e2) / 1e2}
                   </Button>
                 ) : (
                   <Button
@@ -112,7 +112,7 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
                     colour="yellow"
                     className="gap-2.5py-4 flex grow justify-center px-3"
                   >
-                Remove from order
+                    Remove from order
                   </Button>
                 )}
               </div>
