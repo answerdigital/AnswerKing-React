@@ -21,7 +21,11 @@ export const MenuProductModal = ({ product, disableShow }: Props): ReactElement 
     setCounter((counter) => counter + 1);
   };
   const decrease = (): void => {
-    counter ? setCounter((counter) => counter - 1) : null;
+    if (counter) {
+      setCounter((counter) => counter - 1);
+    } else {
+      null;
+    }
   };
 
   const addToOrder = useCallback(() => {
