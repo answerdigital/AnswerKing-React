@@ -1,7 +1,7 @@
 import PlaceHolderImage from 'assets/burger_transparent.png';
 import { BadgeIcon } from 'components/Icons/BadgeIcon';
 import { Button } from 'components/Button/Button';
-import { Modal } from 'components/MenuProductModal/Modal';
+import { MenuProductModal } from 'components/MenuProductModal/MenuProductModal';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useState } from 'react';
 
@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
 
   return (
     <>
-      <Modal product={product} showModal={showModal} disableShow={setShowModal} />
+      <MenuProductModal product={product} showModal={showModal} disableShow={setShowModal} />
       <button onClick={() => setShowModal(true)}>
         <div className="relative mx-auto mb-7 h-[40vh] w-[28vh] rounded-lg border-gray-200 bg-white shadow-md">
           <img alt="burger" className="h-[50%] w-full rounded-t-lg object-cover" src={PlaceHolderImage} />

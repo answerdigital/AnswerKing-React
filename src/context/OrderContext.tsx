@@ -1,7 +1,7 @@
 import { LineItemDto } from 'dtos/LineItemDto';
 import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { ProductDto } from 'dtos/ProductDto';
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useMemo, useReducer } from 'react';
 import { ActionType, orderReducer } from './orderReducer';
 
 const initialLineItems: LineItemDto[] = [];
@@ -46,8 +46,9 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: ActionType.RemoveLocalOrder, payload: {} });
   };
 
+  const ordersFunctions = useMemo(() => ({ localOrder, addToLocalOrder, removeProduct, setOrderId, removeLocalOrder }), [localOrder]);
   return (
-    <LocalOrderContext.Provider value={{ localOrder, addToLocalOrder, removeProduct, setOrderId, removeLocalOrder }}>
+    <LocalOrderContext.Provider value={ordersFunctions}>
       {children}
     </LocalOrderContext.Provider>
   );
