@@ -101,9 +101,7 @@ export const ProductForm = (): ReactElement => {
                 onChange={(event) => {
                   setFormProduct({
                     ...formProduct,
-                    tags: formProduct.tags.filter((tagId) => {
-                      tagId === tag.id ? event.target.checked : true;
-                    }),
+                    tags: formProduct.tags.filter((tagId) => (tagId === tag.id ? event.target.checked : true)),
                   });
                 }}
               />
