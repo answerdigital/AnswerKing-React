@@ -18,8 +18,8 @@ export const MenuItems = ({ products }: Props): ReactElement => {
       transition: { duration: 1 },
     },
     inactive: {
-      opacity: 0.3,
-      transition: { duration: 0.5 },
+      opacity: 0.4,
+      transition: { duration: 1 },
     },
   };
 

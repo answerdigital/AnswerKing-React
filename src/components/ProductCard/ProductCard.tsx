@@ -17,7 +17,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
   }, [addToLocalOrder, product]);
 
   return (
-    <div className="relative mx-auto mb-7 h-[95%] w-[88%] rounded-lg border-gray-200 bg-white shadow-md">
+    <div className="relative mx-auto mb-7 h-[40vh] w-[28vh] rounded-lg border-gray-200 bg-white shadow-md">
       <img alt="burger" className="h-[50%] w-full rounded-t-lg object-cover" src={PlaceHolderImage} />
       {product && <BadgeIcon>New</BadgeIcon>}
       <div className="p-5">

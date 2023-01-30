@@ -17,25 +17,29 @@ export const TrashIcon = ({ product }: Props): ReactElement => {
   }
   return (
     <div className={cn(iconClass)}>
-      <div className="group cursor-pointer justify-center text-center" onClick={removeSelectedProduct()}>
-        <svg
-          className="duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]"
-          width="15"
-          height="5"
-          viewBox="0 0 12 3"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path className="group-hover:group-hover:fill-red-600" d="M8.75 1H11.5V3H0.5V1H3.25L4.03571 0H7.96428L8.75 1Z" fill="#333F4C" />
-        </svg>
-        <svg className="ml-[2px]" width="11px" height="13px" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            className="group-hover:fill-red-600"
-            d="M0.5 8.57143C0.5 8.95031 0.658035 9.31367 0.93934
-    9.58158C1.22064 9.84949 1.60218 10 2 10H8C8.39783 10 8.77936 9.84949 9.06066 9.58158C9.34196 9.31367 9.5 8.95031 9.5 8.57143V0H0.5V8.57143Z"
-            fill="#333F4C"
-          />
-        </svg>
+      <div className="group cursor-pointer flex-col justify-center text-center align-middle" onClick={removeSelectedProduct()}>
+        <div className="flex w-[33px] flex-col items-center justify-center">
+          <svg
+            className="duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]"
+            width="15"
+            height="5"
+            viewBox="0 0 12 3"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path className="group-hover:group-hover:fill-red-600" d="M8.75 1H11.5V3H0.5V1H3.25L4.03571 0H7.96428L8.75 1Z" fill="#333F4C" />
+          </svg>
+        </div>
+        <div className="flex w-[33px] flex-col items-center justify-center">
+          <svg className="" width="11px" height="13px" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              className="group-hover:fill-red-600"
+              d="M0.5 8.57143C0.5 8.95031 0.658035 9.31367 0.93934
+            9.58158C1.22064 9.84949 1.60218 10 2 10H8C8.39783 10 8.77936 9.84949 9.06066 9.58158C9.34196 9.31367 9.5 8.95031 9.5 8.57143V0H0.5V8.57143Z"
+              fill="#333F4C"
+            />
+          </svg>
+        </div>
       </div>
     </div>
   );
