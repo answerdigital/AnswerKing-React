@@ -40,16 +40,15 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
       {showModal ? (
         <>
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center overflow-x-auto overflow-y-auto
-       bg-black bg-opacity-25 outline-none focus:outline-none"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 outline-none focus:outline-none"
             onClick={() => disableShow(false)}
           >
             <div
-              className="relative flex h-4/5 w-5/6 flex-col items-center justify-between rounded-2xl bg-white p-6 shadow-[0_4px_4px_rgba(0,0,0,0.25)] lg:h-fit lg:w-3/5 xl:w-[35%]"
+              className="relative flex h-4/5 w-5/6 flex-col items-center justify-between rounded-2xl bg-white p-6 shadow-[0_4px_4px_rgba(0,0,0,0.25)] lg:h-fit lg:w-3/5 xl:w-[33%]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex flex-row gap-6">
-                <img alt="burger" className="h-[172.41px] w-[264px] grow rounded-[12px] border-0 p-2" src={PlaceHolderImage} />
+              <div className="flex flex-row gap-4">
+                <img alt="burger" className="h-[172.41px] w-[264px] grow rounded-[16px] p-2" src={PlaceHolderImage} />
                 <div className="flex flex-col items-start gap-2 p-4">
                   <h5 className="font-poppins text-xl font-[600] text-[#333F4C]">{product.name}</h5>
                   <p className="font-poly text-left italic text-[#333F4C]">{product.description}</p>
@@ -68,7 +67,7 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
                 </div>
               </div>
 
-              <div className="flex w-full flex-col justify-items-start gap-2 p-0">
+              <div className="flex w-full flex-col justify-items-start p-0">
                 <div className="font-poly text-left text-base font-normal italic text-[#A2AAB6]">Contains Allergens</div>
                 <div className="flex flex-row justify-items-start">
                   {allergens.map((allergen) => (
@@ -81,9 +80,9 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
                 </div>
               </div>
 
-              <div className="flex flex-row items-center gap-4 self-stretch rounded-lg p-0">
+              <div className="flex flex-row gap-4 self-stretch rounded-lg p-0">
                 <Button
-                  className="gap-2.5py-4 flex grow justify-center border-2 border-solid border-[#A2AAB6] px-3"
+                  className="gap-2.5py-4 flex h-[45px] w-[129.5px] grow items-center justify-center border-2 border-solid border-[#A2AAB6] px-3"
                   size="small"
                   colour="clear"
                   onClick={() => disableShow(false)}
@@ -98,7 +97,7 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
                     }}
                     size="small"
                     colour="yellow"
-                    className="gap-2.5py-4 flex grow justify-center px-3"
+                    className="gap-2.5py-4 flex h-[45px] w-[129.5px] grow items-center justify-center px-3"
                   >
                     Add to order £{(product.price * counter * 1e2) / 1e2}
                   </Button>
@@ -110,7 +109,7 @@ export const MenuProductModal = ({ product, showModal, disableShow }: Props): Re
                     }}
                     size="small"
                     colour="yellow"
-                    className="gap-2.5py-4 flex grow justify-center px-3"
+                    className="gap-2.5py-4 flex h-[45px] w-[129.5px] grow items-center justify-center px-3"
                   >
                     Remove from order
                   </Button>
