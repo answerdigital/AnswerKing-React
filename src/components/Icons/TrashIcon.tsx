@@ -16,14 +16,14 @@ export const TrashIcon = ({ product }: Props): ReactElement => {
       <div className={cn(iconClass)} onClick={() => setIsOpen(true)}>
         <div className="group cursor-pointer justify-center text-center">
           <svg
-            className="duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]"
+            className={cn(!isOpen ? 'duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]' : '')}
             width="15"
             height="5"
             viewBox="0 0 12 3"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path className="group-hover:group-hover:fill-red-600" d="M8.75 1H11.5V3H0.5V1H3.25L4.03571 0H7.96428L8.75 1Z" fill="#333F4C" />
+            <path className="group-hover:fill-red-600" d="M8.75 1H11.5V3H0.5V1H3.25L4.03571 0H7.96428L8.75 1Z" fill="#333F4C" />
           </svg>
           <svg className="ml-[1.5px]" width="12px" height="14px" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
