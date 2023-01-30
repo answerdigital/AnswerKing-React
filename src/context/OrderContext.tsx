@@ -47,11 +47,7 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
   };
 
   const ordersFunctions = useMemo(() => ({ localOrder, addToLocalOrder, removeProduct, setOrderId, removeLocalOrder }), [localOrder]);
-  return (
-    <LocalOrderContext.Provider value={ordersFunctions}>
-      {children}
-    </LocalOrderContext.Provider>
-  );
+  return <LocalOrderContext.Provider value={ordersFunctions}>{children}</LocalOrderContext.Provider>;
 };
 
 export const useLocalOrder = (): ILocalOrder => useContext(LocalOrderContext);
