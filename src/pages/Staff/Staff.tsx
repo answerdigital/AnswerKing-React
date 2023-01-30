@@ -29,11 +29,7 @@ export const StaffPage = (): ReactElement => {
       <div className="staff font-poppins font-300 flex h-full flex-col items-center">
         <a className="items-center p-6 text-4xl">Administrator</a>
         <StaffNavBar setSelectedSection={setselectedSection} selectedSection={selectedSection} sections={sections} className="p-6" />
-        <SearchContextProvider>
-          <ProductFormContextProvider>
-            {sections.map((section) => (section.title === selectedSection.title ? section.component : null))}
-          </ProductFormContextProvider>
-        </SearchContextProvider>
+        {sections.map((section) => (section.title === selectedSection.title ? section.component : null))}
       </div>
     </PageLayout>
   );

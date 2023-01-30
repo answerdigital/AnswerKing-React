@@ -2,6 +2,7 @@ import { ProductDto } from 'dtos/ProductDto';
 import { createContext, useContext, useState, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { productProblemDetails, useProducts } from 'hooks/useProducts';
+import { ProductForm } from './ProductForm';
 
 const NAME_MIN_LENGTH = 1;
 const NAME_MAX_LENGTH = 50;
@@ -38,23 +39,19 @@ interface IFormProduct {
 }
 
 interface IProductFormContext {
-  product?: ProductDto;
   startEditing: (product: ProductDto) => void;
   startNew: () => void;
   useFormProduct: [IFormProduct, (newProduct: IFormProduct) => void];
   closeForm: () => void;
   saveForm: () => void;
-  formOpen: boolean;
 }
 
 const ProductFormContext = createContext<IProductFormContext>({
-  product: undefined,
   startEditing: () => null,
   startNew: () => null,
   useFormProduct: [{ name: '', desc: '', price: 0, stock: 0, tags: [] }, () => null],
   closeForm: () => null,
   saveForm: () => null,
-  formOpen: false,
 });
 
 interface Props {
@@ -62,7 +59,7 @@ interface Props {
 }
 
 export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
-  const [product, setProduct] = useState<ProductDto | undefined>(undefined);
+  const [initialProduct, setInitialProduct] = useState<ProductDto | undefined>(undefined);
   const [formOpen, setFormOpen] = useState<boolean>(false);
   const { createProduct } = useProducts();
   const [formProduct, setFormProduct] = useState<IFormProduct>({ name: '', desc: '', price: 0, stock: 0, tags: [] });
@@ -71,16 +68,18 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
 
   const editProduct = (newProduct: ProductDto): void => {
     setFormOpen(true);
-    setProduct(newProduct);
+    setInitialProduct(newProduct);
+    setFormProduct({ name: newProduct.name, desc: newProduct.description, price: newProduct.price, stock: 1, tags: [] });
   };
 
   const newProduct = (): void => {
     setFormOpen(true);
-    setProduct(undefined);
+    setInitialProduct(undefined);
+    setFormProduct({ name: '', desc: '', price: 0, stock: 0, tags: [] });
   };
 
   const closeForm = (): void => {
-    setProduct(undefined);
+    setInitialProduct(undefined);
     setFormOpen(false);
   };
 
@@ -106,7 +105,7 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
     // Initially I checked for validationErrors.length however theres a slight delay with the state updating,
     // and sometimes this request gets fired when it shouldn't.
     if (nameIsValid(formProduct.name) && priceIsValid(formProduct.price.toString()) && descriptionIsValid(formProduct.desc)) {
-      if (product) {
+      if (initialProduct) {
         /*
         TODO add update funtion to useProducts hook
         updateProduct.mutate(
@@ -122,7 +121,7 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
         );
         */
       } else {
-        /*initialProduct =*/ createProduct.mutate(
+        createProduct.mutate(
           { name: formProduct.name, price: formProduct.price, description: formProduct.desc },
           {
             onSuccess: (product) => {
@@ -179,14 +178,18 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
       value={{
         startEditing: editProduct,
         startNew: newProduct,
-        product: product,
         useFormProduct: [formProduct, setFormProduct],
         closeForm: closeForm,
         saveForm: saveForm,
-        formOpen: formOpen,
       }}
     >
-      {children}
+      {formOpen ? (
+        <>
+          <ProductForm />
+        </>
+      ) : (
+        <>{children}</>
+      )}
     </ProductFormContext.Provider>
   );
 };
