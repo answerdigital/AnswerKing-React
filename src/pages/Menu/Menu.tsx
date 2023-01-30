@@ -5,8 +5,8 @@ import { MenuItems } from 'components/MenuItems/MenuItems';
 import { useCategories } from 'hooks/useCategories';
 import { useProducts } from 'hooks/useProducts';
 import { ReactElement, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
+import { PageLayout } from 'components/PageLayout/PageLayout';
 
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
@@ -15,35 +15,36 @@ export const MenuPage = (): ReactElement => {
 
   if (!categories.data || !products.data) {
     return (
-      <>
-        <Helmet>
-          <title>Menu - Answer King</title>
-        </Helmet>
+      <PageLayout title={'Menu - Answer King'}>
         <div className="menu">
           <LoaderOverlay isEnabled />
         </div>
-      </>
+      </PageLayout>
     );
   }
+
+  const selectedCategoryDescription = categories.data.find((category) => category.id == selectedCategory)?.description;
+
   return (
-    <>
-      <Helmet>
-        <title>Menu - Answer King</title>
-      </Helmet>
-      <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
-      <div className="mt-10 grid grid-cols-12">
-        <div className="col-span-1"></div>
-        <div className="col-span-8 text-center">
+    <PageLayout title={'Menu - Answer King'}>
+      <div className="grid grid-cols-12">
+        <div className="col-span-2"></div>
+        <div className="col-span-6 pl-[100px] text-center">
+          <div className="mb-5">
+            <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
+          </div>
+          <div className="font-poly mb-6 text-lg italic text-[#E4EAEB]">{selectedCategoryDescription}</div>
           <MenuItems
             products={products.data.filter(
               (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
             )}
           />
         </div>
-        <div className="col-span-3">
+        <div className="col-span-2 mt-[145px] pl-[20px]">
           <OrderPanel />
         </div>
+        <div className="col-span-1"></div>
       </div>
-    </>
+    </PageLayout>
   );
 };

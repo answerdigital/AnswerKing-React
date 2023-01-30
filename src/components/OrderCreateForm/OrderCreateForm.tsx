@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { useLocalOrder } from 'context/OrderContext';
+import { GBPFormat } from 'utilities/GBPFormat';
 
 export const OrderCreateForm = (): ReactElement => {
   const { order, createOrder, updateOrder } = useOrder();
   const { localOrder, setOrderId } = useLocalOrder();
   const navigate = useNavigate();
+  const noProductsInBasket = localOrder.lineItems?.length === 0;
 
   const total = localOrder.lineItems.map((item) => item.subTotal).reduce((a, b) => a + b, 0);
 
@@ -39,14 +41,25 @@ export const OrderCreateForm = (): ReactElement => {
 
   return (
     <div className="mt-auto px-5 text-center">
-      <div className="mb-5 flex text-[20px]">
-        <span className="">Total: </span>
-        <span className="ml-auto">£{Math.round(total * 1e2) / 1e2}</span>
+      <hr className="mb-2"></hr>
+      <div className="flex w-full justify-between text-[10px] text-[#5A6675]">
+        <span className="">Service Charge:</span>
+        <span className="">{GBPFormat.format(0.5)}</span>
+      </div>
+      <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
+        <span>Total:</span>
+        <span>{GBPFormat.format(total)}</span>
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
         <LoaderOverlay isEnabled={createOrder.isLoading} />
-        <Button size="large" className="text-1 py-2 px-24 font-normal" type="submit" colour="yellow">
-          Checkout
+        <Button
+          disabled={noProductsInBasket}
+          size="large"
+          className="text-1 font-poppins w-full py-2 px-4 text-sm font-[300] disabled:pointer-events-none disabled:opacity-[0.5]"
+          type="submit"
+          colour="yellow"
+        >
+          Go to checkout
         </Button>
       </form>
     </div>

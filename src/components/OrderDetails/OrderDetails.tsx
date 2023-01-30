@@ -1,32 +1,34 @@
 import { ReactElement } from 'react';
-import cn from 'classnames';
 import { GBPFormat } from 'utilities/GBPFormat';
 import { LineItemDto } from 'dtos/LineItemDto';
+import { TrashIcon } from 'components/Icons/TrashIcon';
+import cn from 'classnames';
 
 interface Props {
   items: LineItemDto[];
 }
 
 export const OrderDetails = ({ items }: Props): ReactElement => {
-  const iconClass = 'border rounded bg-gray-200 p-2';
-
-  const tableElement = 'whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900';
+  const iconClass = 'w-[35px] h-[35px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
+  const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
 
   return (
-    <div className="flex h-full flex-col items-center justify-between">
-      <table className="w-full table-fixed">
-        <tbody className="flex-none">
+    <div className="flex flex-col items-center justify-between">
+      <table className="w-full table-fixed justify-between">
+        <tbody>
           {items.length > 0 ? (
             items.map((lineItem) => (
-              <tr key={lineItem.product.id} className="border-b">
-                <td className={tableElement}>
-                  <span className={cn(iconClass, 'rounded bg-gray-200 text-center')}>{lineItem.quantity}</span>
+              <tr key={lineItem.product.id} className="flex w-full justify-between [&:not(:last-child)]:border-b">
+                <td className={cn(tableElement, 'flex')}>
+                  <span className={cn(iconClass, 'rounded text-center text-[18px] font-[400]')}>{lineItem.quantity}</span>
+                  <span className="self-center text-[16px]">{lineItem.product.name}</span>
                 </td>
-                <td className={cn(tableElement, 'w-2/3')}>
-                  <span>{lineItem.product.name}</span>
-                </td>
-                <td className={tableElement}>
-                  <span>{GBPFormat.format(lineItem.subTotal)}</span>
+                <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
+                  <div className="items-center justify-center"></div>
+                  <TrashIcon product={lineItem.product} />
+                  <div className="left-8 flex h-[21px] w-[50px] items-center justify-center text-[16px]">
+                    <span className="text-center">{GBPFormat.format(lineItem.subTotal)}</span>
+                  </div>
                 </td>
               </tr>
             ))
@@ -35,10 +37,6 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
           )}
         </tbody>
       </table>
-      <div className="flex w-full justify-between">
-        <span className="font-bold">Total:</span>
-        <span className="font-bold">{GBPFormat.format(items.reduce((partialSum, a) => partialSum + a.subTotal, 0))}</span>
-      </div>
     </div>
   );
 };
