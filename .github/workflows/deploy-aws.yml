@@ -1,4 +1,4 @@
-name: Publish Build to AWS S3
+name: Deploy Build to AWS S3
 
 on:
   push:
@@ -17,4 +17,4 @@ jobs:
           aws-region: eu-west-2
 
       - name: Upload to S3 Bucket
-        run: npm run upload
+        run: npm run deploy
