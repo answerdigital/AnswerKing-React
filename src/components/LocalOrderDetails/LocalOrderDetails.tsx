@@ -9,7 +9,7 @@ import { ComponentTransition } from 'components/Transitions/ComponentTransition'
 
 export const LocalOrderDetails = (): ReactElement => {
   const tableElement = 'py-4 text-[#333F4C] font-[400] text-[14.5px] leading-[18px]';
-  const { localOrder, decreaseProductQuantityOrRemove } = useLocalOrder();
+  const { localOrder } = useLocalOrder();
   const lineItemsExist = localOrder.lineItems?.length > 0;
   return (
     <div className="relative flex grow flex-col items-center justify-between">

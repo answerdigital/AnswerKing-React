@@ -1,6 +1,5 @@
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useState } from 'react';
-import cn from 'classnames';
 import { DeleteProductModal } from 'components/Modals/DeleteProductModal';
 
 interface Props {
