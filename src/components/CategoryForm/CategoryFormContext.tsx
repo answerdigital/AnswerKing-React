@@ -91,6 +91,7 @@ export const CategoryFormContextProvider: React.FC<Props> = ({ children }) => {
 
     if (nameIsValid(formCategory.name) && descriptionIsValid(formCategory.desc)) {
       if (initialCategory) {
+        console.log('Editing categories not yet implemented');
         /*
         TODO add update funtion to usecategorys hook
         updatecategory.mutate(
@@ -106,6 +107,7 @@ export const CategoryFormContextProvider: React.FC<Props> = ({ children }) => {
         );
         */
       } else {
+        console.log('Saving new categories not yet implemented');
         /*
         createcategory.mutate(
           { name: formcategory.name, price: formcategory.price, description: formcategory.desc },

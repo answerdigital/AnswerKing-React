@@ -15,7 +15,7 @@ export const CategoriesTableRow = ({ category, padding }: Props): ReactElement =
   const formContext = useCategoryFormContext();
 
   const handleDelete = (): void => {
-    console.assert(false, 'Retiring of categories not yet implemented');
+    console.log('Retiring of categories not yet implemented');
     /*
     removeProduct.mutate(product.id, {
       onSuccess: () => {

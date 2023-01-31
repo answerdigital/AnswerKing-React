@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import cn from 'classnames';
 import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
+import { toast } from 'react-toastify';
 
 interface Props {
   product: ProductDto;
@@ -16,14 +17,11 @@ export const ProductsTableRow = ({ product, padding }: Props): ReactElement => {
   const formContext = useProductFormContext();
 
   const handleDelete = (): void => {
-    console.assert(false);
-    /*
     removeProduct.mutate(product.id, {
       onSuccess: () => {
         toast.success(`Product "${product.name}" was succesfully removed.`);
       },
     });
-    */
   };
 
   const iconClass = cn('bg-gray-300 border-gray-300 rounded border-4 m-1');
