@@ -54,17 +54,12 @@ export const CheckoutDetailsForm = (): ReactElement => {
       </div>
       <div className="mt-auto mb-3 w-full text-[22px]">
         <hr className="mb-6 px-1"></hr>
-        {lineItemsExist ? (
-          <div
-            className={cn(
-              lineItemsExist ? 'opacity-100' : 'opacity-0',
-              'flex w-full justify-between text-[11px] text-[#5A6675] transition-all duration-300'
-            )}
-          >
+        {lineItemsExist && (
+          <div className="flex w-full justify-between text-[11px] text-[#5A6675] transition-all duration-300">
             <span>Service Charge:</span>
             <span>{GBPFormat.format(serviceCharge)}</span>
           </div>
-        ) : null}
+        )}
         <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
           <span>Total:</span>
           <span>
