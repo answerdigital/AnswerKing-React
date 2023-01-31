@@ -1,4 +1,4 @@
-import { ProductFormContextProvider } from 'components/ProductCreateForm/ProductFormContext';
+import { ProductFormContextProvider } from 'components/ProductForm/ProductFormContext';
 import { ProductsTable } from 'components/ProductsTable/ProductsTable';
 import { ReactElement } from 'react';
 

@@ -1,10 +1,10 @@
-import { ProductsTableRow } from 'components/ProductsTableRow/ProductsTableRow';
+import { ProductsTableRow } from './ProductsTableRow';
 import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
 import { useSearch } from 'components/Search/SearchContext';
 import { Search } from 'components/Search/Search';
 import { Button } from 'components/Button/Button';
-import { useProductFormContext } from 'components/ProductCreateForm/ProductFormContext';
+import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
 
 export const ProductsTable = (): ReactElement => {
   const { products } = useProducts();

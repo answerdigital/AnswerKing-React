@@ -15,6 +15,7 @@ export const Search = ({
   hover = true,
 }: Props): ReactElement => {
   const setSearchString = useSearch().setSearchString;
+  const searchString = useSearch().searchString;
 
   return (
     <form className={cn('font-poppins text-center', className)} data-testid={dataTestId} id={id}>
@@ -45,6 +46,7 @@ export const Search = ({
           placeholder="Search"
           required
           onChange={(e) => setSearchString(e.currentTarget.value)}
+          value={searchString}
           disabled={disabled}
         />
       </div>

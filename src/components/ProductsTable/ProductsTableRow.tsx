@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import cn from 'classnames';
-import { useProductFormContext } from 'components/ProductCreateForm/ProductFormContext';
+import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
 
 interface Props {
   product: ProductDto;
