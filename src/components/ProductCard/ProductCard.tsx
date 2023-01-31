@@ -1,5 +1,5 @@
 import PlaceHolderImage from 'assets/burger_transparent.png';
-import { Badge } from 'components/Badge/Badge';
+import { BadgeIcon } from 'components/Icons/BadgeIcon';
 import { Button } from 'components/Button/Button';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useCallback } from 'react';
@@ -17,18 +17,20 @@ export const ProductCard = ({ product }: Props): ReactElement => {
   }, [addToLocalOrder, product]);
 
   return (
-    <div className="relative mx-auto mb-7 h-[365px] w-[247px] rounded-lg border-gray-200 bg-white shadow-md">
-      <img alt="burger" className="h-[200px] w-full rounded-t-lg" src={PlaceHolderImage} />
-      {product.name === 'Nurturation Burger' && <Badge background={'bg-[#333F4C]'}>New</Badge>}
-      <div className="p-4">
-        <h5 className="mb-1 text-center text-xl font-bold tracking-tight text-[#333F4C]">{product.name}</h5>
-        <p className="font-poly mb-3 text-center text-base font-[400] italic text-[#333F4C]">
-          {product.description.length > 50 ? product.description.substring(0, 50) + '...' : product.description}
-        </p>
+    <div className="relative mx-auto mb-7 h-[40vh] w-[28vh] rounded-lg border-gray-200 bg-white shadow-md">
+      <img alt="burger" className="h-[50%] w-full rounded-t-lg object-cover" src={PlaceHolderImage} />
+      {product && <BadgeIcon>New</BadgeIcon>}
+      <div className="p-5">
+        <h5 className="mb-2 text-center text-xl font-bold tracking-tight text-[#333F4C]">{product.name}</h5>
+        <div className="flex justify-center text-center">
+          <p className="font-poly self-center text-base font-[400] italic text-[#333F4C]">
+            {product.description.length > 50 ? product.description.substring(0, 50) + '...' : product.description}
+          </p>
+        </div>
       </div>
-      <div className="absolute bottom-[20px] mx-auto flex px-[30px]">
-        <p className="mt-0.5 flex items-center justify-center pr-[17px] text-[14px] text-[#333F4C]">£{(product.price * 1e2) / 1e2}</p>
-        <Button onClick={addToOrder} size="small" colour="yellow" className="py-[5px] text-[14px] font-[400]">
+      <div className="absolute bottom-5 flex w-full justify-between px-7 text-center">
+        <p className="flex items-center justify-center text-[14px] text-[#333F4C]">£{(product.price * 1e2) / 1e2}</p>
+        <Button onClick={addToOrder} size="small" colour="yellow" className="py-1 text-[14px] font-[400] leading-[21px]">
           Add to order
         </Button>
       </div>
