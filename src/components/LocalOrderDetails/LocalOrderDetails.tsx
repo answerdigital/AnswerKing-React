@@ -7,7 +7,7 @@ import { TrashIcon } from 'components/Icons/TrashIcon';
 export const LocalOrderDetails = (): ReactElement => {
   const iconClass = 'w-[30px] h-[30px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
   const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
-  const { localOrder, decreaseProductQuantityOrRemove } = useLocalOrder();
+  const { localOrder } = useLocalOrder();
   return (
     <div className="flex grow flex-col items-center justify-between">
       <table className="w-full table-fixed justify-between">
@@ -21,9 +21,7 @@ export const LocalOrderDetails = (): ReactElement => {
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
                   <div className="items-center justify-center"></div>
-                  <button onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
-                    <TrashIcon product={lineItem.product} />
-                  </button>
+                  <TrashIcon product={lineItem.product} />
                   <div className="left-8 flex h-[21px] w-[50px] items-center justify-center">
                     <span className="text-center">{GBPFormat.format(lineItem.subTotal)}</span>
                   </div>
