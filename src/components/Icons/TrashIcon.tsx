@@ -1,26 +1,22 @@
-import { useLocalOrder } from 'context/OrderContext';
 import { ProductDto } from 'dtos/ProductDto';
-import { MouseEventHandler, ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import cn from 'classnames';
+import { DeleteProductModal } from 'components/Modals/DeleteProductModal';
 
 interface Props {
   product: ProductDto;
 }
 
 export const TrashIcon = ({ product }: Props): ReactElement => {
-  const { removeProduct } = useLocalOrder();
-  const iconClass = 'w-[33px] h-[33px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
-  function removeSelectedProduct(): MouseEventHandler<HTMLElement> {
-    return () => {
-      removeProduct(product);
-    };
-  }
+  const [isOpen, setIsOpen] = useState(false);
+  const iconClass = 'w-[35px] h-[35px] flex items-center justify-center rounded mr-[24px] border rounded bg-[#E4EAEB]';
   return (
-    <div className={cn(iconClass)}>
-      <div className="group cursor-pointer flex-col justify-center text-center align-middle" onClick={removeSelectedProduct()}>
-        <div className="flex w-[33px] flex-col items-center justify-center">
+    <>
+      {isOpen && <DeleteProductModal product={product} setIsOpen={setIsOpen} />}
+      <div className={cn(iconClass)} onClick={() => setIsOpen(true)}>
+        <div className="group cursor-pointer justify-center text-center">
           <svg
-            className="duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]"
+            className={cn(!isOpen && 'duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]')}
             width="15"
             height="5"
             viewBox="0 0 12 3"
@@ -41,6 +37,6 @@ export const TrashIcon = ({ product }: Props): ReactElement => {
           </svg>
         </div>
       </div>
-    </div>
+    </>
   );
 };
