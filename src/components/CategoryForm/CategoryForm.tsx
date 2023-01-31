@@ -79,7 +79,7 @@ export const CategoryForm = (): ReactElement => {
                   onChange={ToggleProduct}
                   checked={Boolean(formCategory.products.find((productId) => productId === product.id))}
                 />
-                <label className="text-sm" htmlFor={'product' + i}>
+                <label className="text-sm" htmlFor={product.id.toString()}>
                   {' ' + product.name}
                 </label>
               </div>
