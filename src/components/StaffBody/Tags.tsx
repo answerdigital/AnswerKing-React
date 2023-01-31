@@ -1,9 +1,15 @@
+import { TagFormContextProvider } from 'components/TagForm/TagFormContext';
+import { TagsTable } from 'components/TagsTable/TagsTable';
 import { ReactElement } from 'react';
 
 export const StaffTags = (): ReactElement => {
   return (
-    <div key="staff tags">
-      <p>Tags Section Not Yet Implemented</p>
+    <div className="flex min-h-[60vh] w-[40%] flex-col items-center justify-between rounded-lg bg-white p-6 text-gray-900" key="staff tags">
+      <>
+        <TagFormContextProvider>
+          <TagsTable />
+        </TagFormContextProvider>
+      </>
     </div>
   );
 };
