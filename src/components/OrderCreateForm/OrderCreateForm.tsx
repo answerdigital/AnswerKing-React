@@ -7,7 +7,6 @@ import { RouteConstants } from 'utilities/route-constants';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { useLocalOrder } from 'context/OrderContext';
 import { GBPFormat } from 'utilities/GBPFormat';
-import { ComponentTransition } from 'components/Transitions/ComponentTransition';
 
 export const OrderCreateForm = (): ReactElement => {
   const { order, createOrder, updateOrder } = useOrder();

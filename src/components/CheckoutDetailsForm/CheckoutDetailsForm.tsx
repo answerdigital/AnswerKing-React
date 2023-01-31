@@ -4,7 +4,6 @@ import { useLocalOrder } from 'context/OrderContext';
 import { GBPFormat } from 'utilities/GBPFormat';
 import { OrderDetails } from 'components/OrderDetails/OrderDetails';
 import { Button } from 'components/Button/Button';
-import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';
 import { ComponentTransition } from 'components/Transitions/ComponentTransition';
