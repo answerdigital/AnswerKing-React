@@ -3,7 +3,6 @@ import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import { Button } from 'components/Button/Button';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AnimateSharedLayout, motion } from 'framer-motion';
 import cn from 'classnames';
 
 interface Props {
