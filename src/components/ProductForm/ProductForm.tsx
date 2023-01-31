@@ -27,8 +27,7 @@ export const ProductForm = (): ReactElement => {
   const categories = ['Mains', 'Sides', 'Drinks'];
   //TODO: Get this data from backend instead
 
-  const ToggleTag = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const toggleTagId = parseInt(event.target.id);
+  const ToggleTag = (event: React.ChangeEvent<HTMLInputElement>, toggleTagId: number): void => {
     if (event.target.checked) {
       setFormProduct({
         ...formProduct,
@@ -108,17 +107,17 @@ export const ProductForm = (): ReactElement => {
             />
           </div>
           <a className="col-span-4 italic text-gray-400">Tags</a>
-          {tags.map((tag, i) => {
+          {tags.map((tag) => {
             return (
               <div key={tag.name}>
                 <input
                   type="checkbox"
                   className=""
-                  id={tag.id.toString()}
-                  onChange={ToggleTag}
+                  id={tag.name + ' in ' + tag.name}
+                  onChange={(e) => ToggleTag(e, tag.id)}
                   checked={Boolean(formProduct.tags.find((tagId) => tagId === tag.id))}
                 />
-                <label className="text-sm" htmlFor={tag.id.toString()}>
+                <label className="text-sm" htmlFor={tag.name + ' in ' + tag.name}>
                   {' ' + tag.name}
                 </label>
               </div>

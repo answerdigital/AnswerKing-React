@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useTagFormContext } from './TagFormContext';
 import { Button } from 'components/Button/Button';
+import { event } from 'cypress/types/jquery';
 
 export const TagForm = (): ReactElement => {
   const formContext = useTagFormContext();
@@ -22,8 +23,7 @@ export const TagForm = (): ReactElement => {
   ];
   //TODO: Get this data from backend instead
 
-  const ToggleProduct = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const toggleProductId = parseInt(event.target.id);
+  const ToggleProduct = (event: React.ChangeEvent<HTMLInputElement>, toggleProductId: number): void => {
     if (event.target.checked) {
       setFormTag({
         ...formTag,
@@ -69,17 +69,17 @@ export const TagForm = (): ReactElement => {
             />
           </div>
           <a className="col-span-4 italic text-gray-400">Products</a>
-          {Products.map((product, i) => {
+          {Products.map((product) => {
             return (
               <div key={product.name}>
                 <input
                   type="checkbox"
                   className=""
-                  id={product.id.toString()}
-                  onChange={ToggleProduct}
+                  id={product.name + ' in ' + formTag.name}
+                  onChange={(e) => ToggleProduct(e, product.id)}
                   checked={Boolean(formTag.products.find((productId) => productId === product.id))}
                 />
-                <label className="text-sm" htmlFor={product.id.toString()}>
+                <label className="text-sm" htmlFor={product.name + ' in ' + formTag.name}>
                   {' ' + product.name}
                 </label>
               </div>
