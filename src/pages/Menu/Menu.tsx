@@ -7,6 +7,7 @@ import { useProducts } from 'hooks/useProducts';
 import { ReactElement, useState } from 'react';
 import { OrderPanel } from 'components/OrderPanel/OrderPanel';
 import { PageLayout } from 'components/PageLayout/PageLayout';
+import { motion } from 'framer-motion';
 
 export const MenuPage = (): ReactElement => {
   const { products } = useProducts();
@@ -23,27 +24,45 @@ export const MenuPage = (): ReactElement => {
     );
   }
 
+  const tabContentVariant = {
+    active: {
+      display: 'block',
+      transition: { staggerChildren: 0.2 },
+    },
+    inactive: { display: 'none' },
+  };
+
   const selectedCategoryDescription = categories.data.find((category) => category.id == selectedCategory)?.description;
 
   return (
     <PageLayout title={'Menu - Answer King'}>
       <div className="grid grid-cols-12">
         <div className="col-span-2"></div>
-        <div className="col-span-6 pl-[100px] text-center">
-          <div className="mb-5">
-            <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
-          </div>
-          <div className="font-poly mb-6 text-lg italic text-[#E4EAEB]">{selectedCategoryDescription}</div>
-          <MenuItems
-            products={products.data.filter(
-              (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
-            )}
-          />
+        <div className="col-span-6 text-center">
+          <MenuCategories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories.data} />
         </div>
-        <div className="col-span-2 mt-[145px] pl-[20px]">
+      </div>
+      <div className="mb-[5%] grid grid-cols-12">
+        <div className="col-span-2"></div>
+        <div className="col-span-6 text-center">
+          <div className="font-poly mt-5 mb-6 text-lg italic text-[#E4EAEB]">{selectedCategoryDescription}</div>
+          <motion.div
+            role="tabpanel"
+            id={selectedCategory.toString()}
+            variants={tabContentVariant}
+            animate={selectedCategory ? 'active' : 'inactive'}
+            initial="inactive"
+          >
+            <MenuItems
+              products={products.data.filter(
+                (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
+              )}
+            />
+          </motion.div>
+        </div>
+        <div className="col-span-2 ml-[7%]">
           <OrderPanel />
         </div>
-        <div className="col-span-1"></div>
       </div>
     </PageLayout>
   );
