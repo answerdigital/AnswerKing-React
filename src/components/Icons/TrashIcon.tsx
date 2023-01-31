@@ -16,7 +16,7 @@ export const TrashIcon = ({ product }: Props): ReactElement => {
       <div className={cn(iconClass)} onClick={() => setIsOpen(true)}>
         <div className="group cursor-pointer justify-center text-center">
           <svg
-            className={cn(!isOpen ? 'duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]' : '')}
+            className={cn(!isOpen && 'duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]')}
             width="15"
             height="5"
             viewBox="0 0 12 3"
