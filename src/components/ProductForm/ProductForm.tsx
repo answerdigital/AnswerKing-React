@@ -36,7 +36,7 @@ export const ProductForm = (): ReactElement => {
     } else {
       setFormProduct({
         ...formProduct,
-        tags: formProduct.tags.filter((tagId) => !(tagId === toggleTagId)),
+        tags: formProduct.tags.filter((tagId) => tagId !== toggleTagId),
       });
     }
   };

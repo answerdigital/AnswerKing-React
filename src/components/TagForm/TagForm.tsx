@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useTagFormContext } from './TagFormContext';
 import { Button } from 'components/Button/Button';
-import { event } from 'cypress/types/jquery';
 
 export const TagForm = (): ReactElement => {
   const formContext = useTagFormContext();
@@ -32,7 +31,7 @@ export const TagForm = (): ReactElement => {
     } else {
       setFormTag({
         ...formTag,
-        products: formTag.products.filter((productId) => !(productId === toggleProductId)),
+        products: formTag.products.filter((productId) => productId !== toggleProductId),
       });
     }
   };

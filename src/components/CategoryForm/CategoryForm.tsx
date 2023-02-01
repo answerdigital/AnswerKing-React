@@ -31,7 +31,7 @@ export const CategoryForm = (): ReactElement => {
     } else {
       setFormCategory({
         ...formCategory,
-        products: formCategory.products.filter((productId) => !(productId === toggleProductId)),
+        products: formCategory.products.filter((productId) => productId !== toggleProductId),
       });
     }
   };
