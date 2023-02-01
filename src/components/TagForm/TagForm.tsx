@@ -77,7 +77,7 @@ export const TagForm = (): ReactElement => {
                   className=""
                   id={product.name + ' in ' + formTag.name}
                   onChange={(e) => ToggleProduct(e, product.id)}
-                  checked={Boolean(formTag.products.find((productId) => productId === product.id))}
+                  checked={formTag.products.includes(product.id)}
                 />
                 <label className="text-sm" htmlFor={product.name + ' in ' + formTag.name}>
                   {' ' + product.name}
