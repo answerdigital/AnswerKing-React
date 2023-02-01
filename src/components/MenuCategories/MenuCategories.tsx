@@ -30,7 +30,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
         <div className="group flex items-center justify-between">
           <ArrowToggle icon={faArrowLeft} handleIndex={handlePrev} />
           {categories.slice(index, index + 5).map(
-            (category, index) =>
+            (category) =>
               category?.retired === false && (
                 <motion.button key={category.id} initial={{ opacity: 0.2, x: 50 }} animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}>
                   <Button
