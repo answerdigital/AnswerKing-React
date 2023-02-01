@@ -23,7 +23,6 @@ const ALLERGENS = [
   'Peanuts',
 ];
 
-//get all products
 export const AllergensPage = (): ReactElement => {
   const { products } = useProducts();
 
@@ -45,8 +44,12 @@ export const AllergensPage = (): ReactElement => {
             <tbody className="z-10 w-full">
               {products.data?.map((product) => {
                 return (
-                  <tr>
-                    <td className="text-right font-light">{product.name}</td>
+                  <tr key={product.id}>
+                    <td className="text-right font-light">
+                      {product.name}
+                      {product.name}
+                      {product.name}
+                    </td>
                     {[...Array(ALLERGENS.length)].map((_, index) => {
                       return (
                         <td key={index}>
