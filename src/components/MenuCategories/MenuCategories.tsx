@@ -34,7 +34,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
               category?.retired === false && (
                 <motion.button key={category.id} initial={{ opacity: 0.2, x: 50 }} animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}>
                   <Button
-                    key={index}
+                    key={category.id}
                     size="medium"
                     colour="clear"
                     className={cn(
