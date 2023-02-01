@@ -5,7 +5,7 @@ interface Props extends React.ComponentPropsWithoutRef<'button'> {
   active?: boolean;
   'data-testid'?: string;
   size?: 'small' | 'medium' | 'large';
-  colour?: 'yellow' | 'grey' | 'red' | 'white' | 'clear';
+  colour?: 'yellow' | 'grey' | 'red' | 'white' | 'clear' | 'clear-border';
 }
 
 export const Button = ({
@@ -29,13 +29,14 @@ export const Button = ({
         'hover:cursor-pointer',
         {
           'py-1 px-5 text-[14px] ': size === 'small',
-          'py-0.5 px-5 text-[22px]': size === 'medium',
-          'py-2.5 px-12 text-[20px] font-bold': size === 'large',
+          'py-2 px-5 text-[18px]': size === 'medium',
+          'py-3 px-12 text-[22px] font-bold': size === 'large',
           'bg-transparent': colour === 'clear',
           'border-2 border-solid border-[#333F4C] bg-[white]': colour === 'white',
           'border-2 border-solid border-[#A2AAB6] bg-[#A2AAB6]': colour === 'grey',
           'border-2 border-solid border-[#FFC600] bg-[#FFC600]': colour === 'yellow',
           'border-2 border-solid border-[#f76d6d] bg-[#f76d6d]': colour === 'red',
+          'border-2 border-solid border-[#A2AAB6] bg-transparent text-inherit': colour === 'clear-border',
           'cursor-pointer bg-[#5A6675]': active,
         }
       )}

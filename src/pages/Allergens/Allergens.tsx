@@ -1,31 +1,201 @@
 import { ReactElement } from 'react';
 import { PageLayout } from 'components/PageLayout/PageLayout';
+import { useProducts } from 'hooks/useProducts';
+import { CheckBoxIcon } from 'components/Icons/CheckBoxIcon';
+import { Button } from 'components/Button/Button';
+import { RouteConstants } from 'utilities/route-constants';
+import { useNavigate } from 'react-router-dom';
 
+const ALLERGENS = [
+  'Milk',
+  'Celery',
+  'Sesame',
+  'Egg',
+  'Shellfish',
+  'Molluscs',
+  'Fish',
+  'Soya',
+  'Mustard',
+  'Nuts',
+  'Gluten',
+  'Sulphur Dioxide',
+  'Lupin',
+  'Peanuts',
+];
+
+//get all products
 export const AllergensPage = (): ReactElement => {
+  const { products } = useProducts();
+  const navigate = useNavigate();
+
   return (
     <PageLayout title={'Allergens - Answer King'}>
-      <div className="container mx-auto mt-[2%] h-[60vh] w-[50%] min-w-[500px] border-2">
-        <p className="border-b-2 border-[#5A6675] text-center text-[36px] font-[300]">Menu</p>
-        <div className="grid grid-cols-12">
-          <div className="col-span-3"></div>
-          <div className="col-span-9 ml-5 flex h-[100px] border-2 pt-[60px]">
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Milk</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Celery</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Sesame</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Egg</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Shellfish</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Molluscs</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Fish</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Soya</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Mustard</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Nuts</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Gluten</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Sulphur Dioxide</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Lupin</div>
-            <div className="ml-[20px] w-[20px] rotate-[270deg]">Pednuts</div>
+      <div className="container mx-auto mt-10 mb-10 w-[50%] min-w-[500px]">
+        <p className="mb-5 border-b-2 border-[#5A6675] p-5 text-center text-[36px] font-light">Allergen Info</p>
+        <table className="mt-5 mb-5 w-full table-auto border-separate border-spacing-2">
+          <thead className="w-full">
+            <th></th>
+            {ALLERGENS.map((value) => {
+              return <th className="sticky top-0 rotate-180 p-2 text-left font-light [writing-mode:vertical-lr]">{value}</th>;
+            })}
+          </thead>
+          <tbody className="w-full">
+            {products.data?.map((product) => {
+              return (
+                <>
+                  <tr>
+                    <td className="text-right font-light">
+                      {product.name}
+                      {product.name}
+                      {product.name}
+                    </td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  <tr>
+                    <td className="text-right font-light">{product.name}</td>
+                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                      return (
+                        <td>
+                          <div className="flex items-center justify-center">
+                            <CheckBoxIcon checked={false} />
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                </>
+              );
+            })}
+          </tbody>
+        </table>
+        <div className="border-t-2 border-[#5A6675]">
+          <div className="flex items-center justify-center p-10">
+            <p className="font-light">Have concerns? Have a chat with one of our staff who can help you!</p>
           </div>
-          <div className="col-span-3 mt-[2vh] h-[250px] border-2 text-center">Burger Names</div>
-          <div className="col-span-9 ml-5 mt-[2vh] border-2 text-center">Allergen table</div>
+          <div className="flex items-center justify-center gap-5">
+            <Button onClick={() => navigate(RouteConstants.HOME)} size="medium" colour="clear-border" className="w-full">
+              Back
+            </Button>
+            <Button onClick={() => navigate(RouteConstants.MENU)} size="medium" colour="yellow" className="w-full">
+              Menu
+            </Button>
+          </div>
         </div>
       </div>
     </PageLayout>
