@@ -1,7 +1,7 @@
 import { LineItemDto } from 'dtos/LineItemDto';
 import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
 import { ProductDto } from 'dtos/ProductDto';
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useMemo, useReducer } from 'react';
 import { ActionType, orderReducer } from './orderReducer';
 
 const initialLineItems: LineItemDto[] = [];
@@ -9,9 +9,7 @@ const initialOrder = { lineItems: initialLineItems };
 
 interface ILocalOrder {
   localOrder: LocalOrderDto;
-  addToLocalOrder: (product: ProductDto) => void;
-  increaseProductQuantity: (product: ProductDto) => void;
-  decreaseProductQuantityOrRemove: (product: ProductDto) => void;
+  addToLocalOrder: (product: ProductDto, quantity: number) => void;
   removeProduct: (product: ProductDto) => void;
   setOrderId: (id: number) => void;
   removeLocalOrder: () => void;
@@ -20,8 +18,6 @@ interface ILocalOrder {
 const LocalOrderContext = createContext<ILocalOrder>({
   localOrder: { lineItems: initialLineItems },
   addToLocalOrder: () => null,
-  increaseProductQuantity: () => null,
-  decreaseProductQuantityOrRemove: () => null,
   removeProduct: () => null,
   setOrderId: () => null,
   removeLocalOrder: () => null,
@@ -34,16 +30,8 @@ interface Props {
 export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
   const [localOrder, dispatch] = useReducer(orderReducer, initialOrder);
 
-  const addToLocalOrder = (product: ProductDto): void => {
-    dispatch({ type: ActionType.AddToLocalOrder, payload: { product: product } });
-  };
-
-  const increaseProductQuantity = (product: ProductDto): void => {
-    dispatch({ type: ActionType.IncreaseProductQuantity, payload: { product: product } });
-  };
-
-  const decreaseProductQuantityOrRemove = (product: ProductDto): void => {
-    dispatch({ type: ActionType.DecreaseProductQuantityOrRemove, payload: { product: product } });
+  const addToLocalOrder = (product: ProductDto, quantity: number): void => {
+    dispatch({ type: ActionType.AddToLocalOrder, payload: { product: product, quantity: quantity } });
   };
 
   const removeProduct = (product: ProductDto): void => {
@@ -58,13 +46,8 @@ export const LocalOrderProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: ActionType.RemoveLocalOrder, payload: {} });
   };
 
-  return (
-    <LocalOrderContext.Provider
-      value={{ localOrder, addToLocalOrder, increaseProductQuantity, decreaseProductQuantityOrRemove, removeProduct, setOrderId, removeLocalOrder }}
-    >
-      {children}
-    </LocalOrderContext.Provider>
-  );
+  const orderProvider = useMemo(() => ({ localOrder, addToLocalOrder, removeProduct, setOrderId, removeLocalOrder }), [localOrder]);
+  return <LocalOrderContext.Provider value={orderProvider}>{children}</LocalOrderContext.Provider>;
 };
 
 export const useLocalOrder = (): ILocalOrder => useContext(LocalOrderContext);

@@ -13,7 +13,8 @@
     "prettier": "prettier --check ./",
     "format": "prettier --write ./",
     "build:css": "postcss src/style/tailwind.css -o src/style/main.css",
-    "watch:css": "postcss src/style/tailwind.css -o src/style/main.css --watch"
+    "watch:css": "postcss src/style/tailwind.css -o src/style/main.css --watch",
+    "deploy": "aws s3 sync ./dist/ s3://answerking-bucket-react --exclude '*.js' --delete && aws s3 sync ./dist/ s3://answerking-bucket-react --exclude '*' --include '*.js' --content-type application/javascript"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
