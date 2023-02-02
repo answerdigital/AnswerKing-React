@@ -124,7 +124,6 @@ export const ProductForm = (): ReactElement => {
             );
           })}
         </div>
-        <LoaderOverlay isEnabled={false} />
       </form>
       <div className="flex w-full flex-none justify-between">
         <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={formContext.closeForm}>

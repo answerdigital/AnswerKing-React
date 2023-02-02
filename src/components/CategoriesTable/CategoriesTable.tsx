@@ -1,6 +1,6 @@
 import { CategoriesTableRow } from './CategoriesTableRow';
 import { useCategories } from 'hooks/useCategories';
-import { ReactElement, useMemo } from 'react';
+import { ReactElement } from 'react';
 import { useSearch } from 'components/Search/SearchContext';
 import { Search } from 'components/Search/Search';
 import { Button } from 'components/Button/Button';
