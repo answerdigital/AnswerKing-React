@@ -37,12 +37,12 @@ export const Button = ({
           'border-2 border-solid border-white bg-transparent': colour === 'outlined',
           'border-2 border-solid border-slate-700 bg-white': colour === 'white',
           'border-2 border-solid border-slate-400 bg-slate-400': colour === 'grey',
-          'border-2 border-solid border-[#E5B423] bg-[#E5B423]': colour === 'yellow',
-          'border-2 border-solid border-[#f76d6d] bg-[#f76d6d]': colour === 'red',
-          'cursor-pointer bg-[#5A6675]': active,
-          'hover:cursor-pointer hover:border-[#333F4C] hover:bg-[#333F4C] hover:text-white': hover,
+          'border-2 border-solid border-[#E5B423] bg-[#E5B423]': colour === 'yellow', //<- rgb from logo
+          'border-2 border-solid border-red-400 bg-red-400': colour === 'red',
+          'cursor-pointer bg-slate-500': active,
+          'hover:cursor-pointer hover:border-slate-700 hover:bg-slate-700 hover:text-white': hover,
         },
-        ((colour === 'clear' || 'outlined') && bg === 'dark') || colour === 'red' ? 'text-white' : 'text-[#333F4C]',
+        ((colour === 'clear' || 'outlined') && bg === 'dark') || colour === 'red' ? 'text-white' : 'text-slate-700',
         className
       )}
       data-testid={dataTestId}
