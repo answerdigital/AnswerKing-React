@@ -48,12 +48,12 @@ export const StaffDetails = (): ReactElement => {
         />
       </label>
       <div>
-        <Button colour="outlined" size="medium" bg="dark">
+        <Button colour="clear-border" size="medium">
           Delete Account
         </Button>
       </div>
       <div>
-        <Button colour="outlined" size="medium" bg="dark">
+        <Button colour="clear-border" size="medium">
           Log Out
         </Button>
       </div>

@@ -18,7 +18,7 @@ export const StaffNavBar = ({ className, sections, setSelectedSection, selectedS
             {section.title}
           </Button>
         ) : (
-          <Button key={section.title} size="medium" colour={'clear'} bg="dark" onClick={() => setSelectedSection(section)} className="mx-10">
+          <Button key={section.title} size="medium" colour={'clear'} onClick={() => setSelectedSection(section)} className="mx-10">
             {section.title}
           </Button>
         )
