@@ -2,7 +2,6 @@ import { Button } from 'components/Button/Button';
 import { ModalTransition } from 'components/Transitions/ModalTransition';
 import { useLocalOrder } from 'context/OrderContext';
 import { ProductDto } from 'dtos/ProductDto';
-import { motion } from 'framer-motion';
 import { ReactElement, useCallback } from 'react';
 
 interface Props {
