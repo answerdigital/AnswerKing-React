@@ -5,6 +5,7 @@ import { MenuProductModal } from 'components/MenuProductModal/MenuProductModal';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useState } from 'react';
 import { motion } from 'framer-motion';
+import { RoundingPrice } from 'utilities/RoundingPriceFormat';
 
 interface Props {
   product: ProductDto;
@@ -40,7 +41,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
               </div>
             </div>
             <div className="absolute bottom-5 flex w-full justify-between px-7 text-center">
-              <p className="flex items-center justify-center text-[14px] text-[#333F4C]">£{(product.price * 1e2) / 1e2}</p>
+              <p className="flex items-center justify-center text-[14px] text-[#333F4C]">£{RoundingPrice(product.price)}</p>
               <Button onClick={() => setshowProductModal(true)} size="small" colour="yellow" className="py-1 text-[14px] font-[400] leading-[21px]">
                 Add to order
               </Button>

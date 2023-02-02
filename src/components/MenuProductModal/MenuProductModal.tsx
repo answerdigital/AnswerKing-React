@@ -3,6 +3,7 @@ import { ProductDto } from 'dtos/ProductDto';
 import { Button } from 'components/Button/Button';
 import { useLocalOrder } from 'context/OrderContext';
 import PlaceHolderImage from 'assets/burger_transparent.png';
+import { RoundingPrice } from 'utilities/RoundingPriceFormat';
 
 interface Props {
   product: ProductDto;
@@ -97,7 +98,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
                   colour="yellow"
                   className="h-[45px] w-[129.5px] grow gap-2.5 px-3"
                 >
-                  Add to order £{(product.price * counter * 1e2) / 1e2}
+                  Add to order £{RoundingPrice(product.price * counter)}
                 </Button>
               ) : (
                 <Button
