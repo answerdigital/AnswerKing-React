@@ -37,8 +37,12 @@ export const AllergensPage = (): ReactElement => {
           <table className="relative mt-5 mb-5 w-full table-auto border-separate border-spacing-2">
             <thead className="w-full">
               <th></th>
-              {ALLERGENS.map((value) => {
-                return <th className="rotate-180 p-2 text-left font-light [writing-mode:vertical-lr]">{value}</th>;
+              {ALLERGENS.map((value, index) => {
+                return (
+                  <th className="rotate-180 p-2 text-left font-light [writing-mode:vertical-lr]" key={index}>
+                    {value}
+                  </th>
+                );
               })}
             </thead>
             <tbody className="z-10 w-full">
@@ -50,9 +54,9 @@ export const AllergensPage = (): ReactElement => {
                       {product.name}
                       {product.name}
                     </td>
-                    {[...Array(ALLERGENS.length)].map((_, index) => {
+                    {[...Array(ALLERGENS.length).keys()].map((value) => {
                       return (
-                        <td key={index}>
+                        <td key={value}>
                           <div className="flex items-center justify-center">
                             <CheckBoxIcon checked={false} />
                           </div>
