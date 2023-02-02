@@ -2,7 +2,7 @@ name: Deploy Build to AWS S3
 
 on:
   push:
-    branches: "release-*"
+    branches: 'release-*'
 
 jobs:
   build:
