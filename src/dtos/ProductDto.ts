@@ -1,5 +1,3 @@
-import { CategoryDto } from './CategoryDto';
-
 export interface ProductCategoryDto {
   id: number;
   description: string;
