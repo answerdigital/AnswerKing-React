@@ -1,6 +1,7 @@
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useState } from 'react';
 import { DeleteProductModal } from 'components/Modals/DeleteProductModal';
+import cn from 'classnames';
 
 interface Props {
   product: ProductDto;
@@ -15,7 +16,7 @@ export const TrashIcon = ({ product }: Props): ReactElement => {
         <div className="group my-auto flex cursor-pointer flex-col" onClick={() => setIsOpen(true)}>
           <div className="flex flex-col items-center justify-center text-center">
             <svg
-              className="duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]"
+              className={cn(!isOpen && 'duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]')}
               width="15"
               height="5"
               viewBox="0 0 12 3"
