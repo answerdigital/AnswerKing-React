@@ -6,7 +6,7 @@ interface Props {
   allergens: string[];
 }
 
-export const AllergenTable = ({ products, allergens }: Props) => {
+export const AllergenTable = ({ products, allergens }: Props): React.ReactElement => {
   return (
     <table className="relative mt-5 mb-5 w-full table-auto border-separate border-spacing-2">
       <thead className="w-full">
