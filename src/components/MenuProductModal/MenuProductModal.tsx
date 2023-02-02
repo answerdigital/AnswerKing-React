@@ -19,13 +19,10 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
   };
 
   const [counter, setCounter] = useState(checkQuantity(product));
-  const increase = (): void => {
-    setCounter((counter) => counter + 1);
-  };
 
-  const decrease = (): void => {
-    if (counter) {
-      setCounter((counter) => counter - 1);
+  const changeCount = (action: number): void => {
+    if (counter + action >= 0) {
+      setCounter(counter + action);
     }
   };
 
@@ -37,7 +34,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
 
   return (
     <>
-      {showProductModal ? (
+      {showProductModal && (
         <div
           className="fixed top-0 left-0 z-10 flex h-full w-full items-center justify-center bg-black bg-opacity-75 shadow-sm"
           onClick={() => disableShow(false)}
@@ -47,18 +44,18 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex w-full flex-row justify-start gap-[20px] ">
-              <img alt="burger" className="h-[25vh] w-[30vw] rounded-[16px]" src={PlaceHolderImage} />
+              <img alt="burger" className="h-[25vh] w-[30vw] rounded-[16px] object-cover" src={PlaceHolderImage} />
               <div className="flex w-full flex-col items-start justify-between gap-2">
                 <h5 className="text-[20px] font-[600]">{product.name}</h5>
                 <p className="font-poly text-left italic">{product.description}</p>
                 <div className="flex w-full items-center justify-between gap-2">
                   <div className="font-[600] ">V, Ve, GF</div>
                   <div className="flex flex-row items-center gap-2">
-                    <button className="flex h-10 w-10 items-center gap-3.5 rounded-md bg-[#E4EAEB] p-4" onClick={decrease}>
+                    <button className="h-10 w-10 gap-3.5 rounded-md bg-[#E4EAEB]" onClick={() => changeCount(-1)}>
                       -
                     </button>
                     <div>{counter}</div>
-                    <button className="flex h-10 w-10 items-center gap-3.5 rounded-md bg-[#E4EAEB] p-4" onClick={increase}>
+                    <button className="h-10 w-10 gap-3.5 rounded-md bg-[#E4EAEB]" onClick={() => changeCount(1)}>
                       +
                     </button>
                   </div>
@@ -69,17 +66,21 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
             <div className="flex w-full flex-col justify-items-start gap-[8px]">
               <div className="font-poly text-left text-[16px] font-[400] italic text-[#A2AAB6]">Contains Allergens</div>
               <div className="flex flex-row justify-items-start gap-[16px] text-[14px]">
-                {allergens.map((allergen) => (
-                  <>
-                    <label key={allergen}>{allergen}</label>
-                  </>
-                ))}
+                {allergens ? (
+                  allergens.map((allergen) => (
+                    <>
+                      <label key={allergen}>{allergen}</label>
+                    </>
+                  ))
+                ) : (
+                  <div>This product does not contain any allergens</div>
+                )}
               </div>
             </div>
 
             <div className="flex flex-row gap-4 self-stretch rounded-lg">
               <Button
-                className="h-[45px] w-[129.5px] grow items-center justify-center gap-2.5 border-2 border-solid border-[#A2AAB6] px-3"
+                className="h-[45px] w-[129.5px] grow gap-2.5 border-2 border-solid border-[#A2AAB6] px-3"
                 size="small"
                 colour="clear"
                 onClick={() => disableShow(false)}
@@ -94,7 +95,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
                   }}
                   size="small"
                   colour="yellow"
-                  className="h-[45px] w-[129.5px] grow items-center justify-center gap-2.5 px-3"
+                  className="h-[45px] w-[129.5px] grow gap-2.5 px-3"
                 >
                   Add to order £{(product.price * counter * 1e2) / 1e2}
                 </Button>
@@ -106,7 +107,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
                   }}
                   size="small"
                   colour="yellow"
-                  className="h-[45px] w-[129.5px] grow items-center justify-center gap-2.5 px-3"
+                  className="h-[45px] w-[129.5px] grow gap-2.5 px-3"
                 >
                   Remove from order
                 </Button>
@@ -114,7 +115,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
             </div>
           </div>
         </div>
-      ) : null}
+      )}
     </>
   );
 };
