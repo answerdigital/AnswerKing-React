@@ -49,11 +49,7 @@ export const AllergensPage = (): ReactElement => {
               {products.data?.map((product) => {
                 return (
                   <tr key={product.id}>
-                    <td className="text-right font-light">
-                      {product.name}
-                      {product.name}
-                      {product.name}
-                    </td>
+                    <td className="text-right font-light">{product.name}</td>
                     {[...Array(ALLERGENS.length).keys()].map((value) => {
                       return (
                         <td key={value}>
