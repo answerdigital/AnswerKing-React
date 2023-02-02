@@ -30,7 +30,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
           <div className="absolute bottom-5 flex w-full justify-between px-7 text-center">
             <p className="flex items-center justify-center text-[14px] text-[#333F4C]">£{(product.price * 1e2) / 1e2}</p>
             <Button onClick={() => setShowModal(true)} size="small" colour="yellow" className="py-1 text-[14px] font-[400] leading-[21px]">
-          Add to order
+              Add to order
             </Button>
           </div>
         </div>
