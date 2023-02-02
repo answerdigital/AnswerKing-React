@@ -8,6 +8,7 @@ interface Props extends React.ComponentPropsWithoutRef<'button'> {
   colour?: 'yellow' | 'grey' | 'red' | 'clear' | 'outlined' | 'white';
   bg?: 'dark' | 'light';
   hover?: boolean;
+  colour?: 'yellow' | 'grey' | 'red' | 'white' | 'clear' | 'clear-border';
 }
 
 export const Button = ({
@@ -44,6 +45,17 @@ export const Button = ({
         },
         ((colour === 'clear' || 'outlined') && bg === 'dark') || colour === 'red' ? 'text-white' : 'text-slate-700',
         className
+          'py-1 px-5 text-[14px] ': size === 'small',
+          'py-2 px-5 text-[18px]': size === 'medium',
+          'py-3 px-12 text-[22px] font-bold': size === 'large',
+          'bg-transparent': colour === 'clear',
+          'border-2 border-solid border-[#333F4C] bg-[white]': colour === 'white',
+          'border-2 border-solid border-[#A2AAB6] bg-[#A2AAB6]': colour === 'grey',
+          'border-2 border-solid border-[#FFC600] bg-[#FFC600]': colour === 'yellow',
+          'border-2 border-solid border-[#f76d6d] bg-[#f76d6d]': colour === 'red',
+          'border-2 border-solid border-[#A2AAB6] bg-transparent text-inherit': colour === 'clear-border',
+          'cursor-pointer bg-[#5A6675]': active,
+        }
       )}
       data-testid={dataTestId}
       disabled={disabled}
