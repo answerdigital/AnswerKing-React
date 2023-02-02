@@ -22,7 +22,7 @@ export const CategoryForm = (): ReactElement => {
   ];
   //TODO: Get this data from backend instead
 
-  const ToggleProduct = (event: React.ChangeEvent<HTMLInputElement>, toggleProductId: number): void => {
+  const toggleProduct = (event: React.ChangeEvent<HTMLInputElement>, toggleProductId: number): void => {
     if (event.target.checked) {
       setFormCategory({
         ...formCategory,
@@ -75,7 +75,7 @@ export const CategoryForm = (): ReactElement => {
                   type="checkbox"
                   className=""
                   id={product.name + ' in ' + formCategory.name}
-                  onChange={(e) => ToggleProduct(e, product.id)}
+                  onChange={(e) => toggleProduct(e, product.id)}
                   checked={formCategory.products.includes(product.id)}
                 />
                 <label className="text-sm" htmlFor={product.name + ' in ' + formCategory.name}>

@@ -27,7 +27,7 @@ export const ProductForm = (): ReactElement => {
   const categories = ['Mains', 'Sides', 'Drinks'];
   //TODO: Get this data from backend instead
 
-  const ToggleTag = (event: React.ChangeEvent<HTMLInputElement>, toggleTagId: number): void => {
+  const toggleTag = (event: React.ChangeEvent<HTMLInputElement>, toggleTagId: number): void => {
     if (event.target.checked) {
       setFormProduct({
         ...formProduct,
@@ -114,7 +114,7 @@ export const ProductForm = (): ReactElement => {
                   type="checkbox"
                   className=""
                   id={tag.name + ' in ' + tag.name}
-                  onChange={(e) => ToggleTag(e, tag.id)}
+                  onChange={(e) => toggleTag(e, tag.id)}
                   checked={formProduct.tags.includes(tag.id)}
                 />
                 <label className="text-sm" htmlFor={tag.name + ' in ' + tag.name}>
