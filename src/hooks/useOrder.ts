@@ -8,6 +8,7 @@ interface UpdateOrderProps {
   updatedOrder: CreatedOrderDto;
 }
 interface UseOrderResult {
+  order: UseQueryResult<OrderDto>;
   orders: UseQueryResult<OrderDto[]>;
   getOrder: UseMutationResult<OrderDto, ProblemDetails, number>;
   createOrder: UseMutationResult<OrderDto, ProblemDetails, CreatedOrderDto>;
@@ -18,6 +19,8 @@ interface UseOrderResult {
 
 export const useOrder = (): UseOrderResult => {
   const queryClient = useQueryClient();
+
+  const order = useQuery<OrderDto>(['order'], { enabled: false });
 
   const orders = useQuery<OrderDto[]>(['order'], orderService.getAll);
 
@@ -47,5 +50,5 @@ export const useOrder = (): UseOrderResult => {
     },
   });
 
-  return { orders, getOrder, createOrder, clearOrder, updateOrder, removeOrder };
+  return { order, orders, getOrder, createOrder, clearOrder, updateOrder, removeOrder };
 };

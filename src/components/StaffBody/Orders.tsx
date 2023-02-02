@@ -8,7 +8,7 @@ export const StaffOrders = (): ReactElement => {
   const populatedOrders: OrderDto[] = orders.data?.filter((order: OrderDto) => order.lineItems.length) || [];
 
   return (
-    <div className="flex w-[40%] flex-col items-center text-gray-900" key="staff inventory">
+    <div className="flex min-w-[40%] flex-col items-center text-gray-900" key="staff inventory">
       {populatedOrders.map((order: OrderDto, i) => (
         <div key={order.id} className="w-full">
           <>
