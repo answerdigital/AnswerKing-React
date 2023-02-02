@@ -10,14 +10,16 @@ export const AllergenTable = ({ products, allergens }: Props): React.ReactElemen
   return (
     <table className="relative mt-5 mb-5 w-full table-auto border-separate border-spacing-2">
       <thead className="w-full">
-        <th></th>
-        {allergens.map((value) => {
-          return (
-            <th className="rotate-180 p-2 text-left font-light [writing-mode:vertical-lr]" key={value}>
-              {value}
-            </th>
-          );
-        })}
+        <tr>
+          <th></th>
+          {allergens.map((value) => {
+            return (
+              <th className="rotate-180 p-2 text-left font-light [writing-mode:vertical-lr]" key={value}>
+                {value}
+              </th>
+            );
+          })}
+        </tr>
       </thead>
       <tbody className="z-10 w-full">
         {products.map((product) => {
