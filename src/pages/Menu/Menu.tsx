@@ -53,11 +53,7 @@ export const MenuPage = (): ReactElement => {
             animate={selectedCategory ? 'active' : 'inactive'}
             initial="inactive"
           >
-            <MenuItems
-              products={products.data.filter(
-                (product) => product.retired === false && product.categories?.find((categoryId) => categoryId === selectedCategory)
-              )}
-            />
+            <MenuItems products={products.data.filter((product) => product.retired === false && product.category.id === selectedCategory)} />
           </motion.div>
         </div>
         <div className="col-span-2 ml-[7%]">
