@@ -1,4 +1,4 @@
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { useOrder } from 'hooks/useOrder';
 import { FormEvent, ReactElement, useEffect } from 'react';
