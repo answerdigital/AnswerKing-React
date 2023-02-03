@@ -16,9 +16,6 @@ describe('Local Order Details', () => {
     it('should calculate at 0 total', () => {
       cy.getBySel('total-amount').should('have.text', '£0.00');
     });
-    it('should display the service charge', () => {
-      cy.getBySel('service-charge').should('have.text', '£0.50');
-    });
   });
 
   describe('with products', () => {

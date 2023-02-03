@@ -10,13 +10,12 @@ export const MenuItems = ({ products }: Props): ReactElement => {
   if (products.length === 0) {
     return <div />;
   }
+
   return (
-    <div>
-      <div data-testid="products" className="mb-[48px] grid max-h-[60vh] grid-cols-3">
-        {products.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
-      </div>
+    <div data-testid="products" className="mb-[48px] grid max-h-[60vh] grid-cols-3">
+      {products.map((product) => (
+        <ProductCard product={product} key={product.id} />
+      ))}
     </div>
   );
 };

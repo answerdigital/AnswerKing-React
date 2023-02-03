@@ -13,6 +13,6 @@ describe('Local Order Details', () => {
     );
   });
   it('Should display multiple product cards', () => {
-    cy.getBySel('product-data-card').should('have.length', 2);
+    cy.getBySel('product-card').should('have.length', 2);
   });
 });

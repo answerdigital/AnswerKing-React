@@ -10,6 +10,10 @@ describe('Checkout Details Form', () => {
       CustomMount(<CheckoutDetailsForm></CheckoutDetailsForm>);
     });
 
+    it('should not let you continue', () => {
+      cy.getBySel('confirm-and-continue').should('be.disabled');
+    });
+
     it('Displays Checkout Details Tabs', () => {
       cy.getBySel('no-products-msg').should('have.text', 'Whoa, you\'ve not got  anything in your order yet');
     });
@@ -36,7 +40,7 @@ describe('Checkout Details Form', () => {
     });
 
     it('should display products', () => {
-      cy.getBySel('order-item-list').should('be.visible');
+      cy.getBySel('order-details').should('be.visible');
     });
 
     it('should show the service change with the total amount', () => {

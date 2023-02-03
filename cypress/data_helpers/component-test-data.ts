@@ -6,21 +6,46 @@ import {CategoryDto} from '../../src/dtos/CategoryDto';
 
 export const product: ProductDto = {
   name: 'This is a product',
-  categories: [1, 2, 3],
+  category: {
+    name: 'a',
+    description: 'a category',
+    id: 1
+  },
+  tags: [1],
   description: 'Product',
   id: 1,
   price: 500,
   retired: false
 };
 
-export const secondProduct = {
+export const secondProduct: ProductDto = {
   name: 'This is another product',
-  categories: [1],
+  category: {
+    name: 'a',
+    description: 'a category',
+    id: 1
+  },
+  tags: [1],
   description: 'Product',
   id: 1,
   price: 750,
   retired: false
 };
+
+export const longDescriptionProduct: ProductDto = {
+  name: 'This is another product',
+  category: {
+    name: 'a',
+    description: 'a category',
+    id: 1
+  },
+  tags: [1],
+  description: '5fVCrhLFoTk62QQcgBXjQg9gHdkh1MxEtOXPL9pDHGjcMfkdh8aaaaaa',
+  id: 1,
+  price: 750,
+  retired: false
+};
+
 
 export const products: ProductDto[] = [product, secondProduct];
 
@@ -64,13 +89,8 @@ export function getExampleOrder(): ILocalOrder
     addToLocalOrder(product: ProductDto): void {
       expect(product.name).to.equal('This is a product');
       return;
-    }, decreaseProductQuantityOrRemove(product: ProductDto): void {
-      expect(product.name).to.equal('This is a product');
-      return;
-    }, increaseProductQuantity(product: ProductDto): void {
-      expect(product.name).to.equal('This is a product');
-      return;
-    }, removeLocalOrder(): void {
+    },
+    removeLocalOrder(): void {
       return;
     }, removeProduct(product: ProductDto): void {
       expect(product.name).to.equal('This is a product');

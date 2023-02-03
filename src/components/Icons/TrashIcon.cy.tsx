@@ -15,6 +15,6 @@ describe('Footer', () => {
   });
 
   it('should try and delete the product', () => {
-    cy.getBySel('delete-product-btn').click();
+    cy.getBySel('trash-product-btn').click();
   });
 });

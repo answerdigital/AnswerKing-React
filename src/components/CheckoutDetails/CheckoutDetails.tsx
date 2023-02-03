@@ -5,12 +5,9 @@ import {CheckoutDetailsForm} from 'components/CheckoutDetailsForm/CheckoutDetail
 export const CheckoutDetails = (): ReactElement => {
   return (
     <div className="font-poppins flex flex-col items-center">
-      <div className="mt-8 mb-4 h-1/6 items-center text-[40px] font-[300] leading-[54px]"
-        data-test-id="CheckoutDetailsHeader">
-        Checkout
-      </div>
-      <CheckoutDetailsTabs data-testid="checkout-details-tab"/>
-      <CheckoutDetailsForm data-testid="checkout-details-form"/>
+      <div className="mt-10 mb-5 items-center text-[40px] font-[300] leading-[54px]">Checkout</div>
+      <CheckoutDetailsTabs/>
+      <CheckoutDetailsForm/>
     </div>
   );
 };
