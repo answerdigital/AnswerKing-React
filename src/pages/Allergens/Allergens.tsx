@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { PageLayout } from 'components/PageLayout/PageLayout';
 import { useProducts } from 'hooks/useProducts';
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 import { RouteConstants } from 'utilities/route-constants';
 import { useNavigate } from 'react-router-dom';
 import { AllergenTable } from 'components/AllergenTable/AllergenTable';

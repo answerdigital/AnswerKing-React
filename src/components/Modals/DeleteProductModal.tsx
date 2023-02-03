@@ -1,4 +1,4 @@
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 import { ModalTransition } from 'components/Transitions/ModalTransition';
 import { useLocalOrder } from 'context/OrderContext';
 import { ProductDto } from 'dtos/ProductDto';
