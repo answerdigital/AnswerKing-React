@@ -19,5 +19,5 @@
     "baseUrl": "src",
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["./src", "cypress/global.d.ts"]
+  "include": ["./src", "cypress/support/component.ts"]
 }
