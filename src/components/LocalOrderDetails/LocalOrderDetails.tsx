@@ -9,23 +9,23 @@ export const LocalOrderDetails = (): ReactElement => {
   const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
   const { localOrder, decreaseProductQuantityOrRemove } = useLocalOrder();
   return (
-    <div className="flex grow flex-col items-center justify-between">
+    <div data-testid="local-order-details" className="flex grow flex-col items-center justify-between">
       <table className="w-full table-fixed justify-between">
         <tbody>
           {localOrder.lineItems?.length > 0 &&
             localOrder.lineItems.map((lineItem) => (
               <tr key={lineItem.product.id} className="flex w-full justify-between [&:not(:last-child)]:border-b">
                 <td className={cn(tableElement, 'flex')}>
-                  <span className={cn(iconClass, 'rounded text-center text-[14px]')}>{lineItem.quantity}</span>
-                  <span className="self-center">{lineItem.product.name}</span>
+                  <span data-testid="quantity" className={cn(iconClass, 'rounded text-center text-[14px]')}>{lineItem.quantity}</span>
+                  <span data-testid="name" className="self-center">{lineItem.product.name}</span>
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
                   <div className="items-center justify-center"></div>
-                  <button onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
+                  <button data-testid="trash-product" onClick={() => decreaseProductQuantityOrRemove(lineItem.product)}>
                     <TrashIcon product={lineItem.product} />
                   </button>
                   <div className="left-8 flex h-[21px] w-[50px] items-center justify-center">
-                    <span className="text-center">{GBPFormat.format(lineItem.subTotal)}</span>
+                    <span data-testid="subtotal" className="text-center">{GBPFormat.format(lineItem.subTotal)}</span>
                   </div>
                 </td>
               </tr>

@@ -18,6 +18,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
             (category) =>
               !category?.retired && (
                 <Button
+                  data-testid={'category-' + category.id}
                   key={category.id}
                   size="medium"
                   colour="clear"

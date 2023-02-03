@@ -15,12 +15,14 @@ export const OrderPanel = (): ReactElement => {
       </div>
       <div className="mt-[16px] grid w-[357px] grid-cols-12 text-sm text-gray-400">
         <button
+          data-test-id="home-btn"
           onClick={() => navigate(RouteConstants.HOME)}
           className="font-poppins col-span-6 mr-[5px] rounded-full border border-gray-400 py-2 leading-[21px] text-[#A2AAB6]"
         >
           Back to start screen
         </button>
         <button
+          data-testid="allergen-board-btn"
           onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}
           className="col-span-6 ml-[5px] rounded-full border border-gray-400 py-2 leading-[21px] text-[#A2AAB6]"
         >

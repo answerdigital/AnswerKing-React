@@ -40,15 +40,15 @@ export const OrderCreateForm = (): ReactElement => {
   }, [order.data?.id]);
 
   return (
-    <div className="mt-auto px-5 text-center">
+    <div data-testid="order-create-form" className="mt-auto px-5 text-center">
       <hr className="mb-2"></hr>
       <div className="flex w-full justify-between text-[10px] text-[#5A6675]">
         <span className="">Service Charge:</span>
-        <span className="">{GBPFormat.format(0.5)}</span>
+        <span data-testid="service-charge" className="">{GBPFormat.format(0.5)}</span>
       </div>
       <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
         <span>Total:</span>
-        <span>{GBPFormat.format(total)}</span>
+        <span data-testid="total-amount">{GBPFormat.format(total)}</span>
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
         <LoaderOverlay isEnabled={createOrder.isLoading} />
@@ -58,6 +58,7 @@ export const OrderCreateForm = (): ReactElement => {
           className="text-1 font-poppins w-full py-2 px-4 text-sm font-[300] disabled:pointer-events-none disabled:opacity-[0.5]"
           type="submit"
           colour="yellow"
+          data-testid="checkout"
         >
           Go to checkout
         </Button>

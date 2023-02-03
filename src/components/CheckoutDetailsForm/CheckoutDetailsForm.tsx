@@ -38,10 +38,11 @@ export const CheckoutDetailsForm = (): ReactElement => {
           )}
         >
           <img src={CheckoutBurgerImg} className="mx-auto mb-[24px] h-[50px] w-[80px]"></img>
-          <p>
+          <p data-testid="no-products-msg">
             Whoa, you&apos;ve not got <br></br> anything in your order yet
           </p>
           <Button
+            data-testid="nav-to-menu"
             colour="yellow"
             size="small"
             onClick={navigateToMenu()}
@@ -56,12 +57,12 @@ export const CheckoutDetailsForm = (): ReactElement => {
         {lineItemsExist ? (
           <div className={cn(lineItemsExist ? 'opacity-100' : 'opacity-0', 'flex w-full justify-between text-[10px] text-[#5A6675]')}>
             <span className="">Service Charge:</span>
-            <span className="">{GBPFormat.format(serviceCharge)}</span>
+            <span data-testid="service-charge" className="">{GBPFormat.format(serviceCharge)}</span>
           </div>
         ) : null}
         <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
           <span>Total:</span>
-          <span>
+          <span data-testid="total">
             {GBPFormat.format(localOrder.lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + (lineItemsExist ? serviceCharge : 0))}
           </span>
         </div>
@@ -71,10 +72,12 @@ export const CheckoutDetailsForm = (): ReactElement => {
           colour="white"
           className="mr-3 h-[45px] w-[120px] rounded-[25px] border border-solid border-[#333F4C] text-[16px]"
           onClick={navigateToMenu()}
+          data-testid="back-button"
         >
           Back
         </Button>
         <Button
+          data-testid="confirm-and-continue"
           className="h-[45px] w-[416px] rounded-[25px] border-[#FFC600] bg-[#FFC600] text-[16px] disabled:pointer-events-none disabled:opacity-[0.5]"
           disabled={!lineItemsExist}
         >

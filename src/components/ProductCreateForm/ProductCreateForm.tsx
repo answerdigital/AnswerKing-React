@@ -121,7 +121,7 @@ export const ProductCreateForm = (): ReactElement => {
       {validationErrors.length > 0 ? (
         <Error onClear={handleErrorClear}>
           {validationErrors.map((error) => (
-            <li key={error}>{error}</li>
+            <li data-testid="error-message" key={error}>{error}</li>
           ))}
         </Error>
       ) : null}
@@ -129,6 +129,7 @@ export const ProductCreateForm = (): ReactElement => {
         Name:
       </label>
       <input
+        data-testid="product-name"
         className="product_create_form__input"
         id="product_create_form__name"
         onChange={(event) => setName(event.target.value)}
@@ -139,6 +140,7 @@ export const ProductCreateForm = (): ReactElement => {
         Price:
       </label>
       <input
+        data-testid="product-price"
         className="product_create_form__input"
         id="product_create_form__price"
         onChange={(event) => setPrice(event.target.value)}
@@ -150,13 +152,14 @@ export const ProductCreateForm = (): ReactElement => {
         Description:
       </label>
       <textarea
+        data-testid="product-description"
         className="product_create_form__input"
         id="product_create_form__description"
         onChange={(event) => setDescription(event.target.value)}
         rows={3}
         value={description}
       />
-      <Button className="product_create_form__button" type="submit">
+      <Button className="product_create_form__button" type="submit" data-testid="submit-product">
         Create
       </Button>
     </form>

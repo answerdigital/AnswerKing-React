@@ -14,7 +14,6 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands';
 import '../../src/style/main.css';
 
 // Alternatively you can use CommonJS syntax:
@@ -27,14 +26,19 @@ import { mount } from 'cypress/react18';
 // Alternatively, can be defined in cypress/support/component.d.ts
 // with a <reference path="./component" /> at the top of your spec.
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface Chainable {
       mount: typeof mount;
+      getBySel(value: string): Chainable,
     }
   }
 }
 
 Cypress.Commands.add('mount', mount);
+Cypress.Commands.add('getBySel', (selector, ...args) => {
+  return cy.get(`[data-testid=${selector}]`, ...args);
+});
 
 // Example use:
 // cy.mount(<MyComponent />)

@@ -15,7 +15,7 @@ export const Error = ({ children, onClear = undefined }: Props): ReactElement =>
         </div>
       ) : null}
       <div className="error__title">Error(s):</div>
-      <ul data-testid="error-list">{children ?? 'An unexpected error has occurred.'}</ul>
+      <ul data-testid="error-message">{children ?? 'An unexpected error has occurred.'}</ul>
     </div>
   );
 };
