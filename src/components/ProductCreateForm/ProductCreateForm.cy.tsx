@@ -1,5 +1,5 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {getExampleOrder, product} from '../../../cypress/data_helpers/component-test-data';
+import {getExampleOrder} from '../../../cypress/data_helpers/component-test-data';
 import { LocalOrderContext } from 'context/OrderContext';
 import { ProductCreateForm } from './ProductCreateForm';
 

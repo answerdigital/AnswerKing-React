@@ -1,8 +1,7 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
 import {getExampleOrder, product} from '../../../cypress/data_helpers/component-test-data';
 import {LocalOrderContext} from '../../context/OrderContext';
-import {ProductCard} from '../ProductCard/ProductCard';
-import {TrashIcon} from "../Icons/TrashIcon";
+import {TrashIcon} from '../Icons/TrashIcon';
 
 describe('Menu Product Modal', () => {
 

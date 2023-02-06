@@ -1,5 +1,5 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {getExampleOrder, lineItemList} from '../../../cypress/data_helpers/component-test-data';
+import {getExampleOrder} from '../../../cypress/data_helpers/component-test-data';
 import {OrderPanel} from './OrderPanel';
 import { LocalOrderContext } from 'context/OrderContext';
 

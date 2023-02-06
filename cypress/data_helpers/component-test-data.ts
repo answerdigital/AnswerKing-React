@@ -88,13 +88,11 @@ export function getExampleOrder(): ILocalOrder
     localOrder: localOrderData,
     addToLocalOrder(product: ProductDto): void {
       expect(product.name).to.equal('This is a product');
-      return;
     },
     removeLocalOrder(): void {
       return;
     }, removeProduct(product: ProductDto): void {
       expect(product.name).to.equal('This is a product');
-      return;
     }, setOrderId(id: number): void {
       return;
     }

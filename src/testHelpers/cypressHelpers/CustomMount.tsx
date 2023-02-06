@@ -1,4 +1,4 @@
-import {ReactElement, ReactNode} from 'react';
+import {ReactElement} from 'react';
 import {HelmetProvider} from 'react-helmet-async';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {mount} from 'cypress/react18';
@@ -14,15 +14,6 @@ const CustomMount = (component: ReactElement): void => {
       </QueryClientProvider>
     </Router>
   );
-};
-
-const StateMount = (component: ReactElement): void => {
-  mount(
-    <Router>
-      <QueryClientProvider client={queryClient}>
-        <HelmetProvider>{component}</HelmetProvider>
-      </QueryClientProvider>
-    </Router>);
 };
 
 export default CustomMount;

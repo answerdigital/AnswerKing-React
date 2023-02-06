@@ -11,9 +11,6 @@ describe('Errors', () => {
   });
 
   it('can be cleared from view by clicking', () => {
-    // cy.getBySel('error-clear').click();
-    // cy.getBySel('error-message').should('not.be.visible');
-
     //Note: There is no interactable element that can be clicked to dismiss the component!
   });
 });
