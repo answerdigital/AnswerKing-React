@@ -10,7 +10,7 @@ interface Props {
 
 export const CheckoutSection = ({ title, onEditClick, children }: Props): React.ReactElement => {
   return (
-    <div className="mb-4 flex w-full flex-col gap-2">
+    <div className="mb-6 flex w-full flex-col gap-2">
       <div className="flex w-full flex-row items-center justify-between">
         <h2>{title}</h2>
         {onEditClick && (

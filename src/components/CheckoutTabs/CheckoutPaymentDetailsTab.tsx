@@ -29,7 +29,7 @@ export const CheckoutPaymentDetailsTab = (): React.ReactElement => {
         </div>
       </div>
 
-      <div className="mt-5 flex w-full gap-5 font-[400]">
+      <div className="mt-12 flex w-full gap-5 font-[400]">
         <div className="align-center flex w-full flex-row justify-between">
           <h1 className="mb-4 text-[20px] font-[600]">Payment</h1>
           <div className="flex flex-row gap-1 text-[24px]">
