@@ -2,11 +2,11 @@ import { Button } from 'components/Button/Button';
 import { ReactElement } from 'react';
 
 export const StaffDetails = (): ReactElement => {
-  const inputClass = 'w-full bg-transparent text-white focus:outline-none border-b-2 border-gray-400 focus:border-white';
-  const labelClass = 'col-span-2 w-full italic text-lg text-gray-400 w-full';
+  const inputClass = 'font-poppins w-full bg-transparent text-white focus:outline-none border-b-2 border-gray-300 focus:border-white';
+  const labelClass = 'font-poly col-span-2 w-full italic text-lg text-gray-300 w-full';
 
   return (
-    <form className="grid w-[60%] grid-cols-4 gap-8 border-t-[1px] border-gray-600 py-16" key={'staff details'}>
+    <form className="grid w-[60%] grid-cols-4 gap-10 border-t-[1px] border-gray-600 py-16" key={'staff details'}>
       <label className={labelClass}>
         Store Name
         <input className={inputClass} type="text" />
@@ -58,7 +58,7 @@ export const StaffDetails = (): ReactElement => {
         </Button>
       </div>
       <div></div>
-      <div>
+      <div className="flex justify-end">
         <Button colour="yellow" size="medium">
           Save
         </Button>

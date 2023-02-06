@@ -1,7 +1,6 @@
 import { TagDto } from 'dtos/TagDto';
-import { createContext, useContext, useState, useRef, useMemo } from 'react';
+import { createContext, useContext, useState, useRef, useMemo, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { /*tagProblemDetails,*/ useTags } from 'hooks/useTags';
 import { TagForm } from './TagForm';
 
 const NAME_MIN_LENGTH = 1;
@@ -87,75 +86,24 @@ export const TagFormContextProvider: React.FC<Props> = ({ children }) => {
     if (!descriptionIsValid(formTag.desc)) {
       setValidationErrors((errors) => [...errors, VALIDATION_MSG_DESC]);
     }
-    //TODO validation of products.
 
     if (nameIsValid(formTag.name) && descriptionIsValid(formTag.desc)) {
-      if (initialTag) {
-        console.log('Editing tags not yet implemented');
-        /*
-        TODO add update funtion to usetags hook
-        updatetag.mutate(
-          { initialtag.id, name, price: parseFloat(price), description },
-          {
-            onSuccess: (tag) => {
-              toast.success(`tag "${tag.name}" was succesfully updated.`);
-            },
-            onError: (problems: tagProblemDetails) => {
-              handleServerErrors(problems);
-            },
-          }
-        );
-        */
-      } else {
-        console.log('Saving new tags not yet implemented');
-        /*
-        createtag.mutate(
-          { name: formtag.name, price: formtag.price, description: formtag.desc },
-          {
-            onSuccess: (tag) => {
-              toast.success(`tag "${tag.name}" was succesfully added.`);
-            },
-            onError: (problems: tagProblemDetails) => {
-              handleServerErrors(problems);
-            },
-          }
-        );
-        */
-      }
+      setValidationErrors([]);
+      closeForm();
     }
-    closeForm();
   };
 
-  /*
-  const handleServerErrors = (problems: tagProblemDetails): void => {
-    const errorList = [];
-
-    errorList.push(
-      <div>
-        {problems.title}
-        <br />
-        <br />
-      </div>
-    );
-
-    if (problems.errors.name) {
-      errorList.push(
-        <li>
-          {problems.errors.name[0]} <br />
-        </li>
-      );
+  useEffect(() => {
+    if (validationErrors.length) {
+      toastId.current = toast.error(
+        <ul>
+          {validationErrors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      ) as number;
     }
-    if (problems.errors.description) {
-      errorList.push(
-        <li>
-          {problems.errors.description[0]} <br />
-        </li>
-      );
-    }
-
-    toastId.current = toast.error(<ul>{errorList}</ul>) as number;
-  };
-  */
+  }, [validationErrors]);
 
   const contextValues: ITagFormContext = useMemo(
     () => ({

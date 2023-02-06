@@ -1,7 +1,7 @@
 import { ProductDto } from 'dtos/ProductDto';
-import { createContext, useContext, useState, useRef, useMemo } from 'react';
+import { createContext, useContext, useState, useRef, useMemo, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { productProblemDetails, useProducts } from 'hooks/useProducts';
+import { useProducts } from 'hooks/useProducts';
 import { ProductForm } from './ProductForm';
 
 const NAME_MIN_LENGTH = 1;
@@ -94,84 +94,30 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
     if (!nameIsValid(formProduct.name)) {
       setValidationErrors((errors) => [...errors, VALIDATION_MSG_NAME]);
     }
-    if (!priceIsValid(formProduct.price.toString())) {
-      setValidationErrors((errors) => [...errors, VALIDATION_MSG_PRICE]);
-    }
     if (!descriptionIsValid(formProduct.desc)) {
       setValidationErrors((errors) => [...errors, VALIDATION_MSG_DESC]);
     }
-    //TODO validation of tags.
-
-    // Initially I checked for validationErrors.length however theres a slight delay with the state updating,
-    // and sometimes this request gets fired when it shouldn't.
-    if (nameIsValid(formProduct.name) && priceIsValid(formProduct.price.toString()) && descriptionIsValid(formProduct.desc)) {
-      if (initialProduct) {
-        /*
-        TODO add update funtion to useProducts hook
-        updateProduct.mutate(
-          { initialProduct.id, name, price: parseFloat(price), description },
-          {
-            onSuccess: (product) => {
-              toast.success(`Product "${product.name}" was succesfully updated.`);
-            },
-            onError: (problems: productProblemDetails) => {
-              handleServerErrors(problems);
-            },
-          }
-        );
-        */
-      } else {
-        createProduct.mutate(
-          { name: formProduct.name, price: formProduct.price, description: formProduct.desc },
-          {
-            onSuccess: (product) => {
-              toast.success(`Product "${product.name}" was succesfully added.`);
-            },
-            onError: (problems: productProblemDetails) => {
-              handleServerErrors(problems);
-            },
-          }
-        );
-      }
+    if (!priceIsValid(formProduct.price.toString())) {
+      setValidationErrors((errors) => [...errors, VALIDATION_MSG_PRICE]);
     }
-    closeForm();
+
+    if (nameIsValid(formProduct.name) && descriptionIsValid(formProduct.desc) && priceIsValid(formProduct.price.toString())) {
+      setValidationErrors([]);
+      closeForm();
+    }
   };
 
-  const handleServerErrors = (problems: productProblemDetails): void => {
-    const errorList = [];
-
-    errorList.push(
-      <div>
-        {problems.title}
-        <br />
-        <br />
-      </div>
-    );
-
-    if (problems.errors.name) {
-      errorList.push(
-        <li>
-          {problems.errors.name[0]} <br />
-        </li>
-      );
+  useEffect(() => {
+    if (validationErrors.length) {
+      toastId.current = toast.error(
+        <ul>
+          {validationErrors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      ) as number;
     }
-    if (problems.errors.price) {
-      errorList.push(
-        <li>
-          {problems.errors.price[0]} <br />
-        </li>
-      );
-    }
-    if (problems.errors.description) {
-      errorList.push(
-        <li>
-          {problems.errors.description[0]} <br />
-        </li>
-      );
-    }
-
-    toastId.current = toast.error(<ul>{errorList}</ul>) as number;
-  };
+  }, [validationErrors]);
 
   const contextValues: IProductFormContext = useMemo(
     () => ({

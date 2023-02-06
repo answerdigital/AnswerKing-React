@@ -6,10 +6,11 @@ import { Search } from 'components/Search/Search';
 import { Button } from 'components/Button/Button';
 import { useTagFormContext } from 'components/TagForm/TagFormContext';
 import { TagDto } from 'dtos/TagDto';
+import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 
 export const TagsTable = (): ReactElement => {
   const { tags } = useTags();
-  const padding = 'px-2 py-2';
+  const formatting = ' px-2 py-2 font-normal ';
   const searchString = useSearch().searchString;
   const displayTags: TagDto[] =
     tags.data?.filter((tag) => !tag.retired && tag.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
@@ -21,21 +22,22 @@ export const TagsTable = (): ReactElement => {
         <table className="w-full table-auto divide-y">
           <thead className="">
             <tr>
-              <th className={'text-left ' + padding}>ID</th>
-              <th className={'text-left ' + padding}>Tag Name</th>
-              <th className={'text-center ' + padding}>No. Items</th>
+              <th className={formatting}>ID</th>
+              <th className={formatting}>Tag Name</th>
+              <th className={'text-center ' + formatting}>No. Items</th>
               <th />
             </tr>
           </thead>
           <tbody className="font-poppins font-200 divide-y text-sm">
             {displayTags.map((tag) => (
-              <TagsTableRow padding={padding} tag={tag} key={tag.id} />
+              <TagsTableRow padding={formatting} tag={tag} key={tag.id} />
             ))}
           </tbody>
         </table>
       ) : (
         <>No Tags</>
       )}
+      <LoaderOverlay isEnabled={false} />
       <div className="flex w-full flex-none justify-between">
         <Search className="h-14 w-1/2">Search Tags</Search>
         <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>

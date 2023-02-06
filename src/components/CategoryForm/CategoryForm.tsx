@@ -1,4 +1,3 @@
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { ReactElement } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,7 +36,7 @@ export const CategoryForm = (): ReactElement => {
   };
 
   return (
-    <>
+    <div className="w-full">
       <form>
         <div className="grid grid-cols-4 gap-4 p-2">
           <div className="col-span-2 row-span-3 flex h-full w-full items-center justify-center bg-gray-200">
@@ -85,7 +84,6 @@ export const CategoryForm = (): ReactElement => {
             );
           })}
         </div>
-        <LoaderOverlay isEnabled={false} />
       </form>
       <div className="flex w-full flex-none justify-between">
         <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={formContext.closeForm}>
@@ -95,6 +93,6 @@ export const CategoryForm = (): ReactElement => {
           Save Item
         </Button>
       </div>
-    </>
+    </div>
   );
 };

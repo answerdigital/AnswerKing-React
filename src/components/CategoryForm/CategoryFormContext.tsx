@@ -1,7 +1,6 @@
 import { CategoryDto } from 'dtos/CategoryDto';
-import { createContext, useContext, useState, useRef, useMemo } from 'react';
+import { createContext, useContext, useState, useRef, useMemo, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { /*categoryProblemDetails,*/ useCategories } from 'hooks/useCategories';
 import { CategoryForm } from './CategoryForm';
 
 const NAME_MIN_LENGTH = 1;
@@ -51,7 +50,6 @@ interface Props {
 export const CategoryFormContextProvider: React.FC<Props> = ({ children }) => {
   const [initialCategory, setInitialCategory] = useState<CategoryDto | undefined>(undefined);
   const [formOpen, setFormOpen] = useState<boolean>(false);
-  //const { createCategory } = useCategories();
   const [formCategory, setFormCategory] = useState<IFormCategory>({ name: '', desc: '', products: [] });
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const toastId = useRef(0);
@@ -75,7 +73,6 @@ export const CategoryFormContextProvider: React.FC<Props> = ({ children }) => {
 
   const handleErrorClear = (): void => {
     setValidationErrors([]);
-    //createcategory.reset();
     toast.dismiss(toastId.current);
   };
 
@@ -87,75 +84,24 @@ export const CategoryFormContextProvider: React.FC<Props> = ({ children }) => {
     if (!descriptionIsValid(formCategory.desc)) {
       setValidationErrors((errors) => [...errors, VALIDATION_MSG_DESC]);
     }
-    //TODO validation of products.
 
     if (nameIsValid(formCategory.name) && descriptionIsValid(formCategory.desc)) {
-      if (initialCategory) {
-        console.log('Editing categories not yet implemented');
-        /*
-        TODO add update funtion to usecategorys hook
-        updatecategory.mutate(
-          { initialcategory.id, name, price: parseFloat(price), description },
-          {
-            onSuccess: (category) => {
-              toast.success(`category "${category.name}" was succesfully updated.`);
-            },
-            onError: (problems: categoryProblemDetails) => {
-              handleServerErrors(problems);
-            },
-          }
-        );
-        */
-      } else {
-        console.log('Saving new categories not yet implemented');
-        /*
-        createcategory.mutate(
-          { name: formcategory.name, price: formcategory.price, description: formcategory.desc },
-          {
-            onSuccess: (category) => {
-              toast.success(`category "${category.name}" was succesfully added.`);
-            },
-            onError: (problems: categoryProblemDetails) => {
-              handleServerErrors(problems);
-            },
-          }
-        );
-        */
-      }
+      setValidationErrors([]);
+      closeForm();
     }
-    closeForm();
   };
 
-  /*
-  const handleServerErrors = (problems: categoryProblemDetails): void => {
-    const errorList = [];
-
-    errorList.push(
-      <div>
-        {problems.title}
-        <br />
-        <br />
-      </div>
-    );
-
-    if (problems.errors.name) {
-      errorList.push(
-        <li>
-          {problems.errors.name[0]} <br />
-        </li>
-      );
+  useEffect(() => {
+    if (validationErrors.length) {
+      toastId.current = toast.error(
+        <ul>
+          {validationErrors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      ) as number;
     }
-    if (problems.errors.description) {
-      errorList.push(
-        <li>
-          {problems.errors.description[0]} <br />
-        </li>
-      );
-    }
-
-    toastId.current = toast.error(<ul>{errorList}</ul>) as number;
-  };
-  */
+  }, [validationErrors]);
 
   const contextValues: ICategoryFormContext = useMemo(
     () => ({

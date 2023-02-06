@@ -7,10 +7,10 @@ import { CategoryDto } from 'dtos/CategoryDto';
 
 interface Props {
   category: CategoryDto;
-  padding: string;
+  formatting: string;
 }
 
-export const CategoriesTableRow = ({ category, padding }: Props): ReactElement => {
+export const CategoriesTableRow = ({ category, formatting }: Props): ReactElement => {
   //const { removecategory } = useProducts();
   const formContext = useCategoryFormContext();
 
@@ -29,10 +29,10 @@ export const CategoriesTableRow = ({ category, padding }: Props): ReactElement =
 
   return (
     <tr>
-      <td className={'text-left ' + padding}>{category.id}</td>
-      <td className={'text-left ' + padding}>{category.name}</td>
-      <td className={'text-center ' + padding}>{category.products?.length ?? '0'}</td>
-      <td className={padding}>
+      <td className={formatting}>{category.id}</td>
+      <td className={'w-full ' + formatting}>{category.name}</td>
+      <td className={'text-center ' + formatting}>{category.products?.length ?? '0'}</td>
+      <td className={'flex justify-end ' + formatting}>
         <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(category)} role="button" className={iconClass} />
         <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} onKeyDown={handleDelete} role="button" className={iconClass} />
       </td>

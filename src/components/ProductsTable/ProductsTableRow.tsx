@@ -9,10 +9,10 @@ import { toast } from 'react-toastify';
 
 interface Props {
   product: ProductDto;
-  padding: string;
+  formatting: string;
 }
 
-export const ProductsTableRow = ({ product, padding }: Props): ReactElement => {
+export const ProductsTableRow = ({ product, formatting }: Props): ReactElement => {
   const { removeProduct } = useProducts();
   const formContext = useProductFormContext();
 
@@ -28,13 +28,13 @@ export const ProductsTableRow = ({ product, padding }: Props): ReactElement => {
 
   return (
     <tr>
-      <td className={'text-left ' + padding}>{product.id}</td>
-      <td className={'text-left ' + padding}>{product.name}</td>
-      <td className={'text-center ' + padding}>{product.categories}</td>
-      <td className={'text-center ' + padding}>None</td>
-      <td className={'text-center ' + padding}>£{product.price.toFixed(2)}</td>
-      <td className={'text-center ' + padding}>None</td>
-      <td className={padding}>
+      <td className={formatting}>{product.id}</td>
+      <td className={'w-full ' + formatting}>{product.name}</td>
+      <td className={'text-center ' + formatting}>{product.category.name}</td>
+      <td className={'text-center ' + formatting}>None</td>
+      <td className={'text-center ' + formatting}>£{product.price.toFixed(2)}</td>
+      <td className={'text-center ' + formatting}>None</td>
+      <td className={'flex justify-end ' + formatting}>
         <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(product)} role="button" className={iconClass} />
         <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} onKeyDown={handleDelete} role="button" className={iconClass} />
       </td>
