@@ -20,7 +20,7 @@ export const ProductsTableRow = ({ product }: Props): ReactElement => {
   };
 
   return (
-    <tr>
+    <tr data-testid="products-data-row">
       <td data-testid="product-id" className="text-left">{product.id}</td>
       <td data-testid="product-name" className="text-left">{product.name}</td>
       <td data-testid="product-price" className="products_table__hide_mobile text-right">£{product.price.toFixed(2)}</td>

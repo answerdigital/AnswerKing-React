@@ -6,31 +6,9 @@ describe('Create Product Form', () => {
     CustomMount(
       <ProductsTable></ProductsTable>
     );
+    cy.intercept('GET', '**/api/products', {fixture: 'products'});
   });
-  it('must require a name for a product', () => {
-    cy.getBySel('product-price').type('10');
-    cy.getBySel('product-description').type('description');
-    cy.getBySel('submit-product').click();
-    cy.getBySel('error-message').should('contain', 'Name is required, cannot contain special characters and must be less than 50 characters in length.');
-  });
-
-  it('must require a description', () => {
-    cy.getBySel('product-price').type('10');
-    cy.getBySel('product-name').type('name');
-    cy.getBySel('submit-product').click();
-    cy.getBySel('error-message').should('contain', 'Description is required and must be less than 500 characters in length.');
-  });
-
-  it('should be able to be submitted to create a product', () => {
-    cy.intercept('POST', '**/api/products').as('productPost');
-    cy.getBySel('product-price').type('10');
-    cy.getBySel('product-description').type('description');
-    cy.getBySel('product-name').type('name');
-    cy.getBySel('submit-product').click();
-
-    cy.wait('@productPost');
-    cy.get('@productPost').its('request.body').should('have.property', 'name', 'name');
-    cy.get('@productPost').its('request.body').should('have.property', 'description', 'description');
-    cy.get('@productPost').its('request.body').should('have.property', 'price', 0.001);
+  it('must display product data', () => {
+    cy.getBySel('products-data-row').should('be.visible');
   });
 });
