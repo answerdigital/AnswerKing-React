@@ -4,3 +4,20 @@ body {
   margin: 0px;
   background: linear-gradient(106.5deg, #333f4c 0%, #1a2027 48.44%, #000000 100%);
 }
+
+::-webkit-scrollbar {
+  width: 11px;
+  -webkit-border-radius: 30px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #a2aab6;
+}
