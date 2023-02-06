@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useTagFormContext } from './TagFormContext';
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 
 export const TagForm = (): ReactElement => {
   const formContext = useTagFormContext();

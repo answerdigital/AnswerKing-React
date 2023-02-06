@@ -1,4 +1,4 @@
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 import { ReactElement } from 'react';
 
 export const StaffDetails = (): ReactElement => {

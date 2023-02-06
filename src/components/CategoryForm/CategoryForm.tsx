@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useCategoryFormContext } from './CategoryFormContext';
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 
 export const CategoryForm = (): ReactElement => {
   const formContext = useCategoryFormContext();

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown } from 'components/Dropdown/Dropdown';
 import { useProductFormContext } from './ProductFormContext';
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 
 export const ProductForm = (): ReactElement => {
   const formContext = useProductFormContext();
