@@ -3,7 +3,7 @@ import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
 import { useSearch } from 'components/Search/SearchContext';
 import { Search } from 'components/Search/Search';
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
 import { ProductDto } from 'dtos/ProductDto';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';

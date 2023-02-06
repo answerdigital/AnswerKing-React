@@ -3,7 +3,7 @@ import { useTags } from 'hooks/useTags';
 import { ReactElement } from 'react';
 import { useSearch } from 'components/Search/SearchContext';
 import { Search } from 'components/Search/Search';
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 import { useTagFormContext } from 'components/TagForm/TagFormContext';
 import { TagDto } from 'dtos/TagDto';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';

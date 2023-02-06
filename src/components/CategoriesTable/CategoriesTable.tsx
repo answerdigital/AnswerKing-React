@@ -3,7 +3,7 @@ import { useCategories } from 'hooks/useCategories';
 import { ReactElement } from 'react';
 import { useSearch } from 'components/Search/SearchContext';
 import { Search } from 'components/Search/Search';
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Buttons/Button';
 import { useCategoryFormContext } from 'components/CategoryForm/CategoryFormContext';
 import { CategoryDto } from 'dtos/CategoryDto';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
