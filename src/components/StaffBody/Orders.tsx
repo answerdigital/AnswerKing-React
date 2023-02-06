@@ -9,16 +9,20 @@ export const StaffOrders = (): ReactElement => {
 
   return (
     <div className="flex w-[45%] flex-col items-center text-gray-900" key="staff inventory">
-      {populatedOrders.map((order: OrderDto, i) => (
-        <div key={order.id} className="w-full">
-          <>
-            {order.createdOn?.toString().slice(0, 10) !== populatedOrders[i - 1]?.createdOn?.toString().slice(0, 10) && (
-              <StaffOrdersDate date={order.createdOn} />
-            )}
-          </>
-          <OrdersCard order={order} />
-        </div>
-      ))}
+      {populatedOrders.length ? (
+        populatedOrders.map((order: OrderDto, i) => (
+          <div key={order.id} className="w-full">
+            <>
+              {order.createdOn?.toString().slice(0, 10) !== populatedOrders[i - 1]?.createdOn?.toString().slice(0, 10) && (
+                <StaffOrdersDate date={order.createdOn} />
+              )}
+            </>
+            <OrdersCard order={order} />
+          </div>
+        ))
+      ) : (
+        <div className="italic text-white">No Orders</div>
+      )}
     </div>
   );
 };
