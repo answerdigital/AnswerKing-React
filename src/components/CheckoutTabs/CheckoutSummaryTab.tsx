@@ -51,8 +51,8 @@ export const CheckoutSummaryTab = (): React.ReactElement => {
 
       <CheckoutSection title="Order details" onEditClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)}>
         <div className="flex w-full flex-row justify-between border-b-2 text-[12px]">
-          <span>Kash</span>
-          <span>Codermankash@hotmail.com</span>
+          <span>Joe Bloggs</span>
+          <span>joebloggs@lukewarmmail.com</span>
         </div>
       </CheckoutSection>
 
