@@ -15,14 +15,14 @@ describe('Create Product Form', () => {
     cy.getBySel('product-price').type('10');
     cy.getBySel('product-description').type('description');
     cy.getBySel('submit-product').click();
-    cy.getBySel('error-message').should('contain', 'Name is required, cannot contain special characters and must be less than 50 characters in length.');
+    cy.getBySel('error-list').should('contain', 'Name is required, cannot contain special characters and must be less than 50 characters in length.');
   });
 
   it('must require a description', () => {
     cy.getBySel('product-price').type('10');
     cy.getBySel('product-name').type('name');
     cy.getBySel('submit-product').click();
-    cy.getBySel('error-message').should('contain', 'Description is required and must be less than 500 characters in length.');
+    cy.getBySel('error-list').should('contain', 'Description is required and must be less than 500 characters in length.');
   });
 
   it('should be able to submitted to create a product', () => {

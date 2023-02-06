@@ -7,7 +7,7 @@ describe('Errors', () => {
   });
 
   it('displays the error', () => {
-    cy.getBySel('error-message').should('have.text', 'This is an error');
+    cy.getBySel('error-list').should('have.text', 'This is an error');
   });
 
   it('can be cleared from view by clicking', () => {
