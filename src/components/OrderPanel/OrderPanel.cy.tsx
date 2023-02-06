@@ -23,5 +23,5 @@ describe('Order Panel', () => {
   });
   it('should contain link home', () => {
     cy.getBySel('local-order-details').should('be.visible');
-  })
+  });
 });

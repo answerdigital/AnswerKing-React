@@ -37,7 +37,7 @@ describe('Order Panel', () => {
     });
 
     it('should truncate a long description', () => {
-      cy.getBySel('product-description').should('contain', '...')
+      cy.getBySel('product-description').should('contain', '...');
     });
   });
 });
