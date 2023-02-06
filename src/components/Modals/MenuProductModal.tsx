@@ -39,6 +39,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
     <>
       {showProductModal && (
         <div
+          data-testid="menu-product-modal"
           className="fixed top-0 left-0 z-10 flex h-full w-full items-center justify-center bg-black bg-opacity-75 shadow-sm"
           onClick={() => disableShow(false)}
         >
@@ -53,11 +54,11 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
                   <h5 className="text-[22px] font-[600]">{product.name}</h5>
                   <p className="font-poly text-left italic">{product.description}</p>
                   <div className="flex w-full items-center justify-between gap-2">
-                    <div className="font-[600]">V, Ve, GF</div>
+                    <div data-testid="product-attributes" className="font-[600]">V, Ve, GF</div>
                     <div className="flex items-center">
                       <PlusMinusButton action={-1} onClick={changeCount}></PlusMinusButton>
-                      <div className="mx-2 w-4">{counter}</div>
-                      <PlusMinusButton action={1} onClick={changeCount}></PlusMinusButton>
+                      <div data-testid="quantity" className="mx-2 w-4">{counter}</div>
+                      <PlusMinusButton data-testid="reduce-quantity" action={1} onClick={changeCount}></PlusMinusButton>
                     </div>
                   </div>
                 </div>
@@ -65,7 +66,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
 
               <div className="mt-[5%] flex w-full flex-col justify-items-start gap-[8px]">
                 <div className="font-poly text-left text-[16px] font-[400] italic text-[#A2AAB6]">Contains Allergens</div>
-                <div className="flex flex-row justify-items-start gap-[16px] text-[14px]">
+                <div data-testid="allergens" className="flex flex-row justify-items-start gap-[16px] text-[14px]">
                   {allergens ? (
                     allergens.map((allergen) => (
                       <>
@@ -80,6 +81,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
 
               <div className="mt-[5%] flex flex-row gap-4 self-stretch rounded-lg">
                 <Button
+                  data-testid="cancel-button"
                   className="h-[45px] w-[40%] grow gap-2.5 border-2 border-solid border-[#A2AAB6] px-3"
                   size="small"
                   colour="clear"

@@ -34,13 +34,13 @@ describe('Menu Product Modal', () => {
 
   it('allow you to increase the quantity', () => {
     cy.getBySel('quantity').should('have.text', '5');
-    cy.getBySel('increase-quantity').click();
+    cy.getBySel('plus-minus-button').eq(1).click();
     cy.getBySel('quantity').should('have.text', '6');
   });
 
   it('allow you to decrease the quantity', () => {
     cy.getBySel('quantity').should('have.text', '5');
-    cy.getBySel('reduce-quantity').click();
+    cy.getBySel('plus-minus-button').eq(0).click();
     cy.getBySel('quantity').should('have.text', '4');
   });
 
