@@ -1,7 +1,7 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
 
 import { Layout } from './Layout';
-import {Button} from '../Button/Button';
+import {Button} from '../Buttons/Button';
 
 describe('Layout', () => {
 
