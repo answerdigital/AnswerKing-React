@@ -42,8 +42,8 @@ export const CheckoutPaymentDetailsTab = (): React.ReactElement => {
       </div>
 
       <div className="flex w-full gap-5">
-        <InputRow type="text" label="Card number" placeholder="1234 1234 1234 1234" />
-        <InputRow type="text" label="Account number" placeholder="1234 1234" />
+        <InputRow type="number" label="Card number" placeholder="1234123412341234" />
+        <InputRow type="number" label="Account number" placeholder="12341234" />
       </div>
 
       <div className="mt-5 flex w-full gap-5">
