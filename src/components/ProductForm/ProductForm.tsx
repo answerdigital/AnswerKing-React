@@ -16,7 +16,7 @@ export const ProductForm = (): ReactElement => {
     id: number;
     name: string;
   }
-  const tags: ITag[] = [
+  const allTags: ITag[] = [
     { id: 0, name: 'Vegan' },
     { id: 1, name: 'Vegetarian' },
     { id: 2, name: 'Good Food' },
@@ -122,7 +122,7 @@ export const ProductForm = (): ReactElement => {
             />
           </div>
           <a className="col-span-4 italic text-gray-400">Tags</a>
-          {tags.map((tag) => {
+          {allTags.map((tag) => {
             return (
               <div key={tag.id.toString()}>
                 <input
