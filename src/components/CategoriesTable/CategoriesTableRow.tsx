@@ -31,7 +31,7 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
     <tr>
       <td className={formatting}>{category.id}</td>
       <td className={'w-full ' + formatting}>{category.name}</td>
-      <td className={'text-center ' + formatting}>{category.products?.length ?? '0'}</td>
+      <td className={'w-48 text-center ' + formatting}>{category.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + formatting}>
         <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(category)} role="button" className={iconClass} />
         <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} onKeyDown={handleDelete} role="button" className={iconClass} />

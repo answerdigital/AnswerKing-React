@@ -18,25 +18,27 @@ export const TagsTable = (): ReactElement => {
 
   return (
     <>
-      {displayTags.length ? (
-        <table className="w-full table-auto divide-y">
-          <thead className="">
-            <tr>
-              <th className={formatting}>ID</th>
-              <th className={formatting}>Tag Name</th>
-              <th className={'text-center ' + formatting}>No. Items</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody className="font-poppins font-200 divide-y text-sm">
-            {displayTags.map((tag) => (
-              <TagsTableRow padding={formatting} tag={tag} key={tag.id} />
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <>No Tags</>
-      )}
+      <div className="h-full w-full overflow-auto">
+        {displayTags.length ? (
+          <table className="w-full table-auto divide-y">
+            <thead className="">
+              <tr>
+                <th className={formatting}>ID</th>
+                <th className={formatting}>Tag Name</th>
+                <th className={'text-center ' + formatting}>No. Items</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody className="font-poppins font-200 divide-y text-sm">
+              {displayTags.map((tag) => (
+                <TagsTableRow padding={formatting} tag={tag} key={tag.id} />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <>No Tags</>
+        )}
+      </div>
       <LoaderOverlay isEnabled={false} />
       <div className="flex w-full flex-none justify-between">
         <Search className="h-14 w-1/2">Search Tags</Search>

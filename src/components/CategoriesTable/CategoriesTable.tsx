@@ -18,25 +18,27 @@ export const CategoriesTable = (): ReactElement => {
 
   return (
     <>
-      {displayCategories.length ? (
-        <table className="w-full table-auto divide-y">
-          <thead>
-            <tr>
-              <th className={formatting}>ID</th>
-              <th className={formatting}>Category Name</th>
-              <th className={'text-center ' + formatting}>No. Items</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody className="font-poppins font-200 divide-y text-sm">
-            {displayCategories.map((category) => (
-              <CategoriesTableRow formatting={formatting} category={category} key={category.id} />
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <>No Categories</>
-      )}
+      <div className="h-full w-full overflow-auto">
+        {displayCategories.length ? (
+          <table className="w-full table-auto divide-y">
+            <thead>
+              <tr>
+                <th className={formatting}>ID</th>
+                <th className={formatting}>Category Name</th>
+                <th className={'text-center ' + formatting}>No. Items</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody className="font-poppins font-200 divide-y text-sm">
+              {displayCategories.map((category) => (
+                <CategoriesTableRow formatting={formatting} category={category} key={category.id} />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <>No Categories</>
+        )}
+      </div>
       <LoaderOverlay isEnabled={false} />
       <div className="flex w-full flex-none justify-between">
         <Search className="h-14 w-1/2">Search Categories</Search>

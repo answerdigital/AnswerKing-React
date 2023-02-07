@@ -36,7 +36,7 @@ export const CategoryForm = (): ReactElement => {
   };
 
   return (
-    <div className="w-full">
+    <>
       <form>
         <div className="grid grid-cols-4 gap-4 p-2">
           <div className="col-span-2 row-span-3 flex h-full w-full items-center justify-center bg-gray-200">
@@ -93,6 +93,6 @@ export const CategoryForm = (): ReactElement => {
           Save Item
         </Button>
       </div>
-    </div>
+    </>
   );
 };

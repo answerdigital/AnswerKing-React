@@ -18,29 +18,31 @@ export const ProductsTable = (): ReactElement => {
 
   return (
     <>
-      {displayProducts.length ? (
-        <table className="w-full table-auto divide-y">
-          <thead>
-            <tr>
-              <th className={'text-left ' + formatting}>ID</th>
-              <th className={'text-left ' + formatting}>Name</th>
-              <th className={'text-center ' + formatting}>Category</th>
-              <th className={'text-center ' + formatting}>Stock</th>
-              <th className={'text-center ' + formatting}>Price</th>
-              <th className={'text-center ' + formatting}>No. Sold</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody className="font-poppins font-200 divide-y text-sm">
-            {displayProducts.map((product) => (
-              <ProductsTableRow formatting={formatting} product={product} key={product.id} />
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <>No Products</>
-      )}
-      <LoaderOverlay isEnabled={false} />
+      <div className="h-full w-full overflow-auto">
+        {displayProducts.length ? (
+          <table className="w-full table-auto divide-y">
+            <thead>
+              <tr>
+                <th className={'text-left ' + formatting}>ID</th>
+                <th className={'text-left ' + formatting}>Name</th>
+                <th className={'text-center ' + formatting}>Category</th>
+                <th className={'text-center ' + formatting}>Stock</th>
+                <th className={'text-center ' + formatting}>Price</th>
+                <th className={'text-center ' + formatting}>No. Sold</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody className="font-poppins font-200 divide-y text-sm">
+              {displayProducts.map((product) => (
+                <ProductsTableRow formatting={formatting} product={product} key={product.id} />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <>No Products</>
+        )}
+        <LoaderOverlay isEnabled={false} />
+      </div>
       <div className="flex w-full flex-none justify-between">
         <Search className="h-14 w-1/2">Search Item</Search>
         <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>

@@ -14,11 +14,24 @@ export const StaffNavBar = ({ className, sections, setSelectedSection, selectedS
     <div className={className}>
       {sections.map((section) =>
         section.title === selectedSection.title ? (
-          <Button key={section.title} hover={false} size="medium" colour={'grey'} onClick={() => setSelectedSection(section)} className="mx-10">
+          <Button
+            key={section.title}
+            hover={false}
+            size="medium"
+            colour={'grey'}
+            onClick={() => setSelectedSection(section)}
+            className="mx-12 text-xl font-extralight"
+          >
             {section.title}
           </Button>
         ) : (
-          <Button key={section.title} size="medium" colour={'clear'} onClick={() => setSelectedSection(section)} className="mx-10">
+          <Button
+            key={section.title}
+            size="medium"
+            colour={'clear'}
+            onClick={() => setSelectedSection(section)}
+            className="mx-12 text-xl font-extralight"
+          >
             {section.title}
           </Button>
         )
