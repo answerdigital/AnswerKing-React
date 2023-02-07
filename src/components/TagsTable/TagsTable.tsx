@@ -24,7 +24,7 @@ export const TagsTable = (): ReactElement => {
             <thead className="">
               <tr>
                 <th className={formatting}>ID</th>
-                <th className={formatting}>Tag Name</th>
+                <th className={'w-full text-left ' + formatting}>Tag Name</th>
                 <th className={'text-center ' + formatting}>No. Items</th>
                 <th />
               </tr>
@@ -41,8 +41,8 @@ export const TagsTable = (): ReactElement => {
       </div>
       <LoaderOverlay isEnabled={false} />
       <div className="flex w-full flex-none justify-between">
-        <Search className="h-14 w-1/2">Search Tags</Search>
-        <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>
+        <Search className="mx-4 my-2 h-14 w-1/2">Search Tags</Search>
+        <Button className="mx-4 my-2 h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>
           Add Tag
         </Button>
       </div>

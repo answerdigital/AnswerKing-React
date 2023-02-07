@@ -30,11 +30,11 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
   return (
     <tr>
       <td className={padding}>{tag.id}</td>
-      <td className={'w-full ' + padding}>{tag.name}</td>
+      <td className={padding}>{tag.name}</td>
       <td className={'text-center ' + padding}>{tag.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + padding}>
         <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(tag)} role="button" className={iconClass} />
-        <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} onKeyDown={handleDelete} role="button" className={iconClass} />
+        <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} role="button" className={iconClass} />
       </td>
     </tr>
   );

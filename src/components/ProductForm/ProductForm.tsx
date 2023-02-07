@@ -127,10 +127,10 @@ export const ProductForm = (): ReactElement => {
         <LoaderOverlay isEnabled={false} />
       </form>
       <div className="flex w-full flex-none justify-between">
-        <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={formContext.closeForm}>
+        <Button className="mx-4 my-2 h-14 w-1/2" colour="yellow" size="small" onClick={formContext.closeForm}>
           Cancel
         </Button>
-        <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={formContext.saveForm}>
+        <Button className="mx-4 my-2 h-14 w-1/2" colour="yellow" size="small" onClick={formContext.saveForm}>
           Save Item
         </Button>
       </div>

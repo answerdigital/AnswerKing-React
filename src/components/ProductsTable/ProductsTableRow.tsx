@@ -29,14 +29,14 @@ export const ProductsTableRow = ({ product, formatting }: Props): ReactElement =
   return (
     <tr>
       <td className={formatting}>{product.id}</td>
-      <td className={'w-full ' + formatting}>{product.name}</td>
+      <td className={formatting}>{product.name}</td>
       <td className={'text-center ' + formatting}>{product.category.name}</td>
       <td className={'text-center ' + formatting}>None</td>
       <td className={'text-center ' + formatting}>£{product.price.toFixed(2)}</td>
       <td className={'text-center ' + formatting}>None</td>
       <td className={'flex justify-end ' + formatting}>
         <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(product)} role="button" className={iconClass} />
-        <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} onKeyDown={handleDelete} role="button" className={iconClass} />
+        <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} role="button" className={iconClass} />
       </td>
     </tr>
   );

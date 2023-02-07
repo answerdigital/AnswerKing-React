@@ -24,7 +24,7 @@ export const CategoriesTable = (): ReactElement => {
             <thead>
               <tr>
                 <th className={formatting}>ID</th>
-                <th className={formatting}>Category Name</th>
+                <th className={'w-full text-left' + formatting}>Category Name</th>
                 <th className={'text-center ' + formatting}>No. Items</th>
                 <th />
               </tr>
@@ -41,8 +41,8 @@ export const CategoriesTable = (): ReactElement => {
       </div>
       <LoaderOverlay isEnabled={false} />
       <div className="flex w-full flex-none justify-between">
-        <Search className="h-14 w-1/2">Search Categories</Search>
-        <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>
+        <Search className="mx-4 my-2 h-14 w-1/2">Search Categories</Search>
+        <Button className="mx-4 my-2 h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>
           Add Category
         </Button>
       </div>

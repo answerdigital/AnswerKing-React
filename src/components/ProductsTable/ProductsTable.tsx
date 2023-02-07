@@ -24,11 +24,11 @@ export const ProductsTable = (): ReactElement => {
             <thead>
               <tr>
                 <th className={'text-left ' + formatting}>ID</th>
-                <th className={'text-left ' + formatting}>Name</th>
+                <th className={'w-full text-left ' + formatting}>Name</th>
                 <th className={'text-center ' + formatting}>Category</th>
                 <th className={'text-center ' + formatting}>Stock</th>
                 <th className={'text-center ' + formatting}>Price</th>
-                <th className={'text-center ' + formatting}>No. Sold</th>
+                <th className={'text-center' + formatting}>No. Sold</th>
                 <th />
               </tr>
             </thead>
@@ -44,8 +44,8 @@ export const ProductsTable = (): ReactElement => {
         <LoaderOverlay isEnabled={false} />
       </div>
       <div className="flex w-full flex-none justify-between">
-        <Search className="h-14 w-1/2">Search Item</Search>
-        <Button className="h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>
+        <Search className="mx-4 my-2 h-14 w-1/2" placeholder="Search Item" />
+        <Button className="mx-4 my-2 h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>
           Add Item
         </Button>
       </div>
