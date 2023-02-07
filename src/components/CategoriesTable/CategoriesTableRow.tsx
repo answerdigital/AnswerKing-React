@@ -14,17 +14,6 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
   //const { removecategory } = useProducts();
   const formContext = useCategoryFormContext();
 
-  const handleDelete = (): void => {
-    console.log('Retiring of categories not yet implemented');
-    /*
-    removeProduct.mutate(product.id, {
-      onSuccess: () => {
-        toast.success(`Product "${product.name}" was succesfully removed.`);
-      },
-    });
-    */
-  };
-
   const iconClass = cn('bg-gray-300 border-gray-300 rounded border-4 m-1');
 
   return (
@@ -34,7 +23,7 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
       <td className={'text-center ' + formatting}>{category.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + formatting}>
         <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(category)} role="button" className={iconClass} />
-        <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} role="button" className={iconClass} />
+        <FontAwesomeIcon icon={faTrashCan} role="button" className={iconClass} />
       </td>
     </tr>
   );

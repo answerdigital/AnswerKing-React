@@ -40,7 +40,6 @@ export const ProductForm = (): ReactElement => {
     { id: 20, name: 'Good Food' },
   ];
   const categories = ['Mains', 'Sides', 'Drinks'];
-  //TODO: Get this data from backend instead
 
   const toggleTag = (event: React.ChangeEvent<HTMLInputElement>, toggleTagId: number): void => {
     if (event.target.checked) {

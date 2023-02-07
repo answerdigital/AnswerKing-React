@@ -14,17 +14,6 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
   //const { removetag } = useProducts();
   const formContext = useTagFormContext();
 
-  const handleDelete = (): void => {
-    console.log('Retiring of tags not yet implemented');
-    /*
-    removeProduct.mutate(product.id, {
-      onSuccess: () => {
-        toast.success(`Product "${product.name}" was succesfully removed.`);
-      },
-    });
-    */
-  };
-
   const iconClass = cn('bg-gray-300 border-gray-300 rounded border-4 m-1');
 
   return (
@@ -34,7 +23,7 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
       <td className={'text-center ' + padding}>{tag.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + padding}>
         <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(tag)} role="button" className={iconClass} />
-        <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} role="button" className={iconClass} />
+        <FontAwesomeIcon icon={faTrashCan} role="button" className={iconClass} />
       </td>
     </tr>
   );

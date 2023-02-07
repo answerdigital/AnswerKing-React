@@ -19,7 +19,6 @@ export const CategoryForm = (): ReactElement => {
     { id: 1, name: 'Chips' },
     { id: 2, name: 'Salad' },
   ];
-  //TODO: Get this data from backend instead
 
   const toggleProduct = (event: React.ChangeEvent<HTMLInputElement>, toggleProductId: number): void => {
     if (event.target.checked) {
