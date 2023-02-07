@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement, useState } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
 import { OrderDetails } from 'components/OrderDetails/OrderDetails';

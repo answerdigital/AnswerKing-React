@@ -1,7 +1,5 @@
 import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
 import { useLocalOrder } from 'context/OrderContext';
-import { GBPFormat } from 'utilities/GBPFormat';
-import { SERVICE_CHARGE } from 'utilities/variables';
 
 interface Props {
   children: React.ReactNode;

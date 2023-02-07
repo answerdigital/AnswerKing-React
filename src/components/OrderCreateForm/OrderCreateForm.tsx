@@ -4,8 +4,6 @@ import { ReactElement, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
-import { GBPFormat } from 'utilities/GBPFormat';
-import { SERVICE_CHARGE } from 'utilities/variables';
 import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
 
 export const OrderCreateForm = (): ReactElement => {
