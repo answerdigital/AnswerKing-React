@@ -2,7 +2,6 @@ import cn from 'classnames';
 
 interface Props extends React.ComponentPropsWithoutRef<'input'> {
   label?: string;
-  type?: React.HTMLInputTypeAttribute;
 }
 
 export const InputRow = ({ className, id, label, type, ...rest }: Props): React.ReactElement => {
