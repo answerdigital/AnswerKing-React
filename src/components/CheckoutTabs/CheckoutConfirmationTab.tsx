@@ -1,11 +1,10 @@
 import { Button } from 'components/Buttons/Button';
 import { CheckoutSection } from 'components/CheckoutSection/CheckoutSection';
 import { OrderDetailsMinimal } from 'components/OrderDetails/OrderDetailsMinimal';
+import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
 import { useContext } from 'react';
-import { GBPFormat } from 'utilities/GBPFormat';
-import { SERVICE_CHARGE } from 'utilities/variables';
 import FoodPrepGif from '../../assets/food-prep.gif';
 
 export const CheckoutConfirmationTab = (): React.ReactElement => {
@@ -36,10 +35,7 @@ export const CheckoutConfirmationTab = (): React.ReactElement => {
       </CheckoutSection>
 
       <div className="mt-auto">
-        <div className="mt-2 mb-4 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
-          <span>Paid:</span>
-          <span>{GBPFormat.format(localOrder.lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + SERVICE_CHARGE)}</span>
-        </div>
+        <OrderFeesAndTotals lineItems={localOrder.lineItems} orderComplete={true} />
 
         <div className="flex w-full gap-5 font-[400]">
           <Button colour="white" size="medium" className="w-full" onClick={() => setCurrentTab(CheckoutTabType.Order)}>

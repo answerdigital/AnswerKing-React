@@ -6,6 +6,7 @@ import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
 import { GBPFormat } from 'utilities/GBPFormat';
 import { SERVICE_CHARGE } from 'utilities/variables';
+import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
 
 export const OrderCreateForm = (): ReactElement => {
   const { order } = useOrder();
@@ -24,19 +25,7 @@ export const OrderCreateForm = (): ReactElement => {
 
   return (
     <div className="mt-auto px-2 text-center">
-      <hr className="mb-2"></hr>
-      {lineItemsExist && (
-        <div className="flex w-full justify-between text-[12px] text-[#5A6675]">
-          <span>Service Charge:</span>
-          <span>{GBPFormat.format(0.5)}</span>
-        </div>
-      )}
-      <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
-        <span>Total:</span>
-        <span>
-          {GBPFormat.format(localOrder.lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + (lineItemsExist ? SERVICE_CHARGE : 0))}
-        </span>
-      </div>
+      <OrderFeesAndTotals lineItems={localOrder.lineItems} />
       <div className="mb-1">
         <Button disabled={!lineItemsExist} size="medium" className="w-full" onClick={() => navigate(RouteConstants.CHECKOUT)} colour="yellow">
           Go to checkout
