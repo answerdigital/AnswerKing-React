@@ -1,7 +1,7 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {getExampleOrder, longDescriptionProduct, product} from '../../../cypress/data_helpers/component-test-data';
-import {LocalOrderContext} from 'context/OrderContext';
-import {ProductCard} from './ProductCard';
+import { getExampleOrder, longDescriptionProduct, product } from '../../../cypress/data_helpers/component-test-data';
+import { LocalOrderContext } from 'context/OrderContext';
+import { ProductCard } from './ProductCard';
 
 describe('Order Panel', () => {
   describe('Regular description', () => {

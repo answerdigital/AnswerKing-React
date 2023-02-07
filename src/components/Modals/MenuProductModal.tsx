@@ -54,10 +54,14 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
                   <h5 className="text-[22px] font-[600]">{product.name}</h5>
                   <p className="font-poly text-left italic">{product.description}</p>
                   <div className="flex w-full items-center justify-between gap-2">
-                    <div data-testid="product-attributes" className="font-[600]">V, Ve, GF</div>
+                    <div data-testid="product-attributes" className="font-[600]">
+                      V, Ve, GF
+                    </div>
                     <div className="flex items-center">
                       <PlusMinusButton action={-1} onClick={changeCount}></PlusMinusButton>
-                      <div data-testid="quantity" className="mx-2 w-4">{counter}</div>
+                      <div data-testid="quantity" className="mx-2 w-4">
+                        {counter}
+                      </div>
                       <PlusMinusButton data-testid="reduce-quantity" action={1} onClick={changeCount}></PlusMinusButton>
                     </div>
                   </div>

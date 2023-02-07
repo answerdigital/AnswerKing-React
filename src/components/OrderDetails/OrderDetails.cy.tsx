@@ -1,12 +1,10 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {lineItemList} from '../../../cypress/data_helpers/component-test-data';
-import {OrderDetails} from './OrderDetails';
+import { lineItemList } from '../../../cypress/data_helpers/component-test-data';
+import { OrderDetails } from './OrderDetails';
 
 describe('Order Details', () => {
   beforeEach(() => {
-    CustomMount(
-      <OrderDetails items={lineItemList}></OrderDetails>
-    );
+    CustomMount(<OrderDetails items={lineItemList}></OrderDetails>);
   });
   it('should display quantity', () => {
     cy.getBySel('quantity').should('be.visible');

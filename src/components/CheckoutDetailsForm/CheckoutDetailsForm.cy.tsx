@@ -1,7 +1,7 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {CheckoutDetailsForm} from './CheckoutDetailsForm';
-import {LocalOrderContext} from '../../context/OrderContext';
-import {getExampleOrder} from '../../../cypress/data_helpers/component-test-data';
+import { CheckoutDetailsForm } from './CheckoutDetailsForm';
+import { LocalOrderContext } from '../../context/OrderContext';
+import { getExampleOrder } from '../../../cypress/data_helpers/component-test-data';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('Checkout Details Form', () => {
@@ -15,7 +15,7 @@ describe('Checkout Details Form', () => {
     });
 
     it('Displays Checkout Details Tabs', () => {
-      cy.getBySel('no-products-msg').should('have.text', 'Whoa, you\'ve not got  anything in your order yet');
+      cy.getBySel('no-products-msg').should('have.text', 'Whoa, you have not got anything in your order yet');
     });
 
     it('allows you to navigate to menu via the menu button', () => {
@@ -36,7 +36,8 @@ describe('Checkout Details Form', () => {
           <BrowserRouter>
             <CheckoutDetailsForm></CheckoutDetailsForm>
           </BrowserRouter>
-        </LocalOrderContext.Provider>);
+        </LocalOrderContext.Provider>
+      );
     });
 
     it('should display products', () => {
@@ -45,7 +46,6 @@ describe('Checkout Details Form', () => {
 
     it('should show the service change with the total amount', () => {
       cy.getBySel('total').should('contain', '0.50');
-
     });
 
     it('should show the combined price of all products with the service charge', () => {

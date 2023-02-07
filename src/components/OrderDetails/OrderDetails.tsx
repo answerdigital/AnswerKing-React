@@ -20,13 +20,17 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
               <tr key={lineItem.product.id} className="flex w-full justify-between [&:not(:last-child)]:border-b">
                 <td className={cn(tableElement, 'flex')}>
                   <QuantityIcon quantity={lineItem.quantity} />
-                  <span data-testid="item-name" className="self-center text-[16px]">{lineItem.product.name}</span>
+                  <span data-testid="item-name" className="self-center text-[16px]">
+                    {lineItem.product.name}
+                  </span>
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
                   <div className="items-center justify-center"></div>
                   <TrashIcon product={lineItem.product} />
                   <div className="left-8 flex h-[21px] w-[50px] items-center justify-center text-[16px]">
-                    <span data-testid="item-subtotal" className="text-center">{GBPFormat.format(lineItem.subTotal)}</span>
+                    <span data-testid="item-subtotal" className="text-center">
+                      {GBPFormat.format(lineItem.subTotal)}
+                    </span>
                   </div>
                 </td>
               </tr>

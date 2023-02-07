@@ -1,14 +1,12 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {OrderCreateForm} from './OrderCreateForm';
-import {LocalOrderContext} from '../../context/OrderContext';
-import {getExampleOrder} from '../../../cypress/data_helpers/component-test-data';
+import { OrderCreateForm } from './OrderCreateForm';
+import { LocalOrderContext } from '../../context/OrderContext';
+import { getExampleOrder } from '../../../cypress/data_helpers/component-test-data';
 
 describe('Local Order Details', () => {
   describe('no products', () => {
     beforeEach(() => {
-      CustomMount(
-        <OrderCreateForm></OrderCreateForm>
-      );
+      CustomMount(<OrderCreateForm></OrderCreateForm>);
     });
     it('Should be able to perform login', () => {
       cy.getBySel('checkout').should('be.disabled');

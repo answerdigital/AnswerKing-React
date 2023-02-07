@@ -1,16 +1,16 @@
 import { Button } from 'components/Buttons/Button';
-import {LoaderOverlay} from 'components/LoaderOverlay/LoaderOverlay';
-import {useOrder} from 'hooks/useOrder';
-import {FormEvent, ReactElement, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {RouteConstants} from 'utilities/route-constants';
-import {CreatedOrderDto} from 'dtos/Order/CreatedOrderDto';
-import {useLocalOrder} from 'context/OrderContext';
-import {GBPFormat} from 'utilities/GBPFormat';
+import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { useOrder } from 'hooks/useOrder';
+import { FormEvent, ReactElement, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { RouteConstants } from 'utilities/route-constants';
+import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
+import { useLocalOrder } from 'context/OrderContext';
+import { GBPFormat } from 'utilities/GBPFormat';
 
 export const OrderCreateForm = (): ReactElement => {
-  const {order, createOrder, updateOrder} = useOrder();
-  const {localOrder, setOrderId} = useLocalOrder();
+  const { order, createOrder, updateOrder } = useOrder();
+  const { localOrder, setOrderId } = useLocalOrder();
   const navigate = useNavigate();
   const lineItemsExist = localOrder.lineItems?.length > 0;
   const total = localOrder.lineItems.map((item) => item.subTotal).reduce((a, b) => a + b, 0);
@@ -18,13 +18,13 @@ export const OrderCreateForm = (): ReactElement => {
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
 
-    const orderLineItems = localOrder.lineItems.map((p) => ({productId: p.product.id, quantity: p.quantity}));
-    const createdOrder: CreatedOrderDto = {lineItems: orderLineItems};
+    const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
+    const createdOrder: CreatedOrderDto = { lineItems: orderLineItems };
 
     if (!localOrder.id) {
       createOrder.mutate(createdOrder);
     } else {
-      updateOrder.mutate({id: localOrder.id, updatedOrder: createdOrder});
+      updateOrder.mutate({ id: localOrder.id, updatedOrder: createdOrder });
     }
 
     navigate(RouteConstants.CHECKOUT);
@@ -44,7 +44,9 @@ export const OrderCreateForm = (): ReactElement => {
       {lineItemsExist && (
         <div className="flex w-full justify-between text-[12px] text-[#5A6675]">
           <span className="">Service Charge:</span>
-          <span data-testid="service-charge" className="">{GBPFormat.format(0.5)}</span>
+          <span data-testid="service-charge" className="">
+            {GBPFormat.format(0.5)}
+          </span>
         </div>
       )}
       <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
@@ -52,7 +54,7 @@ export const OrderCreateForm = (): ReactElement => {
         <span data-testid="total-amount">{GBPFormat.format(total)}</span>
       </div>
       <form className="mb-1" onSubmit={handleSubmit}>
-        <LoaderOverlay isEnabled={createOrder.isLoading}/>
+        <LoaderOverlay isEnabled={createOrder.isLoading} />
         <Button
           disabled={!lineItemsExist}
           size="large"

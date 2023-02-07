@@ -1,6 +1,6 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {getExampleOrder} from '../../../cypress/data_helpers/component-test-data';
-import {OrderPanel} from './OrderPanel';
+import { getExampleOrder } from '../../../cypress/data_helpers/component-test-data';
+import { OrderPanel } from './OrderPanel';
 import { LocalOrderContext } from 'context/OrderContext';
 
 describe('Order Panel', () => {

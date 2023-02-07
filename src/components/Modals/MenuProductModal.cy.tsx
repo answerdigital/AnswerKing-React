@@ -1,10 +1,9 @@
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {getExampleOrder, product} from '../../../cypress/data_helpers/component-test-data';
-import {LocalOrderContext} from '../../context/OrderContext';
-import {ProductCard} from '../ProductCard/ProductCard';
+import { getExampleOrder, product } from '../../../cypress/data_helpers/component-test-data';
+import { LocalOrderContext } from '../../context/OrderContext';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 describe('Menu Product Modal', () => {
-
   beforeEach(() => {
     CustomMount(
       <LocalOrderContext.Provider value={getExampleOrder()}>

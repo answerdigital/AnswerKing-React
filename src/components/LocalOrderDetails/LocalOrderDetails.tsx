@@ -25,13 +25,17 @@ export const LocalOrderDetails = (): ReactElement => {
               <tr data-testid="product-row" key={lineItem.product.id} className="flex w-full grow justify-between [&:not(:last-child)]:border-b">
                 <td className={cn(tableElement, 'flex')}>
                   <QuantityIcon quantity={lineItem.quantity} />
-                  <span data-testid="name" className="self-center">{lineItem.product.name}</span>
+                  <span data-testid="name" className="self-center">
+                    {lineItem.product.name}
+                  </span>
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
                   <div className="items-center justify-center"></div>
                   <TrashIcon product={lineItem.product} />
                   <div className="left-8 flex h-[21px] w-[50px] items-center justify-center">
-                    <span data-testid="subtotal" className="text-center">{GBPFormat.format(lineItem.subTotal)}</span>
+                    <span data-testid="subtotal" className="text-center">
+                      {GBPFormat.format(lineItem.subTotal)}
+                    </span>
                   </div>
                 </td>
               </tr>

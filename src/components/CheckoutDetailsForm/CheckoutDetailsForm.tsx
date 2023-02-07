@@ -1,15 +1,15 @@
-import {MouseEventHandler, ReactElement, useState} from 'react';
-import {RouteConstants} from 'utilities/route-constants';
-import {useLocalOrder} from 'context/OrderContext';
-import {GBPFormat} from 'utilities/GBPFormat';
-import {OrderDetails} from 'components/OrderDetails/OrderDetails';
+import { MouseEventHandler, ReactElement, useState } from 'react';
+import { RouteConstants } from 'utilities/route-constants';
+import { useLocalOrder } from 'context/OrderContext';
+import { GBPFormat } from 'utilities/GBPFormat';
+import { OrderDetails } from 'components/OrderDetails/OrderDetails';
 import { Button } from 'components/Buttons/Button';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';
-import {ComponentTransition} from 'components/Transitions/ComponentTransition';
+import { ComponentTransition } from 'components/Transitions/ComponentTransition';
 
 export const CheckoutDetailsForm = (): ReactElement => {
-  const {localOrder} = useLocalOrder();
+  const { localOrder } = useLocalOrder();
   const [serviceCharge] = useState<number>(0.5);
   const navigate = useNavigate();
   const lineItemsExist = localOrder.lineItems?.length > 0;
@@ -33,8 +33,7 @@ export const CheckoutDetailsForm = (): ReactElement => {
         </div>
         {!lineItemsExist ? (
           <ComponentTransition lineItemsExist={lineItemsExist}>
-            <div
-              className="mx-auto translate-y-[50%] items-center justify-center text-center text-[14px] font-[400] text-black">
+            <div className="mx-auto translate-y-[50%] items-center justify-center text-center text-[14px] font-[400] text-black">
               <img src={CheckoutBurgerImg} className="mx-auto mb-[4%] h-[50px] w-[80px]"></img>
               <p data-testid="no-products-msg">
                 Whoa, you&apos;ve not got <br></br> anything in your order yet
@@ -51,7 +50,7 @@ export const CheckoutDetailsForm = (): ReactElement => {
             </div>
           </ComponentTransition>
         ) : (
-          <OrderDetails items={localOrder.lineItems}/>
+          <OrderDetails items={localOrder.lineItems} />
         )}
       </div>
       <div className="mt-auto mb-3 w-full text-[22px]">

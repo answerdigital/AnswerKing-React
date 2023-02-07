@@ -121,7 +121,9 @@ export const ProductCreateForm = (): ReactElement => {
       {validationErrors.length > 0 ? (
         <Error onClear={handleErrorClear}>
           {validationErrors.map((error) => (
-            <li data-testid="error-message" key={error}>{error}</li>
+            <li data-testid="error-message" key={error}>
+              {error}
+            </li>
           ))}
         </Error>
       ) : null}
