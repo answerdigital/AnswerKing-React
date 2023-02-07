@@ -16,6 +16,9 @@ export const CheckoutSummaryTab = (): React.ReactElement => {
   const { setCurrentTab } = useContext(CheckoutTabContext);
 
   const orderExists = localOrder.lineItems?.length > 0;
+  const placeholderName = 'Joe Bloggs';
+  const placeholderEmail = 'joebloggs@lukewarmmail.com';
+  const placeholderCard = 'Mastercard **** 1337';
 
   const submitOrder = (): void => {
     const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
@@ -45,14 +48,14 @@ export const CheckoutSummaryTab = (): React.ReactElement => {
 
       <CheckoutSection title="Order details" onEditClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)}>
         <div className="flex w-full flex-row justify-between border-b-2 text-[12px]">
-          <span>Joe Bloggs</span>
-          <span>joebloggs@lukewarmmail.com</span>
+          <span>{placeholderName}</span>
+          <span>{placeholderEmail}</span>
         </div>
       </CheckoutSection>
 
       <CheckoutSection title="Payment details" onEditClick={() => setCurrentTab(CheckoutTabType.Order)}>
         <div className="flex justify-between border-b-2 text-[12px]">
-          <span>Mastercard **** 1337</span>
+          <span>{placeholderCard}</span>
           <div className="flex flex-row gap-2">
             <span>Service charge: </span>
             <span className="font-bold">{GBPFormat.format(SERVICE_CHARGE)}</span>
