@@ -37,7 +37,7 @@ export const CategoryForm = (): ReactElement => {
 
   return (
     <>
-      <form>
+      <form className="overflow-auto">
         <div className="grid grid-cols-4 gap-4 p-2">
           <div className="col-span-2 row-span-3 flex h-full w-full items-center justify-center bg-gray-200">
             <FontAwesomeIcon icon={faPen} />
@@ -69,7 +69,7 @@ export const CategoryForm = (): ReactElement => {
           <a className="col-span-4 italic text-gray-400">Products</a>
           {Products.map((product) => {
             return (
-              <div key={product.name}>
+              <div key={product.id.toString()}>
                 <input
                   type="checkbox"
                   className=""

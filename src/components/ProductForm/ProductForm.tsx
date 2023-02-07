@@ -23,6 +23,21 @@ export const ProductForm = (): ReactElement => {
     { id: 3, name: 'Nut-Free' },
     { id: 4, name: 'Gluten-Free' },
     { id: 5, name: 'Breakfast Menu' },
+    { id: 6, name: 'Vegan' },
+    { id: 7, name: 'Vegetarian' },
+    { id: 8, name: 'Good Food' },
+    { id: 9, name: 'Nut-Free' },
+    { id: 10, name: 'Gluten-Free' },
+    { id: 11, name: 'Breakfast Menu' },
+    { id: 12, name: 'Vegan' },
+    { id: 13, name: 'Vegetarian' },
+    { id: 14, name: 'Good Food' },
+    { id: 15, name: 'Nut-Free' },
+    { id: 16, name: 'Gluten-Free' },
+    { id: 17, name: 'Breakfast Menu' },
+    { id: 18, name: 'Vegan' },
+    { id: 19, name: 'Vegetarian' },
+    { id: 20, name: 'Good Food' },
   ];
   const categories = ['Mains', 'Sides', 'Drinks'];
   //TODO: Get this data from backend instead
@@ -43,7 +58,7 @@ export const ProductForm = (): ReactElement => {
 
   return (
     <>
-      <form>
+      <form className="overflow-auto">
         <div className="grid grid-cols-4 gap-4 p-2">
           <div className="col-span-2 row-span-3 flex h-full w-full items-center justify-center bg-gray-200">
             <FontAwesomeIcon icon={faPen} />
@@ -109,15 +124,15 @@ export const ProductForm = (): ReactElement => {
           <a className="col-span-4 italic text-gray-400">Tags</a>
           {tags.map((tag) => {
             return (
-              <div key={tag.name}>
+              <div key={tag.id.toString()}>
                 <input
                   type="checkbox"
                   className=""
-                  id={tag.name + ' in ' + tag.name}
+                  id={tag.name + ' in ' + formProduct.name}
                   onChange={(e) => toggleTag(e, tag.id)}
                   checked={formProduct.tags.includes(tag.id)}
                 />
-                <label className="text-sm" htmlFor={tag.name + ' in ' + tag.name}>
+                <label className="text-sm" htmlFor={tag.name + ' in ' + formProduct.name}>
                   {' ' + tag.name}
                 </label>
               </div>
