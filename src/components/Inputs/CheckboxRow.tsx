@@ -1,8 +1,9 @@
 import { CheckBoxIcon } from 'components/Icons/CheckBoxIcon';
 import cn from 'classnames';
 
-interface Props extends React.ComponentPropsWithoutRef<'input'> {
+interface Props extends React.ComponentPropsWithoutRef<'div'> {
   label: string;
+  checked: boolean;
 }
 
 export const CheckboxRow = ({ checked, className, label, ...rest }: Props): React.ReactElement => {
