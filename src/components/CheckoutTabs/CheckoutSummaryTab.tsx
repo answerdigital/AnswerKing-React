@@ -19,24 +19,18 @@ export const CheckoutSummaryTab = (): React.ReactElement => {
 
   const submitOrder = (): void => {
     const orderLineItems = localOrder.lineItems.map((p) => ({ productId: p.product.id, quantity: p.quantity }));
+
+    if (orderLineItems.length <= 0) {
+      return;
+    }
+
     const createdOrder: CreatedOrderDto = { lineItems: orderLineItems };
 
-    if (!localOrder.id) {
-      createOrder.mutate(createdOrder, {
-        onSuccess: () => {
-          setCurrentTab(CheckoutTabType.Confirmation);
-        },
-      });
-    } else {
-      updateOrder.mutate(
-        { id: localOrder.id, updatedOrder: createdOrder },
-        {
-          onSuccess: () => {
-            setCurrentTab(CheckoutTabType.Confirmation);
-          },
-        }
-      );
-    }
+    createOrder.mutate(createdOrder, {
+      onSuccess: () => {
+        setCurrentTab(CheckoutTabType.Confirmation);
+      },
+    });
   };
 
   return (

@@ -12,7 +12,7 @@ export const InputRow = ({ className, id, label, type, ...rest }: Props): React.
           {label}
         </label>
       )}
-      <input type={type ?? 'text'} className="border-b-2 py-1" {...rest}></input>
+      <input type={type ?? 'text'} className="border-b-2 py-1 text-[#333F4C]" {...rest}></input>
     </div>
   );
 };
