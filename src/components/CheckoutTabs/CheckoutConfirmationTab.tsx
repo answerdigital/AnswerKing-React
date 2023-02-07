@@ -12,6 +12,9 @@ export const CheckoutConfirmationTab = (): React.ReactElement => {
   const { localOrder } = useLocalOrder();
   const { setCurrentTab } = useContext(CheckoutTabContext);
 
+  const placeholderName = 'Joe Bloggs';
+  const placeholderEmail = 'joebloggs@lukewarmmail.com';
+
   return (
     <div className="flex h-full w-full flex-col">
       <div className="flex w-full flex-col items-center justify-center">
@@ -27,8 +30,8 @@ export const CheckoutConfirmationTab = (): React.ReactElement => {
 
       <CheckoutSection title="Order details">
         <div className="flex w-full flex-row justify-between border-b-2 text-[12px]">
-          <span>Joe Bloggs</span>
-          <span>joebloggs@lukewarmmail.com</span>
+          <span>{placeholderName}</span>
+          <span>{placeholderEmail}</span>
         </div>
       </CheckoutSection>
 
