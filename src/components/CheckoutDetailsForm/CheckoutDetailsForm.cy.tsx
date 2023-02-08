@@ -15,7 +15,7 @@ describe('Checkout Details Form', () => {
     });
 
     it('Displays Checkout Details Tabs', () => {
-      cy.getBySel('no-products-msg').contains("Whoa, you've not got anything in your order yet");
+      cy.getBySel('no-products-msg').contains('Whoa, you\'ve not got anything in your order yet');
     });
 
     it('allows you to navigate to menu via the menu button', () => {
