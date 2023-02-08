@@ -1,16 +1,15 @@
-import { MouseEventHandler, ReactElement, useState } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
-import { GBPFormat } from 'utilities/GBPFormat';
 import { OrderDetails } from 'components/OrderDetails/OrderDetails';
 import { Button } from 'components/Buttons/Button';
 import { useNavigate } from 'react-router-dom';
 import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';
 import { ComponentTransition } from 'components/Transitions/ComponentTransition';
+import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
 
 export const CheckoutDetailsForm = (): ReactElement => {
   const { localOrder } = useLocalOrder();
-  const [serviceCharge] = useState<number>(0.5);
   const navigate = useNavigate();
   const lineItemsExist = localOrder.lineItems?.length > 0;
 
@@ -22,6 +21,7 @@ export const CheckoutDetailsForm = (): ReactElement => {
 
   return (
     <form
+      data-testid="checkout-details-form"
       className="flex min-h-[65vh] w-[35%] flex-col items-center justify-between rounded-[16px] bg-white p-[24px]"
       onSubmit={(e) => e.preventDefault()}
     >
@@ -34,10 +34,11 @@ export const CheckoutDetailsForm = (): ReactElement => {
           <ComponentTransition lineItemsExist={lineItemsExist}>
             <div className="mx-auto translate-y-[50%] items-center justify-center text-center text-[14px] font-[400] text-black">
               <img src={CheckoutBurgerImg} className="mx-auto mb-[4%] h-[50px] w-[80px]"></img>
-              <p>
+              <p data-testid="no-products-msg">
                 Whoa, you&apos;ve not got <br></br> anything in your order yet
               </p>
               <Button
+                data-testid="nav-to-menu"
                 colour="yellow"
                 size="small"
                 onClick={navigateToMenu()}
@@ -51,30 +52,20 @@ export const CheckoutDetailsForm = (): ReactElement => {
           <OrderDetails items={localOrder.lineItems} />
         )}
       </div>
-      <div className="mt-auto mb-3 w-full text-[22px]">
-        <hr className="mb-6 px-1"></hr>
-        {lineItemsExist && (
-          <div className="flex w-full justify-between text-[11px] text-[#5A6675] transition-all duration-300">
-            <span>Service Charge:</span>
-            <span>{GBPFormat.format(serviceCharge)}</span>
-          </div>
-        )}
-        <div className="mt-2 mb-2 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]">
-          <span>Total:</span>
-          <span>
-            {GBPFormat.format(localOrder.lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + (lineItemsExist ? serviceCharge : 0))}
-          </span>
-        </div>
-      </div>
+
+      <OrderFeesAndTotals lineItems={localOrder.lineItems} />
+
       <div className="flex w-full font-[400]">
         <Button
           colour="white"
           className="mr-3 h-[45px] w-[120px] rounded-[25px] border border-solid border-[#333F4C] text-[16px]"
           onClick={navigateToMenu()}
+          data-testid="back-button"
         >
           Back
         </Button>
         <Button
+          data-testid="confirm-and-continue"
           className="h-[45px] w-[416px] rounded-[25px] border-[#FFC600] bg-[#FFC600] text-[16px] disabled:pointer-events-none disabled:opacity-[0.5]"
           disabled={!lineItemsExist}
         >

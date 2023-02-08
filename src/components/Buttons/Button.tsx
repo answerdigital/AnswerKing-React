@@ -5,7 +5,7 @@ interface Props extends React.ComponentPropsWithoutRef<'button'> {
   active?: boolean;
   'data-testid'?: string;
   size?: 'small' | 'medium' | 'large';
-  colour?: 'yellow' | 'grey' | 'red' | 'clear' | 'clear-border' | 'white';
+  colour?: 'yellow' | 'grey' | 'red' | 'white' | 'clear' | 'clear-border' | 'light-grey';
   hover?: boolean;
 }
 
@@ -37,6 +37,7 @@ export const Button = ({
           'border-2 border-solid border-slate-400 bg-slate-400': colour === 'grey',
           'border-2 border-solid border-[#FFC600] bg-[#FFC600]': colour === 'yellow',
           'border-2 border-solid border-red-400 bg-red-400': colour === 'red',
+          'border-2 border-solid border-[#A2AAB6] bg-[#E4EAEB]': colour === 'light-grey',
           'cursor-pointer bg-slate-500': active,
           'hover:cursor-pointer hover:border-slate-700 hover:bg-slate-700 hover:text-white': hover,
         },

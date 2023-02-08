@@ -15,9 +15,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": "src",
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["./src"]
+  "include": ["./src", "cypress/support/component.ts"]
 }

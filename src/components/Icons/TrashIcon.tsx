@@ -11,7 +11,11 @@ export const TrashIcon = ({ onClick }: Props): ReactElement => {
   return (
     <>
       {isOpen && <DeleteProductModal setIsOpen={setIsOpen} onConfirm={onClick} />}
-      <div className="group mr-[24px] flex h-[33px] w-[33px] cursor-pointer flex-col rounded border bg-[#E4EAEB]" onClick={() => setIsOpen(true)}>
+      <div
+        data-testid="trash-product-btn"
+        className="group mr-[24px] flex h-[33px] w-[33px] cursor-pointer flex-col rounded border bg-[#E4EAEB]"
+        onClick={() => setIsOpen(true)}
+      >
         <div className="group my-auto flex cursor-pointer flex-col" onClick={() => setIsOpen(true)}>
           <div className="flex flex-col items-center justify-center text-center">
             <svg

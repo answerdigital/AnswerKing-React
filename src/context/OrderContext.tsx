@@ -7,7 +7,7 @@ import { ActionType, orderReducer } from './orderReducer';
 const initialLineItems: LineItemDto[] = [];
 const initialOrder = { lineItems: initialLineItems };
 
-interface ILocalOrder {
+export interface ILocalOrder {
   localOrder: LocalOrderDto;
   addToLocalOrder: (product: ProductDto, quantity: number) => void;
   removeProduct: (product: ProductDto) => void;
@@ -15,7 +15,7 @@ interface ILocalOrder {
   removeLocalOrder: () => void;
 }
 
-const LocalOrderContext = createContext<ILocalOrder>({
+export const LocalOrderContext = createContext<ILocalOrder>({
   localOrder: { lineItems: initialLineItems },
   addToLocalOrder: () => null,
   removeProduct: () => null,

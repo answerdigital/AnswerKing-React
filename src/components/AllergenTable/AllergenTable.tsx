@@ -30,7 +30,7 @@ export const AllergenTable = ({ products, allergens }: Props): React.ReactElemen
                 return (
                   <td key={value}>
                     <div className="flex items-center justify-center">
-                      <CheckBoxIcon checked={false} />
+                      <CheckBoxIcon checked={false} className="fill-white" />
                     </div>
                   </td>
                 );
