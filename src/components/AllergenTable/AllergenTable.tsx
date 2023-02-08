@@ -9,7 +9,7 @@ interface Props {
 export const AllergenTable = ({ products, allergens }: Props): React.ReactElement => {
   return (
     <table className="w-full table-auto border-separate border-spacing-0 text-[#333F4C]">
-      <thead className="sticky top-0 w-full bg-white">
+      <thead className="sticky top-0 w-full bg-white/90">
         <tr>
           <th className="border-b-2 border-[#5A6675]"></th>
           {allergens.map((value) => {
