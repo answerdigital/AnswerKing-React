@@ -42,6 +42,40 @@ resource "aws_cloudfront_distribution" "website_cdn" {
     }
   }
 
+  origin {
+    domain_name = "answerking-dotnet-api-lb-341411cdd8b725b6.elb.eu-west-2.amazonaws.com"
+    origin_id   = "answerking-dotnet-api-lb-341411cdd8b725b6"
+    custom_origin_config {
+      http_port              = 80
+      https_port             = 443
+      origin_protocol_policy = "http-only"
+    }
+  }
+
+  custom_behavior {
+    path_pattern           = "/api*"
+    target_origin_id       = "answerking-dotnet-api-lb-341411cdd8b725b6"
+    allowed_methods        = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+    compress               = true
+    viewer_protocol_policy = "allow-all"
+    min_ttl                = 0
+    default_ttl            = 0
+    max_ttl                = 0
+    smooth_streaming       = false
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+    cache_policy {
+      id = "CachingDisabled"
+    }
+    origin_request_policy {
+      id = "AllViewer"
+    }
+  }
+
   restrictions {
     geo_restriction {
       restriction_type = "none"
@@ -55,4 +89,8 @@ resource "aws_cloudfront_distribution" "website_cdn" {
   }
 }
 
+resource "aws_cloudfront_invalidation" "all_objects" {
+  distribution_id = aws_cloudfront_distribution.website_cdn.id
+  paths           = ["/*"]
+}
 
