@@ -21,131 +21,21 @@ export const AllergenTable = ({ products, allergens }: Props): React.ReactElemen
           })}
         </tr>
       </thead>
-      <tbody className="w-full">
+      <tbody>
         {products.map((product) => {
           return (
-            <>
-              <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
-                <td className="py-3">{product.name}</td>
-                {[...Array(allergens.length).keys()].map((value) => {
-                  return (
-                    <td key={value}>
-                      <div className="flex items-center justify-center">
-                        <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            </>
-          );
-        })}
-        {products.map((product) => {
-          return (
-            <>
-              <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
-                <td className="py-3">{product.name}</td>
-                {[...Array(allergens.length).keys()].map((value) => {
-                  return (
-                    <td key={value}>
-                      <div className="flex items-center justify-center">
-                        <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            </>
-          );
-        })}
-        {products.map((product) => {
-          return (
-            <>
-              <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
-                <td className="py-3">{product.name}</td>
-                {[...Array(allergens.length).keys()].map((value) => {
-                  return (
-                    <td key={value}>
-                      <div className="flex items-center justify-center">
-                        <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            </>
-          );
-        })}
-        {products.map((product) => {
-          return (
-            <>
-              <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
-                <td className="py-3">{product.name}</td>
-                {[...Array(allergens.length).keys()].map((value) => {
-                  return (
-                    <td key={value}>
-                      <div className="flex items-center justify-center">
-                        <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            </>
-          );
-        })}
-        {products.map((product) => {
-          return (
-            <>
-              <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
-                <td className="py-3">{product.name}</td>
-                {[...Array(allergens.length).keys()].map((value) => {
-                  return (
-                    <td key={value}>
-                      <div className="flex items-center justify-center">
-                        <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            </>
-          );
-        })}
-        {products.map((product) => {
-          return (
-            <>
-              <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
-                <td className="py-3">{product.name}</td>
-                {[...Array(allergens.length).keys()].map((value) => {
-                  return (
-                    <td key={value}>
-                      <div className="flex items-center justify-center">
-                        <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            </>
-          );
-        })}
-        {products.map((product) => {
-          return (
-            <>
-              <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
-                <td className="py-3">{product.name}</td>
-                {[...Array(allergens.length).keys()].map((value) => {
-                  return (
-                    <td key={value}>
-                      <div className="flex items-center justify-center">
-                        <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            </>
+            <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
+              <td className="py-3">{product.name}</td>
+              {[...Array(allergens.length).keys()].map((value) => {
+                return (
+                  <td key={value}>
+                    <div className="flex items-center justify-center">
+                      <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
+                    </div>
+                  </td>
+                );
+              })}
+            </tr>
           );
         })}
       </tbody>

@@ -16,25 +16,23 @@ export const AllergensPage = (): ReactElement => {
       <div className="container mx-auto mt-10 mb-10 md:w-[90vw] lg:w-[75vw] xl:w-[50vw]">
         <p className="mb-5 p-5 text-center text-[36px] font-light">Allergen Info</p>
 
-        <div className="rounded-xl bg-white p-[24px]">
+        <div className="rounded-xl bg-white p-[24px] text-[#333F4C]">
           {products.data?.length ? (
             <AllergenTable products={products.data} allergens={ALLERGENS} />
           ) : (
-            <p className="mb-5 p-5 text-center font-light">No items found</p>
+            <p className="mb-5 border-b-2 p-5 text-center">No items found</p>
           )}
 
-          <div className="text-[#333F4C]">
-            <div className="flex items-center justify-center p-10">
-              <p>Have concerns? Have a chat with one of our staff who can help you!</p>
-            </div>
-            <div className="flex items-center justify-center gap-5">
-              <Button onClick={() => navigate(RouteConstants.HOME)} size="medium" colour="white" className="w-full">
-                Back
-              </Button>
-              <Button onClick={() => navigate(RouteConstants.MENU)} size="medium" colour="yellow" className="w-full">
-                Menu
-              </Button>
-            </div>
+          <div className="flex items-center justify-center p-10">
+            <p>Have concerns? Have a chat with one of our staff who can help you!</p>
+          </div>
+          <div className="flex items-center justify-center gap-5">
+            <Button onClick={() => navigate(RouteConstants.HOME)} size="medium" colour="white" className="w-full">
+              Back
+            </Button>
+            <Button onClick={() => navigate(RouteConstants.MENU)} size="medium" colour="yellow" className="w-full">
+              Menu
+            </Button>
           </div>
         </div>
       </div>
