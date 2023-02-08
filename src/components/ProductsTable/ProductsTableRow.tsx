@@ -3,7 +3,6 @@ import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import cn from 'classnames';
 import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
 import { toast } from 'react-toastify';
 import { TrashIcon } from 'components/Icons/TrashIcon';
@@ -25,8 +24,6 @@ export const ProductsTableRow = ({ product, formatting }: Props): ReactElement =
     });
   };
 
-  const iconClass = cn('bg-gray-300 border-gray-300 rounded border-4 m-1');
-
   return (
     <tr>
       <td className={formatting}>{product.id}</td>
@@ -37,7 +34,7 @@ export const ProductsTableRow = ({ product, formatting }: Props): ReactElement =
       <td className={'text-center ' + formatting}>None</td>
       <td className={'flex justify-end ' + formatting}>
         <span className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]">
-          <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(tag)} role="button" />
+          <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(product)} role="button" />
         </span>
         <TrashIcon onClick={() => handleDelete()} />
       </td>

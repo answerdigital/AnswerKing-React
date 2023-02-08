@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import cn from 'classnames';
 import { useTagFormContext } from 'components/TagForm/TagFormContext';
 import { TagDto } from 'dtos/TagDto';
 import { TrashIcon } from 'components/Icons/TrashIcon';
@@ -19,8 +18,6 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
   const handleDelete = (): void => {
     toast.success(`Product "${tag.name}" was succesfully removed.`);
   };
-
-  const iconClass = cn('bg-[#E4EAEB] border-[#E4EAEB] rounded border-8');
 
   return (
     <tr>
