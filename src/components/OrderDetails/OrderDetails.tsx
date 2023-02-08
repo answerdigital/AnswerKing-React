@@ -11,6 +11,7 @@ interface Props {
 
 export const OrderDetails = ({ items }: Props): ReactElement => {
   const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
+
   return (
     <div data-testid="order-details" className="flex flex-col items-center">
       <table className="w-full table-fixed justify-between">
