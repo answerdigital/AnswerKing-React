@@ -7,13 +7,13 @@ export const Footer = (): ReactElement => {
 
   return (
     <div className="grid grid-cols-3 justify-items-center gap-3 overflow-hidden text-[#E4EAEB]">
-      <a className="cursor-pointer hover:text-white" onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}>
+      <a className="cursor-pointer hover:text-white" data-testid="allergen-board-link" onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}>
         View Allergen board
       </a>
-      <a className="cursor-pointer hover:text-white" onClick={() => navigate(RouteConstants.LANGUAGE)}>
+      <a className="cursor-pointer hover:text-white" data-testid="languages-link" onClick={() => navigate(RouteConstants.LANGUAGE)}>
         Change Language
       </a>
-      <a className="cursor-pointer hover:text-white" onClick={() => navigate(RouteConstants.POLICIES)}>
+      <a className="cursor-pointer hover:text-white" data-testid="policies-link" onClick={() => navigate(RouteConstants.POLICIES)}>
         View Policies
       </a>
     </div>

@@ -12,7 +12,7 @@ export const MenuItems = ({ products }: Props): ReactElement => {
   }
 
   return (
-    <div className="mb-[48px] grid max-h-[60vh] grid-cols-3">
+    <div data-testid="products" className="mb-[48px] grid max-h-[60vh] grid-cols-3">
       {products.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))}
