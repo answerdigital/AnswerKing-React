@@ -49,18 +49,18 @@ export const StaffDetails = (): ReactElement => {
       </label>
       <div>
         <Button colour="clear-border" size="medium">
-          Delete Account
+          <span className="m-4">Delete Account</span>
         </Button>
       </div>
       <div>
         <Button colour="clear-border" size="medium">
-          Log Out
+          <span className="m-4">Log Out</span>
         </Button>
       </div>
       <div></div>
       <div className="flex justify-end">
-        <Button colour="yellow" size="medium">
-          Save
+        <Button colour="yellow" size="medium" className="flex-none">
+          <span className="m-4">Save</span>
         </Button>
       </div>
     </form>

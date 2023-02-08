@@ -30,7 +30,7 @@ export const Button = ({
         {
           'py-1 px-5 text-sm': size === 'small',
           'py-2 px-5 text-base': size === 'medium',
-          'py-3 px-12 text-xl font-bold': size === 'large',
+          'py-3 px-12 text-xl': size === 'large',
           'border-2 border-solid border-transparent bg-transparent': colour === 'clear',
           'border-2 border-solid border-white bg-transparent': colour === 'clear-border',
           'border-2 border-solid border-slate-700 bg-white': colour === 'white',

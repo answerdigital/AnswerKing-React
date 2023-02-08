@@ -18,7 +18,7 @@ export const TagsTable = (): ReactElement => {
 
   return (
     <>
-      <div className="h-full w-full overflow-auto">
+      <div className="w-full overflow-auto">
         {displayTags.length ? (
           <table className="w-full table-auto divide-y">
             <thead className="">
@@ -38,11 +38,11 @@ export const TagsTable = (): ReactElement => {
         ) : (
           <>No Tags</>
         )}
+        <LoaderOverlay isEnabled={false} />
       </div>
-      <LoaderOverlay isEnabled={false} />
-      <div className="flex w-full flex-none justify-between">
-        <Search className="mx-4 my-2 h-14 w-1/2">Search Tags</Search>
-        <Button className="mx-4 my-2 h-14 w-1/2" colour="yellow" size="small" onClick={openModal}>
+      <div className="grid h-16 w-full flex-none grid-cols-2 gap-8 px-4 py-2">
+        <Search placeholder="Search Tags" sizeType="medium" />
+        <Button colour="yellow" size="medium" onClick={openModal}>
           Add Tag
         </Button>
       </div>

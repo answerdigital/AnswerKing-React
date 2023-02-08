@@ -57,7 +57,7 @@ export const ProductForm = (): ReactElement => {
 
   return (
     <>
-      <form className="overflow-auto">
+      <form className="w-full overflow-auto">
         <div className="grid grid-cols-4 gap-4 p-2">
           <div className="col-span-2 row-span-3 flex h-full w-full items-center justify-center bg-gray-200">
             <FontAwesomeIcon icon={faPen} />
@@ -140,11 +140,11 @@ export const ProductForm = (): ReactElement => {
         </div>
         <LoaderOverlay isEnabled={false} />
       </form>
-      <div className="flex w-full flex-none justify-between">
-        <Button className="mx-4 my-2 h-14 w-1/2" colour="yellow" size="small" onClick={formContext.closeForm}>
+      <div className="grid h-16 w-full flex-none grid-cols-2 gap-8 px-4 py-2">
+        <Button colour="yellow" size="medium" onClick={formContext.closeForm}>
           Cancel
         </Button>
-        <Button className="mx-4 my-2 h-14 w-1/2" colour="yellow" size="small" onClick={formContext.saveForm}>
+        <Button colour="yellow" size="medium" onClick={formContext.saveForm}>
           Save Item
         </Button>
       </div>
