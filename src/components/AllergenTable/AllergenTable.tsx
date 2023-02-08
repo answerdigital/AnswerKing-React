@@ -8,29 +8,29 @@ interface Props {
 
 export const AllergenTable = ({ products, allergens }: Props): React.ReactElement => {
   return (
-    <table className="relative mt-5 mb-5 w-full table-auto border-separate border-spacing-2">
-      <thead className="w-full">
+    <table className="w-full table-auto border-separate border-spacing-0 text-[#333F4C]">
+      <thead className="sticky top-0 w-full bg-white/90">
         <tr>
-          <th></th>
+          <th className="border-b-2 border-[#5A6675]"></th>
           {allergens.map((value) => {
             return (
-              <th className="rotate-180 p-2 text-left font-light [writing-mode:vertical-lr]" key={value}>
+              <th className="rotate-180 border-t-2 border-[#5A6675] p-2 text-left [writing-mode:vertical-lr]" key={value}>
                 {value}
               </th>
             );
           })}
         </tr>
       </thead>
-      <tbody className="z-10 w-full">
+      <tbody>
         {products.map((product) => {
           return (
-            <tr key={product.id}>
-              <td className="text-right font-light">{product.name}</td>
+            <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
+              <td className="py-3">{product.name}</td>
               {[...Array(allergens.length).keys()].map((value) => {
                 return (
                   <td key={value}>
                     <div className="flex items-center justify-center">
-                      <CheckBoxIcon checked={false} className="fill-white" />
+                      <CheckBoxIcon checked={false} className="fill-[#333F4C]" />
                     </div>
                   </td>
                 );
