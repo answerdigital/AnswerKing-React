@@ -22,7 +22,9 @@ export const OrderFeesAndTotals = ({ lineItems, orderComplete }: Props): React.R
 
       <div className={cn('mt-2 mb-4 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]')}>
         <span>{orderComplete ? 'Paid' : 'Total'}:</span>
-        <span data-testid="total">{GBPFormat.format(lineItems.length > 0 ? lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + SERVICE_CHARGE : 0)}</span>
+        <span data-testid="total">
+          {GBPFormat.format(lineItems.length > 0 ? lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + SERVICE_CHARGE : 0)}
+        </span>
       </div>
     </div>
   );

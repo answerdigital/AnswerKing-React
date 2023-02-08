@@ -1,6 +1,6 @@
 import { OrderFeesAndTotals } from './OrderFeesAndTotals';
 import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import {lineItemList} from '../../../cypress/data_helpers/component-test-data';
+import { lineItemList } from '../../../cypress/data_helpers/component-test-data';
 
 describe('Order Fees and Totals', () => {
   beforeEach(() => {
