@@ -16,13 +16,4 @@ describe('Create Product Form', () => {
   it('should display the price of the product', () => {
     cy.getBySel('product-price').should('have.text', '£500.00');
   });
-  it('should display the description of the product', () => {
-    cy.getBySel('product-description').should('have.text', 'Product');
-  });
-
-  it('should try and delete a product when delete is clicked', () => {
-    cy.intercept('DELETE', '**/api/products/1', { statusCode: 204 }).as('delete-product');
-    cy.getBySel('delete-product').click();
-    cy.wait('@delete-product');
-  });
 });

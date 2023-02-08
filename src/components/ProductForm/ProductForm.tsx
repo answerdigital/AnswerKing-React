@@ -72,6 +72,7 @@ export const ProductForm = (): ReactElement => {
               onChange={(event) => setFormProduct({ ...formProduct, name: event.target.value })}
               type="text"
               value={formProduct.name}
+              data-testid="product-name"
             />
           </div>
           <div className="col-span-2 row-span-2">
@@ -84,6 +85,7 @@ export const ProductForm = (): ReactElement => {
               onChange={(event) => setFormProduct({ ...formProduct, desc: event.target.value })}
               rows={3}
               value={formProduct.desc}
+              data-testid="product-description"
             />
           </div>
           <div className="col-span-2">
@@ -104,6 +106,7 @@ export const ProductForm = (): ReactElement => {
               type="number"
               value={formProduct.price}
               min={0}
+              data-testid="product-price"
             />
           </div>
           <div className="flex w-full flex-col">
@@ -144,7 +147,7 @@ export const ProductForm = (): ReactElement => {
         <Button colour="yellow" size="medium" onClick={formContext.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" size="medium" onClick={formContext.saveForm}>
+        <Button colour="yellow" size="medium" onClick={formContext.saveForm} data-testid="submit-product">
           Save Item
         </Button>
       </div>

@@ -110,7 +110,7 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     if (validationErrors.length) {
       toastId.current = toast.error(
-        <ul>
+        <ul data-tesid="error-list">
           {validationErrors.map((error) => (
             <li key={error}>{error}</li>
           ))}
