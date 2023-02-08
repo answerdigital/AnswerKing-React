@@ -22,10 +22,17 @@ export const OrderCreateForm = (): ReactElement => {
   }, [order.data?.id]);
 
   return (
-    <div className="mt-auto px-2 text-center">
+    <div data-testid="order-create-form" className="mt-auto px-2 text-center">
       <OrderFeesAndTotals lineItems={localOrder.lineItems} />
       <div className="mb-1">
-        <Button disabled={!lineItemsExist} size="medium" className="w-full" onClick={() => navigate(RouteConstants.CHECKOUT)} colour="yellow">
+        <Button
+          disabled={!lineItemsExist}
+          size="medium"
+          className="w-full"
+          onClick={() => navigate(RouteConstants.CHECKOUT)}
+          colour="yellow"
+          data-testid="checkout"
+        >
           Go to checkout
         </Button>
       </div>

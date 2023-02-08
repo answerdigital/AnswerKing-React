@@ -1,0 +1,14 @@
+[
+  {
+    "id": 10,
+    "name": "product",
+    "description": "desc",
+    "price": 300.0,
+    "category": {
+      "id": 1,
+      "name": "mame",
+      "description": "desc"
+    },
+    "retired": true
+  }
+]
