@@ -21,14 +21,14 @@ export const ProductsTable = (): ReactElement => {
       <div className="w-full overflow-auto">
         {displayProducts.length ? (
           <table className="w-full table-auto divide-y">
-            <thead>
+            <thead className="sticky top-0 w-full bg-white/90">
               <tr>
                 <th className={'text-left ' + formatting}>ID</th>
                 <th className={'w-full text-left ' + formatting}>Name</th>
                 <th className={'text-center ' + formatting}>Category</th>
                 <th className={'text-center ' + formatting}>Stock</th>
                 <th className={'text-center ' + formatting}>Price</th>
-                <th className={'text-center' + formatting}>No. Sold</th>
+                <th className={'whitespace-nowrap text-center' + formatting}>No. Sold</th>
                 <th />
               </tr>
             </thead>

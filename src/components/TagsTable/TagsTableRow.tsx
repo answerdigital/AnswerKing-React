@@ -1,9 +1,11 @@
 import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 import cn from 'classnames';
 import { useTagFormContext } from 'components/TagForm/TagFormContext';
 import { TagDto } from 'dtos/TagDto';
+import { TrashIcon } from 'components/Icons/TrashIcon';
+import { toast } from 'react-toastify';
 
 interface Props {
   tag: TagDto;
@@ -14,7 +16,11 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
   //const { removetag } = useProducts();
   const formContext = useTagFormContext();
 
-  const iconClass = cn('bg-gray-300 border-gray-300 rounded border-4 m-1');
+  const handleDelete = (): void => {
+    toast.success(`Product "${tag.name}" was succesfully removed.`);
+  };
+
+  const iconClass = cn('bg-[#E4EAEB] border-[#E4EAEB] rounded border-8');
 
   return (
     <tr>
@@ -22,8 +28,10 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
       <td className={padding}>{tag.name}</td>
       <td className={'text-center ' + padding}>{tag.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + padding}>
-        <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(tag)} role="button" className={iconClass} />
-        <FontAwesomeIcon icon={faTrashCan} role="button" className={iconClass} />
+        <span className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]">
+          <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(tag)} role="button" />
+        </span>
+        <TrashIcon onClick={() => handleDelete} />
       </td>
     </tr>
   );

@@ -1,9 +1,11 @@
 import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 import cn from 'classnames';
 import { useCategoryFormContext } from 'components/CategoryForm/CategoryFormContext';
 import { CategoryDto } from 'dtos/CategoryDto';
+import { toast } from 'react-toastify';
+import { TrashIcon } from 'components/Icons/TrashIcon';
 
 interface Props {
   category: CategoryDto;
@@ -14,6 +16,10 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
   //const { removecategory } = useProducts();
   const formContext = useCategoryFormContext();
 
+  const handleDelete = (): void => {
+    toast.success(`Product "${category.name}" was succesfully removed.`);
+  };
+
   const iconClass = cn('bg-gray-300 border-gray-300 rounded border-4 m-1');
 
   return (
@@ -22,8 +28,10 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
       <td className={formatting}>{category.name}</td>
       <td className={'text-center ' + formatting}>{category.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + formatting}>
-        <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(category)} role="button" className={iconClass} />
-        <FontAwesomeIcon icon={faTrashCan} role="button" className={iconClass} />
+        <span className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]">
+          <FontAwesomeIcon icon={faPen} onClick={() => formContext.startEditing(tag)} role="button" />
+        </span>
+        <TrashIcon onClick={() => handleDelete} />
       </td>
     </tr>
   );

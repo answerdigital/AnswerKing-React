@@ -21,11 +21,11 @@ export const CategoriesTable = (): ReactElement => {
       <div className="h-full w-full overflow-auto">
         {displayCategories.length ? (
           <table className="w-full table-auto divide-y">
-            <thead>
+            <thead className="sticky top-0 w-full bg-white/90">
               <tr>
                 <th className={formatting}>ID</th>
                 <th className={'w-full text-left' + formatting}>Category Name</th>
-                <th className={'text-center ' + formatting}>No. Items</th>
+                <th className={'whitespace-nowrap text-center ' + formatting}>No. Items</th>
                 <th />
               </tr>
             </thead>

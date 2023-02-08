@@ -21,11 +21,11 @@ export const TagsTable = (): ReactElement => {
       <div className="w-full overflow-auto">
         {displayTags.length ? (
           <table className="w-full table-auto divide-y">
-            <thead className="">
+            <thead className="sticky top-0 w-full bg-white/90">
               <tr>
                 <th className={formatting}>ID</th>
                 <th className={'w-full text-left ' + formatting}>Tag Name</th>
-                <th className={'text-center ' + formatting}>No. Items</th>
+                <th className={'whitespace-nowrap text-center ' + formatting}>No. Items</th>
                 <th />
               </tr>
             </thead>

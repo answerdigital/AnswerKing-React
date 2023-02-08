@@ -1,17 +1,16 @@
-import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useState } from 'react';
 import { DeleteProductModal } from 'components/Modals/DeleteProductModal';
 import cn from 'classnames';
 
 interface Props {
-  product: ProductDto;
+  onClick: () => void;
 }
 
-export const TrashIcon = ({ product }: Props): ReactElement => {
+export const TrashIcon = ({ onClick }: Props): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      {isOpen && <DeleteProductModal product={product} setIsOpen={setIsOpen} />}
+      {isOpen && <DeleteProductModal setIsOpen={setIsOpen} onConfirm={onClick} />}
       <div className="group mr-[24px] flex h-[33px] w-[33px] cursor-pointer flex-col rounded border bg-[#E4EAEB]" onClick={() => setIsOpen(true)}>
         <div className="group my-auto flex cursor-pointer flex-col" onClick={() => setIsOpen(true)}>
           <div className="flex flex-col items-center justify-center text-center">
