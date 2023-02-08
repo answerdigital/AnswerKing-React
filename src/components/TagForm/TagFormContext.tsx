@@ -50,7 +50,6 @@ interface Props {
 export const TagFormContextProvider: React.FC<Props> = ({ children }) => {
   const [initialTag, setInitialTag] = useState<TagDto | undefined>(undefined);
   const [formOpen, setFormOpen] = useState<boolean>(false);
-  //const { createTag } = useTags();
   const [formTag, setFormTag] = useState<IFormTag>({ name: '', desc: '', products: [] });
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const toastId = useRef(0);
@@ -74,7 +73,6 @@ export const TagFormContextProvider: React.FC<Props> = ({ children }) => {
 
   const handleErrorClear = (): void => {
     setValidationErrors([]);
-    //createtag.reset();
     toast.dismiss(toastId.current);
   };
 

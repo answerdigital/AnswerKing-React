@@ -12,7 +12,6 @@ interface Props {
 }
 
 export const CategoriesTableRow = ({ category, formatting }: Props): ReactElement => {
-  //const { removecategory } = useProducts();
   const formContext = useCategoryFormContext();
 
   const handleDelete = (): void => {

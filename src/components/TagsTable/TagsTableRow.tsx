@@ -12,7 +12,6 @@ interface Props {
 }
 
 export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
-  //const { removetag } = useProducts();
   const formContext = useTagFormContext();
 
   const handleDelete = (): void => {
