@@ -8,8 +8,8 @@ interface Props {
 
 export const AllergenTable = ({ products, allergens }: Props): React.ReactElement => {
   return (
-    <table className="relative mt-5 mb-5 w-full table-auto border-separate border-spacing-2">
-      <thead className="w-full">
+    <table className="relative mt-5 mb-5 w-full block border-separate border-spacing-2">
+      <thead  className="w-full">
         <tr>
           <th></th>
           {allergens.map((value) => {
@@ -21,7 +21,7 @@ export const AllergenTable = ({ products, allergens }: Props): React.ReactElemen
           })}
         </tr>
       </thead>
-      <tbody className="z-10 w-full">
+      <tbody className="z-10 w-full block h-[360px] overflow-y-scroll">
         {products.map((product) => {
           return (
             <tr key={product.id}>
