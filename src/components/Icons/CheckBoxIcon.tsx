@@ -1,14 +1,14 @@
 import { ReactElement } from 'react';
 import classNames from 'classnames';
 
-interface Props {
+interface Props extends React.ComponentPropsWithoutRef<'div'> {
   checked: boolean;
   className?: string;
 }
 
-export const CheckBoxIcon = ({ checked, className }: Props): ReactElement => {
+export const CheckBoxIcon = ({ checked, className, ...rest }: Props): ReactElement => {
   return (
-    <div className="flex h-[30px] w-[30px] items-center justify-center">
+    <div className="flex h-[30px] w-[30px] items-center justify-center" {...rest}>
       {checked ? (
         <svg width="37" height="37" viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" className={classNames(className)}>
           <path

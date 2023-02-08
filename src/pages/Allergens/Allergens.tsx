@@ -5,6 +5,7 @@ import { Button } from 'components/Buttons/Button';
 import { RouteConstants } from 'utilities/route-constants';
 import { useNavigate } from 'react-router-dom';
 import { AllergenTable } from 'components/AllergenTable/AllergenTable';
+import { ALLERGENS } from 'utilities/allergens';
 
 export const AllergensPage = (): ReactElement => {
   const { products } = useProducts();
