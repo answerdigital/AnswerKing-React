@@ -22,7 +22,7 @@ export const Search = ({
   const searchString = useSearch().searchString;
 
   return (
-    <div className={cn('font-poppins relative text-center', className)} data-testid={dataTestId} id={id}>
+    <div className={cn('font-poppins relative z-0 text-center', className)} data-testid={dataTestId} id={id}>
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <svg
           aria-hidden="true"
