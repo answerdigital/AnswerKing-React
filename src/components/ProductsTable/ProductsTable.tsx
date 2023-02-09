@@ -18,7 +18,7 @@ export const ProductsTable = (): ReactElement => {
 
   return (
     <>
-      <div className="w-full overflow-auto">
+      <div className="h-full w-full overflow-auto">
         <table className="w-full table-auto divide-y">
           <thead className="sticky top-0 w-full bg-white/90">
             <tr>
@@ -39,7 +39,7 @@ export const ProductsTable = (): ReactElement => {
         </table>
         <LoaderOverlay isEnabled={false} />
       </div>
-      <div className="grid h-16 w-full flex-none grid-cols-2 gap-8 px-4 py-2">
+      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
         <Search placeholder="Search Items" sizeType="medium" />
         <Button colour="yellow" size="medium" onClick={openModal}>
           Add Item

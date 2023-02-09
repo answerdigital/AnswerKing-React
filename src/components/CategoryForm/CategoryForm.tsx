@@ -82,7 +82,7 @@ export const CategoryForm = (): ReactElement => {
           })}
         </div>
       </form>
-      <div className="grid h-16 w-full flex-none grid-cols-2 gap-8 px-4 py-2">
+      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
         <Button colour="yellow" size="medium" onClick={formContext.closeForm}>
           Cancel
         </Button>

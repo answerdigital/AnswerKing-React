@@ -36,7 +36,7 @@ export const CategoriesTable = (): ReactElement => {
         </table>
         <LoaderOverlay isEnabled={false} />
       </div>
-      <div className="grid h-16 w-full flex-none grid-cols-2 gap-8 px-4 py-2">
+      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
         <Search placeholder="Search Categories" sizeType="medium" />
         <Button colour="yellow" size="medium" onClick={openModal}>
           Add Category
