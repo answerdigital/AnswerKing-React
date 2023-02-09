@@ -5,10 +5,12 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown } from 'components/Dropdown/Dropdown';
 import { useProductFormContext } from './ProductFormContext';
 import { Button } from 'components/Buttons/Button';
+import cn from 'classnames';
 
 export const ProductForm = (): ReactElement => {
   const formContext = useProductFormContext();
   const [formProduct, setFormProduct] = formContext.useFormProduct;
+  const subHeadingClass = 'italic text-[#A2AAB6] font-poly';
 
   //Placeholder Data
   interface ITag {
@@ -62,11 +64,11 @@ export const ProductForm = (): ReactElement => {
             <FontAwesomeIcon icon={faPen} />
           </div>
           <div className="col-span-2">
-            <label className="italic text-gray-400" htmlFor="product_create_form_name">
+            <label className={cn(subHeadingClass)} htmlFor="product_create_form_name">
               Item Name
             </label>
             <input
-              className="w-full border-b-2 focus:border-black focus:outline-none"
+              className="w-full border-b-2 font-[600] focus:border-black focus:outline-none"
               id="product_create_form_name"
               onChange={(event) => setFormProduct({ ...formProduct, name: event.target.value })}
               type="text"
@@ -75,11 +77,11 @@ export const ProductForm = (): ReactElement => {
             />
           </div>
           <div className="col-span-2 row-span-2">
-            <label className="italic text-gray-400" htmlFor="product_create_form_desc">
+            <label className={cn(subHeadingClass)} htmlFor="product_create_form_desc">
               Item Description
             </label>
             <textarea
-              className="w-full resize-none border-b-2 focus:border-black focus:outline-none"
+              className="w-full resize-none border-b-2 font-[600] focus:border-black focus:outline-none"
               id="product_create_form_desc"
               onChange={(event) => setFormProduct({ ...formProduct, desc: event.target.value })}
               rows={3}
@@ -88,13 +90,13 @@ export const ProductForm = (): ReactElement => {
             />
           </div>
           <div className="col-span-2">
-            <label className="w-full text-left italic text-gray-400" htmlFor="product_create_form_category">
+            <label className={cn(subHeadingClass, 'w-full')} htmlFor="product_create_form_category">
               Category
             </label>
             <Dropdown options={categories} className="w-full" id="product_create_form_category" />
           </div>
           <div className="flex w-full flex-col">
-            <label className="italic text-gray-400" htmlFor="product_create_form__price">
+            <label className={cn(subHeadingClass)} htmlFor="product_create_form__price">
               Price
             </label>
             <input
@@ -109,7 +111,7 @@ export const ProductForm = (): ReactElement => {
             />
           </div>
           <div className="flex w-full flex-col">
-            <label className="italic text-gray-400" htmlFor="product_create_form__stock">
+            <label className={cn(subHeadingClass)} htmlFor="product_create_form__stock">
               Stock Count
             </label>
             <input
@@ -122,7 +124,7 @@ export const ProductForm = (): ReactElement => {
               min={0}
             />
           </div>
-          <a className="col-span-4 italic text-gray-400">Tags</a>
+          <a className={cn(subHeadingClass, 'col-span-4')}>Tags</a>
           {allTags.map((tag) => {
             return (
               <div key={tag.id.toString()}>
@@ -142,7 +144,7 @@ export const ProductForm = (): ReactElement => {
         <LoaderOverlay isEnabled={false} />
       </form>
       <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-        <Button colour="yellow" size="medium" onClick={formContext.closeForm}>
+        <Button colour="white" size="medium" onClick={formContext.closeForm}>
           Cancel
         </Button>
         <Button colour="yellow" size="medium" onClick={formContext.saveForm} data-testid="submit-product">

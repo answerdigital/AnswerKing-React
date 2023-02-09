@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useTagFormContext } from './TagFormContext';
 import { Button } from 'components/Buttons/Button';
+import cn from 'classnames';
 
 export const TagForm = (): ReactElement => {
   const formContext = useTagFormContext();
   const [formTag, setFormTag] = formContext.useFormTag;
+  const subHeadingClass = 'italic text-[#A2AAB6] font-poly';
 
   //Placeholder Data
   interface IProduct {
@@ -42,11 +44,11 @@ export const TagForm = (): ReactElement => {
             <FontAwesomeIcon icon={faPen} />
           </div>
           <div className="col-span-2">
-            <label className="italic text-gray-400" htmlFor="tag_create_form_name">
+            <label className={cn(subHeadingClass)} htmlFor="tag_create_form_name">
               Tag Name
             </label>
             <input
-              className="w-full border-b-2 focus:border-black focus:outline-none"
+              className="w-full border-b-2 font-[600] focus:border-black focus:outline-none"
               id="tag_create_form_name"
               onChange={(event) => setFormTag({ ...formTag, name: event.target.value })}
               type="text"
@@ -54,18 +56,18 @@ export const TagForm = (): ReactElement => {
             />
           </div>
           <div className="col-span-2 row-span-2">
-            <label className="italic text-gray-400" htmlFor="tag_create_form_desc">
+            <label className={cn(subHeadingClass)} htmlFor="tag_create_form_desc">
               Tag Description
             </label>
             <textarea
-              className="w-full resize-none border-b-2 focus:border-black focus:outline-none"
+              className="w-full resize-none border-b-2 font-[600] focus:border-black focus:outline-none"
               id="tag_create_form_desc"
               onChange={(event) => setFormTag({ ...formTag, desc: event.target.value })}
               rows={3}
               value={formTag.desc}
             />
           </div>
-          <a className="col-span-4 italic text-gray-400">Products</a>
+          <a className={cn(subHeadingClass, 'col-span-4')}>Products</a>
           {allProducts.map((product) => {
             return (
               <div key={product.id.toString()}>
@@ -85,7 +87,7 @@ export const TagForm = (): ReactElement => {
         <LoaderOverlay isEnabled={false} />
       </form>
       <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-        <Button colour="yellow" size="medium" onClick={formContext.closeForm}>
+        <Button colour="white" size="medium" onClick={formContext.closeForm}>
           Cancel
         </Button>
         <Button colour="yellow" size="medium" onClick={formContext.saveForm}>

@@ -33,7 +33,7 @@ export const Button = ({
           'py-3 px-12 text-xl': size === 'large',
           'border-2 border-solid border-transparent bg-transparent': colour === 'clear',
           'border-2 border-solid border-white bg-transparent': colour === 'clear-border',
-          'border-2 border-solid border-slate-700 bg-white': colour === 'white',
+          'border-[1px] border-solid border-slate-700 bg-white': colour === 'white',
           'border-2 border-solid border-slate-400 bg-slate-400': colour === 'grey',
           'border-2 border-solid border-[#FFC600] bg-[#FFC600]': colour === 'yellow',
           'border-2 border-solid border-red-400 bg-red-400': colour === 'red',

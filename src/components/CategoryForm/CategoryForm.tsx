@@ -3,10 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useCategoryFormContext } from './CategoryFormContext';
 import { Button } from 'components/Buttons/Button';
+import cn from 'classnames';
 
 export const CategoryForm = (): ReactElement => {
   const formContext = useCategoryFormContext();
   const [formCategory, setFormCategory] = formContext.useFormCategory;
+  const subHeadingClass = 'italic text-[#A2AAB6] font-poly';
 
   //Placeholder Data
   interface IProduct {
@@ -41,11 +43,11 @@ export const CategoryForm = (): ReactElement => {
             <FontAwesomeIcon icon={faPen} />
           </div>
           <div className="col-span-2">
-            <label className="italic text-gray-400" htmlFor="category_create_form_name">
+            <label className={cn(subHeadingClass)} htmlFor="category_create_form_name">
               Category Name
             </label>
             <input
-              className="w-full border-b-2 focus:border-black focus:outline-none"
+              className="w-full border-b-2 font-[600] focus:border-black focus:outline-none"
               id="category_create_form_name"
               onChange={(event) => setFormCategory({ ...formCategory, name: event.target.value })}
               type="text"
@@ -53,18 +55,18 @@ export const CategoryForm = (): ReactElement => {
             />
           </div>
           <div className="col-span-2 row-span-2">
-            <label className="italic text-gray-400" htmlFor="category_create_form_desc">
+            <label className={cn(subHeadingClass)} htmlFor="category_create_form_desc">
               Category Description
             </label>
             <textarea
-              className="w-full resize-none border-b-2 focus:border-black focus:outline-none"
+              className="w-full resize-none border-b-2 font-[600] focus:border-black focus:outline-none"
               id="category_create_form_desc"
               onChange={(event) => setFormCategory({ ...formCategory, desc: event.target.value })}
               rows={3}
               value={formCategory.desc}
             />
           </div>
-          <a className="col-span-4 italic text-gray-400">Products</a>
+          <a className={cn(subHeadingClass, 'col-span-4')}>Products</a>
           {allProducts.map((product) => {
             return (
               <div key={product.id.toString()}>
@@ -83,7 +85,7 @@ export const CategoryForm = (): ReactElement => {
         </div>
       </form>
       <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-        <Button colour="yellow" size="medium" onClick={formContext.closeForm}>
+        <Button colour="white" size="medium" onClick={formContext.closeForm}>
           Cancel
         </Button>
         <Button colour="yellow" size="medium" onClick={formContext.saveForm}>
