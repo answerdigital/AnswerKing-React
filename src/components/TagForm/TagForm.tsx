@@ -1,6 +1,5 @@
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { ReactElement } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useTagFormContext } from './TagFormContext';
@@ -72,13 +71,12 @@ export const TagForm = (): ReactElement => {
               <div key={product.id.toString()}>
                 <input
                   type="checkbox"
-                  className=""
                   id={product.name + ' in ' + formTag.name}
                   onChange={(e) => toggleProduct(e, product.id)}
                   checked={formTag.products.includes(product.id)}
                 />
-                <label className="text-sm" htmlFor={product.name + ' in ' + formTag.name}>
-                  {' ' + product.name}
+                <label className="pl-2 text-sm" htmlFor={product.name + ' in ' + formTag.name}>
+                  {product.name}
                 </label>
               </div>
             );

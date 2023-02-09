@@ -19,25 +19,21 @@ export const TagsTable = (): ReactElement => {
   return (
     <>
       <div className="w-full overflow-auto">
-        {displayTags.length ? (
-          <table className="w-full table-auto divide-y">
-            <thead className="sticky top-0 w-full bg-white/90">
-              <tr>
-                <th className={formatting}>ID</th>
-                <th className={'w-full text-left ' + formatting}>Tag Name</th>
-                <th className={'whitespace-nowrap text-center ' + formatting}>No. Items</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody className="font-poppins font-200 divide-y text-sm">
-              {displayTags.map((tag) => (
-                <TagsTableRow padding={formatting} tag={tag} key={tag.id} />
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <>No Tags</>
-        )}
+        <table className="w-full table-auto divide-y">
+          <thead className="sticky top-0 w-full bg-white/90">
+            <tr>
+              <th className={formatting}>ID</th>
+              <th className={'w-full text-left ' + formatting}>Tag Name</th>
+              <th className={'whitespace-nowrap text-center ' + formatting}>No. Items</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody className="font-poppins font-200 divide-y text-sm">
+            {displayTags.map((tag) => (
+              <TagsTableRow padding={formatting} tag={tag} key={tag.id} />
+            ))}
+          </tbody>
+        </table>
         <LoaderOverlay isEnabled={false} />
       </div>
       <div className="grid h-16 w-full flex-none grid-cols-2 gap-8 px-4 py-2">

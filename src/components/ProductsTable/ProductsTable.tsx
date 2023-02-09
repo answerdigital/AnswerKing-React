@@ -19,28 +19,24 @@ export const ProductsTable = (): ReactElement => {
   return (
     <>
       <div className="w-full overflow-auto">
-        {displayProducts.length ? (
-          <table className="w-full table-auto divide-y">
-            <thead className="sticky top-0 w-full bg-white/90">
-              <tr>
-                <th className={'text-left ' + formatting}>ID</th>
-                <th className={'w-full text-left ' + formatting}>Name</th>
-                <th className={'text-center ' + formatting}>Category</th>
-                <th className={'text-center ' + formatting}>Stock</th>
-                <th className={'text-center ' + formatting}>Price</th>
-                <th className={'whitespace-nowrap text-center' + formatting}>No. Sold</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody className="font-poppins font-200 divide-y text-sm">
-              {displayProducts.map((product) => (
-                <ProductsTableRow formatting={formatting} product={product} key={product.id} />
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <>No Products</>
-        )}
+        <table className="w-full table-auto divide-y">
+          <thead className="sticky top-0 w-full bg-white/90">
+            <tr>
+              <th className={'text-left ' + formatting}>ID</th>
+              <th className={'w-full text-left ' + formatting}>Name</th>
+              <th className={'text-center ' + formatting}>Category</th>
+              <th className={'text-center ' + formatting}>Stock</th>
+              <th className={'text-center ' + formatting}>Price</th>
+              <th className={'whitespace-nowrap text-center' + formatting}>No. Sold</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody className="font-poppins font-200 divide-y text-sm">
+            {displayProducts.map((product) => (
+              <ProductsTableRow formatting={formatting} product={product} key={product.id} />
+            ))}
+          </tbody>
+        </table>
         <LoaderOverlay isEnabled={false} />
       </div>
       <div className="grid h-16 w-full flex-none grid-cols-2 gap-8 px-4 py-2">

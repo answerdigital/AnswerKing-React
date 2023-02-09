@@ -1,5 +1,6 @@
 import { OrderDto } from 'dtos/Order/OrderDto';
 import { ReactElement } from 'react';
+import { DateFormatter } from 'utilities/DateFormatter';
 import { GBPFormat } from 'utilities/GBPFormat';
 
 interface OrdersCardProps {
@@ -17,9 +18,7 @@ export const OrdersCard = ({ order }: OrdersCardProps): ReactElement => {
         ))}
       </div>
       <div className="my-2 flex justify-between pb-4 font-light">
-        <span className="text-xs">
-          {order.createdOn.toString().slice(8, 10)}/{order.createdOn.toString().slice(5, 7)}/{order.createdOn.toString().slice(0, 4)}
-        </span>
+        <span className="text-xs">{(order.createdOn as DateFormatter).getFormattedDate()}</span>
         <span>Sale {GBPFormat.format(order.orderTotal)}</span>
       </div>
     </div>

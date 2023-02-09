@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useCategoryFormContext } from './CategoryFormContext';
@@ -71,13 +70,12 @@ export const CategoryForm = (): ReactElement => {
               <div key={product.id.toString()}>
                 <input
                   type="checkbox"
-                  className=""
                   id={product.name + ' in ' + formCategory.name}
                   onChange={(e) => toggleProduct(e, product.id)}
                   checked={formCategory.products.includes(product.id)}
                 />
-                <label className="text-sm" htmlFor={product.name + ' in ' + formCategory.name}>
-                  {' ' + product.name}
+                <label className="pl-2 text-sm" htmlFor={product.name + ' in ' + formCategory.name}>
+                  {product.name}
                 </label>
               </div>
             );

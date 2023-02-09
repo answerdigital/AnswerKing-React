@@ -1,6 +1,5 @@
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 import { ReactElement } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown } from 'components/Dropdown/Dropdown';
@@ -129,13 +128,12 @@ export const ProductForm = (): ReactElement => {
               <div key={tag.id.toString()}>
                 <input
                   type="checkbox"
-                  className=""
                   id={tag.name + ' in ' + formProduct.name}
                   onChange={(e) => toggleTag(e, tag.id)}
                   checked={formProduct.tags.includes(tag.id)}
                 />
-                <label className="text-sm" htmlFor={tag.name + ' in ' + formProduct.name}>
-                  {' ' + tag.name}
+                <label className="pl-2 text-sm" htmlFor={tag.name + ' in ' + formProduct.name}>
+                  {tag.name}
                 </label>
               </div>
             );
