@@ -34,7 +34,7 @@ interface StaffOrdersDateProps {
 const StaffOrdersDate = ({ date }: StaffOrdersDateProps): ReactElement => {
   return (
     <div className="my-6 w-full border-b-2 border-gray-500 text-center text-gray-500">
-      {date.toString().slice(0, 4)}/{date.toString().slice(5, 7)}/{date.toString().slice(8, 10)}
+      {date.toString().slice(8, 10)}/{date.toString().slice(5, 7)}/{date.toString().slice(0, 4)}
     </div>
   );
 };
