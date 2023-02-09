@@ -1,6 +1,6 @@
 import { OrderDto } from 'dtos/Order/OrderDto';
 import { ReactElement } from 'react';
-import { DateFormatter } from 'utilities/DateFormatter';
+import { FormatDate } from 'utilities/FormatDate';
 import { GBPFormat } from 'utilities/GBPFormat';
 
 interface OrdersCardProps {
@@ -18,7 +18,7 @@ export const OrdersCard = ({ order }: OrdersCardProps): ReactElement => {
         ))}
       </div>
       <div className="my-2 flex justify-between pb-4 font-light">
-        <span className="text-xs">{(order.createdOn as DateFormatter).getFormattedDate()}</span>
+        <span className="text-xs">{FormatDate(order.createdOn)}</span>
         <span>Sale {GBPFormat.format(order.orderTotal)}</span>
       </div>
     </div>

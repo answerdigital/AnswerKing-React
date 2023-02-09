@@ -4,32 +4,6 @@ import { toast } from 'react-toastify';
 import { useProducts } from 'hooks/useProducts';
 import { ProductForm } from './ProductForm';
 
-const NAME_MIN_LENGTH = 1;
-const NAME_MAX_LENGTH = 50;
-const VALIDATION_MSG_NAME = 'Name is required, cannot contain special characters and must be less than 50 characters in length.';
-const REGEX = new RegExp(`^[a-zA-Z0-9 ]{${NAME_MIN_LENGTH},${NAME_MAX_LENGTH}}$`);
-const nameIsValid = (name: string): boolean => {
-  return REGEX.test(name);
-};
-
-const PRICE_MIN = 0;
-const PRICE_MAX = 999999999999.9999;
-const VALIDATION_MSG_PRICE = 'Price is required and must be 0 or greater.';
-const priceIsValid = (priceString: string): boolean => {
-  const price = parseFloat(priceString);
-  return !isNaN(price) && Number(price) >= PRICE_MIN && price <= PRICE_MAX;
-};
-
-const DESCRIPTION_MAX_LENGTH = 500;
-const VALIDATION_MSG_DESC = 'Description is required and must be less than 500 characters in length.';
-
-const descriptionIsValid = (description: string): boolean => {
-  if (!description) {
-    return false;
-  }
-  return description.length <= DESCRIPTION_MAX_LENGTH;
-};
-
 interface IFormProduct {
   name: string;
   desc: string;
@@ -91,20 +65,44 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
 
   const saveForm = (): void => {
     handleErrorClear();
-    if (!nameIsValid(formProduct.name)) {
-      setValidationErrors((errors) => [...errors, VALIDATION_MSG_NAME]);
-    }
-    if (!descriptionIsValid(formProduct.desc)) {
-      setValidationErrors((errors) => [...errors, VALIDATION_MSG_DESC]);
-    }
-    if (!priceIsValid(formProduct.price.toString())) {
-      setValidationErrors((errors) => [...errors, VALIDATION_MSG_PRICE]);
-    }
-
     if (nameIsValid(formProduct.name) && descriptionIsValid(formProduct.desc) && priceIsValid(formProduct.price.toString())) {
       setValidationErrors([]);
       closeForm();
     }
+  };
+
+  const NAME_MIN_LENGTH = 1;
+  const NAME_MAX_LENGTH = 50;
+  const VALIDATION_MSG_NAME = 'Name is required, cannot contain special characters and must be less than 50 characters in length.';
+  const REGEX = new RegExp(`^[a-zA-Z0-9 ]{${NAME_MIN_LENGTH},${NAME_MAX_LENGTH}}$`);
+  const nameIsValid = (name: string): boolean => {
+    if (REGEX.test(name)) {
+      return true;
+    }
+    setValidationErrors(validationErrors.concat(VALIDATION_MSG_NAME));
+    return false;
+  };
+
+  const PRICE_MIN = 0;
+  const PRICE_MAX = 999999999999.9999;
+  const VALIDATION_MSG_PRICE = 'Price is required and must be 0 or greater.';
+  const priceIsValid = (priceString: string): boolean => {
+    const price = parseFloat(priceString);
+    if (!isNaN(price) && Number(price) >= PRICE_MIN && price <= PRICE_MAX) {
+      return true;
+    }
+    setValidationErrors(validationErrors.concat(VALIDATION_MSG_PRICE));
+    return false;
+  };
+
+  const DESCRIPTION_MAX_LENGTH = 500;
+  const VALIDATION_MSG_DESC = 'Description is required and must be less than 500 characters in length.';
+  const descriptionIsValid = (description: string): boolean => {
+    if (description && description.length <= DESCRIPTION_MAX_LENGTH) {
+      return true;
+    }
+    setValidationErrors(validationErrors.concat(VALIDATION_MSG_DESC));
+    return false;
   };
 
   useEffect(() => {

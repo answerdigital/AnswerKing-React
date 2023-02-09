@@ -2,7 +2,7 @@ import { OrdersCard } from 'components/OrderCard/OrderCard';
 import { OrderDto } from 'dtos/Order/OrderDto';
 import { useOrder } from 'hooks/useOrder';
 import { ReactElement } from 'react';
-import { DateFormatter } from 'utilities/DateFormatter';
+import { FormatDate } from 'utilities/FormatDate';
 
 export const StaffOrders = (): ReactElement => {
   const { orders } = useOrder();
@@ -15,7 +15,7 @@ export const StaffOrders = (): ReactElement => {
           <div key={order.id} className="w-full">
             <>
               {order.createdOn.toString().slice(0, 10) !== populatedOrders[i - 1]?.createdOn.toString().slice(0, 10) && (
-                <StaffOrdersDate date={order.createdOn as DateFormatter} />
+                <StaffOrdersDate date={order.createdOn} />
               )}
             </>
             <OrdersCard order={order} />
@@ -29,9 +29,9 @@ export const StaffOrders = (): ReactElement => {
 };
 
 interface StaffOrdersDateProps {
-  date: DateFormatter;
+  date: Date;
 }
 
 const StaffOrdersDate = ({ date }: StaffOrdersDateProps): ReactElement => {
-  return <div className="my-6 w-full border-b-2 border-gray-500 text-center text-gray-500">{date.getFormattedDate()}</div>;
+  return <div className="my-6 w-full border-b-2 border-gray-500 text-center text-gray-500">{FormatDate(date)}</div>;
 };
