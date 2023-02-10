@@ -66,7 +66,7 @@ export const CategoryForm = (): ReactElement => {
               value={formCategory.desc}
             />
           </div>
-          <a className="col-span-4 italic text-gray-400">Products</a>
+          <a className={cn(subHeadingClass, 'col-span-4')}>Products</a>
           {allProducts.map((product, i) => {
             return (
               <div key={product.id.toString()}>
