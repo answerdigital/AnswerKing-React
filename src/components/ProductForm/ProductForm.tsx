@@ -125,16 +125,16 @@ export const ProductForm = (): ReactElement => {
             />
           </div>
           <a className={cn(subHeadingClass, 'col-span-4')}>Tags</a>
-          {allTags.map((tag) => {
+          {allTags.map((tag, i) => {
             return (
               <div key={tag.id.toString()}>
                 <input
                   type="checkbox"
-                  id={tag.name + ' in ' + formProduct.name}
+                  id={tag.name + i + ' in ' + formProduct.name}
                   onChange={(e) => toggleTag(e, tag.id)}
                   checked={formProduct.tags.includes(tag.id)}
                 />
-                <label className="pl-2 text-sm" htmlFor={tag.name + ' in ' + formProduct.name}>
+                <label className="pl-2 text-sm" htmlFor={tag.name + i + ' in ' + formProduct.name}>
                   {tag.name}
                 </label>
               </div>

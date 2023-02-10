@@ -66,17 +66,17 @@ export const CategoryForm = (): ReactElement => {
               value={formCategory.desc}
             />
           </div>
-          <a className={cn(subHeadingClass, 'col-span-4')}>Products</a>
-          {allProducts.map((product) => {
+          <a className="col-span-4 italic text-gray-400">Products</a>
+          {allProducts.map((product, i) => {
             return (
               <div key={product.id.toString()}>
                 <input
                   type="checkbox"
-                  id={product.name + ' in ' + formCategory.name}
+                  id={product.name + i + ' in ' + formCategory.name}
                   onChange={(e) => toggleProduct(e, product.id)}
                   checked={formCategory.products.includes(product.id)}
                 />
-                <label className="pl-2 text-sm" htmlFor={product.name + ' in ' + formCategory.name}>
+                <label className="pl-2 text-sm" htmlFor={product.name + i + ' in ' + formCategory.name}>
                   {product.name}
                 </label>
               </div>
