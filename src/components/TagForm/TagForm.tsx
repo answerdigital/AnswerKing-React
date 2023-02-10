@@ -68,16 +68,16 @@ export const TagForm = (): ReactElement => {
             />
           </div>
           <a className={cn(subHeadingClass, 'col-span-4')}>Products</a>
-          {allProducts.map((product) => {
+          {allProducts.map((product, i) => {
             return (
               <div key={product.id.toString()}>
                 <input
                   type="checkbox"
-                  id={product.name + ' in ' + formTag.name}
+                  id={product.name + i + ' in ' + formTag.name}
                   onChange={(e) => toggleProduct(e, product.id)}
                   checked={formTag.products.includes(product.id)}
                 />
-                <label className="pl-2 text-sm" htmlFor={product.name + ' in ' + formTag.name}>
+                <label className="pl-2 text-sm" htmlFor={product.name + i + ' in ' + formTag.name}>
                   {product.name}
                 </label>
               </div>
