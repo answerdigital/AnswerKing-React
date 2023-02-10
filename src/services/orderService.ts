@@ -11,6 +11,20 @@ export interface ProblemDetails {
   instance?: string;
 }
 
+const getAll = async (): Promise<OrderDto[]> => {
+  const response = await httpClient.get('/orders');
+
+  if (!response.ok) {
+    try {
+      return Promise.reject(await response.json());
+    } catch {
+      return Promise.reject();
+    }
+  }
+
+  return await response.json();
+};
+
 const getById = async (id: number): Promise<OrderDto> => {
   const response = await httpClient.get('/orders/' + id);
 
@@ -61,4 +75,4 @@ const remove = async (id: number): Promise<void> => {
   }
 };
 
-export const orderService = { getById, create, update, remove };
+export const orderService = { getAll, getById, create, update, remove };

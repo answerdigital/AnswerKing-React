@@ -6,6 +6,7 @@ interface Props extends React.ComponentPropsWithoutRef<'button'> {
   'data-testid'?: string;
   size?: 'small' | 'medium' | 'large';
   colour?: 'yellow' | 'grey' | 'red' | 'white' | 'clear' | 'clear-border' | 'light-grey';
+  hover?: boolean;
 }
 
 export const Button = ({
@@ -19,27 +20,29 @@ export const Button = ({
   size = 'medium',
   type = 'button',
   colour = 'grey',
+  hover = true,
 }: Props): ReactElement => {
   return (
     <button
       className={cn(
-        className,
-        'font-poppins text-[#333F4C]',
-        'rounded-full transition duration-500 hover:border-[#333F4C] hover:bg-[#333F4C] hover:text-white ',
-        'hover:cursor-pointer disabled:pointer-events-none disabled:opacity-[0.5]',
+        'font-poppins',
+        'rounded-full transition duration-500',
         {
-          'py-1 px-5 text-[14px] ': size === 'small',
-          'py-2 px-5 text-[16px]': size === 'medium',
-          'py-3 px-12 text-[20px] font-bold': size === 'large',
-          'bg-transparent': colour === 'clear',
-          'border-2 border-solid border-[#333F4C] bg-[white]': colour === 'white',
-          'border-2 border-solid border-[#A2AAB6] bg-[#A2AAB6]': colour === 'grey',
-          'border-2 border-solid border-[#A2AAB6] bg-[#E4EAEB]': colour === 'light-grey',
+          'py-1 px-5 text-sm': size === 'small',
+          'py-2 px-5 text-base': size === 'medium',
+          'py-3 px-12 text-xl': size === 'large',
+          'border-2 border-solid border-transparent bg-transparent': colour === 'clear',
+          'border-2 border-solid border-white bg-transparent': colour === 'clear-border',
+          'border-[1px] border-solid border-slate-700 bg-white': colour === 'white',
+          'border-2 border-solid border-slate-400 bg-slate-400': colour === 'grey',
           'border-2 border-solid border-[#FFC600] bg-[#FFC600]': colour === 'yellow',
-          'border-2 border-solid border-[#f76d6d] bg-[#f76d6d]': colour === 'red',
-          'border-2 border-solid border-[#A2AAB6] bg-transparent text-inherit': colour === 'clear-border',
-          'cursor-pointer bg-[#5A6675]': active,
-        }
+          'border-2 border-solid border-red-400 bg-red-400': colour === 'red',
+          'border-2 border-solid border-[#A2AAB6] bg-[#E4EAEB]': colour === 'light-grey',
+          'cursor-pointer bg-slate-500': active,
+          'hover:cursor-pointer hover:border-slate-700 hover:bg-slate-700 hover:text-white': hover,
+        },
+        colour === 'clear' || colour === 'clear-border' ? 'text-inherit' : 'text-slate-700',
+        className
       )}
       data-testid={dataTestId}
       disabled={disabled}

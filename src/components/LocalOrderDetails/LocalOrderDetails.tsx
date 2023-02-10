@@ -9,7 +9,7 @@ import { ComponentTransition } from 'components/Transitions/ComponentTransition'
 
 export const LocalOrderDetails = (): ReactElement => {
   const tableElement = 'py-4 text-[#333F4C] font-[400] text-[14.5px] leading-[18px]';
-  const { localOrder } = useLocalOrder();
+  const { localOrder, removeProduct } = useLocalOrder();
   const lineItemsExist = localOrder.lineItems?.length > 0;
   return (
     <div data-testid="local-order-details" className="relative flex grow flex-col items-center justify-between">
@@ -31,7 +31,7 @@ export const LocalOrderDetails = (): ReactElement => {
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
                   <div className="items-center justify-center"></div>
-                  <TrashIcon product={lineItem.product} />
+                  <TrashIcon onClick={() => removeProduct(lineItem.product)} />
                   <div className="left-8 flex h-[21px] w-[50px] items-center justify-center">
                     <span data-testid="subtotal" className="text-center">
                       {GBPFormat.format(lineItem.subTotal)}

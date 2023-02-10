@@ -9,6 +9,6 @@
       "name": "mame",
       "description": "desc"
     },
-    "retired": true
+    "retired": false
   }
 ]
