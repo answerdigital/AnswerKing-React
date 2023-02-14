@@ -32,7 +32,7 @@ export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElem
       <td className={formatting} data-testid="product-name">
         {product.name}
       </td>
-      <td className={'text-center ' + formatting}>{product.category.name}</td>
+      <td className={'text-center ' + formatting}>{product.category?.name}</td>
       <td className={'text-center ' + formatting}>None</td>
       <td className={'text-center ' + formatting} data-testid="product-price">
         £{product.price.toFixed(2)}

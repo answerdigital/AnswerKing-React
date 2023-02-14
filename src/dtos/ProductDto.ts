@@ -9,7 +9,7 @@ export interface ProductDto {
   name: string;
   price: number;
   description: string;
-  category: ProductCategoryDto;
+  category?: ProductCategoryDto;
   retired: boolean;
   tags: number[];
 }
