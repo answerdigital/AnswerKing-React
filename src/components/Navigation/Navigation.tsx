@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import AnswerLogo from 'assets/logo.png';
+import { Button } from 'components/Buttons/Button';
 
 export const Navigation = (): ReactElement => {
   return (
@@ -11,12 +12,12 @@ export const Navigation = (): ReactElement => {
 
         <div className="mr-16 flex flex-row items-center gap-x-8 md:order-2">
           <div className="text-white-base-center font-poppins font-light">Contact: 07936 286319</div>
-          <button
+          <Button
             data-testid="login-button"
-            className="font-poppins rounded-[25px] bg-[#A2AAB6] py-[8px] px-[40px] text-[#333F4C] hover:cursor-pointer"
+            className="py-[8px] px-[40px] text-[#333F4C] hover:cursor-pointer"
           >
             Log In
-          </button>
+          </Button>
         </div>
       </div>
     </nav>

@@ -30,7 +30,6 @@ describe('Buttons', () => {
           <Button colour="white">White</Button>
           <Button colour="grey">Gray</Button>
           <Button colour="yellow">Yellow</Button>
-          <Button colour="red">Red</Button>
         </div>
         <div>
           <Button active={true}>Active</Button>
