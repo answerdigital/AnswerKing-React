@@ -17,20 +17,21 @@ export const StaffNavBar = ({ className, sections, setSelectedSection, selectedS
           <Button
             key={section.title}
             hover={false}
-            size="medium"
-            colour={'grey'}
+            size="large"
+            colour="grey"
             onClick={() => setSelectedSection(section)}
-            className="mx-12 text-xl font-extralight"
+            className="mx-12 text-base"
           >
             {section.title}
           </Button>
         ) : (
           <Button
             key={section.title}
-            size="medium"
-            colour={'clear'}
+            hover={false}
+            size="large"
+            colour="clear"
             onClick={() => setSelectedSection(section)}
-            className="mx-12 text-xl font-extralight"
+            className="mx-12 text-base"
           >
             {section.title}
           </Button>

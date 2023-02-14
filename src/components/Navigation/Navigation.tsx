@@ -11,10 +11,13 @@ export const Navigation = (): ReactElement => {
         </a>
 
         <div className="mr-16 flex flex-row items-center gap-x-8 md:order-2">
-          <div className="text-white-base-center font-poppins font-light">Contact: 07936 286319</div>
+          <div className="text-white-base-center font-poly font-light">Contact: 07936 286319</div>
           <Button
             data-testid="login-button"
-            className="py-[8px] px-[40px] text-[#333F4C] hover:cursor-pointer"
+            colour="clear"
+            size="large"
+            className="border-[#F7F7F7] italic font-poly"
+            hover={false}
           >
             Log In
           </Button>

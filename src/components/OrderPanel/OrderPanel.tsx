@@ -3,6 +3,7 @@ import { LocalOrderDetails } from 'components/LocalOrderDetails/LocalOrderDetail
 import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
+import { Button } from 'components/Buttons/Button';
 
 export const OrderPanel = (): ReactElement => {
   const navigate = useNavigate();
@@ -16,20 +17,24 @@ export const OrderPanel = (): ReactElement => {
           <OrderCreateForm />
         </div>
         <div className="mt-[4%] grid grid-cols-12 text-sm text-gray-400">
-          <button
+          <Button
+            colour="clear"
+            size="medium"
             data-test-id="home-btn"
             onClick={() => navigate(RouteConstants.HOME)}
-            className="font-poppins col-span-6 mr-[5px] rounded-full border border-gray-400 py-2 leading-[21px] text-[#A2AAB6]"
+            className="col-span-6 mr-[5px] border border-gray-400 leading-[21px]"
           >
             Back to start screen
-          </button>
-          <button
+          </Button>
+          <Button
+            colour="clear"
+            size="medium"
             data-testid="allergen-board-btn"
             onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}
-            className="col-span-6 ml-[5px] rounded-full border border-gray-400 py-2 leading-[21px] text-[#A2AAB6]"
+            className="col-span-6 ml-[5px] border border-gray-400 py-2 leading-[21px]"
           >
             View Allergen board
-          </button>
+          </Button>
         </div>
       </div>
     </>

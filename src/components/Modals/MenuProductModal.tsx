@@ -86,7 +86,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
               <div className="mt-[5%] flex flex-row gap-4 self-stretch rounded-lg">
                 <Button
                   data-testid="cancel-button"
-                  className="h-[45px] w-[40%] grow gap-2.5 border-2 border-solid border-[#A2AAB6] px-3"
+                  className="h-[45px] w-[40%] grow gap-2.5 border-[#A2AAB6] px-3"
                   size="small"
                   colour="clear"
                   onClick={() => disableShow(false)}
