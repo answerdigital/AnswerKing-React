@@ -15,7 +15,7 @@ export const MenuPage = (): ReactElement => {
   const [selectedCategory, setSelectedCategory] = useState<number>(0);
 
   const filteredCategories = useMemo(() => {
-    return categories.data?.filter((category) => !category.retired) ?? [];
+    return categories.data?.filter((category) => !category?.retired === false || category.products?.length !== 0) ?? [];
   }, [categories.data]);
 
   useEffect(() => {
