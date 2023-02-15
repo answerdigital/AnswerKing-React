@@ -15,9 +15,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, Props>(({ label, c
           {label}
         </Label>
       )}
-      <div className={cn('flex w-full flex-col gap-1', className)}>
-        <textarea className="w-full resize-none border-b-2" id={id} ref={ref} {...rest} />
-      </div>
+      <textarea className="w-full resize-none border-b-2" id={id} ref={ref} {...rest} />
     </div>
   );
 });
