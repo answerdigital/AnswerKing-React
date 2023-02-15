@@ -15,7 +15,6 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState('');
   const maxItemsDisplayed = 4;
-  const categoriesFilter = categories.filter((category) => !category?.retired === false || category.products?.length !== 0);
 
   const handleNext = (): void => {
     setIndex((prevIndex) => (prevIndex + maxItemsDisplayed >= categories.length ? 0 : prevIndex + maxItemsDisplayed));
@@ -32,8 +31,8 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
       <p className="text-[36px] font-[300]">Menu</p>
       <div className="mt-5 w-[95%] divide-y-2 divide-slate-700">
         <div className="group flex items-center justify-between text-center">
-          <ArrowToggle icon={faArrowLeft} handleIndex={handlePrev} categories={categoriesFilter} maxItemsDisplayed={maxItemsDisplayed} />
-          {categoriesFilter.slice(index, index + maxItemsDisplayed).map((category) => (
+          <ArrowToggle icon={faArrowLeft} handleIndex={handlePrev} categories={categories} maxItemsDisplayed={maxItemsDisplayed} />
+          {categories.slice(index, index + maxItemsDisplayed).map((category) => (
             <motion.button
               key={category.id}
               initial={{ opacity: 0.2, x: direction == 'left' ? 50 : -50 }}
@@ -50,7 +49,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
               {category.name}
             </motion.button>
           ))}
-          <ArrowToggle icon={faArrowRight} handleIndex={handleNext} categories={categoriesFilter} maxItemsDisplayed={maxItemsDisplayed} />
+          <ArrowToggle icon={faArrowRight} handleIndex={handleNext} categories={categories} maxItemsDisplayed={maxItemsDisplayed} />
         </div>
         <div className="mt-5"></div>
       </div>
