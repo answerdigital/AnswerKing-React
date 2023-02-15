@@ -1,7 +1,6 @@
 import { useCallback, useLayoutEffect, useRef } from 'react';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
-import { Button } from 'components/Buttons/Button';
 
 interface Props {
   parentRef: React.RefObject<Element>;
