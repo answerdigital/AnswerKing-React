@@ -14,9 +14,9 @@ import { Checkbox } from 'components/Inputs/Checkbox';
 import { Label } from 'components/Inputs/Label';
 
 const formSchema = yup.object({
-  name: yup.string().required('Required'),
+  name: yup.string().required('Tag name is required'),
   desc: yup.string().optional(),
-  products: yup.array().of(yup.number()).required('Required'),
+  products: yup.array().of(yup.number()).optional(),
 });
 
 type FormSchema = yup.InferType<typeof formSchema>;

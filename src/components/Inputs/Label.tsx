@@ -1,4 +1,3 @@
-import React from 'react';
 import { ErrorSpan } from './ErrorSpan';
 import cn from 'classnames';
 
@@ -15,7 +14,7 @@ export const Label = ({ children, className, error, forId }: Props): React.React
       <label htmlFor={forId} className="font-poly italic text-[#A2AAB6]">
         {children}
       </label>
-      {error && <ErrorSpan>{error}</ErrorSpan>}
+      {error && <ErrorSpan message={error} />}
     </div>
   );
 };

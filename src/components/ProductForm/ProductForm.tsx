@@ -16,12 +16,12 @@ import { useTags } from 'hooks/useTags';
 import { Label } from 'components/Inputs/Label';
 
 const formSchema = yup.object({
-  name: yup.string().required('Required').max(120, 'Name cannot be longer than 120 characters'),
+  name: yup.string().required('Name is required').max(120, 'Name cannot be longer than 120 characters'),
   desc: yup.string().optional().max(500, 'Description cannot be longer than 500 characters'),
-  price: yup.number().min(0),
-  category: yup.string().required('Required'),
-  stock: yup.number().required('Required').min(0).integer(),
-  tags: yup.array().of(yup.number()).required('Required').min(1, 'At least one tag is required'),
+  price: yup.number().min(0, 'Price must be positive'),
+  category: yup.string().required('Category is required'),
+  stock: yup.number().required('Stock number is required').min(0).integer(),
+  tags: yup.array().of(yup.number()).required('Tag is required').min(1, 'At least one tag is required'),
 });
 
 type FormSchema = yup.InferType<typeof formSchema>;

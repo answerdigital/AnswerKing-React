@@ -1,15 +1,23 @@
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Tooltip } from 'components/Tooltip/Tooltip';
+import { AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
 
 interface Props {
-  children: React.ReactNode;
+  message: string;
 }
 
-export const ErrorSpan = ({ children }: Props): React.ReactElement => {
+export const ErrorSpan = ({ message }: Props): React.ReactElement => {
+  const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <span className="font-poppins ml-2 not-italic text-red-500">
-      <FontAwesomeIcon icon={faCircleExclamation} className="mr-1" />
-      {children}
-    </span>
+    <>
+      <AnimatePresence>{isTooltipVisible && <Tooltip parentRef={ref} message={message} />}</AnimatePresence>
+      <span className="font-poppins not-italic text-red-500" ref={ref}>
+        <FontAwesomeIcon icon={faCircleExclamation} onMouseOver={() => setIsTooltipVisible(true)} onMouseLeave={() => setIsTooltipVisible(false)} />
+      </span>
+    </>
   );
 };
