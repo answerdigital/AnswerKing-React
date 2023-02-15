@@ -55,7 +55,7 @@ export const ProductForm = (): ReactElement => {
         };
       }) ?? []
     );
-  }, [categories.dataUpdatedAt]);
+  }, [categories]);
 
   const submitForm = (data: FormSchema): void => {
     console.log(data);
