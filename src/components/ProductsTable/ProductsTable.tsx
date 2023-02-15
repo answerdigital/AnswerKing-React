@@ -4,17 +4,18 @@ import { ReactElement } from 'react';
 import { useSearch } from 'components/Search/SearchContext';
 import { Search } from 'components/Search/Search';
 import { Button } from 'components/Buttons/Button';
-import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
 import { ProductDto } from 'dtos/ProductDto';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
 
 export const ProductsTable = (): ReactElement => {
   const { products } = useProducts();
-  const formatting = ' px-4 py-2 font-normal ';
+  const productForm = useProductFormContext();
   const searchString = useSearch().searchString;
+
+  const formatting = ' px-4 py-2 font-normal ';
   const displayProducts: ProductDto[] =
     products.data?.filter((product) => !product.retired && product.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
-  const openModal = useProductFormContext().startNew;
 
   return (
     <>
@@ -41,7 +42,7 @@ export const ProductsTable = (): ReactElement => {
       </div>
       <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
         <Search placeholder="Search Items" sizeType="medium" />
-        <Button colour="yellow" size="medium" onClick={openModal}>
+        <Button colour="yellow" size="medium" onClick={productForm.openForm}>
           Add Item
         </Button>
       </div>

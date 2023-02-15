@@ -27,7 +27,7 @@ export const StaffDetails = (): ReactElement => {
         Store Address
         <input className={inputClass} type="text" />
       </label>
-      <label className="w-full w-full italic text-gray-400 focus:border-white">
+      <label className="w-full italic text-gray-400 focus:border-white">
         Opens
         <input
           className="w-full bg-transparent bg-gray-400 text-black focus:outline-none"
@@ -37,7 +37,7 @@ export const StaffDetails = (): ReactElement => {
           defaultValue="08:00"
         />
       </label>
-      <label className="w-full w-full italic text-gray-400 focus:border-white">
+      <label className="w-full italic text-gray-400 focus:border-white">
         Closes
         <input
           className="w-full bg-transparent bg-gray-400 text-black focus:outline-none"
