@@ -14,7 +14,7 @@ export const ErrorSpan = ({ message }: Props): React.ReactElement => {
 
   return (
     <>
-      <AnimatePresence>{isTooltipVisible && <Tooltip parentRef={ref} message={message} />}</AnimatePresence>
+      <AnimatePresence>{isTooltipVisible && <Tooltip parentRef={ref}>{message}</Tooltip>}</AnimatePresence>
       <span className="font-poppins not-italic text-red-500" ref={ref}>
         <FontAwesomeIcon icon={faCircleExclamation} onMouseOver={() => setIsTooltipVisible(true)} onMouseLeave={() => setIsTooltipVisible(false)} />
       </span>

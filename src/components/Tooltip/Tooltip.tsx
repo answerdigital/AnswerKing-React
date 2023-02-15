@@ -1,15 +1,16 @@
 import { useCallback, useLayoutEffect, useRef } from 'react';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
+import { Button } from 'components/Buttons/Button';
 
 interface Props {
   parentRef: React.RefObject<Element>;
-  message: string;
+  children: React.ReactNode;
 }
 
 const TOOLTIP_GAP_ABOVE_PARENT = 10; //px
 
-export const Tooltip = ({ parentRef, message }: Props): React.ReactElement => {
+export const Tooltip = ({ parentRef, children }: Props): React.ReactElement => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleParentResize = useCallback(() => {
@@ -50,7 +51,7 @@ export const Tooltip = ({ parentRef, message }: Props): React.ReactElement => {
       ref={ref}
     >
       <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-white"></div>
-      {message}
+      {children}
     </motion.div>
   );
 };
