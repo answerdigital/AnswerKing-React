@@ -4,7 +4,6 @@ import React, { ReactElement } from 'react';
 interface Props extends React.ComponentPropsWithoutRef<'button'> {
   active?: boolean;
   'data-testid'?: string;
-  size?: 'small' | 'medium' | 'large';
   colour?: 'yellow' | 'grey' | 'white' | 'clear';
   hover?: boolean;
 }
@@ -17,7 +16,6 @@ export const Button = ({
   disabled = false,
   id = undefined,
   onClick = undefined,
-  size = 'medium',
   type = 'button',
   colour = 'grey',
   hover = true,
@@ -26,19 +24,15 @@ export const Button = ({
     <button
       className={cn(
         'font-poppins',
-        'rounded-full transition duration-500',
+        'rounded-full transition duration-500 border-2 border-solid',
         {
-          'py-1 px-5': size === 'small',
-          'py-3 px-5': size === 'medium',
-          'py-3 px-12': size === 'large',
-          'border-2 border-solid border-transparent bg-transparent': colour === 'clear',
-          'border-[1px] border-solid border-slate-700 bg-white': colour === 'white',
-          'border-2 border-solid border-[#A2AAB6] bg-[#A2AAB6]': colour === 'grey',
-          'border-2 border-solid border-[#FFC600] bg-[#FFC600]': colour === 'yellow',
+          'border-transparent bg-transparent text-inherit': colour === 'clear',
+          'border-slate-700 bg-white text-slate-700': colour === 'white',
+          'border-[#A2AAB6] bg-[#A2AAB6] text-slate-700' : colour === 'grey',
+          'border-[#FFC600] bg-[#FFC600] text-slate-700': colour === 'yellow',
           'cursor-pointer bg-slate-500': active,
           'hover:cursor-pointer hover:border-slate-700 hover:bg-slate-700 hover:text-white': hover,
         },
-        colour === 'clear' ? 'text-inherit' : 'text-slate-700',
         className
       )}
       data-testid={dataTestId}

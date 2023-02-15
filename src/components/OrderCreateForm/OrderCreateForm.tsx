@@ -27,8 +27,7 @@ export const OrderCreateForm = (): ReactElement => {
       <div className="mb-1">
         <Button
           disabled={!lineItemsExist}
-          size="medium"
-          className="w-full"
+          className="w-full h-[45px] font-[14px]"
           onClick={() => navigate(RouteConstants.CHECKOUT)}
           colour="yellow"
           data-testid="checkout"

@@ -52,10 +52,10 @@ export const CheckoutPaymentDetailsTab = (): React.ReactElement => {
       </div>
 
       <CheckoutFooter>
-        <Button colour="white" size="medium" className="w-3/12" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
+        <Button colour="white" className="w-3/12 h-[45px]" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
           Back
         </Button>
-        <Button colour="yellow" size="medium" className="w-full" onClick={() => setCurrentTab(CheckoutTabType.Summary)} disabled={!orderExists}>
+        <Button colour="yellow" className="w-full h-[45px]" onClick={() => setCurrentTab(CheckoutTabType.Summary)} disabled={!orderExists}>
           Continue to summary
         </Button>
       </CheckoutFooter>

@@ -15,8 +15,7 @@ export const Navigation = (): ReactElement => {
           <Button
             data-testid="login-button"
             colour="clear"
-            size="large"
-            className="border-[#F7F7F7] italic font-poly"
+            className="border-[#F7F7F7] italic font-poly w-[102px] h-[32px]"
             hover={false}
           >
             Log In

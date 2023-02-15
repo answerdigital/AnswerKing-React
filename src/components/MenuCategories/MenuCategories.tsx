@@ -39,8 +39,9 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
               animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
               className={cn(
                 'left-5 mx-[20px] h-[32px] w-[102px] rounded-full',
-                'bg-transparent px-1 text-[16px] font-[300] text-[#ffffff] hover:border-[#333F4C] hover:bg-[#333F4C]',
-                category.id === selectedCategory && 'border-[#333F4C] bg-[#A2AAB6] text-gray-900'
+                'bg-transparent px-1 text-[16px] font-[300]',
+                category.id === selectedCategory && 'border-[#333F4C] bg-[#A2AAB6] text-gray-900',
+                category.id != selectedCategory && 'text-[#ffffff] hover:border-[#333F4C] hover:bg-[#333F4C]'
               )}
               onClick={() => {
                 setSelectedCategory(category.id);
