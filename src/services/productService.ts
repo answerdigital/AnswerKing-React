@@ -1,5 +1,5 @@
 import { ProductDto } from 'dtos/ProductDto';
-import { CreatedProductDto } from 'dtos/CreatedProductDto';
+import { ProductRequestDto } from 'dtos/ProductRequestDto';
 import { httpClient } from 'utilities/http-client';
 
 const getAll = async (): Promise<ProductDto[]> => {
@@ -16,8 +16,22 @@ const getAll = async (): Promise<ProductDto[]> => {
   return await response.json();
 };
 
-const create = async (createDto: CreatedProductDto): Promise<ProductDto> => {
+const create = async (createDto: ProductRequestDto): Promise<ProductDto> => {
   const response = await httpClient.post('/products', createDto);
+
+  if (!response.ok) {
+    try {
+      return Promise.reject(await response.json());
+    } catch {
+      return Promise.reject();
+    }
+  }
+
+  return await response.json();
+};
+
+const edit = async (Id: number, UpdateDto: ProductRequestDto): Promise<ProductDto> => {
+  const response = await httpClient.put(`/products/${Id}`, UpdateDto);
 
   if (!response.ok) {
     try {
@@ -38,4 +52,4 @@ const remove = async (id: number): Promise<void> => {
   }
 };
 
-export const productService = { getAll, create, remove };
+export const productService = { getAll, create, edit, remove };

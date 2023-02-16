@@ -1,8 +1,13 @@
 import { ProductDto } from 'dtos/ProductDto';
-import { CreatedProductDto } from 'dtos/CreatedProductDto';
+import { ProductRequestDto } from 'dtos/ProductRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
 import { productService } from 'services/productService';
 import { ProblemDetails } from 'services/orderService';
+
+interface UpdateProductProps {
+  id: number;
+  requestDto: ProductRequestDto;
+}
 
 export interface productProblemDetails extends ProblemDetails {
   errors: errors;
@@ -16,14 +21,21 @@ export interface errors {
 
 interface UseProductsResult {
   products: UseQueryResult<ProductDto[]>;
-  createProduct: UseMutationResult<ProductDto, productProblemDetails, CreatedProductDto>;
+  createProduct: UseMutationResult<ProductDto, productProblemDetails, ProductRequestDto>;
+  editProduct: UseMutationResult<ProductDto, productProblemDetails, UpdateProductProps>;
   removeProduct: UseMutationResult<void, ProblemDetails, number>;
 }
 
 export const useProducts = (): UseProductsResult => {
   const products = useQuery<ProductDto[]>(['items'], productService.getAll);
 
-  const createProduct = useMutation<ProductDto, productProblemDetails, CreatedProductDto>((createDto) => productService.create(createDto), {
+  const createProduct = useMutation<ProductDto, productProblemDetails, ProductRequestDto>((requestDto) => productService.create(requestDto), {
+    onSuccess: () => {
+      products.refetch();
+    },
+  });
+
+  const editProduct = useMutation<ProductDto, productProblemDetails, UpdateProductProps>((props) => productService.edit(props.id, props.requestDto), {
     onSuccess: () => {
       products.refetch();
     },
@@ -35,5 +47,5 @@ export const useProducts = (): UseProductsResult => {
     },
   });
 
-  return { products, createProduct, removeProduct };
+  return { products, createProduct, editProduct, removeProduct };
 };
