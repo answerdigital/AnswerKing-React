@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCcVisa, faCcMastercard, faCcAmex } from '@fortawesome/free-brands-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'components/Buttons/Button';
-import { InputRow } from 'components/Inputs/InputRow';
+import { Input } from 'components/Inputs/Input';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
 import { useContext, useState } from 'react';
@@ -24,8 +24,8 @@ export const CheckoutPaymentDetailsTab = (): React.ReactElement => {
         </div>
 
         <div className="flex w-full gap-5">
-          <InputRow type="text" label="Order name" placeholder="Joe Bloggs" />
-          <InputRow type="email" label="Email address" placeholder="joebloggs@lukewarmmail.com" />
+          <Input type="text" label="Order name" id="order-name" placeholder="Joe Bloggs" />
+          <Input type="email" label="Email address" id="email-address" placeholder="joebloggs@lukewarmmail.com" />
         </div>
       </div>
 
@@ -42,12 +42,12 @@ export const CheckoutPaymentDetailsTab = (): React.ReactElement => {
       </div>
 
       <div className="flex w-full gap-5">
-        <InputRow type="number" label="Card number" placeholder="1234123412341234" />
-        <InputRow type="number" label="Account number" placeholder="12341234" />
+        <Input type="number" label="Card number" id="card-number" placeholder="1234123412341234" />
+        <Input type="number" label="Account number" id="account-number" placeholder="12341234" />
       </div>
 
       <div className="mt-5 flex w-full gap-5">
-        <InputRow type="number" label="CVV number" placeholder="123" />
+        <Input type="number" label="CVV number" id="cvv-number" placeholder="123" />
         <CheckboxRow label="Save for next time" checked={saveLater} onClick={() => setSaveLater(!saveLater)} />
       </div>
 

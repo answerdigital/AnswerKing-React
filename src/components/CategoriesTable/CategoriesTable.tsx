@@ -9,12 +9,12 @@ import { CategoryDto } from 'dtos/CategoryDto';
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 
 export const CategoriesTable = (): ReactElement => {
+  const categoryForm = useCategoryFormContext();
   const { categories } = useCategories();
   const searchString = useSearch().searchString;
   const displayCategories: CategoryDto[] =
     categories.data?.filter((category) => !category.retired && category.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
   const formatting = ' px-2 py-2 font-normal ';
-  const openModal = useCategoryFormContext().startNew;
 
   return (
     <>
@@ -38,7 +38,7 @@ export const CategoriesTable = (): ReactElement => {
       </div>
       <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
         <Search placeholder="Search Categories" sizeType="medium" />
-        <Button colour="yellow" size="medium" onClick={openModal}>
+        <Button colour="yellow" size="medium" onClick={categoryForm.openForm}>
           Add Category
         </Button>
       </div>

@@ -1,59 +1,64 @@
 import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { Dropdown } from 'components/Dropdown/Dropdown';
-import { useProductFormContext } from './ProductFormContext';
 import { Button } from 'components/Buttons/Button';
-import cn from 'classnames';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Select } from 'components/Inputs/Select';
+import { Input } from 'components/Inputs/Input';
+import { TextArea } from 'components/Inputs/TextArea';
+import { Checkbox } from 'components/Inputs/Checkbox';
+import { useProductFormContext } from './ProductFormContext';
+import { useCategories } from 'hooks/useCategories';
+import { useTags } from 'hooks/useTags';
+import { Label } from 'components/Inputs/Label';
+
+const formSchema = yup.object({
+  name: yup.string().required('Name is required').max(120, 'Name cannot be longer than 120 characters'),
+  desc: yup.string().optional().max(500, 'Description cannot be longer than 500 characters'),
+  price: yup.number().min(0, 'Price must be positive'),
+  category: yup.string().required('Category is required'),
+  stock: yup.number().required('Stock number is required').min(0).integer(),
+  tags: yup.array().of(yup.number()).required('Tag is required').min(1, 'At least one tag is required'),
+});
+
+type FormSchema = yup.InferType<typeof formSchema>;
 
 export const ProductForm = (): ReactElement => {
-  const formContext = useProductFormContext();
-  const [formProduct, setFormProduct] = formContext.useFormProduct;
-  const subHeadingClass = 'italic text-[#A2AAB6] font-poly';
+  const productForm = useProductFormContext();
+  const { tags } = useTags();
+  const { categories } = useCategories();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormSchema>({
+    resolver: yupResolver(formSchema),
+    defaultValues: {
+      name: productForm.initialProduct?.name,
+      desc: productForm.initialProduct?.description,
+      price: productForm.initialProduct?.price,
+      stock: 0,
+      category: productForm.initialProduct?.category?.id.toString(),
+      tags: productForm.initialProduct?.tags ?? [],
+    },
+  });
 
-  //Placeholder Data
-  interface ITag {
-    id: number;
-    name: string;
-  }
-  const allTags: ITag[] = [
-    { id: 0, name: 'Vegan' },
-    { id: 1, name: 'Vegetarian' },
-    { id: 2, name: 'Good Food' },
-    { id: 3, name: 'Nut-Free' },
-    { id: 4, name: 'Gluten-Free' },
-    { id: 5, name: 'Breakfast Menu' },
-    { id: 6, name: 'Vegan' },
-    { id: 7, name: 'Vegetarian' },
-    { id: 8, name: 'Good Food' },
-    { id: 9, name: 'Nut-Free' },
-    { id: 10, name: 'Gluten-Free' },
-    { id: 11, name: 'Breakfast Menu' },
-    { id: 12, name: 'Vegan' },
-    { id: 13, name: 'Vegetarian' },
-    { id: 14, name: 'Good Food' },
-    { id: 15, name: 'Nut-Free' },
-    { id: 16, name: 'Gluten-Free' },
-    { id: 17, name: 'Breakfast Menu' },
-    { id: 18, name: 'Vegan' },
-    { id: 19, name: 'Vegetarian' },
-    { id: 20, name: 'Good Food' },
-  ];
-  const categories = ['Mains', 'Sides', 'Drinks'];
+  const categoryOptions = useMemo(() => {
+    return (
+      categories.data?.map((category) => {
+        return {
+          label: category.name ?? '',
+          value: category.id.toString(),
+        };
+      }) ?? []
+    );
+  }, [categories.data]);
 
-  const toggleTag = (event: React.ChangeEvent<HTMLInputElement>, toggleTagId: number): void => {
-    if (event.target.checked) {
-      setFormProduct({
-        ...formProduct,
-        tags: formProduct.tags.concat([toggleTagId]),
-      });
-    } else {
-      setFormProduct({
-        ...formProduct,
-        tags: formProduct.tags.filter((tagId) => tagId !== toggleTagId),
-      });
-    }
+  const submitForm = (data: FormSchema): void => {
+    console.log(data);
   };
 
   return (
@@ -64,90 +69,34 @@ export const ProductForm = (): ReactElement => {
             <FontAwesomeIcon icon={faPen} />
           </div>
           <div className="col-span-2">
-            <label className={cn(subHeadingClass)} htmlFor="product_create_form_name">
-              Item Name
-            </label>
-            <input
-              className="w-full border-b-2 font-[600] focus:border-black focus:outline-none"
-              id="product_create_form_name"
-              onChange={(event) => setFormProduct({ ...formProduct, name: event.target.value })}
-              type="text"
-              value={formProduct.name}
-              data-testid="product-name"
-            />
+            <Input type="text" label="Item name" id="item-name" error={errors.name?.message} {...register('name')} />
           </div>
           <div className="col-span-2 row-span-2">
-            <label className={cn(subHeadingClass)} htmlFor="product_create_form_desc">
-              Item Description
-            </label>
-            <textarea
-              className="w-full resize-none border-b-2 font-[600] focus:border-black focus:outline-none"
-              id="product_create_form_desc"
-              onChange={(event) => setFormProduct({ ...formProduct, desc: event.target.value })}
-              rows={3}
-              value={formProduct.desc}
-              data-testid="product-description"
-            />
+            <TextArea label="Item description" id="item-description" error={errors.desc?.message} {...register('desc')} />
           </div>
           <div className="col-span-2">
-            <label className={cn(subHeadingClass, 'w-full')} htmlFor="product_create_form_category">
-              Category
-            </label>
-            <Dropdown options={categories} className="w-full" id="product_create_form_category" />
+            <Select label="Category" options={categoryOptions} id="category" error={errors.category?.message} {...register('category')} />
           </div>
           <div className="flex w-full flex-col">
-            <label className={cn(subHeadingClass)} htmlFor="product_create_form__price">
-              Price
-            </label>
-            <input
-              className="border-b-2 focus:border-black focus:outline-none"
-              id="product_create_form__price"
-              onChange={(event) => setFormProduct({ ...formProduct, price: parseFloat(event.target.value) })}
-              step={0.01}
-              type="number"
-              value={formProduct.price}
-              min={0}
-              data-testid="product-price"
-            />
+            <Input label="Price" type="number" step={0.01} min={0} id="price" error={errors.price?.message} {...register('price')} />
           </div>
           <div className="flex w-full flex-col">
-            <label className={cn(subHeadingClass)} htmlFor="product_create_form__stock">
-              Stock Count
-            </label>
-            <input
-              className="border-b-2 focus:border-black focus:outline-none"
-              id="product_create_form__stock"
-              onChange={(event) => setFormProduct({ ...formProduct, stock: parseFloat(event.target.value) })}
-              step={1}
-              type="number"
-              value={formProduct.stock}
-              min={0}
-            />
+            <Input label="Stock" type="number" step={1} min={0} id="stock" error={errors.stock?.message} {...register('stock')} />
           </div>
-          <a className={cn(subHeadingClass, 'col-span-4')}>Tags</a>
-          {allTags.map((tag, i) => {
-            return (
-              <div key={tag.id.toString()}>
-                <input
-                  type="checkbox"
-                  id={tag.name + i + ' in ' + formProduct.name}
-                  onChange={(e) => toggleTag(e, tag.id)}
-                  checked={formProduct.tags.includes(tag.id)}
-                />
-                <label className="pl-2 text-sm" htmlFor={tag.name + i + ' in ' + formProduct.name}>
-                  {tag.name}
-                </label>
-              </div>
-            );
+          <Label error={errors.tags?.message} className="col-span-4">
+            Tags
+          </Label>
+          {tags.data?.map((tag) => {
+            return <Checkbox key={tag.id} value={tag.id} label={tag.name} id={tag.id.toString()} {...register('tags')} />;
           })}
         </div>
         <LoaderOverlay isEnabled={false} />
       </form>
       <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-        <Button colour="white" size="medium" onClick={formContext.closeForm}>
+        <Button colour="white" size="medium" onClick={productForm.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" size="medium" onClick={formContext.saveForm} data-testid="submit-product">
+        <Button colour="yellow" size="medium" onClick={handleSubmit(submitForm)} data-testid="submit-product">
           Save Item
         </Button>
       </div>
