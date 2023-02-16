@@ -13,7 +13,7 @@ export const ProductsTable = (): ReactElement => {
   const productForm = useProductFormContext();
   const searchString = useSearch().searchString;
 
-  const formatting = ' px-4 py-2 font-normal ';
+  const formatting = 'px-4 py-2 font-normal';
   const displayProducts: ProductDto[] =
     products.data?.filter((product) => !product.retired && product.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
 

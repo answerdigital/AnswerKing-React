@@ -1,12 +1,13 @@
 import { CheckBoxIcon } from 'components/Icons/CheckBoxIcon';
 import { ProductDto } from 'dtos/ProductDto';
+import { ReactElement } from 'react';
 
 interface Props {
   products: ProductDto[];
   allergens: string[];
 }
 
-export const AllergenTable = ({ products, allergens }: Props): React.ReactElement => {
+export const AllergenTable = ({ products, allergens }: Props): ReactElement => {
   return (
     <table className="w-full table-auto border-separate border-spacing-0 text-[#333F4C]">
       <thead className="sticky top-0 w-full bg-white/90">

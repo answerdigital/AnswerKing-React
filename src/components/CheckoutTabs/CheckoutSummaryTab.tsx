@@ -10,7 +10,7 @@ import { useContext } from 'react';
 import { GBPFormat } from 'utilities/GBPFormat';
 import { SERVICE_CHARGE } from 'utilities/variables';
 
-export const CheckoutSummaryTab = (): React.ReactElement => {
+export const CheckoutSummaryTab = (): ReactElement => {
   const { createOrder } = useOrder();
   const { localOrder } = useLocalOrder();
   const { setCurrentTab } = useContext(CheckoutTabContext);

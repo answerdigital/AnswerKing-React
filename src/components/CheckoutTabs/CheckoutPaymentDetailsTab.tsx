@@ -5,11 +5,11 @@ import { Button } from 'components/Buttons/Button';
 import { Input } from 'components/Inputs/Input';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
-import { useContext, useState } from 'react';
+import { ReactElement, useContext, useState } from 'react';
 import { CheckboxRow } from 'components/Inputs/CheckboxRow';
 import { CheckoutFooter } from 'components/CheckoutFooter/CheckoutFooter';
 
-export const CheckoutPaymentDetailsTab = (): React.ReactElement => {
+export const CheckoutPaymentDetailsTab = (): ReactElement => {
   const { setCurrentTab } = useContext(CheckoutTabContext);
   const { localOrder } = useLocalOrder();
   const [saveLater, setSaveLater] = useState(false);

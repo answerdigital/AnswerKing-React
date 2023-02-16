@@ -2,13 +2,14 @@ import { GBPFormat } from 'utilities/GBPFormat';
 import { SERVICE_CHARGE } from 'utilities/variables';
 import { LineItemDto } from 'dtos/LineItemDto';
 import cn from 'classnames';
+import { ReactElement } from 'react';
 
 interface Props {
   lineItems: LineItemDto[];
   orderComplete?: boolean;
 }
 
-export const OrderFeesAndTotals = ({ lineItems, orderComplete }: Props): React.ReactElement => {
+export const OrderFeesAndTotals = ({ lineItems, orderComplete }: Props): ReactElement => {
   return (
     <div data-testid="order-fees-totals" className="mb-3 w-full text-[22px]">
       <hr className="mb-6 px-1"></hr>
