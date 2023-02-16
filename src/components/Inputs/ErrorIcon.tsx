@@ -8,7 +8,7 @@ interface Props {
   message: string;
 }
 
-export const ErrorSpan = ({ message }: Props): React.ReactElement => {
+export const ErrorIcon = ({ message }: Props): React.ReactElement => {
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 

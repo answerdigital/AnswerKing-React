@@ -1,4 +1,4 @@
-import { ErrorSpan } from './ErrorSpan';
+import { ErrorIcon } from './ErrorIcon';
 import cn from 'classnames';
 
 interface Props {
@@ -16,7 +16,7 @@ export const Label = ({ children, className, error, forId }: Props): React.React
           {children}
         </label>
       )}
-      {error && <ErrorSpan message={error} />}
+      {error && <ErrorIcon message={error} />}
     </div>
   );
 };
