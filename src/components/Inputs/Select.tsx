@@ -22,7 +22,7 @@ export const Select = forwardRef<HTMLSelectElement, Props>(({ options, className
           {label}
         </Label>
       )}
-      <select className={cn('w-full rounded-md border bg-white text-center')} ref={ref} {...rest}>
+      <select className={cn('w-full rounded-md border bg-white text-center')} defaultValue={options[0]?.value ?? ''} ref={ref} {...rest}>
         {options.map(({ label, value }) => (
           <option key={value} value={value}>
             {label}

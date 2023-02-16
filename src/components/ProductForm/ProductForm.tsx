@@ -77,14 +77,7 @@ export const ProductForm = (): ReactElement => {
                 <TextArea label="Item description" id="item-description" error={errors.desc?.message} {...register('desc')} />
               </div>
               <div className="col-span-2">
-                <Select
-                  label="Category"
-                  options={categoryOptions}
-                  defaultValue={categoryOptions[0].value ?? ''}
-                  id="category"
-                  error={errors.category?.message}
-                  {...register('category')}
-                />
+                <Select label="Category" options={categoryOptions} id="category" error={errors.category?.message} {...register('category')} />
               </div>
               <div className="flex w-full flex-col">
                 <Input label="Price" type="number" step={0.01} min={0} id="price" error={errors.price?.message} {...register('price')} />
