@@ -24,14 +24,14 @@ export const Button = ({
     <button
       className={cn(
         'font-poppins',
-        'rounded-full transition duration-500 border-2 border-solid',
+        'rounded-full transition duration-500',
         {
-          'border-transparent bg-transparent text-inherit': colour === 'clear',
-          'border-slate-700 bg-white text-slate-700': colour === 'white',
-          'border-[#A2AAB6] bg-[#A2AAB6] text-slate-700' : colour === 'grey',
-          'border-[#FFC600] bg-[#FFC600] text-slate-700': colour === 'yellow',
+          'bg-transparent text-inherit': colour === 'clear',
+          'border border-solid border-slate-700 bg-white text-slate-700': colour === 'white',
+          'bg-[#A2AAB6] text-slate-700' : colour === 'grey',
+          'bg-[#FFC600] text-slate-700': colour === 'yellow',
           'cursor-pointer bg-slate-500': active,
-          'hover:cursor-pointer hover:border-slate-700 hover:bg-slate-700 hover:text-white': hover,
+          'hover:cursor-pointer hover:bg-slate-700 hover:text-white': hover,
         },
         className
       )}

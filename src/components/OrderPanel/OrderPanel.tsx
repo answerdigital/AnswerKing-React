@@ -19,7 +19,6 @@ export const OrderPanel = (): ReactElement => {
         <div className="mt-[4%] grid grid-cols-12 text-sm text-gray-400">
           <Button
             colour="clear"
-            size="medium"
             data-test-id="home-btn"
             onClick={() => navigate(RouteConstants.HOME)}
             className="col-span-6 mr-[5px] border border-gray-400 leading-[21px]"
@@ -28,7 +27,6 @@ export const OrderPanel = (): ReactElement => {
           </Button>
           <Button
             colour="clear"
-            size="medium"
             data-testid="allergen-board-btn"
             onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}
             className="col-span-6 ml-[5px] border border-gray-400 py-2 leading-[21px]"

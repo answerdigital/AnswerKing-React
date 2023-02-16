@@ -39,9 +39,9 @@ export const ProductsTable = (): ReactElement => {
         </table>
         <LoaderOverlay isEnabled={false} />
       </div>
-      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
+      <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Search placeholder="Search Items" sizeType="medium" />
-        <Button colour="yellow" size="medium" onClick={openModal}>
+        <Button colour="yellow" onClick={openModal}>
           Add Item
         </Button>
       </div>

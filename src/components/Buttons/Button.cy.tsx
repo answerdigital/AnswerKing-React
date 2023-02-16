@@ -10,13 +10,13 @@ describe('Buttons', () => {
     CustomMount(
       <div>
         <div>
-          <Button data-testid="small-button" size="small" onClick={mockMethod}>
+          <Button data-testid="small-button" onClick={mockMethod}>
             Small
           </Button>
-          <Button data-testid="medium-button" size="medium">
+          <Button data-testid="medium-button">
             Medium
           </Button>
-          <Button data-testid="large-button" size="large">
+          <Button data-testid="large-button">
             Large
           </Button>
         </div>

@@ -86,11 +86,11 @@ export const TagForm = (): ReactElement => {
         </div>
         <LoaderOverlay isEnabled={false} />
       </form>
-      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-        <Button colour="white" size="medium" onClick={formContext.closeForm}>
+      <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
+        <Button colour="white" onClick={formContext.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" size="medium" onClick={formContext.saveForm}>
+        <Button colour="yellow" onClick={formContext.saveForm}>
           Save Tag
         </Button>
       </div>

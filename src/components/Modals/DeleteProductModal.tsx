@@ -22,14 +22,13 @@ export const DeleteProductModal = ({ setIsOpen, onConfirm }: Props): ReactElemen
           <div className="flex justify-center">
             <Button
               data-testid="delete-cancel"
-              size="small"
               colour="white"
-              className="mr-4 h-[45px] w-[129.5px] border-[1px]"
+              className="mr-4 h-[45px] w-[129.5px] text-sm"
               onClick={() => setIsOpen(false)}
             >
               Cancel
             </Button>
-            <Button data-testid="delete-yes" size="small" colour="yellow" className="h-[45px] w-[129.5px]" onClick={() => onConfirm()}>
+            <Button data-testid="delete-yes" colour="yellow" className="h-[45px] w-[129.5px] text-sm" onClick={() => onConfirm()}>
               Yes
             </Button>
           </div>

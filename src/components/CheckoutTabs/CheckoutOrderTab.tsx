@@ -31,9 +31,8 @@ export const CheckoutOrderTab = (): React.ReactElement => {
             </p>
             <Button
               colour="yellow"
-              size="small"
               onClick={() => navigate(RouteConstants.MENU)}
-              className="mt-[3%] h-[41px] w-[131px] cursor-pointer p-[50px] font-[400] leading-[21px]"
+              className="mt-[3%] h-[45px] w-[130px] leading-[21px]"
             >
               Go to menu
             </Button>
@@ -44,13 +43,12 @@ export const CheckoutOrderTab = (): React.ReactElement => {
       )}
 
       <CheckoutFooter>
-        <Button colour="white" size="medium" className="w-3/12" onClick={() => navigate(-1)}>
+        <Button colour="white" className="w-3/12 h-[45px]" onClick={() => navigate(-1)}>
           Back
         </Button>
         <Button
           colour="yellow"
-          size="medium"
-          className="w-full"
+          className="w-full h-[45px]"
           onClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)}
           disabled={!orderExists}
         >
