@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'components/Buttons/Button';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Select } from 'components/Inputs/Select';
 import { Input } from 'components/Inputs/Input';
@@ -14,17 +13,7 @@ import { useProductFormContext } from './ProductFormContext';
 import { useCategories } from 'hooks/useCategories';
 import { useTags } from 'hooks/useTags';
 import { Label } from 'components/Inputs/Label';
-
-const formSchema = yup.object({
-  name: yup.string().required('Name is required').max(120, 'Name cannot be longer than 120 characters'),
-  desc: yup.string().optional().max(500, 'Description cannot be longer than 500 characters'),
-  price: yup.number().min(0, 'Price must be positive'),
-  category: yup.string().required('Category is required'),
-  stock: yup.number().required('Stock number is required').min(0).integer(),
-  tags: yup.array().of(yup.number()).required('Tag is required').min(1, 'At least one tag is required'),
-});
-
-type FormSchema = yup.InferType<typeof formSchema>;
+import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
 
 export const ProductForm = (): ReactElement => {
   const productForm = useProductFormContext();
@@ -34,8 +23,8 @@ export const ProductForm = (): ReactElement => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormSchema>({
-    resolver: yupResolver(formSchema),
+  } = useForm<ProductFormSchema>({
+    resolver: yupResolver(productFormSchema),
     defaultValues: {
       name: productForm.initialProduct?.name,
       desc: productForm.initialProduct?.description,
@@ -57,7 +46,7 @@ export const ProductForm = (): ReactElement => {
     );
   }, [categories.data]);
 
-  const submitForm = (data: FormSchema): void => {
+  const submitForm = (data: ProductFormSchema): void => {
     console.log(data);
   };
 

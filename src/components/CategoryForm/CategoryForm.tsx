@@ -5,20 +5,12 @@ import { useCategoryFormContext } from './CategoryFormContext';
 import { Button } from 'components/Buttons/Button';
 import { Input } from 'components/Inputs/Input';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TextArea } from 'components/Inputs/TextArea';
 import { Checkbox } from 'components/Inputs/Checkbox';
 import { useProducts } from 'hooks/useProducts';
 import { Label } from 'components/Inputs/Label';
-
-const formSchema = yup.object({
-  name: yup.string().required('Category name is required'),
-  desc: yup.string().optional(),
-  products: yup.array().of(yup.number()).optional(),
-});
-
-type FormSchema = yup.InferType<typeof formSchema>;
+import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
 
 export const CategoryForm = (): ReactElement => {
   const categoryForm = useCategoryFormContext();
@@ -28,8 +20,8 @@ export const CategoryForm = (): ReactElement => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormSchema>({
-    resolver: yupResolver(formSchema),
+  } = useForm<CategoryFormSchema>({
+    resolver: yupResolver(categoryFormSchema),
     defaultValues: {
       name: categoryForm.initialCategory?.name,
       desc: categoryForm.initialCategory?.description,
@@ -37,7 +29,7 @@ export const CategoryForm = (): ReactElement => {
     },
   });
 
-  const submitForm = (data: FormSchema): void => {
+  const submitForm = (data: CategoryFormSchema): void => {
     console.log(data);
   };
 
