@@ -39,8 +39,11 @@ export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElem
       </td>
       <td className={'text-center ' + formatting}>None</td>
       <td className={'flex justify-end ' + formatting}>
-        <span onClick={() => formContext.startEditing(product)}
-          role="button" className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]">
+        <span
+          onClick={() => formContext.startEditing(product)}
+          role="button"
+          className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
+        >
           <FontAwesomeIcon icon={faPencilAlt} />
         </span>
         <TrashIcon onClick={() => handleDelete()} />

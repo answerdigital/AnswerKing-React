@@ -12,12 +12,7 @@ export const Navigation = (): ReactElement => {
 
         <div className="mr-16 flex flex-row items-center gap-x-8 md:order-2">
           <div className="text-white-base-center font-poly font-light">Contact: 07936 286319</div>
-          <Button
-            data-testid="login-button"
-            colour="clear"
-            className="border border-[#F7F7F7] italic font-poly w-[102px] h-[32px]"
-            hover={false}
-          >
+          <Button data-testid="login-button" colour="clear" className="font-poly h-[32px] w-[102px] border border-[#F7F7F7] italic" hover={false}>
             Log In
           </Button>
         </div>

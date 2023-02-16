@@ -28,7 +28,7 @@ export const Button = ({
         {
           'bg-transparent text-inherit': colour === 'clear',
           'border border-solid border-slate-700 bg-white text-slate-700': colour === 'white',
-          'bg-[#A2AAB6] text-slate-700' : colour === 'grey',
+          'bg-[#A2AAB6] text-slate-700': colour === 'grey',
           'bg-[#FFC600] text-slate-700': colour === 'yellow',
           'cursor-pointer bg-slate-500': active,
           'hover:cursor-pointer hover:bg-slate-700 hover:text-white': hover,

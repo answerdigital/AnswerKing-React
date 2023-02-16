@@ -30,7 +30,7 @@ export const StaffDetails = (): ReactElement => {
       <label className="w-full italic text-gray-400 focus:border-white">
         Opens
         <input
-          className="w-full bg-transparent bg-gray-400 text-black focus:outline-none p-1"
+          className="w-full bg-transparent bg-gray-400 p-1 text-black focus:outline-none"
           type="time"
           step={900}
           pattern="[0-9]{2}:[0-9]{2}"
@@ -40,24 +40,24 @@ export const StaffDetails = (): ReactElement => {
       <label className="w-full italic text-gray-400 focus:border-white">
         Closes
         <input
-          className="w-full bg-transparent bg-gray-400 text-black focus:outline-none p-1"
+          className="w-full bg-transparent bg-gray-400 p-1 text-black focus:outline-none"
           type="time"
           step={900}
           pattern="[0-9]{2}:[0-9]{2}"
           defaultValue="21:00"
         />
       </label>
-      <div className="flex flex-row justify-between w-[60vw]">
+      <div className="flex w-[60vw] flex-row justify-between">
         <div className="flex flex-row gap-[24px]">
-          <Button colour="clear" className="border border-white h-[37px] w-[171px] text-sm hover:border-white">
-                Delete Account
+          <Button colour="clear" className="h-[37px] w-[171px] border border-white text-sm hover:border-white">
+            Delete Account
           </Button>
-          <Button colour="clear" className="border border-white h-[37px] w-[118px] text-sm hover:border-white">
-                Log Out
+          <Button colour="clear" className="h-[37px] w-[118px] border border-white text-sm hover:border-white">
+            Log Out
           </Button>
         </div>
         <Button colour="yellow" className="h-[37px] w-[99px] text-sm">
-                  Save
+          Save
         </Button>
       </div>
     </form>

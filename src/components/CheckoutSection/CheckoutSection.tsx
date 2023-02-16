@@ -13,9 +13,11 @@ export const CheckoutSection = ({ title, onEditClick, children }: Props): React.
       <div className="flex w-full flex-row items-center justify-between">
         <h2>{title}</h2>
         {onEditClick && (
-          <span className="group flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
+          <span
+            className="group flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
             onClick={onEditClick}
-            role="button">
+            role="button"
+          >
             <FontAwesomeIcon icon={faPencilAlt} />
           </span>
         )}

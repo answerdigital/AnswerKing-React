@@ -29,11 +29,7 @@ export const CheckoutOrderTab = (): React.ReactElement => {
             <p>
               Whoa, you&apos;ve not got <br></br> anything in your order yet
             </p>
-            <Button
-              colour="yellow"
-              onClick={() => navigate(RouteConstants.MENU)}
-              className="mt-[3%] h-[45px] w-[130px] leading-[21px]"
-            >
+            <Button colour="yellow" onClick={() => navigate(RouteConstants.MENU)} className="mt-[3%] h-[45px] w-[130px] leading-[21px]">
               Go to menu
             </Button>
           </div>
@@ -43,15 +39,10 @@ export const CheckoutOrderTab = (): React.ReactElement => {
       )}
 
       <CheckoutFooter>
-        <Button colour="white" className="w-3/12 h-[45px]" onClick={() => navigate(-1)}>
+        <Button colour="white" className="h-[45px] w-3/12" onClick={() => navigate(-1)}>
           Back
         </Button>
-        <Button
-          colour="yellow"
-          className="w-full h-[45px]"
-          onClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)}
-          disabled={!orderExists}
-        >
+        <Button colour="yellow" className="h-[45px] w-full" onClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)} disabled={!orderExists}>
           Confirm & Continue
         </Button>
       </CheckoutFooter>

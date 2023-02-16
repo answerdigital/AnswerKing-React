@@ -30,11 +30,11 @@ export const AllergensPage = (): ReactElement => {
           <div className="flex items-center justify-center p-10">
             <p>Have concerns? Have a chat with one of our staff who can help you!</p>
           </div>
-          <div className="flex items-center justify-center gap-5 h-[45px]">
-            <Button onClick={() => navigate(RouteConstants.HOME)} colour="white" className="w-full h-[45px]">
+          <div className="flex h-[45px] items-center justify-center gap-5">
+            <Button onClick={() => navigate(RouteConstants.HOME)} colour="white" className="h-[45px] w-full">
               Back
             </Button>
-            <Button onClick={() => navigate(RouteConstants.MENU)} colour="yellow" className="w-full h-[45px]">
+            <Button onClick={() => navigate(RouteConstants.MENU)} colour="yellow" className="h-[45px] w-full">
               Menu
             </Button>
           </div>

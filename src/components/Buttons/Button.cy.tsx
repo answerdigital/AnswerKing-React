@@ -13,12 +13,8 @@ describe('Buttons', () => {
           <Button data-testid="small-button" onClick={mockMethod}>
             Small
           </Button>
-          <Button data-testid="medium-button">
-            Medium
-          </Button>
-          <Button data-testid="large-button">
-            Large
-          </Button>
+          <Button data-testid="medium-button">Medium</Button>
+          <Button data-testid="large-button">Large</Button>
         </div>
         <div>
           <Button data-testid="disabled-button" disabled={true}>

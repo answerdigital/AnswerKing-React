@@ -42,7 +42,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
                 </p>
               </div>
             </div>
-            <div className="absolute bottom-5 flex w-full justify-between px-7 text-center leading-[21px] gap-4">
+            <div className="absolute bottom-5 flex w-full justify-between gap-4 px-7 text-center leading-[21px]">
               <p data-testid="price" className="flex items-center justify-center text-[14px] text-[#333F4C]">
                 £{RoundingPrice(product.price)}
               </p>
@@ -50,7 +50,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
                 data-testid="show-product-modal"
                 onClick={() => setshowProductModal(true)}
                 colour="yellow"
-                className="py-[8px] px-[16px] w-full text-[14px] font-[400]"
+                className="w-full py-[8px] px-[16px] text-[14px] font-[400]"
               >
                 Add to order
               </Button>

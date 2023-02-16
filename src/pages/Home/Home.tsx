@@ -25,7 +25,7 @@ export const HomePage = (): ReactElement => {
               <span className="font-poppins not-italic">nswer</span> to <br></br> <span>your cravings</span>
             </h3>
           </div>
-          <Button onClick={handleClick} colour="yellow" className="font-[600] text-xl px-[50px] py-[12px]">
+          <Button onClick={handleClick} colour="yellow" className="px-[50px] py-[12px] text-xl font-[600]">
             Order Now
           </Button>
         </div>
