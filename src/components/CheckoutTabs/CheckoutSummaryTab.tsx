@@ -6,7 +6,7 @@ import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext'
 import { useLocalOrder } from 'context/OrderContext';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { useOrder } from 'hooks/useOrder';
-import { useContext } from 'react';
+import { ReactElement, useContext } from 'react';
 import { GBPFormat } from 'utilities/GBPFormat';
 import { SERVICE_CHARGE } from 'utilities/variables';
 
