@@ -1,6 +1,7 @@
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'components/Buttons/Button';
+import { ReactElement } from 'react';
 
 interface Props {
   title: string;
@@ -8,7 +9,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const CheckoutSection = ({ title, onEditClick, children }: Props): React.ReactElement => {
+export const CheckoutSection = ({ title, onEditClick, children }: Props): ReactElement => {
   return (
     <div className="mb-6 flex w-full flex-col gap-2">
       <div className="flex w-full flex-row items-center justify-between">

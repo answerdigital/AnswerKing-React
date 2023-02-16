@@ -2,13 +2,13 @@ import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Tooltip } from 'components/Tooltip/Tooltip';
 import { AnimatePresence } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { ReactElement, useRef, useState } from 'react';
 
 interface Props {
   message: string;
 }
 
-export const ErrorIcon = ({ message }: Props): React.ReactElement => {
+export const ErrorIcon = ({ message }: Props): ReactElement => {
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 

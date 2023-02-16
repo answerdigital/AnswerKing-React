@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef } from 'react';
+import { ReactElement, useCallback, useLayoutEffect, useRef } from 'react';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 
@@ -9,7 +9,7 @@ interface Props {
 
 const TOOLTIP_GAP_ABOVE_PARENT = 10; //px
 
-export const Tooltip = ({ parentRef, children }: Props): React.ReactElement => {
+export const Tooltip = ({ parentRef, children }: Props): ReactElement => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleParentResize = useCallback(() => {

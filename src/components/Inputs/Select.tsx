@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Label } from './Label';
 
 interface IOption {
@@ -14,7 +14,7 @@ interface Props extends React.ComponentPropsWithRef<'select'> {
   id: string;
 }
 
-export const Select = React.forwardRef<HTMLSelectElement, Props>(({ options, className, label, error, id, ...rest }, ref) => {
+export const Select = forwardRef<HTMLSelectElement, Props>(({ options, className, label, error, id, ...rest }, ref) => {
   return (
     <div className={cn('flex w-full flex-col gap-1', className)}>
       {(label || error) && (

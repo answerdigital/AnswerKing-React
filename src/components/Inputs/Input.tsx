@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Label } from './Label';
 
 interface Props extends React.ComponentPropsWithRef<'input'> {
@@ -8,7 +8,7 @@ interface Props extends React.ComponentPropsWithRef<'input'> {
   id: string;
 }
 
-export const Input = React.forwardRef<HTMLInputElement, Props>(({ className, id, label, type, error, ...rest }, ref) => {
+export const Input = forwardRef<HTMLInputElement, Props>(({ className, id, label, type, error, ...rest }, ref) => {
   return (
     <div className={cn('flex w-full flex-col gap-1', className)}>
       {(label || error) && (

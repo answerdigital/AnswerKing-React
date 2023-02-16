@@ -1,5 +1,6 @@
 import { ErrorIcon } from './ErrorIcon';
 import cn from 'classnames';
+import { ReactElement } from 'react';
 
 interface Props {
   forId?: string;
@@ -8,7 +9,7 @@ interface Props {
   className?: string;
 }
 
-export const Label = ({ children, className, error, forId }: Props): React.ReactElement => {
+export const Label = ({ children, className, error, forId }: Props): ReactElement => {
   return (
     <div className={cn('flex flex-row gap-2', className)}>
       {children && (

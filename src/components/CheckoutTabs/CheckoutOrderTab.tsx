@@ -4,12 +4,12 @@ import { OrderDetails } from 'components/OrderDetails/OrderDetails';
 import { ComponentTransition } from 'components/Transitions/ComponentTransition';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
-import { useContext } from 'react';
+import { ReactElement, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';
 
-export const CheckoutOrderTab = (): React.ReactElement => {
+export const CheckoutOrderTab = (): ReactElement => {
   const { setCurrentTab } = useContext(CheckoutTabContext);
   const navigate = useNavigate();
   const { localOrder } = useLocalOrder();

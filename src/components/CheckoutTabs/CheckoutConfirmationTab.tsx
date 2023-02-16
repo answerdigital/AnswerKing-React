@@ -4,10 +4,10 @@ import { OrderDetailsMinimal } from 'components/OrderDetails/OrderDetailsMinimal
 import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
-import { useContext } from 'react';
+import { ReactElement, useContext } from 'react';
 import FoodPrepGif from '../../assets/food-prep.gif';
 
-export const CheckoutConfirmationTab = (): React.ReactElement => {
+export const CheckoutConfirmationTab = (): ReactElement => {
   const { localOrder } = useLocalOrder();
   const { setCurrentTab } = useContext(CheckoutTabContext);
 
