@@ -72,11 +72,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
                 <div className="font-poly text-left text-[16px] font-[400] italic text-[#A2AAB6]">Contains Allergens</div>
                 <div data-testid="allergens" className="flex flex-row justify-items-start gap-[16px] text-[14px]">
                   {allergens ? (
-                    allergens.map((allergen) => (
-                      <>
-                        <label key={allergen}>{allergen}</label>
-                      </>
-                    ))
+                    allergens.map((allergen) => <label key={allergen}>{allergen}</label>)
                   ) : (
                     <div>This product does not contain any allergens</div>
                   )}
