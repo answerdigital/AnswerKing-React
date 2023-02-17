@@ -16,24 +16,6 @@ export const OrderPanel = (): ReactElement => {
           <LocalOrderDetails />
           <OrderCreateForm />
         </div>
-        <div className="mt-[4%] grid grid-cols-12 text-sm text-[#A2AAB6]">
-          <Button
-            colour="clear"
-            data-test-id="home-btn"
-            onClick={() => navigate(RouteConstants.HOME)}
-            className="col-span-6 mr-[5px] border border-[#A2AAB6] leading-[21px]"
-          >
-            Back to start screen
-          </Button>
-          <Button
-            colour="clear"
-            data-testid="allergen-board-btn"
-            onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}
-            className="col-span-6 ml-[5px] border border-[#A2AAB6] py-2 leading-[21px]"
-          >
-            View Allergen board
-          </Button>
-        </div>
       </div>
     </>
   );
