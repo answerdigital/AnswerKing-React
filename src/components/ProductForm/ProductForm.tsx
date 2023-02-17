@@ -14,11 +14,14 @@ import { useCategories } from 'hooks/useCategories';
 import { useTags } from 'hooks/useTags';
 import { Label } from 'components/Inputs/Label';
 import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
+import { ProductRequestDto } from 'dtos/ProductRequestDto';
+import { useProducts } from 'hooks/useProducts';
 
 export const ProductForm = (): ReactElement => {
   const productForm = useProductFormContext();
   const { tags } = useTags();
   const { categories } = useCategories();
+  const { createProduct, editProduct } = useProducts();
   const {
     register,
     handleSubmit,
@@ -46,8 +49,8 @@ export const ProductForm = (): ReactElement => {
     );
   }, [categories.data]);
 
-  const submitForm = (data: FormSchema): void => {
-    const productOutput: ProductRequestDto = data;
+  const submitForm = (data: ProductFormSchema): void => {
+    const productOutput: ProductRequestDto = { ...data, tagsIds: data.tagsIds as number[] };
     console.log(productOutput);
     if (!productForm.initialProduct) {
       createProduct.mutate(productOutput, {
@@ -101,10 +104,10 @@ export const ProductForm = (): ReactElement => {
         <LoaderOverlay isEnabled={false} />
       </form>
       <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-        <Button colour="white" size="medium" onClick={productForm.closeForm}>
+        <Button colour="white" onClick={productForm.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" size="medium" onClick={handleSubmit(submitForm)} data-testid="submit-product">
+        <Button colour="yellow" onClick={handleSubmit(submitForm)} data-testid="submit-product">
           Save Item
         </Button>
       </div>
