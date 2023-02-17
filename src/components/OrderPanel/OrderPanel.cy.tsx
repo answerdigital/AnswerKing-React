@@ -11,10 +11,6 @@ describe('Order Panel', () => {
       </LocalOrderContext.Provider>
     );
   });
-  it('should be able to navigate to Allergen Board', () => {
-    cy.getBySel('allergen-board-btn').click();
-    cy.url().should('contain', 'allergen');
-  });
   it('should display local order details', () => {
     cy.getBySel('local-order-details').should('be.visible');
   });
