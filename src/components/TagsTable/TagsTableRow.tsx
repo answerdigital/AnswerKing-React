@@ -24,8 +24,11 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
       <td className={padding}>{tag.name}</td>
       <td className={'text-center ' + padding}>{tag.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + padding}>
-        <span className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]">
-          <FontAwesomeIcon icon={faPencilAlt} onClick={() => formContext.startEditing(tag)} role="button" />
+        <span
+          className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
+          onClick={() => formContext.startEditing(tag)}
+        >
+          <FontAwesomeIcon icon={faPencilAlt} />
         </span>
         <TrashIcon onClick={() => handleDelete} />
       </td>

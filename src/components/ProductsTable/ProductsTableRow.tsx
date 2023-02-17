@@ -14,7 +14,7 @@ interface Props {
 
 export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElement => {
   const { removeProduct } = useProducts();
-  const formContext = useProductFormContext();
+  const productForm = useProductFormContext();
 
   const handleDelete = (): void => {
     removeProduct.mutate(product.id, {
@@ -40,7 +40,7 @@ export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElem
       <td className={'text-center ' + formatting}>None</td>
       <td className={'flex justify-end ' + formatting}>
         <span
-          onClick={() => formContext.startEditing(product)}
+          onClick={() => productForm.startEditing(product)}
           role="button"
           className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
         >

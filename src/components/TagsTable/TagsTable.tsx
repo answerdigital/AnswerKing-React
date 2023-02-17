@@ -14,7 +14,7 @@ export const TagsTable = (): ReactElement => {
   const searchString = useSearch().searchString;
   const displayTags: TagDto[] =
     tags.data?.filter((tag) => !tag.retired && tag.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
-  const openModal = useTagFormContext().startNew;
+  const tagForm = useTagFormContext();
 
   return (
     <>
@@ -38,7 +38,7 @@ export const TagsTable = (): ReactElement => {
       </div>
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Search placeholder="Search Tags" sizeType="medium" />
-        <Button colour="yellow" onClick={openModal}>
+        <Button colour="yellow" onClick={tagForm.openForm}>
           Add Tag
         </Button>
       </div>
