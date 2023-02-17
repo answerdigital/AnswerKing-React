@@ -1,4 +1,4 @@
-resource "aws_iam_policy_document" "read_react_app_bucket" {
+data "aws_iam_policy_document" "read_react_app_bucket" {
   statement {
     actions   = ["s3:GetObject"]
     resources = ["${aws_s3_bucket.react.arn}/*"]

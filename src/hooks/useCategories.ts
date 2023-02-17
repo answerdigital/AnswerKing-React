@@ -8,6 +8,5 @@ interface UseCategoriesResult {
 
 export const useCategories = (): UseCategoriesResult => {
   const categories = useQuery<CategoryDto[]>(['categories'], categoryService.getAll);
-
   return { categories };
 };
