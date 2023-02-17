@@ -49,14 +49,14 @@ export const StaffDetails = (): ReactElement => {
       </label>
       <div className="flex w-[60vw] flex-row justify-between">
         <div className="flex flex-row gap-[24px]">
-          <Button colour="clear" className="h-[37px] w-[171px] border border-white text-sm hover:border-white">
+          <Button colour="clear" className="h-[37px] w-[171px] border border-white text-[14px] hover:border-white">
             Delete Account
           </Button>
-          <Button colour="clear" className="h-[37px] w-[118px] border border-white text-sm hover:border-white">
+          <Button colour="clear" className="h-[37px] w-[118px] border border-white text-[14px] hover:border-white">
             Log Out
           </Button>
         </div>
-        <Button colour="yellow" className="h-[37px] w-[99px] text-sm">
+        <Button colour="yellow" className="h-[37px] w-[99px] text-[14px]">
           Save
         </Button>
       </div>

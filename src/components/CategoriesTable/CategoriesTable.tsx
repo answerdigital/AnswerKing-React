@@ -38,7 +38,7 @@ export const CategoriesTable = (): ReactElement => {
       </div>
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Search placeholder="Search Categories" sizeType="medium" />
-        <Button colour="yellow" className="h-[45px]" onClick={openModal}>
+        <Button colour="yellow" onClick={openModal}>
           Add Category
         </Button>
       </div>

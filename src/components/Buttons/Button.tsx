@@ -27,11 +27,11 @@ export const Button = ({
         'rounded-full transition duration-500',
         {
           'bg-transparent text-inherit': colour === 'clear',
-          'border border-solid border-slate-700 bg-white text-slate-700': colour === 'white',
-          'bg-[#A2AAB6] text-slate-700': colour === 'grey',
-          'bg-[#FFC600] text-slate-700': colour === 'yellow',
+          'border border-solid border-[#333F4C] bg-white text-[#333F4C]': colour === 'white',
+          'bg-[#A2AAB6] text-[#333F4C]': colour === 'grey',
+          'bg-[#FFC600] text-[#333F4C]': colour === 'yellow',
           'cursor-pointer bg-slate-500': active,
-          'hover:cursor-pointer hover:bg-slate-700 hover:text-white': hover,
+          'hover:cursor-pointer hover:bg-[#333F4C] hover:text-white': hover,
         },
         className
       )}

@@ -33,7 +33,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
             <img alt="burger" className="h-[50%] w-full rounded-t-lg object-cover" src={PlaceHolderImage} />
             {product && <BadgeIcon>New</BadgeIcon>}
             <div className="p-5">
-              <h5 data-testid="product-name" className="mb-2 text-center text-xl font-bold tracking-tight text-[#333F4C]">
+              <h5 data-testid="product-name" className="mb-2 text-center text-[20px] font-bold tracking-tight text-[#333F4C]">
                 {product.name}
               </h5>
               <div className="flex justify-center text-center">
