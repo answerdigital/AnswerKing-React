@@ -58,11 +58,11 @@ export const CategoryForm = (): ReactElement => {
           })}
         </div>
       </form>
-      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-        <Button colour="white" size="medium" onClick={categoryForm.closeForm}>
+      <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
+        <Button colour="white" onClick={categoryForm.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" size="medium" onClick={handleSubmit(submitForm)}>
+        <Button colour="yellow" onClick={handleSubmit(submitForm)}>
           Save Category
         </Button>
       </div>

@@ -10,15 +10,11 @@ describe('Buttons', () => {
     CustomMount(
       <div>
         <div>
-          <Button data-testid="small-button" size="small" onClick={mockMethod}>
+          <Button data-testid="small-button" onClick={mockMethod}>
             Small
           </Button>
-          <Button data-testid="medium-button" size="medium">
-            Medium
-          </Button>
-          <Button data-testid="large-button" size="large">
-            Large
-          </Button>
+          <Button data-testid="medium-button">Medium</Button>
+          <Button data-testid="large-button">Large</Button>
         </div>
         <div>
           <Button data-testid="disabled-button" disabled={true}>
@@ -30,7 +26,6 @@ describe('Buttons', () => {
           <Button colour="white">White</Button>
           <Button colour="grey">Gray</Button>
           <Button colour="yellow">Yellow</Button>
-          <Button colour="red">Red</Button>
         </div>
         <div>
           <Button active={true}>Active</Button>

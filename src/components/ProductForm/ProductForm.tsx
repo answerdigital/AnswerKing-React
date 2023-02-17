@@ -84,11 +84,11 @@ export const ProductForm = (): ReactElement => {
             <LoaderOverlay isEnabled={false} />
           </form>
 
-          <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-            <Button colour="white" size="medium" onClick={productForm.closeForm}>
+          <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
+            <Button colour="white" onClick={productForm.closeForm}>
               Cancel
             </Button>
-            <Button colour="yellow" size="medium" onClick={handleSubmit(submitForm)} data-testid="submit-product">
+            <Button colour="yellow" onClick={handleSubmit(submitForm)} data-testid="submit-product">
               Save Item
             </Button>
           </div>
