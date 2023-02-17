@@ -1,6 +1,5 @@
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from 'components/Buttons/Button';
 
 interface Props {
   title: string;
@@ -14,9 +13,13 @@ export const CheckoutSection = ({ title, onEditClick, children }: Props): React.
       <div className="flex w-full flex-row items-center justify-between">
         <h2>{title}</h2>
         {onEditClick && (
-          <Button size="small" colour="light-grey" className="w-fit rounded-lg border-0 px-2" onClick={onEditClick}>
+          <span
+            className="group flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
+            onClick={onEditClick}
+            role="button"
+          >
             <FontAwesomeIcon icon={faPencilAlt} />
-          </Button>
+          </span>
         )}
       </div>
       {children}

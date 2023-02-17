@@ -64,10 +64,10 @@ export const CheckoutSummaryTab = (): React.ReactElement => {
       </CheckoutSection>
 
       <CheckoutFooter>
-        <Button colour="white" size="medium" className="w-3/12" onClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)}>
+        <Button colour="white" className="h-[45px] w-3/12" onClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)}>
           Back
         </Button>
-        <Button colour="yellow" size="medium" className="w-full" onClick={() => submitOrder()} disabled={!orderExists}>
+        <Button colour="yellow" className="h-[45px] w-full" onClick={() => submitOrder()} disabled={!orderExists}>
           Place Order
         </Button>
       </CheckoutFooter>

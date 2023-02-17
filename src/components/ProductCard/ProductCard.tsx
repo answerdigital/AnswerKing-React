@@ -33,7 +33,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
             <img alt="burger" className="h-[50%] w-full rounded-t-lg object-cover" src={PlaceHolderImage} />
             {product && <BadgeIcon>New</BadgeIcon>}
             <div className="p-5">
-              <h5 data-testid="product-name" className="mb-2 text-center text-xl font-bold tracking-tight text-[#333F4C]">
+              <h5 data-testid="product-name" className="mb-2 text-center text-[20px] font-bold tracking-tight text-[#333F4C]">
                 {product.name}
               </h5>
               <div className="flex justify-center text-center">
@@ -42,16 +42,15 @@ export const ProductCard = ({ product }: Props): ReactElement => {
                 </p>
               </div>
             </div>
-            <div className="absolute bottom-5 flex w-full justify-between px-7 text-center">
+            <div className="absolute bottom-5 flex w-full justify-between gap-4 px-7 text-center leading-[21px]">
               <p data-testid="price" className="flex items-center justify-center text-[14px] text-[#333F4C]">
                 £{RoundingPrice(product.price)}
               </p>
               <Button
                 data-testid="show-product-modal"
                 onClick={() => setshowProductModal(true)}
-                size="small"
                 colour="yellow"
-                className="py-1 text-[14px] font-[400] leading-[21px]"
+                className="w-full py-[8px] px-[16px] text-[14px] font-[400]"
               >
                 Add to order
               </Button>

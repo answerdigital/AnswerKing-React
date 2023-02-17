@@ -38,10 +38,10 @@ export const CheckoutConfirmationTab = (): React.ReactElement => {
         <OrderFeesAndTotals lineItems={localOrder.lineItems} orderComplete={true} />
 
         <div className="flex w-full gap-5 font-[400]">
-          <Button colour="white" size="medium" className="w-full" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
+          <Button colour="white" className="h-[45px] w-full" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
             Order Again
           </Button>
-          <Button colour="white" size="medium" className="w-full">
+          <Button colour="white" className="h-[45px] w-full">
             Contact Restaurant
           </Button>
         </div>
