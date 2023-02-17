@@ -28,7 +28,7 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
           className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
           onClick={() => formContext.startEditing(category)}
         >
-          <FontAwesomeIcon icon={faPencilAlt} role="button" />
+          <FontAwesomeIcon icon={faPencilAlt} />
         </span>
         <TrashIcon onClick={() => handleDelete} />
       </td>
