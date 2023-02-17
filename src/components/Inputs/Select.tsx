@@ -4,7 +4,7 @@ import { Label } from './Label';
 
 interface IOption {
   label: string;
-  value: string;
+  value: number;
 }
 
 interface Props extends React.ComponentPropsWithRef<'select'> {

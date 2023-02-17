@@ -14,20 +14,23 @@ import { useProductFormContext } from './ProductFormContext';
 import { useCategories } from 'hooks/useCategories';
 import { useTags } from 'hooks/useTags';
 import { Label } from 'components/Inputs/Label';
+import { useProducts } from 'hooks/useProducts';
+import { ProductRequestDto } from 'dtos/ProductRequestDto';
 
 const formSchema = yup.object({
   name: yup.string().required('Name is required').max(120, 'Name cannot be longer than 120 characters'),
-  desc: yup.string().optional().max(500, 'Description cannot be longer than 500 characters'),
-  price: yup.number().min(0, 'Price must be positive'),
-  category: yup.string().required('Category is required'),
+  description: yup.string().required('Description is required').max(500, 'Description cannot be longer than 500 characters'),
+  price: yup.number().required('Price is required').min(0, 'Price must be positive'),
+  categoryId: yup.number().required('Category is required'),
   stock: yup.number().required('Stock number is required').min(0).integer(),
-  tags: yup.array().of(yup.number()).required('Tag is required').min(1, 'At least one tag is required'),
+  tagsIds: yup.array().of(yup.number().required()).required('Tag is required').min(1, 'At least one tag is required'),
 });
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
 export const ProductForm = (): ReactElement => {
   const productForm = useProductFormContext();
+  const { createProduct, editProduct } = useProducts();
   const { tags } = useTags();
   const { categories } = useCategories();
   const {
@@ -38,11 +41,11 @@ export const ProductForm = (): ReactElement => {
     resolver: yupResolver(formSchema),
     defaultValues: {
       name: productForm.initialProduct?.name,
-      desc: productForm.initialProduct?.description,
+      description: productForm.initialProduct?.description,
       price: productForm.initialProduct?.price,
       stock: 0,
-      category: productForm.initialProduct?.category?.id.toString(),
-      tags: productForm.initialProduct?.tags ?? [],
+      categoryId: productForm.initialProduct?.category?.id,
+      tagsIds: productForm.initialProduct?.tags ?? [],
     },
   });
 
@@ -51,14 +54,33 @@ export const ProductForm = (): ReactElement => {
       categories.data?.map((category) => {
         return {
           label: category.name ?? '',
-          value: category.id.toString(),
+          value: category.id,
         };
       }) ?? []
     );
   }, [categories.data]);
 
   const submitForm = (data: FormSchema): void => {
-    console.log(data);
+    const productOutput: ProductRequestDto = data;
+    console.log(productOutput);
+    if (!productForm.initialProduct) {
+      createProduct.mutate(productOutput, {
+        onSuccess: (returnProduct) => {
+          console.log(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
+          productForm.closeForm();
+        },
+      });
+    } else {
+      editProduct.mutate(
+        { id: productForm.initialProduct.id, requestDto: productOutput },
+        {
+          onSuccess: (returnProduct) => {
+            console.log(`Product "${returnProduct.name}" was succesfully edited" .`);
+            productForm.closeForm();
+          },
+        }
+      );
+    }
   };
 
   return (
@@ -72,10 +94,10 @@ export const ProductForm = (): ReactElement => {
             <Input type="text" label="Item name" id="item-name" error={errors.name?.message} {...register('name')} />
           </div>
           <div className="col-span-2 row-span-2">
-            <TextArea label="Item description" id="item-description" error={errors.desc?.message} {...register('desc')} />
+            <TextArea label="Item description" id="item-description" error={errors.description?.message} {...register('description')} />
           </div>
           <div className="col-span-2">
-            <Select label="Category" options={categoryOptions} id="category" error={errors.category?.message} {...register('category')} />
+            <Select label="Category" options={categoryOptions} id="category" error={errors.categoryId?.message} {...register('categoryId')} />
           </div>
           <div className="flex w-full flex-col">
             <Input label="Price" type="number" step={0.01} min={0} id="price" error={errors.price?.message} {...register('price')} />
@@ -83,11 +105,11 @@ export const ProductForm = (): ReactElement => {
           <div className="flex w-full flex-col">
             <Input label="Stock" type="number" step={1} min={0} id="stock" error={errors.stock?.message} {...register('stock')} />
           </div>
-          <Label error={errors.tags?.message} className="col-span-4">
+          <Label error={errors.tagsIds?.message} className="col-span-4">
             Tags
           </Label>
           {tags.data?.map((tag) => {
-            return <Checkbox key={tag.id} value={tag.id} label={tag.name} id={tag.id.toString()} {...register('tags')} />;
+            return <Checkbox key={tag.id} value={tag.id} label={tag.name} id={tag.id.toString()} {...register('tagsIds')} />;
           })}
         </div>
         <LoaderOverlay isEnabled={false} />
