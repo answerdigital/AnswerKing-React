@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { useTagFormContext } from 'components/TagForm/TagFormContext';
 import { TagDto } from 'dtos/TagDto';
 import { TrashIcon } from 'components/Icons/TrashIcon';
@@ -28,7 +28,7 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
           className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
           onClick={() => formContext.startEditing(tag)}
         >
-          <FontAwesomeIcon icon={faPen} />
+          <FontAwesomeIcon icon={faPencilAlt} />
         </span>
         <TrashIcon onClick={() => handleDelete} />
       </td>

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { useCategoryFormContext } from 'components/CategoryForm/CategoryFormContext';
 import { CategoryDto } from 'dtos/CategoryDto';
 import { toast } from 'react-toastify';
@@ -28,7 +28,7 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
           className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
           onClick={() => formContext.startEditing(category)}
         >
-          <FontAwesomeIcon icon={faPen} />
+          <FontAwesomeIcon icon={faPencilAlt} />
         </span>
         <TrashIcon onClick={() => handleDelete} />
       </td>

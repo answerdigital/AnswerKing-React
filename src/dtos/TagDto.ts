@@ -3,6 +3,7 @@ export interface TagDto {
   name?: string;
   description?: string;
   createdOn: Date;
+  lastUpdated: Date;
   products?: number[];
   retired: boolean;
 }

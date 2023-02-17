@@ -2,7 +2,7 @@ import { ProductDto } from 'dtos/ProductDto';
 import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
 import { toast } from 'react-toastify';
 import { TrashIcon } from 'components/Icons/TrashIcon';
@@ -40,10 +40,11 @@ export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElem
       <td className={'text-center ' + formatting}>None</td>
       <td className={'flex justify-end ' + formatting}>
         <span
-          className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
           onClick={() => productForm.startEditing(product)}
+          role="button"
+          className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
         >
-          <FontAwesomeIcon icon={faPen} />
+          <FontAwesomeIcon icon={faPencilAlt} />
         </span>
         <TrashIcon onClick={() => handleDelete()} />
       </td>

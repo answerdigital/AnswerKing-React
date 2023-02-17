@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'components/Buttons/Button';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Select } from 'components/Inputs/Select';
 import { Input } from 'components/Inputs/Input';
@@ -14,31 +13,18 @@ import { useProductFormContext } from './ProductFormContext';
 import { useCategories } from 'hooks/useCategories';
 import { useTags } from 'hooks/useTags';
 import { Label } from 'components/Inputs/Label';
-import { useProducts } from 'hooks/useProducts';
-import { ProductRequestDto } from 'dtos/ProductRequestDto';
-
-const formSchema = yup.object({
-  name: yup.string().required('Name is required').max(120, 'Name cannot be longer than 120 characters'),
-  description: yup.string().required('Description is required').max(500, 'Description cannot be longer than 500 characters'),
-  price: yup.number().required('Price is required').min(0, 'Price must be positive'),
-  categoryId: yup.number().required('Category is required'),
-  stock: yup.number().required('Stock number is required').min(0).integer(),
-  tagsIds: yup.array().of(yup.number().required()).required('Tag is required').min(1, 'At least one tag is required'),
-});
-
-type FormSchema = yup.InferType<typeof formSchema>;
+import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
 
 export const ProductForm = (): ReactElement => {
   const productForm = useProductFormContext();
-  const { createProduct, editProduct } = useProducts();
   const { tags } = useTags();
   const { categories } = useCategories();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormSchema>({
-    resolver: yupResolver(formSchema),
+  } = useForm<ProductFormSchema>({
+    resolver: yupResolver(productFormSchema),
     defaultValues: {
       name: productForm.initialProduct?.name,
       description: productForm.initialProduct?.description,
@@ -54,7 +40,7 @@ export const ProductForm = (): ReactElement => {
       categories.data?.map((category) => {
         return {
           label: category.name ?? '',
-          value: category.id,
+          value: category.id.toString(),
         };
       }) ?? []
     );

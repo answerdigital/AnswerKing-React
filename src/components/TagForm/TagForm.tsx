@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useTagFormContext } from './TagFormContext';
 import { Button } from 'components/Buttons/Button';
-import * as yup from 'yup';
 import { Input } from 'components/Inputs/Input';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,14 +11,7 @@ import { TextArea } from 'components/Inputs/TextArea';
 import { useProducts } from 'hooks/useProducts';
 import { Checkbox } from 'components/Inputs/Checkbox';
 import { Label } from 'components/Inputs/Label';
-
-const formSchema = yup.object({
-  name: yup.string().required('Tag name is required'),
-  desc: yup.string().optional(),
-  products: yup.array().of(yup.number()).optional(),
-});
-
-type FormSchema = yup.InferType<typeof formSchema>;
+import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
 
 export const TagForm = (): ReactElement => {
   const tagForm = useTagFormContext();
@@ -27,8 +19,8 @@ export const TagForm = (): ReactElement => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormSchema>({
-    resolver: yupResolver(formSchema),
+  } = useForm<TagsFormSchema>({
+    resolver: yupResolver(tagsFormSchema),
     defaultValues: {
       name: tagForm.initialTag?.name,
       desc: tagForm.initialTag?.description,
@@ -37,7 +29,7 @@ export const TagForm = (): ReactElement => {
   });
   const { products } = useProducts();
 
-  const submitForm = (data: FormSchema): void => {
+  const submitForm = (data: TagsFormSchema): void => {
     console.log(data);
   };
 
@@ -67,11 +59,11 @@ export const TagForm = (): ReactElement => {
         </div>
         <LoaderOverlay isEnabled={false} />
       </form>
-      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
-        <Button colour="white" size="medium" onClick={tagForm.closeForm}>
+      <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
+        <Button colour="white" onClick={tagForm.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" size="medium" onClick={handleSubmit(submitForm)}>
+        <Button colour="yellow" onClick={handleSubmit(submitForm)}>
           Save Tag
         </Button>
       </div>

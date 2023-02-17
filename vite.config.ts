@@ -16,6 +16,7 @@ export default defineConfig({
       style: resolve(__dirname, 'src/style'),
       utilities: resolve(__dirname, 'src/utilities'),
       context: resolve(__dirname, 'src/context'),
+      schemas: resolve(__dirname, 'src/schemas'),
     },
   },
   server: {

@@ -36,9 +36,9 @@ export const TagsTable = (): ReactElement => {
         </table>
         <LoaderOverlay isEnabled={false} />
       </div>
-      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
+      <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Search placeholder="Search Tags" sizeType="medium" />
-        <Button colour="yellow" size="medium" onClick={tagForm.openForm}>
+        <Button colour="yellow" onClick={tagForm.openForm}>
           Add Tag
         </Button>
       </div>
