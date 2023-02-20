@@ -7,8 +7,6 @@ import { useLocalOrder } from 'context/OrderContext';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { useOrder } from 'hooks/useOrder';
 import { ReactElement, useContext } from 'react';
-import { GBPFormat } from 'utilities/GBPFormat';
-import { SERVICE_CHARGE } from 'utilities/variables';
 
 export const CheckoutSummaryTab = (): ReactElement => {
   const { createOrder } = useOrder();
