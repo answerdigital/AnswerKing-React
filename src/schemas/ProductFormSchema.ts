@@ -6,7 +6,7 @@ export const productFormSchema = yup.object({
   price: yup.number().required('Price is required').min(0, 'Price must be positive'),
   categoryId: yup.number().optional(),
   stock: yup.number().required('Stock number is required').min(0).integer(),
-  tagsIds: yup.array().of(yup.number()).min(1, 'At least one tag is required'),
+  tagsIds: yup.array().of(yup.number()),
 });
 
 export type ProductFormSchema = yup.InferType<typeof productFormSchema>;
