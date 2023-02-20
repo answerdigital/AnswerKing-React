@@ -15,7 +15,7 @@ export const CheckoutConfirmationTab = (): ReactElement => {
   const placeholderEmail = 'joebloggs@lukewarmmail.com';
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex min-h-[65vh] w-full flex-col">
       <div className="flex w-full flex-col items-center justify-center">
         <img src={FoodPrepGif} className="aspect-square w-[150px]"></img>
         <h1 className="text-ak-grey-1 mb-4 text-[20px] font-[600]">Order received</h1>

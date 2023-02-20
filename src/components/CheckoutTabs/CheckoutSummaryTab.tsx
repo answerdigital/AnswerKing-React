@@ -37,7 +37,7 @@ export const CheckoutSummaryTab = (): ReactElement => {
   };
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex min-h-[65vh] w-full flex-col">
       <h1 className="mb-4 w-full text-[20px] font-[600]">Summary</h1>
 
       <CheckoutSection title="Order" onEditClick={() => setCurrentTab(CheckoutTabType.Order)}>
@@ -53,7 +53,7 @@ export const CheckoutSummaryTab = (): ReactElement => {
         </div>
       </CheckoutSection>
 
-      <CheckoutSection title="Payment details" onEditClick={() => setCurrentTab(CheckoutTabType.Order)}>
+      <CheckoutSection title="Payment details" onEditClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)}>
         <div className="flex justify-between px-2 pb-1 text-[12px]">
           <span>{placeholderCard}</span>
         </div>

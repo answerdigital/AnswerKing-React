@@ -17,11 +17,13 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
   const orderExists = localOrder.lineItems?.length > 0;
 
   return (
-    <div className="flex h-full w-full flex-col">
-      <div className="w-full border-b-2 font-[400]">
+    <div className="flex min-h-[65vh] w-full items-stretch flex-col">
+      <div className="w-full font-[400]">
         <h1 className="mb-2 text-[20px] font-[600]">Your details</h1>
+      </div>
+      <div className="border-b-2 pb-5 mt-3">
         <Input type="text" label="Order name" id="order-name" placeholder="Joe Bloggs" />
-        <Input type="email" label="Email address" id="email-address" placeholder="joebloggs@lukewarmmail.com" />
+        <Input type="email" label="Email address" className="py-2" id="email-address" placeholder="joebloggs@lukewarmmail.com" />
       </div>
 
       <div className="mt-3 flex w-full gap-5 font-[400]">
@@ -36,7 +38,7 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
         </div>
       </div>
 
-      <div className="flex w-full gap-5">
+      <div className="mt-3 flex w-full gap-5">
         <Input type="number" label="Card number" id="card-number" placeholder="1234123412341234" />
         <Input type="number" label="Account number" id="account-number" placeholder="12341234" />
       </div>
