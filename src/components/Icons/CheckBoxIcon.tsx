@@ -8,7 +8,7 @@ interface Props extends React.ComponentPropsWithoutRef<'div'> {
 
 export const CheckBoxIcon = ({ checked, className, ...rest }: Props): ReactElement => {
   return (
-    <div className="flex h-[30px] w-[30px] items-center justify-center" {...rest}>
+    <div className="fill-ak-grey-1 flex h-[30px] w-[30px] items-center justify-center" {...rest}>
       {checked ? (
         <svg width="37" height="37" viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" className={classNames(className)}>
           <path

@@ -9,7 +9,7 @@ export const StaffOrders = (): ReactElement => {
   const populatedOrders: OrderDto[] = orders.data?.filter((order: OrderDto) => order.lineItems.length) || [];
 
   return (
-    <div className="font-poppins flex w-[45%] flex-col items-center font-light text-gray-900" key="staff inventory">
+    <div className="font-poppins text-ak-grey-1 flex w-[45%] flex-col items-center font-light" key="staff inventory">
       {populatedOrders.length ? (
         populatedOrders.map((order: OrderDto, i) => (
           <div key={order.id} className="w-full">
@@ -33,5 +33,5 @@ interface StaffOrdersDateProps {
 }
 
 const StaffOrdersDate = ({ date }: StaffOrdersDateProps): ReactElement => {
-  return <div className="my-6 w-full border-b-2 border-gray-500 text-center text-gray-500">{FormatDate(date)}</div>;
+  return <div className="text-ak-grey-3 border-ak-grey-3 my-6 w-full border-b-2 text-center">{FormatDate(date)}</div>;
 };

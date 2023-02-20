@@ -9,7 +9,7 @@ interface Props {
 export const PlusMinusButton = ({ action, onClick }: Props): ReactElement => (
   <motion.button
     data-testid="plus-minus-button"
-    className="h-10 w-10 rounded-md bg-[#E4EAEB] duration-300 hover:bg-[#c6c6c6]"
+    className="bg-ak-grey-5 hover:bg-ak-grey-4 h-10 w-10 rounded-md duration-300"
     whileTap={{ scale: 0.8 }}
     transition={{ type: 'spring' }}
     onClick={() => onClick(action)}

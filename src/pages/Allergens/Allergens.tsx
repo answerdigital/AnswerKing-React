@@ -20,7 +20,7 @@ export const AllergensPage = (): ReactElement => {
       <div className="container mx-auto mt-10 mb-10 md:w-[90vw] lg:w-[75vw] xl:w-[50vw]">
         <p className="mb-5 p-5 text-center text-[36px] font-light">Allergen Info</p>
 
-        <div className="rounded-xl bg-white p-[24px] text-[#333F4C]">
+        <div className="text-ak-grey-1 rounded-xl bg-white p-[24px]">
           {filteredProducts.length ? (
             <AllergenTable products={filteredProducts} allergens={ALLERGENS} />
           ) : (

@@ -20,7 +20,7 @@ export const ProductsTable = (): ReactElement => {
   return (
     <>
       <div className="h-full w-full overflow-auto">
-        <table className="w-full table-auto divide-y">
+        <table className="divide-ak-grey-5 w-full table-auto divide-y">
           <thead className="sticky top-0 w-full bg-white/90">
             <tr>
               <th className={'text-left ' + formatting}>ID</th>
@@ -32,7 +32,7 @@ export const ProductsTable = (): ReactElement => {
               <th />
             </tr>
           </thead>
-          <tbody className="font-poppins font-200 divide-y text-sm">
+          <tbody className="font-poppins font-200 divide-ak-grey-5 divide-y text-sm">
             {displayProducts.map((product) => (
               <ProductsTableRow formatting={formatting} product={product} key={product.id} />
             ))}

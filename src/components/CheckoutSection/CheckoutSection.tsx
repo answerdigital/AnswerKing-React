@@ -15,7 +15,7 @@ export const CheckoutSection = ({ title, onEditClick, children }: Props): ReactE
         <h2>{title}</h2>
         {onEditClick && (
           <span
-            className="group flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
+            className="bg-ak-grey-5 group flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded"
             onClick={onEditClick}
             role="button"
           >

@@ -16,11 +16,11 @@ export const ArrowToggle = ({ icon, handleIndex, categories, maxItemsDisplayed }
     <>
       {categories.length > maxItemsDisplayed && (
         <div
-          className="z-10 my-auto flex h-[25px] w-[25px] cursor-pointer items-center justify-center rounded-full border border-[#ffffff]
+          className="z-10 my-auto flex h-[25px] w-[25px] cursor-pointer items-center justify-center rounded-full border border-white
             text-center hover:cursor-pointer group-hover:border-[#E4EAEB]"
           onClick={handleIndex}
         >
-          <FontAwesomeIcon icon={icon} className={cn('text-[13px] text-[#ffffff] group-hover:text-[#E4EAEB]')} />
+          <FontAwesomeIcon icon={icon} className={cn('group-hover:text-ak-grey-5 text-[13px] text-white')} />
         </div>
       )}
     </>

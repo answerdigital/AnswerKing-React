@@ -15,13 +15,13 @@ export const OrderFeesAndTotals = ({ lineItems, orderComplete }: Props): ReactEl
       <hr className="mb-6 px-1"></hr>
 
       {lineItems.length > 0 && !orderComplete && (
-        <div className="flex w-full justify-between text-[11px] text-[#5A6675] transition-all duration-300">
+        <div className="text-ak-grey-2 flex w-full justify-between text-[11px] transition-all duration-300">
           <span>Service Charge:</span>
           <span data-testid="service-charge">{GBPFormat.format(SERVICE_CHARGE)}</span>
         </div>
       )}
 
-      <div className={cn('mt-2 mb-4 flex w-full justify-between text-[20px] font-[600] text-[#333F4C]')}>
+      <div className={cn('text-ak-grey-1 mt-2 mb-4 flex w-full justify-between text-[20px] font-[600]')}>
         <span>{orderComplete ? 'Paid' : 'Total'}:</span>
         <span data-testid="total">
           {GBPFormat.format(lineItems.length > 0 ? lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + SERVICE_CHARGE : 0)}

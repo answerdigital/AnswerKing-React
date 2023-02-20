@@ -13,7 +13,7 @@ interface Props {
 export const OrderDetails = ({ items }: Props): ReactElement => {
   const { removeProduct } = useLocalOrder();
 
-  const tableElement = 'py-4 text-[#333F4C] font-[400] text-[12px] leading-[18px]';
+  const tableElement = 'py-4 text-ak-grey-1 font-[400] text-[12px] leading-[18px]';
 
   return (
     <div data-testid="order-details" className="flex flex-col items-center">

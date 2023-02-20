@@ -10,7 +10,7 @@ interface OrdersCardProps {
 export const OrdersCard = ({ order }: OrdersCardProps): ReactElement => {
   return (
     <div className="mt-2 w-full rounded-lg bg-white px-6 pt-6">
-      <div className="w-full border-y-2 border-gray-100">
+      <div className="w-full border-y-2">
         {order.lineItems.map((lineItem) => (
           <div key={lineItem.product.id} className="py-2">
             {lineItem.quantity}x {lineItem.product.name}

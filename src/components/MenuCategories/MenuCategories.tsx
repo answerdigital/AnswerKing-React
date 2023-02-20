@@ -29,7 +29,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
   return (
     <div className="mt-8 flex flex-col items-center">
       <p className="text-[36px] font-[300]">Menu</p>
-      <div className="mt-5 w-[95%] divide-y-2 divide-slate-700">
+      <div className="divide-ak-grey-2 mt-5 w-[95%] divide-y-2 ">
         <div className="group flex items-center justify-between text-center">
           <ArrowToggle icon={faArrowLeft} handleIndex={handlePrev} categories={categories} maxItemsDisplayed={maxItemsDisplayed} />
           {categories.slice(index, index + maxItemsDisplayed).map((category) => (
@@ -40,8 +40,8 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
               className={cn(
                 'left-5 mx-[20px] h-[32px] w-[102px] rounded-full',
                 'bg-transparent px-1 text-[16px] font-[300]',
-                category.id === selectedCategory && 'border-[#333F4C] bg-[#A2AAB6] text-[#333F4C]',
-                category.id != selectedCategory && 'text-[#ffffff] hover:border-[#333F4C] hover:bg-[#333F4C]'
+                category.id === selectedCategory && 'border-ak-grey-1 text-ak-grey-1 bg-ak-grey-4',
+                category.id != selectedCategory && 'hover:border-ak-grey-1 hover:bg-ak-grey-1 text-white'
               )}
               onClick={() => {
                 setSelectedCategory(category.id);

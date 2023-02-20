@@ -11,7 +11,7 @@ interface TabProps {
 
 const Tab = ({ children, active }: TabProps): ReactElement => {
   return (
-    <div className={cn('mx-5 select-none self-center', { 'rounded-full bg-[#A2AAB6] px-4 py-1 text-[#333F4C] shadow-md': active })}>{children}</div>
+    <div className={cn('mx-5 select-none self-center', { 'bg-ak-grey-4 text-ak-grey-1 rounded-full px-4 py-1 shadow-md': active })}>{children}</div>
   );
 };
 

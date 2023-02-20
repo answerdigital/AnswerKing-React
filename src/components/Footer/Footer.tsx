@@ -6,7 +6,7 @@ export const Footer = (): ReactElement => {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-3 justify-items-center gap-3 overflow-hidden text-[#E4EAEB]">
+    <div className="text-ak-grey-5 grid grid-cols-3 justify-items-center gap-3 overflow-hidden">
       <a className="cursor-pointer hover:text-white" data-testid="allergen-board-link" onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}>
         View Allergen board
       </a>
