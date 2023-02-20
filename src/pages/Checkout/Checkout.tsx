@@ -18,7 +18,7 @@ export const CheckoutPage = (): ReactElement => {
         <div className="mt-10 mb-5 items-center text-[40px] font-[300] leading-[54px]">Checkout</div>
         <CheckoutTabContainer tab={currentTab} />
         <form
-          className="w-[80vw] rounded-[16px] bg-white p-[24px] text-ak-grey-1 md:w-[65vw] lg:w-[50vw] xl:w-[35vw]"
+          className="text-ak-grey-1 w-[80vw] rounded-[16px] bg-white p-[24px] md:w-[65vw] lg:w-[50vw] xl:w-[35vw]"
           onSubmit={(e) => e.preventDefault()}
         >
           <CheckoutTabContext.Provider value={memoizedTab}>
