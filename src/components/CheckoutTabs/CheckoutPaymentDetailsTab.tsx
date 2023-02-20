@@ -17,11 +17,11 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
   const orderExists = localOrder.lineItems?.length > 0;
 
   return (
-    <div className="flex min-h-[65vh] w-full items-stretch flex-col">
+    <div className="flex min-h-[65vh] w-full flex-col items-stretch">
       <div className="w-full font-[400]">
         <h1 className="mb-2 text-[20px] font-[600]">Your details</h1>
       </div>
-      <div className="border-b-2 pb-5 mt-3">
+      <div className="mt-3 border-b-2 pb-5">
         <Input type="text" label="Order name" id="order-name" placeholder="Joe Bloggs" />
         <Input type="email" label="Email address" className="py-2" id="email-address" placeholder="joebloggs@lukewarmmail.com" />
       </div>
