@@ -40,7 +40,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
               className={cn(
                 'left-5 mx-[20px] h-[32px] w-[102px] rounded-full',
                 'bg-transparent px-1 text-[16px] font-[300]',
-                category.id === selectedCategory && 'border-[#333F4C] bg-[#A2AAB6] text-[#A2AAB6]',
+                category.id === selectedCategory && 'border-[#333F4C] bg-[#A2AAB6] text-[#333F4C]',
                 category.id != selectedCategory && 'text-[#ffffff] hover:border-[#333F4C] hover:bg-[#333F4C]'
               )}
               onClick={() => {
