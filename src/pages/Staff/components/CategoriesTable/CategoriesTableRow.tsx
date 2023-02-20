@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import TrashIcon from 'common/Icons/TrashIcon';
 import { CategoryDto } from 'dtos/CategoryDto';
 import { toast } from 'react-toastify';
-import { TrashIcon } from 'common/Icons/TrashIcon';
 import { useCategoryFormContext } from '../CategoryForm/CategoryFormContext';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
   formatting: string;
 }
 
-export const CategoriesTableRow = ({ category, formatting }: Props): ReactElement => {
+export default function CategoriesTableRow({ category, formatting }: Props): ReactElement {
   const formContext = useCategoryFormContext();
 
   const handleDelete = (): void => {
@@ -22,11 +22,14 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
     <tr>
       <td className={formatting}>{category.id}</td>
       <td className={formatting}>{category.name}</td>
-      <td className={'text-center ' + formatting}>{category.products?.length ?? '0'}</td>
-      <td className={'flex justify-end ' + formatting}>
+      <td className={`text-center ${formatting}`}>{category.products?.length ?? '0'}</td>
+      <td className={`flex justify-end ${formatting}`}>
         <span
           className="bg-ak-grey-5 group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded"
           onClick={() => formContext.startEditing(category)}
+          onKeyDown={() => formContext.startEditing(category)}
+          role="button"
+          tabIndex={0}
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </span>
@@ -34,4 +37,4 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
       </td>
     </tr>
   );
-};
+}

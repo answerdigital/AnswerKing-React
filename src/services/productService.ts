@@ -1,41 +1,21 @@
-import { ProductDto } from 'dtos/ProductDto';
 import { CreatedProductDto } from 'dtos/CreatedProductDto';
-import { httpClient } from 'utilities/http-client';
+import { ProductDto } from 'dtos/ProductDto';
+import { handleDeleteResponse, handleResponse } from 'utilities/HandleHttpResponses';
+import HttpClient from 'utilities/HttpClient';
 
-const getAll = async (): Promise<ProductDto[]> => {
-  const response = await httpClient.get('/products');
+export default {
+  getAll: async (): Promise<ProductDto[]> => {
+    const response = await HttpClient.get('/products');
+    return handleResponse<ProductDto[]>(response);
+  },
 
-  if (!response.ok) {
-    try {
-      return Promise.reject(await response.json());
-    } catch {
-      return Promise.reject();
-    }
-  }
+  create: async (createDto: CreatedProductDto): Promise<ProductDto> => {
+    const response = await HttpClient.post('/products', createDto);
+    return handleResponse<ProductDto>(response);
+  },
 
-  return await response.json();
+  retire: async (id: number): Promise<void> => {
+    const response = await HttpClient.removeOrRetire(`/products/${id}`);
+    return handleDeleteResponse(response);
+  },
 };
-
-const create = async (createDto: CreatedProductDto): Promise<ProductDto> => {
-  const response = await httpClient.post('/products', createDto);
-
-  if (!response.ok) {
-    try {
-      return Promise.reject(await response.json());
-    } catch {
-      return Promise.reject();
-    }
-  }
-
-  return await response.json();
-};
-
-const remove = async (id: number): Promise<void> => {
-  const response = await httpClient.remove('/products/' + id);
-
-  if (!response.ok) {
-    return Promise.reject();
-  }
-};
-
-export const productService = { getAll, create, remove };

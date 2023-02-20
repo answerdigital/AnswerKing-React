@@ -1,5 +1,5 @@
-import cn from 'classnames';
 import React, { ReactElement } from 'react';
+import cn from 'classnames';
 import { useSearch } from './SearchContext';
 
 interface Props extends React.ComponentPropsWithoutRef<'input'> {
@@ -9,7 +9,7 @@ interface Props extends React.ComponentPropsWithoutRef<'input'> {
   sizeType?: 'small' | 'medium' | 'large';
 }
 
-export const Search = ({
+export default function Search({
   className = '',
   'data-testid': dataTestId = undefined,
   disabled = false,
@@ -17,9 +17,8 @@ export const Search = ({
   hover = true,
   placeholder = 'Search',
   sizeType = 'medium',
-}: Props): ReactElement => {
-  const setSearchString = useSearch().setSearchString;
-  const searchString = useSearch().searchString;
+}: Props): ReactElement {
+  const { searchString, setSearchString } = useSearch();
 
   return (
     <div className={cn('font-poppins relative z-0 text-center', className)} data-testid={dataTestId} id={id}>
@@ -32,7 +31,7 @@ export const Search = ({
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       </div>
       <input
@@ -60,4 +59,4 @@ export const Search = ({
       />
     </div>
   );
-};
+}

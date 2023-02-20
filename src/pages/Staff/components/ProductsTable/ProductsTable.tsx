@@ -1,17 +1,17 @@
-import { ProductsTableRow } from './ProductsTableRow';
-import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
+import Button from 'common/Buttons/Button';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import Search from 'common/Search/Search';
 import { useSearch } from 'common/Search/SearchContext';
-import { Search } from 'common/Search/Search';
-import { Button } from 'common/Buttons/Button';
 import { ProductDto } from 'dtos/ProductDto';
-import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
+import useProducts from 'hooks/useProducts';
+import ProductsTableRow from './ProductsTableRow';
 import { useProductFormContext } from '../ProductForm/ProductFormContext';
 
-export const ProductsTable = (): ReactElement => {
+export default function ProductsTable(): ReactElement {
   const { products } = useProducts();
   const productForm = useProductFormContext();
-  const searchString = useSearch().searchString;
+  const { searchString } = useSearch();
 
   const formatting = 'px-4 py-2 font-normal';
   const displayProducts: ProductDto[] =
@@ -23,13 +23,13 @@ export const ProductsTable = (): ReactElement => {
         <table className="divide-ak-grey-5 w-full table-auto divide-y">
           <thead className="sticky top-0 w-full bg-white/90">
             <tr>
-              <th className={'text-left ' + formatting}>ID</th>
-              <th className={'w-full text-left ' + formatting}>Name</th>
-              <th className={'text-center ' + formatting}>Category</th>
-              <th className={'text-center ' + formatting}>Stock</th>
-              <th className={'text-center ' + formatting}>Price</th>
-              <th className={'whitespace-nowrap text-center' + formatting}>No. Sold</th>
-              <th />
+              <th className={`text-left ${formatting}`}>ID</th>
+              <th className={`w-full text-left ${formatting}`}>Name</th>
+              <th className={`text-center ${formatting}`}>Category</th>
+              <th className={`text-center ${formatting}`}>Stock</th>
+              <th className={`text-center ${formatting}`}>Price</th>
+              <th className={`whitespace-nowrap text-center${formatting}`}>No. Sold</th>
+              <th>{}</th>
             </tr>
           </thead>
           <tbody className="font-poppins font-200 divide-ak-grey-5 divide-y text-sm">
@@ -48,4 +48,4 @@ export const ProductsTable = (): ReactElement => {
       </div>
     </>
   );
-};
+}

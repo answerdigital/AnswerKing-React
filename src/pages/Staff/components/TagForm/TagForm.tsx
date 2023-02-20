@@ -1,19 +1,19 @@
-import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { ReactElement, useMemo } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { useTagFormContext } from './TagFormContext';
-import { Button } from 'common/Buttons/Button';
-import { Input } from 'common/Inputs/Input';
-import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextArea } from 'common/Inputs/TextArea';
-import { useProducts } from 'hooks/useProducts';
+import Button from 'common/Buttons/Button';
 import { Checkbox } from 'common/Inputs/Checkbox';
-import { Label } from 'common/Inputs/Label';
+import Input from 'common/Inputs/Input';
+import Label from 'common/Inputs/Label';
+import TextArea from 'common/Inputs/TextArea';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import useProducts from 'hooks/useProducts';
+import { useForm } from 'react-hook-form';
 import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
+import { useTagFormContext } from './TagFormContext';
 
-export const TagForm = (): ReactElement => {
+export default function TagForm(): ReactElement {
   const tagForm = useTagFormContext();
   const {
     register,
@@ -33,9 +33,7 @@ export const TagForm = (): ReactElement => {
     console.log(data);
   };
 
-  const filteredProducts = useMemo(() => {
-    return products.data?.filter((product) => !product.retired);
-  }, [products.data]);
+  const filteredProducts = useMemo(() => products.data?.filter((product) => !product.retired), [products.data]);
 
   return (
     <>
@@ -53,9 +51,9 @@ export const TagForm = (): ReactElement => {
           <Label className="col-span-4" error={errors.products?.message}>
             Products
           </Label>
-          {filteredProducts?.map((product) => {
-            return <Checkbox key={product.id} value={product.id} label={product.name} id={product.id.toString()} {...register('products')} />;
-          })}
+          {filteredProducts?.map((product) => (
+            <Checkbox key={product.id} value={product.id} label={product.name} id={product.id.toString()} {...register('products')} />
+          ))}
         </div>
         <LoaderOverlay isEnabled={false} />
       </form>
@@ -69,4 +67,4 @@ export const TagForm = (): ReactElement => {
       </div>
     </>
   );
-};
+}

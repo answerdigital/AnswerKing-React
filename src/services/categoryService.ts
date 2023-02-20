@@ -1,18 +1,10 @@
 import { CategoryDto } from 'dtos/CategoryDto';
-import { httpClient } from 'utilities/http-client';
+import { handleResponse } from 'utilities/HandleHttpResponses';
+import HttpClient from 'utilities/HttpClient';
 
-const getAll = async (): Promise<CategoryDto[]> => {
-  const response = await httpClient.get('/categories');
-
-  if (!response.ok) {
-    try {
-      return Promise.reject(await response.json());
-    } catch {
-      return Promise.reject();
-    }
-  }
-
-  return await response.json();
+export default {
+  getAll: async (): Promise<CategoryDto[]> => {
+    const response = await HttpClient.get('/categories');
+    return handleResponse<CategoryDto[]>(response);
+  },
 };
-
-export const categoryService = { getAll };

@@ -1,14 +1,14 @@
 import { LocalOrderContext } from 'context/OrderContext';
-import { ProductCard } from 'pages/Menu/components/ProductCard/ProductCard';
-import { getExampleOrder, longDescriptionProduct, product } from '../../../../../../cypress/data_helpers/component-test-data';
+import ProductCard from 'pages/Menu/components/ProductCard/ProductCard';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
+import { getExampleOrder, product, longDescriptionProduct } from '../../../../../../cypress/data_helpers/component-test-data';
 
 describe('Order Panel', () => {
   describe('Regular description', () => {
     beforeEach(() => {
       CustomMount(
         <LocalOrderContext.Provider value={getExampleOrder()}>
-          <ProductCard product={product}></ProductCard>
+          <ProductCard product={product} />
         </LocalOrderContext.Provider>
       );
     });
@@ -24,14 +24,14 @@ describe('Order Panel', () => {
       cy.getBySel('product-description').should('have.text', 'Product');
     });
     it('should display product price', () => {
-      cy.getBySel('price').should('have.text', '£500');
+      cy.getBySel('price').should('have.text', '£500.00');
     });
   });
   describe('Order Panel with long description', () => {
     beforeEach(() => {
       CustomMount(
         <LocalOrderContext.Provider value={getExampleOrder()}>
-          <ProductCard product={longDescriptionProduct}></ProductCard>
+          <ProductCard product={longDescriptionProduct} />
         </LocalOrderContext.Provider>
       );
     });

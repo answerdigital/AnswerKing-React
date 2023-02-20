@@ -1,6 +1,6 @@
-import { Button } from 'common/Buttons/Button';
-import { ISection } from 'pages/Staff/Staff';
 import { Dispatch, ReactElement, SetStateAction } from 'react';
+import Button from 'common/Buttons/Button';
+import { ISection } from 'pages/Staff/Staff';
 
 interface Props {
   className?: string;
@@ -9,7 +9,7 @@ interface Props {
   sections: Array<ISection>;
 }
 
-export const StaffNavBar = ({ className, sections, setSelectedSection, selectedSection }: Props): ReactElement => {
+export default function StaffNavBar({ className, sections, setSelectedSection, selectedSection }: Props): ReactElement {
   return (
     <div className={className}>
       {sections.map((section) =>
@@ -37,4 +37,4 @@ export const StaffNavBar = ({ className, sections, setSelectedSection, selectedS
       )}
     </div>
   );
-};
+}

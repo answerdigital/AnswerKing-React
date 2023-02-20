@@ -13,7 +13,7 @@ interface Props {
 
 export const SearchContextProvider: React.FC<Props> = ({ children }) => {
   const [searchString, setSearchString] = useState<string>('');
-  const contextValues: ISearchContext = useMemo(() => ({ searchString: searchString, setSearchString: setSearchString }), [searchString]);
+  const contextValues: ISearchContext = useMemo(() => ({ searchString, setSearchString }), [searchString]);
 
   return <SearchContext.Provider value={contextValues}>{children}</SearchContext.Provider>;
 };

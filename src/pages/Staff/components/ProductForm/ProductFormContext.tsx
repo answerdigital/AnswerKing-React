@@ -1,6 +1,6 @@
-import { ProductDto } from 'dtos/ProductDto';
 import { createContext, useContext, useState, useMemo } from 'react';
-import { ProductForm } from './ProductForm';
+import { ProductDto } from 'dtos/ProductDto';
+import ProductForm from './ProductForm';
 
 interface IProductFormContext {
   startEditing: (product: ProductDto) => void;
@@ -41,24 +41,14 @@ export const ProductFormContextProvider: React.FC<Props> = ({ children }) => {
   const contextValues: IProductFormContext = useMemo(
     () => ({
       startEditing: editProduct,
-      openForm: openForm,
-      closeForm: closeForm,
-      initialProduct: initialProduct,
+      openForm,
+      closeForm,
+      initialProduct,
     }),
     [initialProduct]
   );
 
-  return (
-    <ProductFormContext.Provider value={contextValues}>
-      {formOpen ? (
-        <>
-          <ProductForm />
-        </>
-      ) : (
-        <>{children}</>
-      )}
-    </ProductFormContext.Provider>
-  );
+  return <ProductFormContext.Provider value={contextValues}>{formOpen ? <ProductForm /> : children}</ProductFormContext.Provider>;
 };
 
 export const useProductFormContext = (): IProductFormContext => useContext(ProductFormContext);

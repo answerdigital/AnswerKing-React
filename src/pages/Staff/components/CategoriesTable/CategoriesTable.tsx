@@ -1,19 +1,21 @@
-import { CategoriesTableRow } from './CategoriesTableRow';
-import { useCategories } from 'hooks/useCategories';
 import { ReactElement } from 'react';
+import Button from 'common/Buttons/Button';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import Search from 'common/Search/Search';
 import { useSearch } from 'common/Search/SearchContext';
-import { Search } from 'common/Search/Search';
-import { Button } from 'common/Buttons/Button';
 import { CategoryDto } from 'dtos/CategoryDto';
-import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
+import useCategories from 'hooks/useCategories';
+import CategoriesTableRow from './CategoriesTableRow';
 import { useCategoryFormContext } from '../CategoryForm/CategoryFormContext';
 
-export const CategoriesTable = (): ReactElement => {
+export default function CategoriesTable(): ReactElement {
   const categoryForm = useCategoryFormContext();
   const { categories } = useCategories();
-  const searchString = useSearch().searchString;
+  const { searchString } = useSearch();
   const displayCategories: CategoryDto[] =
-    categories.data?.filter((category) => !category.retired && category.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
+    categories.data?.filter(
+      (category: CategoryDto) => !category.retired && category.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())
+    ) || [];
   const formatting = ' px-2 py-2 font-normal ';
 
   return (
@@ -23,9 +25,9 @@ export const CategoriesTable = (): ReactElement => {
           <thead className="sticky top-0 w-full bg-white/90">
             <tr>
               <th className={formatting}>ID</th>
-              <th className={'w-full text-left' + formatting}>Category Name</th>
-              <th className={'whitespace-nowrap text-center ' + formatting}>No. Items</th>
-              <th />
+              <th className={`w-full text-left${formatting}`}>Category Name</th>
+              <th className={`whitespace-nowrap text-center ${formatting}`}>No. Items</th>
+              <div />
             </tr>
           </thead>
           <tbody className="font-poppins font-200 divide-ak-grey-5 divide-y text-sm">
@@ -44,4 +46,4 @@ export const CategoriesTable = (): ReactElement => {
       </div>
     </>
   );
-};
+}

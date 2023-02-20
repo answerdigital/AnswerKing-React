@@ -1,10 +1,10 @@
-import { OrderFeesAndTotals } from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
+import OrderFeesAndTotals from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
 import { lineItemList } from '../../../../cypress/data_helpers/component-test-data';
-import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
+import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
 
 describe('Order Fees and Totals', () => {
   beforeEach(() => {
-    CustomMount(<OrderFeesAndTotals lineItems={lineItemList}></OrderFeesAndTotals>);
+    CustomMount(<OrderFeesAndTotals lineItems={lineItemList} />);
   });
   it('should show the service change with the total amount', () => {
     cy.getBySel('service-charge').should('contain', '0.50');

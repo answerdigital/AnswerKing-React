@@ -1,18 +1,18 @@
 import { ReactElement, useMemo } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { useCategoryFormContext } from './CategoryFormContext';
-import { Button } from 'common/Buttons/Button';
-import { Input } from 'common/Inputs/Input';
-import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextArea } from 'common/Inputs/TextArea';
+import Button from 'common/Buttons/Button';
 import { Checkbox } from 'common/Inputs/Checkbox';
-import { useProducts } from 'hooks/useProducts';
-import { Label } from 'common/Inputs/Label';
+import Input from 'common/Inputs/Input';
+import Label from 'common/Inputs/Label';
+import TextArea from 'common/Inputs/TextArea';
+import useProducts from 'hooks/useProducts';
+import { useForm } from 'react-hook-form';
 import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
+import { useCategoryFormContext } from './CategoryFormContext';
 
-export const CategoryForm = (): ReactElement => {
+export default function CategoryForm(): ReactElement {
   const categoryForm = useCategoryFormContext();
   const { products } = useProducts();
 
@@ -33,9 +33,7 @@ export const CategoryForm = (): ReactElement => {
     console.log(data);
   };
 
-  const filteredProducts = useMemo(() => {
-    return products.data?.filter((product) => !product.retired);
-  }, [products.data]);
+  const filteredProducts = useMemo(() => products.data?.filter((product) => !product.retired), [products.data]);
 
   return (
     <>
@@ -53,9 +51,9 @@ export const CategoryForm = (): ReactElement => {
           <Label className="col-span-4" error={errors.products?.message}>
             Products
           </Label>
-          {filteredProducts?.map((product) => {
-            return <Checkbox key={product.id} id={product.id.toString()} label={product.name} value={product.id} {...register('products')} />;
-          })}
+          {filteredProducts?.map((product) => (
+            <Checkbox key={product.id} id={product.id.toString()} label={product.name} value={product.id} {...register('products')} />
+          ))}
         </div>
       </form>
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
@@ -68,4 +66,4 @@ export const CategoryForm = (): ReactElement => {
       </div>
     </>
   );
-};
+}

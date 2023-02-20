@@ -1,5 +1,5 @@
-import cn from 'classnames';
 import React, { ReactElement } from 'react';
+import cn from 'classnames';
 
 interface Props extends React.ComponentPropsWithoutRef<'button'> {
   active?: boolean;
@@ -8,7 +8,7 @@ interface Props extends React.ComponentPropsWithoutRef<'button'> {
   hover?: boolean;
 }
 
-export const Button = ({
+export default function Button({
   children,
   active = false,
   className = '',
@@ -16,10 +16,9 @@ export const Button = ({
   disabled = false,
   id = undefined,
   onClick = undefined,
-  type = 'button',
   colour = 'grey',
   hover = true,
-}: Props): ReactElement => {
+}: Props): ReactElement {
   return (
     <button
       className={cn(
@@ -39,9 +38,9 @@ export const Button = ({
       disabled={disabled}
       id={id}
       onClick={onClick}
-      type={type}
+      type="button"
     >
       {children}
     </button>
   );
-};
+}

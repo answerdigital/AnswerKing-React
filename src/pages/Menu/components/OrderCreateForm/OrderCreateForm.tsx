@@ -1,12 +1,12 @@
-import { Button } from 'common/Buttons/Button';
-import { useOrder } from 'hooks/useOrder';
 import { ReactElement, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from 'utilities/route-constants';
+import Button from 'common/Buttons/Button';
+import OrderFeesAndTotals from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
 import { useLocalOrder } from 'context/OrderContext';
-import { OrderFeesAndTotals } from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
+import useOrder from 'hooks/useOrder';
+import { useNavigate } from 'react-router-dom';
+import PageRoutes from 'utilities/Constants/PageRoutes';
 
-export const OrderCreateForm = (): ReactElement => {
+export default function OrderCreateForm(): ReactElement {
   const { order } = useOrder();
   const { localOrder, setOrderId } = useLocalOrder();
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export const OrderCreateForm = (): ReactElement => {
         <Button
           disabled={!lineItemsExist}
           className="h-[45px] w-full"
-          onClick={() => navigate(RouteConstants.CHECKOUT)}
+          onClick={() => navigate(PageRoutes.CHECKOUT)}
           colour="yellow"
           data-testid="checkout"
         >
@@ -37,4 +37,4 @@ export const OrderCreateForm = (): ReactElement => {
       </div>
     </div>
   );
-};
+}

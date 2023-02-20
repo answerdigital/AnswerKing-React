@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
-import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { mount } from 'cypress/react18';
+import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const queryClient = new QueryClient();
 

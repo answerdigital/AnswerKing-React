@@ -1,18 +1,10 @@
 import { TagDto } from 'dtos/TagDto';
-import { httpClient } from 'utilities/http-client';
+import { handleResponse } from 'utilities/HandleHttpResponses';
+import HttpClient from 'utilities/HttpClient';
 
-const getAll = async (): Promise<TagDto[]> => {
-  const response = await httpClient.get('/tags');
-
-  if (!response.ok) {
-    try {
-      return Promise.reject(await response.json());
-    } catch {
-      return Promise.reject();
-    }
-  }
-
-  return await response.json();
+export default {
+  getAll: async (): Promise<TagDto[]> => {
+    const response = await HttpClient.get('/tags');
+    return handleResponse<TagDto[]>(response);
+  },
 };
-
-export const tagService = { getAll };

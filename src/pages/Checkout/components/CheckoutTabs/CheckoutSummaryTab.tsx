@@ -1,14 +1,16 @@
-import { Button } from 'common/Buttons/Button';
+import { ReactElement, useContext } from 'react';
+import Button from 'common/Buttons/Button';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
-import { useOrder } from 'hooks/useOrder';
-import { ReactElement, useContext } from 'react';
-import { CheckoutFooter } from '../CheckoutFooter/CheckoutFooter';
-import { CheckoutSection } from '../CheckoutSection/CheckoutSection';
-import { OrderDetailsMinimal } from '../OrderDetails/OrderDetailsMinimal';
+import useOrder from 'hooks/useOrder';
+import ServiceCharge from 'utilities/Constants/Service_Charge';
+import GBPFormat from 'utilities/GBPFormat';
+import CheckoutFooter from '../CheckoutFooter/CheckoutFooter';
+import CheckoutSection from '../CheckoutSection/CheckoutSection';
+import OrderDetailsMinimal from '../OrderDetails/OrderDetailsMinimal';
 
-export const CheckoutSummaryTab = (): ReactElement => {
+export default function CheckoutSummaryTab(): ReactElement {
   const { createOrder } = useOrder();
   const { localOrder } = useLocalOrder();
   const { setCurrentTab } = useContext(CheckoutTabContext);
@@ -67,4 +69,4 @@ export const CheckoutSummaryTab = (): ReactElement => {
       </div>
     </div>
   );
-};
+}

@@ -1,8 +1,8 @@
-import './ToastWrapper.scss';
 import { ReactElement } from 'react';
+import './ToastWrapper.scss';
 import { Slide, ToastContainer } from 'react-toastify';
 
-export const ToastWrapper = (): ReactElement => {
+export default function ToastWrapper(): ReactElement {
   return (
     <ToastContainer
       autoClose={false}
@@ -15,4 +15,4 @@ export const ToastWrapper = (): ReactElement => {
       transition={Slide}
     />
   );
-};
+}

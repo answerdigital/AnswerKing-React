@@ -1,13 +1,13 @@
-import { OrderDto } from 'dtos/Order/OrderDto';
 import { ReactElement } from 'react';
-import { FormatDate } from 'utilities/FormatDate';
-import { GBPFormat } from 'utilities/GBPFormat';
+import { OrderDto } from 'dtos/Order/OrderDto';
+import FormatDate from 'utilities/FormatDate';
+import GBPFormat from 'utilities/GBPFormat';
 
 interface OrdersCardProps {
   order: OrderDto;
 }
 
-export const OrdersCard = ({ order }: OrdersCardProps): ReactElement => {
+export default function OrdersCard({ order }: OrdersCardProps): ReactElement {
   return (
     <div className="mt-2 w-full rounded-lg bg-white px-6 pt-6">
       <div className="w-full border-y-2">
@@ -23,4 +23,4 @@ export const OrdersCard = ({ order }: OrdersCardProps): ReactElement => {
       </div>
     </div>
   );
-};
+}

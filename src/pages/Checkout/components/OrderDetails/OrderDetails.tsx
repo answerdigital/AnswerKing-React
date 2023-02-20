@@ -1,16 +1,16 @@
 import { ReactElement } from 'react';
-import { GBPFormat } from 'utilities/GBPFormat';
-import { LineItemDto } from 'dtos/LineItemDto';
-import { TrashIcon } from 'common/Icons/TrashIcon';
 import cn from 'classnames';
 import { QuantityIcon } from 'common/Icons/QuantityIcon';
+import TrashIcon from 'common/Icons/TrashIcon';
 import { useLocalOrder } from 'context/OrderContext';
+import { LineItemDto } from 'dtos/LineItemDto';
+import GBPFormat from 'utilities/GBPFormat';
 
 interface Props {
   items: LineItemDto[];
 }
 
-export const OrderDetails = ({ items }: Props): ReactElement => {
+export default function OrderDetails({ items }: Props): ReactElement {
   const { removeProduct } = useLocalOrder();
 
   const tableElement = 'py-4 text-ak-grey-1 font-normal text-xs';
@@ -29,7 +29,7 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
                   </span>
                 </td>
                 <td className={cn(tableElement, 'float-right flex items-center justify-center')}>
-                  <div className="items-center justify-center"></div>
+                  <div className="items-center justify-center" />
                   <TrashIcon onClick={() => removeProduct(lineItem.product)} />
                   <div className="left-8 flex h-[21px] w-[50px] items-center justify-center text-sm">
                     <span data-testid="item-subtotal" className="text-center">
@@ -46,4 +46,4 @@ export const OrderDetails = ({ items }: Props): ReactElement => {
       </table>
     </div>
   );
-};
+}

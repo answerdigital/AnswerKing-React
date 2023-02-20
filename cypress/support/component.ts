@@ -36,9 +36,7 @@ declare global {
 }
 
 Cypress.Commands.add('mount', mount);
-Cypress.Commands.add('getBySel', (selector, ...args) => {
-  return cy.get(`[data-testid=${selector}]`, ...args);
-});
+Cypress.Commands.add('getBySel', (selector, ...args) => cy.get(`[data-testid=${selector}]`, ...args));
 
 // Example use:
 // cy.mount(<MyComponent />)
