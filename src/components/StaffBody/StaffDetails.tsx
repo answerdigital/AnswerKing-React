@@ -2,11 +2,11 @@ import { Button } from 'components/Buttons/Button';
 import { ReactElement } from 'react';
 
 export const StaffDetails = (): ReactElement => {
-  const inputClass = 'font-poppins w-full bg-transparent text-white focus:outline-none border-b-2 border-gray-300 focus:border-white';
-  const labelClass = 'font-poly col-span-2 w-full italic text-lg text-gray-300 w-full';
+  const inputClass = 'font-poppins w-full bg-transparent text-white focus:outline-none border-b-2 focus:border-white';
+  const labelClass = 'font-poly col-span-2 w-full italic text-lg text-ak-grey-4 w-full';
 
   return (
-    <form className="grid w-[60vw] grid-cols-4 gap-10 border-t-[1px] border-gray-600 py-16" key={'staff details'}>
+    <form className="border-ak-grey-2 grid w-[60vw] grid-cols-4 gap-10 border-t-[1px] py-16" key={'staff details'}>
       <label className={labelClass}>
         Store Name
         <input className={inputClass} type="text" />
@@ -27,20 +27,20 @@ export const StaffDetails = (): ReactElement => {
         Store Address
         <input className={inputClass} type="text" />
       </label>
-      <label className="w-full italic text-gray-400 focus:border-white">
+      <label className="text-ak-grey-4 w-full italic focus:border-white">
         Opens
         <input
-          className="w-full bg-transparent bg-gray-400 p-1 text-black focus:outline-none"
+          className="bg-ak-grey-5 w-full bg-transparent p-1 text-black focus:outline-none"
           type="time"
           step={900}
           pattern="[0-9]{2}:[0-9]{2}"
           defaultValue="08:00"
         />
       </label>
-      <label className="w-full italic text-gray-400 focus:border-white">
+      <label className="text-ak-grey-4 w-full italic focus:border-white">
         Closes
         <input
-          className="w-full bg-transparent bg-gray-400 p-1 text-black focus:outline-none"
+          className="bg-ak-grey-5 w-full bg-transparent p-1 text-black focus:outline-none"
           type="time"
           step={900}
           pattern="[0-9]{2}:[0-9]{2}"

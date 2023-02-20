@@ -15,7 +15,7 @@ export const ErrorIcon = ({ message }: Props): ReactElement => {
   return (
     <>
       <AnimatePresence>{isTooltipVisible && <Tooltip parentRef={ref}>{message}</Tooltip>}</AnimatePresence>
-      <span className="font-poppins not-italic text-red-500" ref={ref}>
+      <span className="font-poppins text-red-primary not-italic" ref={ref}>
         <FontAwesomeIcon icon={faCircleExclamation} onMouseOver={() => setIsTooltipVisible(true)} onMouseLeave={() => setIsTooltipVisible(false)} />
       </span>
     </>

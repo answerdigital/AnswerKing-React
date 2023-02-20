@@ -53,7 +53,7 @@ export const MenuPage = (): ReactElement => {
       <div className="mb-[5%] grid grid-cols-12">
         <div className="col-span-2"></div>
         <div className="col-span-6 text-center">
-          <h6 className="font-poly mt-5 mb-6 text-lg italic text-[#E4EAEB]">
+          <h6 className="font-poly text-ak-grey-5 mt-5 mb-6 text-lg italic">
             {filteredCategories.find((category) => category.id == selectedCategory)?.description}
           </h6>
           <motion.div

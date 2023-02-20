@@ -19,7 +19,7 @@ export const CategoriesTable = (): ReactElement => {
   return (
     <>
       <div className="h-full w-full overflow-auto">
-        <table className="w-full table-auto divide-y">
+        <table className="divide-ak-grey-5 w-full table-auto divide-y">
           <thead className="sticky top-0 w-full bg-white/90">
             <tr>
               <th className={formatting}>ID</th>
@@ -28,7 +28,7 @@ export const CategoriesTable = (): ReactElement => {
               <th />
             </tr>
           </thead>
-          <tbody className="font-poppins font-200 divide-y text-sm">
+          <tbody className="font-poppins font-200 divide-ak-grey-5 divide-y text-sm">
             {displayCategories.map((category) => (
               <CategoriesTableRow formatting={formatting} category={category} key={category.id} />
             ))}

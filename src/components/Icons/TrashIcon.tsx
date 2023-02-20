@@ -13,7 +13,7 @@ export const TrashIcon = ({ onClick }: Props): ReactElement => {
       {isOpen && <DeleteProductModal setIsOpen={setIsOpen} onConfirm={onClick} />}
       <div
         data-testid="trash-product-btn"
-        className="group mr-[24px] flex h-[33px] w-[33px] cursor-pointer flex-col rounded border bg-[#E4EAEB]"
+        className="bg-ak-grey-5 group mr-[24px] flex h-[33px] w-[33px] cursor-pointer flex-col rounded"
         onClick={() => setIsOpen(true)}
       >
         <div className="group my-auto flex cursor-pointer flex-col" onClick={() => setIsOpen(true)}>

@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ className, id, label
           {label}
         </Label>
       )}
-      <input type={type ?? 'text'} className="border-b-2 text-[#333F4C]" id={id} ref={ref} {...rest}></input>
+      <input type={type ?? 'text'} className="text-ak-grey-1 border-b-2" id={id} ref={ref} {...rest}></input>
     </div>
   );
 });

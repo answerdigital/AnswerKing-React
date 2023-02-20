@@ -29,21 +29,21 @@ export const ProductCard = ({ product }: Props): ReactElement => {
       <MenuProductModal product={product} showProductModal={showProductModal} disableShow={setshowProductModal} />
       <motion.div key={product.id} variants={cardVariant}>
         <div data-testid="product-card" onClick={() => setshowProductModal(true)}>
-          <div className="relative mx-auto mb-7 h-[40vh] w-[28vh] rounded-lg border-gray-200 bg-white shadow-md">
+          <div className="relative mx-auto mb-7 h-[40vh] w-[28vh] rounded-lg bg-white shadow-md">
             <img alt="burger" className="h-[50%] w-full rounded-t-lg object-cover" src={PlaceHolderImage} />
             {product && <BadgeIcon>New</BadgeIcon>}
             <div className="p-5">
-              <h5 data-testid="product-name" className="mb-2 text-center text-[20px] font-bold tracking-tight text-[#333F4C]">
+              <h5 data-testid="product-name" className="text-ak-grey-1 mb-2 text-center text-[20px] font-bold tracking-tight">
                 {product.name}
               </h5>
               <div className="flex justify-center text-center">
-                <p data-testid="product-description" className="font-poly self-center text-base font-[400] italic text-[#333F4C]">
+                <p data-testid="product-description" className="font-poly text-ak-grey-1 self-center text-base font-[400] italic">
                   {product.description.length > 50 ? product.description.substring(0, 50) + '...' : product.description}
                 </p>
               </div>
             </div>
             <div className="absolute bottom-5 flex w-full justify-between gap-4 px-7 text-center leading-[21px]">
-              <p data-testid="price" className="flex items-center justify-center text-[14px] text-[#333F4C]">
+              <p data-testid="price" className="text-ak-grey-1 flex items-center justify-center text-[14px]">
                 £{RoundingPrice(product.price)}
               </p>
               <Button
