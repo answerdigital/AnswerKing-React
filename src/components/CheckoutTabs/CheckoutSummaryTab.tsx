@@ -41,25 +41,21 @@ export const CheckoutSummaryTab = (): ReactElement => {
       <h1 className="mb-4 w-full text-[20px] font-[600]">Summary</h1>
 
       <CheckoutSection title="Order" onEditClick={() => setCurrentTab(CheckoutTabType.Order)}>
-        <div className="flex w-full flex-col gap-2">
+        <div className="flex w-full flex-col gap-2 border-b-2 px-2 pb-1">
           <OrderDetailsMinimal items={localOrder.lineItems} />
         </div>
       </CheckoutSection>
 
       <CheckoutSection title="Order details" onEditClick={() => setCurrentTab(CheckoutTabType.PaymentDetails)}>
-        <div className="flex w-full flex-row justify-between border-b-2 text-[12px]">
+        <div className="flex w-full flex-col justify-between gap-2 border-b-2 px-2 pb-1 text-[12px]">
           <span>{placeholderName}</span>
           <span>{placeholderEmail}</span>
         </div>
       </CheckoutSection>
 
       <CheckoutSection title="Payment details" onEditClick={() => setCurrentTab(CheckoutTabType.Order)}>
-        <div className="flex justify-between border-b-2 text-[12px]">
+        <div className="flex justify-between px-2 pb-1 text-[12px]">
           <span>{placeholderCard}</span>
-          <div className="flex flex-row gap-2">
-            <span>Service charge: </span>
-            <span className="font-bold">{GBPFormat.format(SERVICE_CHARGE)}</span>
-          </div>
         </div>
       </CheckoutSection>
 

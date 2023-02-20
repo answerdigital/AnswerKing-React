@@ -11,7 +11,7 @@ interface Props {
 
 export const OrderFeesAndTotals = ({ lineItems, orderComplete }: Props): ReactElement => {
   return (
-    <div data-testid="order-fees-totals" className="mb-3 w-full text-[22px]">
+    <div data-testid="order-fees-totals" className="mb-3 w-full">
       <hr className="mb-6 px-1"></hr>
 
       {lineItems.length > 0 && !orderComplete && (

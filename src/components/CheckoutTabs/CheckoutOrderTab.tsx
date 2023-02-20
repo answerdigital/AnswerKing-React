@@ -17,14 +17,14 @@ export const CheckoutOrderTab = (): ReactElement => {
   const orderExists = localOrder.lineItems?.length > 0;
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex min-h-[65vh] w-full flex-col">
       <div className="w-full">
-        <h1 className="text-ak-grey-1 mb-4 text-[20px] font-[600]">Order</h1>
+        <h1 className="text-ak-grey-1 m-1 text-[20px] font-[600]">Order</h1>
       </div>
 
       {!orderExists ? (
         <ComponentTransition lineItemsExist={orderExists}>
-          <div className="text-ak-grey-1 mx-auto translate-y-[50%] items-center justify-center text-center text-[14px] font-[400]">
+          <div className="text-ak-grey-1 mx-auto translate-y-[70%] items-center justify-center text-center text-[14px] font-[400]">
             <img src={CheckoutBurgerImg} className="mx-auto mb-[4%] h-[50px] w-[80px]"></img>
             <p>
               Whoa, you&apos;ve not got <br></br> anything in your order yet
@@ -37,7 +37,6 @@ export const CheckoutOrderTab = (): ReactElement => {
       ) : (
         <OrderDetails items={localOrder.lineItems} />
       )}
-
       <CheckoutFooter>
         <Button colour="white" className="h-[45px] w-3/12" onClick={() => navigate(-1)}>
           Back

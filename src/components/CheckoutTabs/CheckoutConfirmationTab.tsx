@@ -28,7 +28,7 @@ export const CheckoutConfirmationTab = (): ReactElement => {
       </CheckoutSection>
 
       <CheckoutSection title="Order details">
-        <div className="flex w-full flex-row justify-between border-b-2 text-[12px]">
+        <div className="flex w-full flex-row justify-between text-[12px]">
           <span>{placeholderName}</span>
           <span>{placeholderEmail}</span>
         </div>

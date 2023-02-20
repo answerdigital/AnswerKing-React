@@ -21,3 +21,9 @@ body {
   border-radius: 10px;
   background: #a2aab6;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

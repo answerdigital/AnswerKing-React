@@ -18,20 +18,15 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <div className="w-full gap-5 font-[400]">
-        <div className="w-full">
-          <h1 className="mb-4 text-[20px] font-[600]">Your details</h1>
-        </div>
-
-        <div className="flex w-full gap-5">
-          <Input type="text" label="Order name" id="order-name" placeholder="Joe Bloggs" />
-          <Input type="email" label="Email address" id="email-address" placeholder="joebloggs@lukewarmmail.com" />
-        </div>
+      <div className="w-full border-b-2 font-[400]">
+        <h1 className="mb-2 text-[20px] font-[600]">Your details</h1>
+        <Input type="text" label="Order name" id="order-name" placeholder="Joe Bloggs" />
+        <Input type="email" label="Email address" id="email-address" placeholder="joebloggs@lukewarmmail.com" />
       </div>
 
-      <div className="mt-12 flex w-full gap-5 font-[400]">
+      <div className="mt-3 flex w-full gap-5 font-[400]">
         <div className="align-center flex w-full flex-row justify-between">
-          <h1 className="mb-4 text-[20px] font-[600]">Payment</h1>
+          <h1 className="mb-2 text-[20px] font-[600]">Payment</h1>
           <div className="flex flex-row gap-1 text-[24px]">
             <FontAwesomeIcon icon={faCcVisa} />
             <FontAwesomeIcon icon={faCcMastercard} />
@@ -46,7 +41,7 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
         <Input type="number" label="Account number" id="account-number" placeholder="12341234" />
       </div>
 
-      <div className="mt-5 flex w-full gap-5">
+      <div className="mt-3 flex w-full gap-5">
         <Input type="number" label="CVV number" id="cvv-number" placeholder="123" />
         <CheckboxRow label="Save for next time" checked={saveLater} onClick={() => setSaveLater(!saveLater)} />
       </div>

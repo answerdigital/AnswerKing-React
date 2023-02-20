@@ -10,13 +10,19 @@ interface Props extends React.ComponentPropsWithRef<'input'> {
 
 export const Input = forwardRef<HTMLInputElement, Props>(({ className, id, label, type, error, ...rest }, ref) => {
   return (
-    <div className={cn('flex w-full flex-col gap-1', className)}>
+    <div className={cn('flex w-full flex-col gap-1 text-[16px]', className)}>
       {(label || error) && (
         <Label forId={id} error={error}>
           {label}
         </Label>
       )}
-      <input type={type ?? 'text'} className="text-ak-grey-1 border-b-2" id={id} ref={ref} {...rest}></input>
+      <input
+        type={type ?? 'text'}
+        className="text-[14px] text-ak-grey-1 placeholder:text-[#333F4C] focus:pl-1 focus:placeholder:text-[#A2AAB6]"
+        id={id}
+        ref={ref}
+        {...rest}
+      ></input>
     </div>
   );
 });
