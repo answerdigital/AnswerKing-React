@@ -20,7 +20,7 @@ import { useProductFormContext } from './ProductFormContext';
 export default function ProductForm(): ReactElement {
   const productForm = useProductFormContext();
   const { tags } = useTags();
-  const { categories } = useCategories();
+  const { categories } = useCategories(true);
   const {
     register,
     handleSubmit,

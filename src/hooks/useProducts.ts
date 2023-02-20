@@ -10,8 +10,10 @@ interface UseProductsResult {
   removeProduct: UseMutationResult<void, ProductProblemDetails, number>;
 }
 
-export default function useProducts(): UseProductsResult {
-  const products = useQuery<ProductDto[]>(['items'], ProductService.getAll);
+export default function useProducts(filtered = false): UseProductsResult {
+  const products = useQuery<ProductDto[]>(['items'], ProductService.getAll, {
+    select: (data) => (filtered ? data.filter((product) => !product.retired || !product.category) : data),
+  });
 
   const createProduct = useMutation<ProductDto, ProductProblemDetails, CreatedProductDto>((createDto) => ProductService.create(createDto), {
     onSuccess: () => {
