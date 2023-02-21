@@ -6,9 +6,9 @@ interface Props extends React.ComponentPropsWithRef<'input'> {
   label?: string;
 }
 
-export const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, className, id, ...rest }, ref) => {
+export const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, className, checked, defaultChecked, id, ...rest }, ref) => {
   const innerRef = useRef<HTMLInputElement>(null);
-  const [checked, setChecked] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(checked ?? defaultChecked ?? false);
 
   useImperativeHandle(ref, () => innerRef.current as HTMLInputElement);
 
@@ -17,7 +17,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, className,
       const checkbox = innerRef.current;
 
       if (checkbox) {
-        setChecked(value);
+        setIsChecked(value);
         checkbox.click();
       }
     },
@@ -25,9 +25,9 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, className,
   );
 
   return (
-    <div className={cn('flex w-fit cursor-pointer select-none items-center gap-2', className)} onClick={() => handleChecked(!checked)}>
+    <div className={cn('flex w-fit cursor-pointer select-none items-center gap-2', className)} onClick={() => handleChecked(!isChecked)}>
       <input className="hidden" type="checkbox" id={id} ref={innerRef} {...rest}></input>
-      <CheckBoxIcon checked={checked} />
+      <CheckBoxIcon checked={isChecked} />
       <span>{label}</span>
     </div>
   );
