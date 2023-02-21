@@ -6,6 +6,7 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { useProductFormContext } from 'components/ProductForm/ProductFormContext';
 import { toast } from 'react-toastify';
 import { TrashIcon } from 'components/Icons/TrashIcon';
+import { GBPFormat } from 'utilities/GBPFormat';
 
 interface Props {
   product: ProductDto;
@@ -35,7 +36,7 @@ export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElem
       <td className={'text-center ' + formatting}>{product.category?.name}</td>
       <td className={'text-center ' + formatting}>None</td>
       <td className={'text-center ' + formatting} data-testid="product-price">
-        £{product.price.toFixed(2)}
+        {GBPFormat.format(product.price)}
       </td>
       <td className={'text-center ' + formatting}>None</td>
       <td className={'flex justify-end ' + formatting}>

@@ -12,9 +12,14 @@ import { useProducts } from 'hooks/useProducts';
 import { Checkbox } from 'components/Inputs/Checkbox';
 import { Label } from 'components/Inputs/Label';
 import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
+import { TagRequestDto } from 'dtos/TagRequestDto';
+import { useTags } from 'hooks/useTags';
 
 export const TagForm = (): ReactElement => {
   const tagForm = useTagFormContext();
+  const { products } = useProducts();
+  const { createTag, editTag } = useTags();
+
   const {
     register,
     handleSubmit,
@@ -23,14 +28,32 @@ export const TagForm = (): ReactElement => {
     resolver: yupResolver(tagsFormSchema),
     defaultValues: {
       name: tagForm.initialTag?.name,
-      desc: tagForm.initialTag?.description,
+      description: tagForm.initialTag?.description,
       products: tagForm.initialTag?.products ?? [],
     },
   });
-  const { products } = useProducts();
 
   const submitForm = (data: TagsFormSchema): void => {
-    console.log(data);
+    const tagOutput: TagRequestDto = { ...data, products: data.products as number[] };
+    console.log(tagOutput);
+    if (!tagForm.initialTag) {
+      createTag.mutate(tagOutput, {
+        onSuccess: (returnProduct) => {
+          console.log(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
+          tagForm.closeForm();
+        },
+      });
+    } else {
+      editTag.mutate(
+        { id: tagForm.initialTag.id, requestDto: tagOutput },
+        {
+          onSuccess: (returnProduct) => {
+            console.log(`Product "${returnProduct.name}" was succesfully edited" .`);
+            tagForm.closeForm();
+          },
+        }
+      );
+    }
   };
 
   const filteredProducts = useMemo(() => {
@@ -48,7 +71,7 @@ export const TagForm = (): ReactElement => {
             <Input label="Tag Name" id="tag-name" error={errors.name?.message} {...register('name')} />
           </div>
           <div className="col-span-2 row-span-2">
-            <TextArea label="Text Description" id="text-description" rows={3} error={errors.desc?.message} {...register('desc')} />
+            <TextArea label="Text Description" id="text-description" rows={3} error={errors.description?.message} {...register('description')} />
           </div>
           <Label className="col-span-4" error={errors.products?.message}>
             Products

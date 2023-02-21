@@ -50,6 +50,7 @@ export const ProductForm = (): ReactElement => {
   }, [categories.data]);
 
   const submitForm = (data: ProductFormSchema): void => {
+    console.log(data);
     const productOutput: ProductRequestDto = { ...data, tagsIds: data.tagsIds as number[] };
     console.log(productOutput);
     if (!productForm.initialProduct) {

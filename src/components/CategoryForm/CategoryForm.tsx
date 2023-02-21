@@ -11,10 +11,19 @@ import { Checkbox } from 'components/Inputs/Checkbox';
 import { useProducts } from 'hooks/useProducts';
 import { Label } from 'components/Inputs/Label';
 import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
+import { useCategories } from 'hooks/useCategories';
+import { CategoryRequestDto } from 'dtos/CategoryRequestDto';
 
 export const CategoryForm = (): ReactElement => {
   const categoryForm = useCategoryFormContext();
   const { products } = useProducts();
+  const { createCategory, editCategory } = useCategories();
+  const retiredProducts = useMemo(() => {
+    return products.data?.filter((product) => product.retired) || [];
+  }, [products.data]);
+  const activeProducts = useMemo(() => {
+    return products.data?.filter((product) => !product.retired) || [];
+  }, [products.data]);
 
   const {
     register,
@@ -24,18 +33,35 @@ export const CategoryForm = (): ReactElement => {
     resolver: yupResolver(categoryFormSchema),
     defaultValues: {
       name: categoryForm.initialCategory?.name,
-      desc: categoryForm.initialCategory?.description,
-      products: categoryForm.initialCategory?.products ?? [],
+      description: categoryForm.initialCategory?.description,
+      products: categoryForm.initialCategory?.products,
     },
   });
 
   const submitForm = (data: CategoryFormSchema): void => {
-    console.log(data);
+    const legacyProducts = retiredProducts.filter((product) => categoryForm.initialCategory?.products?.includes(product.id));
+    const legacyProductsIds = legacyProducts.map((product) => product.id);
+    const tagOutput: CategoryRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
+    console.log(tagOutput);
+    if (!categoryForm.initialCategory) {
+      createCategory.mutate(tagOutput, {
+        onSuccess: (returnProduct) => {
+          console.log(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
+          categoryForm.closeForm();
+        },
+      });
+    } else {
+      editCategory.mutate(
+        { id: categoryForm.initialCategory.id, requestDto: tagOutput },
+        {
+          onSuccess: (returnProduct) => {
+            console.log(`Product "${returnProduct.name}" was succesfully edited" .`);
+            categoryForm.closeForm();
+          },
+        }
+      );
+    }
   };
-
-  const filteredProducts = useMemo(() => {
-    return products.data?.filter((product) => !product.retired);
-  }, [products.data]);
 
   return (
     <>
@@ -48,12 +74,18 @@ export const CategoryForm = (): ReactElement => {
             <Input label="Category Name" id="category-name" error={errors.name?.message} {...register('name')} />
           </div>
           <div className="col-span-2 row-span-2">
-            <TextArea label="Category Description" id="category-description" rows={3} error={errors.desc?.message} {...register('desc')} />
+            <TextArea
+              label="Category Description"
+              id="category-description"
+              rows={3}
+              error={errors.description?.message}
+              {...register('description')}
+            />
           </div>
           <Label className="col-span-4" error={errors.products?.message}>
             Products
           </Label>
-          {filteredProducts?.map((product) => {
+          {activeProducts.map((product) => {
             return <Checkbox key={product.id} id={product.id.toString()} label={product.name} value={product.id} {...register('products')} />;
           })}
         </div>

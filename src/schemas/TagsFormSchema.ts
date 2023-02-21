@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 export const tagsFormSchema = yup.object({
   name: yup.string().required('Tag name is required'),
-  desc: yup.string().optional(),
+  description: yup.string().required(),
   products: yup.array().of(yup.number()).optional(),
 });
 
