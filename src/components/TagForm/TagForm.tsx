@@ -64,7 +64,7 @@ export const TagForm = (): ReactElement => {
     <>
       <form className="w-full overflow-auto">
         <div className="grid grid-cols-4 gap-4 p-2">
-          <div className="col-span-2 row-span-3 flex h-full w-full items-center justify-center bg-gray-200">
+          <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
             <FontAwesomeIcon icon={faPen} />
           </div>
           <div className="col-span-2">

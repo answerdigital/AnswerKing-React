@@ -26,7 +26,7 @@ export const Search = ({
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <svg
           aria-hidden="true"
-          className="h-5 w-5 text-gray-700 dark:text-gray-400"
+          className="text-grey-darken-3 h-5 w-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -40,17 +40,17 @@ export const Search = ({
         id="default-search"
         className={cn(
           'block h-full w-full',
-          'rounded-full border border-gray-700 bg-gray-50',
+          'bg-ak-grey-5 border-ak-grey-1 rounded-full border',
           'p-4 pl-12',
-          'font-poppins text-center text-gray-700',
-          'placeholder:text-gray-700',
-          'focus:border-blue-500 focus:ring-blue-500',
+          'font-poppins text-ak-grey-1 text-center',
+          'placeholder:text-ak-grey-1',
+          'focus:border-blue-primary focus:ring-blue-primary',
           {
             'py-1 px-5 text-sm': sizeType === 'small',
             'py-2 px-5 text-base': sizeType === 'medium',
             'py-3 px-12 text-xl': sizeType === 'large',
           },
-          { 'transition duration-500 hover:cursor-text hover:border-gray-200 hover:bg-gray-200': hover }
+          { 'hover:border-ak-grey-5 hover:bg-ak-grey-5 transition duration-500 hover:cursor-text': hover }
         )}
         placeholder={placeholder}
         required

@@ -18,7 +18,7 @@ export const CheckoutConfirmationTab = (): ReactElement => {
     <div className="flex h-full w-full flex-col">
       <div className="flex w-full flex-col items-center justify-center">
         <img src={FoodPrepGif} className="aspect-square w-[150px]"></img>
-        <h1 className="mb-4 text-[20px] font-[600] text-[#333F4C]">Order received</h1>
+        <h1 className="text-ak-grey-1 mb-4 text-[20px] font-[600]">Order received</h1>
       </div>
 
       <CheckoutSection title="Order">

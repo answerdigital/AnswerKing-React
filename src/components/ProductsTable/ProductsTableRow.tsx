@@ -43,7 +43,7 @@ export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElem
         <span
           onClick={() => productForm.startEditing(product)}
           role="button"
-          className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
+          className="bg-ak-grey-5 group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded"
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </span>

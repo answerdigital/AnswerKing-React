@@ -25,7 +25,7 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
       <td className={'text-center ' + formatting}>{category.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + formatting}>
         <span
-          className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
+          className="bg-ak-grey-5 group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded"
           onClick={() => formContext.startEditing(category)}
         >
           <FontAwesomeIcon icon={faPencilAlt} />

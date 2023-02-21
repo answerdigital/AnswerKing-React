@@ -46,7 +46,7 @@ export const Tooltip = ({ parentRef, children }: Props): ReactElement => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1 }}
       exit={{ opacity: 0 }}
-      className={cn('absolute w-fit max-w-sm -translate-x-1/2 rounded-lg bg-white p-2 text-sm text-inherit shadow-md')}
+      className={cn('text-ak-grey-1 absolute w-fit max-w-sm -translate-x-1/2 rounded-lg bg-white p-2 text-sm shadow-md')}
       ref={ref}
     >
       <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-white"></div>

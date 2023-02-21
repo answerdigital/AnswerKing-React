@@ -9,13 +9,13 @@ interface Props {
 
 export const AllergenTable = ({ products, allergens }: Props): ReactElement => {
   return (
-    <table className="w-full table-auto border-separate border-spacing-0 text-[#333F4C]">
+    <table className="text-ak-grey-1 w-full table-auto border-separate border-spacing-0">
       <thead className="sticky top-0 w-full bg-white/90">
         <tr>
-          <th className="border-b-2 border-[#5A6675]"></th>
+          <th className="border-ak-grey-2 border-b-2"></th>
           {allergens.map((value) => {
             return (
-              <th className="rotate-180 border-t-2 border-[#5A6675] p-2 text-left [writing-mode:vertical-lr]" key={value}>
+              <th className="border-ak-grey-2 rotate-180 border-t-2 p-2 text-left [writing-mode:vertical-lr]" key={value}>
                 {value}
               </th>
             );
@@ -25,7 +25,7 @@ export const AllergenTable = ({ products, allergens }: Props): ReactElement => {
       <tbody>
         {products.map((product) => {
           return (
-            <tr key={product.id} className="text-right font-bold even:bg-[#E4EAEB]">
+            <tr key={product.id} className="even:bg-ak-grey-5 text-right font-bold">
               <td className="py-3">{product.name}</td>
               {[...Array(allergens.length).keys()].map((value) => {
                 return (

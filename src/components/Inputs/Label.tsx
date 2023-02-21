@@ -13,7 +13,7 @@ export const Label = ({ children, className, error, forId }: Props): ReactElemen
   return (
     <div className={cn('flex flex-row gap-2', className)}>
       {children && (
-        <label htmlFor={forId} className="font-poly italic text-[#A2AAB6]">
+        <label htmlFor={forId} className="font-poly text-ak-grey-4 italic">
           {children}
         </label>
       )}

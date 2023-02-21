@@ -45,7 +45,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
         >
           <ModalTransition>
             <div
-              className="flex w-[60vh] flex-col items-center rounded-2xl bg-white p-[20px] text-[#333F4C] shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
+              className="text-ak-grey-1 flex w-[60vh] flex-col items-center rounded-2xl bg-white p-[20px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex w-full flex-row gap-[20px]">
@@ -69,7 +69,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
               </div>
 
               <div className="mt-[5%] flex w-full flex-col justify-items-start gap-[8px]">
-                <div className="font-poly text-left text-[16px] font-[400] italic text-[#A2AAB6]">Contains Allergens</div>
+                <div className="font-poly text-ak-grey-4 text-left text-[16px] font-[400] italic">Contains Allergens</div>
                 <div data-testid="allergens" className="flex flex-row justify-items-start gap-[16px] text-[14px]">
                   {allergens ? (
                     allergens.map((allergen) => <label key={allergen}>{allergen}</label>)
@@ -82,7 +82,7 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
               <div className="mt-[5%] flex flex-row gap-4 self-stretch rounded-lg">
                 <Button
                   data-testid="cancel-button"
-                  className="h-[45px] w-[40%] grow gap-2.5 border border-[#A2AAB6]"
+                  className="border-ak-grey-4 h-[45px] w-[40%] grow gap-2.5 border"
                   colour="clear"
                   onClick={() => disableShow(false)}
                 >

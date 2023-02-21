@@ -25,7 +25,7 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
       <td className={'text-center ' + padding}>{tag.products?.length ?? '0'}</td>
       <td className={'flex justify-end ' + padding}>
         <span
-          className="group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded border bg-[#E4EAEB]"
+          className="bg-ak-grey-5 group mr-4 flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded"
           onClick={() => formContext.startEditing(tag)}
         >
           <FontAwesomeIcon icon={faPencilAlt} />
