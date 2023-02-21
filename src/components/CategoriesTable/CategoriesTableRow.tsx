@@ -5,6 +5,7 @@ import { useCategoryFormContext } from 'components/CategoryForm/CategoryFormCont
 import { CategoryDto } from 'dtos/CategoryDto';
 import { toast } from 'react-toastify';
 import { TrashIcon } from 'components/Icons/TrashIcon';
+import { useCategories } from 'hooks/useCategories';
 
 interface Props {
   category: CategoryDto;
@@ -12,10 +13,15 @@ interface Props {
 }
 
 export const CategoriesTableRow = ({ category, formatting }: Props): ReactElement => {
+  const { removeCategory } = useCategories();
   const formContext = useCategoryFormContext();
 
   const handleDelete = (): void => {
-    toast.success(`Product "${category.name}" was succesfully removed.`);
+    removeCategory.mutate(category.id, {
+      onSuccess: () => {
+        toast.success(`Product "${category.name}" was succesfully removed.`);
+      },
+    });
   };
 
   return (
@@ -30,7 +36,7 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </span>
-        <TrashIcon onClick={() => handleDelete} />
+        <TrashIcon onClick={handleDelete} />
       </td>
     </tr>
   );

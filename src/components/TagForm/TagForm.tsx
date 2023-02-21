@@ -20,6 +20,10 @@ export const TagForm = (): ReactElement => {
   const { products } = useProducts();
   const { createTag, editTag } = useTags();
 
+  const activeProducts = useMemo(() => {
+    return products.data?.filter((product) => !product.retired) || [];
+  }, [products.data]);
+
   const {
     register,
     handleSubmit,
@@ -34,7 +38,9 @@ export const TagForm = (): ReactElement => {
   });
 
   const submitForm = (data: TagsFormSchema): void => {
-    const tagOutput: TagRequestDto = { ...data, products: data.products as number[] };
+    const legacyProductsIds =
+      products.data?.filter((product) => product.retired && tagForm.initialTag?.products?.includes(product.id)).map((product) => product.id) || [];
+    const tagOutput: TagRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
     console.log(tagOutput);
     if (!tagForm.initialTag) {
       createTag.mutate(tagOutput, {
@@ -56,32 +62,30 @@ export const TagForm = (): ReactElement => {
     }
   };
 
-  const filteredProducts = useMemo(() => {
-    return products.data?.filter((product) => !product.retired);
-  }, [products.data]);
-
   return (
     <>
-      <form className="w-full overflow-auto">
-        <div className="grid grid-cols-4 gap-4 p-2">
-          <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
-            <FontAwesomeIcon icon={faPen} />
+      {!products.isLoading && (
+        <form className="w-full overflow-auto">
+          <div className="grid grid-cols-4 gap-4 p-2">
+            <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
+              <FontAwesomeIcon icon={faPen} />
+            </div>
+            <div className="col-span-2">
+              <Input label="Tag Name" id="tag-name" error={errors.name?.message} {...register('name')} />
+            </div>
+            <div className="col-span-2 row-span-2">
+              <TextArea label="Text Description" id="text-description" rows={3} error={errors.description?.message} {...register('description')} />
+            </div>
+            <Label className="col-span-4" error={errors.products?.message}>
+              Products
+            </Label>
+            {activeProducts.map((product) => {
+              return <Checkbox key={product.id} value={product.id} label={product.name} id={product.id.toString()} {...register('products')} />;
+            })}
           </div>
-          <div className="col-span-2">
-            <Input label="Tag Name" id="tag-name" error={errors.name?.message} {...register('name')} />
-          </div>
-          <div className="col-span-2 row-span-2">
-            <TextArea label="Text Description" id="text-description" rows={3} error={errors.description?.message} {...register('description')} />
-          </div>
-          <Label className="col-span-4" error={errors.products?.message}>
-            Products
-          </Label>
-          {filteredProducts?.map((product) => {
-            return <Checkbox key={product.id} value={product.id} label={product.name} id={product.id.toString()} {...register('products')} />;
-          })}
-        </div>
-        <LoaderOverlay isEnabled={false} />
-      </form>
+          <LoaderOverlay isEnabled={false} />
+        </form>
+      )}
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={tagForm.closeForm}>
           Cancel

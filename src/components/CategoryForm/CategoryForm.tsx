@@ -18,9 +18,6 @@ export const CategoryForm = (): ReactElement => {
   const categoryForm = useCategoryFormContext();
   const { products } = useProducts();
   const { createCategory, editCategory } = useCategories();
-  const retiredProducts = useMemo(() => {
-    return products.data?.filter((product) => product.retired) || [];
-  }, [products.data]);
   const activeProducts = useMemo(() => {
     return products.data?.filter((product) => !product.retired) || [];
   }, [products.data]);
@@ -39,8 +36,10 @@ export const CategoryForm = (): ReactElement => {
   });
 
   const submitForm = (data: CategoryFormSchema): void => {
-    const legacyProducts = retiredProducts.filter((product) => categoryForm.initialCategory?.products?.includes(product.id));
-    const legacyProductsIds = legacyProducts.map((product) => product.id);
+    const legacyProductsIds =
+      products.data
+        ?.filter((product) => product.retired && categoryForm.initialCategory?.products?.includes(product.id))
+        .map((product) => product.id) || [];
     const tagOutput: CategoryRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
     console.log(tagOutput);
     if (!categoryForm.initialCategory) {

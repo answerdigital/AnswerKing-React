@@ -5,6 +5,7 @@ import { useTagFormContext } from 'components/TagForm/TagFormContext';
 import { TagDto } from 'dtos/TagDto';
 import { TrashIcon } from 'components/Icons/TrashIcon';
 import { toast } from 'react-toastify';
+import { useTags } from 'hooks/useTags';
 
 interface Props {
   tag: TagDto;
@@ -12,10 +13,15 @@ interface Props {
 }
 
 export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
+  const { removeTag } = useTags();
   const formContext = useTagFormContext();
 
   const handleDelete = (): void => {
-    toast.success(`Product "${tag.name}" was succesfully removed.`);
+    removeTag.mutate(tag.id, {
+      onSuccess: () => {
+        toast.success(`Product "${tag.name}" was succesfully removed.`);
+      },
+    });
   };
 
   return (
@@ -30,7 +36,7 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </span>
-        <TrashIcon onClick={() => handleDelete} />
+        <TrashIcon onClick={handleDelete} />
       </td>
     </tr>
   );

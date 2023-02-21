@@ -47,7 +47,7 @@ export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElem
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </span>
-        <TrashIcon onClick={() => handleDelete()} />
+        <TrashIcon onClick={handleDelete} />
       </td>
     </tr>
   );
