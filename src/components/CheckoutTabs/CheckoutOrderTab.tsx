@@ -24,7 +24,7 @@ export const CheckoutOrderTab = (): ReactElement => {
 
       {!orderExists ? (
         <ComponentTransition lineItemsExist={orderExists}>
-          <div className="text-ak-grey-1 mx-auto translate-y-[70%] items-center justify-center text-center text-[14px] font-[400]">
+          <div className="text-ak-grey-1 grid min-h-[46vh] content-center justify-items-center text-center text-[14px] font-[400]">
             <img src={CheckoutBurgerImg} className="mx-auto mb-[4%] h-[50px] w-[80px]"></img>
             <p>
               Whoa, you&apos;ve not got <br></br> anything in your order yet
