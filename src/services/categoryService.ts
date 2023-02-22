@@ -12,8 +12,10 @@ const getAll = async (): Promise<CategoryDto[]> => {
       return Promise.reject();
     }
   }
+  const x = await response.json();
+  await console.log(x);
 
-  return await response.json();
+  return x;
 };
 
 const create = async (createDto: CategoryRequestDto): Promise<CategoryDto> => {

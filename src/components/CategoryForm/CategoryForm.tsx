@@ -18,8 +18,20 @@ export const CategoryForm = (): ReactElement => {
   const categoryForm = useCategoryFormContext();
   const { products } = useProducts();
   const { createCategory, editCategory } = useCategories();
+
   const activeProducts = useMemo(() => {
     return products.data?.filter((product) => !product.retired) || [];
+  }, [products.data]);
+
+  const productOptions = useMemo(() => {
+    return (
+      activeProducts.map((product) => {
+        return {
+          product: product,
+          selected: categoryForm.initialCategory?.products?.includes(product.id) as boolean,
+        };
+      }) ?? []
+    );
   }, [products.data]);
 
   const {
@@ -40,8 +52,10 @@ export const CategoryForm = (): ReactElement => {
       products.data
         ?.filter((product) => product.retired && categoryForm.initialCategory?.products?.includes(product.id))
         .map((product) => product.id) || [];
+
     const tagOutput: CategoryRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
     console.log(tagOutput);
+
     if (!categoryForm.initialCategory) {
       createCategory.mutate(tagOutput, {
         onSuccess: (returnProduct) => {
@@ -87,8 +101,17 @@ export const CategoryForm = (): ReactElement => {
             <Label className="col-span-4" error={errors.products?.message}>
               Products
             </Label>
-            {activeProducts.map((product) => {
-              return <Checkbox key={product.id} id={product.id.toString()} label={product.name} value={product.id} {...register('products')} />;
+            {productOptions.map((productOption) => {
+              return (
+                <Checkbox
+                  key={productOption.product.id}
+                  id={productOption.product.id.toString()}
+                  label={productOption.product.name}
+                  value={productOption.product.id}
+                  defaultChecked={productOption.selected}
+                  {...register('products')}
+                />
+              );
             })}
           </div>
         </form>

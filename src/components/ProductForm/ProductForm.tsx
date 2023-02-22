@@ -27,6 +27,17 @@ export const ProductForm = (): ReactElement => {
     return tags.data?.filter((tag) => !tag.retired) || [];
   }, [tags.data]);
 
+  const tagOptions = useMemo(() => {
+    return (
+      activeTags.map((tag) => {
+        return {
+          tag: tag,
+          selected: productForm.initialProduct?.tags.includes(tag.id) as boolean,
+        };
+      }) ?? []
+    );
+  }, [categories.data]);
+
   const activeDefaultTags = useMemo(() => {
     return activeTags.filter((tag) => productForm.initialProduct?.tags.includes(tag.id));
   }, [tags.data]);
@@ -39,7 +50,7 @@ export const ProductForm = (): ReactElement => {
     return activeCategories.find((category) => category.id === productForm.initialProduct?.category?.id);
   }, [categories.data]);
 
-  const retiredDefaultCategory: boolean = useMemo(() => {
+  const defaultCategoryisRetired = useMemo(() => {
     return !activeDefaultCategory && productForm.initialProduct !== undefined;
   }, [categories.data]);
 
@@ -71,12 +82,15 @@ export const ProductForm = (): ReactElement => {
   });
 
   const submitForm = (data: ProductFormSchema): void => {
-    const legacyTagIds =
-      tags.data?.filter((product) => product.retired && productForm.initialProduct?.tags.includes(product.id)).map((product) => product.id) || [];
-    const categoryIdToSave = retiredDefaultCategory ? data.categoryId : productForm.initialProduct?.category?.id;
+    console.log(data);
+    const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) || [];
+
+    const categoryIdToSave = defaultCategoryisRetired ? productForm.initialProduct?.category?.id || activeCategories[0]?.id : data.categoryId;
+
     console.log(data);
     const productOutput: ProductRequestDto = { ...data, categoryId: categoryIdToSave, tagsIds: (data.tagsIds as number[]).concat(legacyTagIds) };
     console.log(productOutput);
+
     if (!productForm.initialProduct) {
       createProduct.mutate(productOutput, {
         onSuccess: (returnProduct) => {
@@ -101,7 +115,7 @@ export const ProductForm = (): ReactElement => {
 
   return (
     <>
-      {loading && (
+      {!loading && (
         <form className="w-full overflow-auto">
           <div className="grid grid-cols-4 gap-4 p-2">
             <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
@@ -115,12 +129,12 @@ export const ProductForm = (): ReactElement => {
             </div>
             <div className="col-span-2">
               <Select
+                {...register('categoryId')}
                 label="Category"
                 options={categoryOptions}
                 id="category"
                 error={errors.categoryId?.message}
-                {...register('categoryId')}
-                disabled={retiredDefaultCategory}
+                disabled={defaultCategoryisRetired}
               />
             </div>
             <div className="flex w-full flex-col">
@@ -132,10 +146,24 @@ export const ProductForm = (): ReactElement => {
             <Label error={errors.tagsIds?.message} className="col-span-4">
               Tags
             </Label>
-            {activeTags.map((tag) => {
-              return <Checkbox key={tag.id} value={tag.id} label={tag.name} id={tag.id.toString()} {...register('tagsIds')} />;
+            {tagOptions.map((tagOption) => {
+              return (
+                <Checkbox
+                  {...register(`tagsIds.${tagOption.tag.id}`)}
+                  key={tagOption.tag.id}
+                  value={tagOption.tag.id}
+                  label={tagOption.tag.name}
+                  id={tagOption.tag.id.toString()}
+                  defaultChecked={tagOption.selected}
+                />
+              );
             })}
           </div>
+          <div>Original Tags:{activeTags.filter((tag) => productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.name)}</div>
+          <div>
+            Legacy Tags:{tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((product) => product.id)}
+          </div>
+          <div>Original Category:{productForm.initialProduct?.category?.name || 'none'}</div>
           <LoaderOverlay isEnabled={false} />
         </form>
       )}

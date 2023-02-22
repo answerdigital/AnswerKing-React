@@ -2,6 +2,6 @@ export interface ProductRequestDto {
   name: string;
   description?: string;
   price: number;
-  categoryId?: number;
+  categoryId: number;
   tagsIds: number[];
 }

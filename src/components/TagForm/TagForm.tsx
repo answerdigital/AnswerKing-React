@@ -24,6 +24,17 @@ export const TagForm = (): ReactElement => {
     return products.data?.filter((product) => !product.retired) || [];
   }, [products.data]);
 
+  const productOptions = useMemo(() => {
+    return (
+      activeProducts.map((product) => {
+        return {
+          product: product,
+          selected: tagForm.initialTag?.products?.includes(product.id) as boolean,
+        };
+      }) ?? []
+    );
+  }, [products.data]);
+
   const {
     register,
     handleSubmit,
@@ -40,8 +51,10 @@ export const TagForm = (): ReactElement => {
   const submitForm = (data: TagsFormSchema): void => {
     const legacyProductsIds =
       products.data?.filter((product) => product.retired && tagForm.initialTag?.products?.includes(product.id)).map((product) => product.id) || [];
+
     const tagOutput: TagRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
     console.log(tagOutput);
+
     if (!tagForm.initialTag) {
       createTag.mutate(tagOutput, {
         onSuccess: (returnProduct) => {
@@ -81,8 +94,17 @@ export const TagForm = (): ReactElement => {
             <Label className="col-span-4" error={errors.products?.message}>
               Products
             </Label>
-            {activeProducts.map((product) => {
-              return <Checkbox key={product.id} value={product.id} label={product.name} id={product.id.toString()} {...register('products')} />;
+            {productOptions.map((productOption) => {
+              return (
+                <Checkbox
+                  key={productOption.product.id}
+                  value={productOption.product.id}
+                  label={productOption.product.name}
+                  id={productOption.product.id.toString()}
+                  defaultChecked={productOption.selected}
+                  {...register('products')}
+                />
+              );
             })}
           </div>
           <LoaderOverlay isEnabled={false} />

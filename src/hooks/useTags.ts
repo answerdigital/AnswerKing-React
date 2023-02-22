@@ -27,7 +27,7 @@ interface UseTagsResult {
 }
 
 export const useTags = (): UseTagsResult => {
-  const tags = useQuery<TagDto[]>(['items'], tagService.getAll);
+  const tags = useQuery<TagDto[]>(['tags'], tagService.getAll);
 
   const createTag = useMutation<TagDto, tagProblemDetails, TagRequestDto>((requestDto) => tagService.create(requestDto), {
     onSuccess: () => {

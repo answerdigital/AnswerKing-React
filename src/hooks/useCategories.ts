@@ -27,7 +27,7 @@ interface UseCategoriesResult {
 }
 
 export const useCategories = (): UseCategoriesResult => {
-  const categories = useQuery<CategoryDto[]>(['items'], categoryService.getAll);
+  const categories = useQuery<CategoryDto[]>(['categories'], categoryService.getAll);
 
   const createCategory = useMutation<CategoryDto, categoryProblemDetails, CategoryRequestDto>((requestDto) => categoryService.create(requestDto), {
     onSuccess: () => {
