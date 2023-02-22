@@ -40,7 +40,7 @@ export const ProductForm = (): ReactElement => {
 
   const activeDefaultTags = useMemo(() => {
     return activeTags.filter((tag) => productForm.initialProduct?.tags.includes(tag.id));
-  }, [tags.data]);
+  }, [activeTags]);
 
   const activeCategories = useMemo(() => {
     return categories.data?.filter((category) => !category.retired) || [];
@@ -48,11 +48,11 @@ export const ProductForm = (): ReactElement => {
 
   const activeDefaultCategory = useMemo(() => {
     return activeCategories.find((category) => category.id === productForm.initialProduct?.category?.id);
-  }, [categories.data]);
+  }, [activeCategories]);
 
   const defaultCategoryisRetired = useMemo(() => {
     return !activeDefaultCategory && productForm.initialProduct !== undefined;
-  }, [categories.data]);
+  }, [activeDefaultCategory, productForm.initialProduct]);
 
   const categoryOptions = useMemo(() => {
     return (
@@ -63,7 +63,7 @@ export const ProductForm = (): ReactElement => {
         };
       }) ?? []
     );
-  }, [categories.data]);
+  }, [activeCategories]);
 
   const {
     register,
@@ -109,6 +109,8 @@ export const ProductForm = (): ReactElement => {
         }
       );
     }
+
+    productForm.closeForm();
   };
 
   const loading = tags.isLoading || categories.isLoading;
@@ -167,11 +169,11 @@ export const ProductForm = (): ReactElement => {
           <LoaderOverlay isEnabled={false} />
         </form>
       )}
-      <div className="mt-4 grid h-10 w-full flex-none grid-cols-2 gap-4">
+      <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={productForm.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" onClick={handleSubmit(submitForm)} data-testid="submit-product" disabled={loading}>
+        <Button colour={loading ? 'grey' : 'yellow'} onClick={handleSubmit(submitForm)} data-testid="submit-product" disabled={loading}>
           Save Item
         </Button>
       </div>
