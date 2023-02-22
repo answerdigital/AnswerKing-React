@@ -1,5 +1,5 @@
 export interface TagRequestDto {
   name: string;
-  description: string;
+  description?: string;
   products: number[];
 }

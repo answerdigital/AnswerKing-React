@@ -1,5 +1,5 @@
 export interface CategoryRequestDto {
-  name?: string;
+  name: string;
   description?: string;
-  products?: number[];
+  products: number[];
 }
