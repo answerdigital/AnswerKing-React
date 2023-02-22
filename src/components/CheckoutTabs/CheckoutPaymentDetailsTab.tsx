@@ -48,14 +48,16 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
         <CheckboxRow label="Save for next time" checked={saveLater} onClick={() => setSaveLater(!saveLater)} />
       </div>
 
-      <CheckoutFooter>
-        <Button colour="white" className="h-[45px] w-3/12" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
-          Back
-        </Button>
-        <Button colour="yellow" className="h-[45px] w-full" onClick={() => setCurrentTab(CheckoutTabType.Summary)} disabled={!orderExists}>
-          Continue to summary
-        </Button>
-      </CheckoutFooter>
+      <div className="mt-auto">
+        <CheckoutFooter>
+          <Button colour="white" className="h-[45px] w-3/12" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
+            Back
+          </Button>
+          <Button colour="yellow" className="h-[45px] w-full" onClick={() => setCurrentTab(CheckoutTabType.Summary)} disabled={!orderExists}>
+            Continue to summary
+          </Button>
+        </CheckoutFooter>
+      </div>
     </div>
   );
 };
