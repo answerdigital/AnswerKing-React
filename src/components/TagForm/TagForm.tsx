@@ -62,9 +62,11 @@ export const TagForm = (): ReactElement => {
     }
   };
 
+  const loading = products.isLoading;
+
   return (
     <>
-      {!products.isLoading && (
+      {!loading && (
         <form className="w-full overflow-auto">
           <div className="grid grid-cols-4 gap-4 p-2">
             <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
@@ -90,7 +92,7 @@ export const TagForm = (): ReactElement => {
         <Button colour="white" onClick={tagForm.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" onClick={handleSubmit(submitForm)}>
+        <Button colour="yellow" onClick={handleSubmit(submitForm)} disabled={loading}>
           Save Tag
         </Button>
       </div>

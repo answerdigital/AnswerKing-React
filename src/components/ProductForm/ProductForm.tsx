@@ -27,8 +27,20 @@ export const ProductForm = (): ReactElement => {
     return tags.data?.filter((tag) => !tag.retired) || [];
   }, [tags.data]);
 
+  const activeDefaultTags = useMemo(() => {
+    return activeTags.filter((tag) => productForm.initialProduct?.tags.includes(tag.id));
+  }, [tags.data]);
+
   const activeCategories = useMemo(() => {
     return categories.data?.filter((category) => !category.retired) || [];
+  }, [categories.data]);
+
+  const activeDefaultCategory = useMemo(() => {
+    return activeCategories.find((category) => category.id === productForm.initialProduct?.category?.id);
+  }, [categories.data]);
+
+  const retiredDefaultCategory: boolean = useMemo(() => {
+    return !activeDefaultCategory && productForm.initialProduct !== undefined;
   }, [categories.data]);
 
   const categoryOptions = useMemo(() => {
@@ -53,16 +65,17 @@ export const ProductForm = (): ReactElement => {
       description: productForm.initialProduct?.description,
       price: productForm.initialProduct?.price,
       stock: 0,
-      categoryId: productForm.initialProduct?.category?.id,
-      tagsIds: productForm.initialProduct?.tags ?? [],
+      categoryId: activeDefaultCategory?.id,
+      tagsIds: activeDefaultTags.map((tag) => tag.id),
     },
   });
 
   const submitForm = (data: ProductFormSchema): void => {
     const legacyTagIds =
       tags.data?.filter((product) => product.retired && productForm.initialProduct?.tags.includes(product.id)).map((product) => product.id) || [];
+    const categoryIdToSave = retiredDefaultCategory ? data.categoryId : productForm.initialProduct?.category?.id;
     console.log(data);
-    const productOutput: ProductRequestDto = { ...data, tagsIds: (data.tagsIds as number[]).concat(legacyTagIds) };
+    const productOutput: ProductRequestDto = { ...data, categoryId: categoryIdToSave, tagsIds: (data.tagsIds as number[]).concat(legacyTagIds) };
     console.log(productOutput);
     if (!productForm.initialProduct) {
       createProduct.mutate(productOutput, {
@@ -84,9 +97,11 @@ export const ProductForm = (): ReactElement => {
     }
   };
 
+  const loading = tags.isLoading || categories.isLoading;
+
   return (
     <>
-      {!tags.isLoading && !categories.isLoading && (
+      {loading && (
         <form className="w-full overflow-auto">
           <div className="grid grid-cols-4 gap-4 p-2">
             <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
@@ -99,7 +114,14 @@ export const ProductForm = (): ReactElement => {
               <TextArea label="Item description" id="item-description" error={errors.description?.message} {...register('description')} />
             </div>
             <div className="col-span-2">
-              <Select label="Category" options={categoryOptions} id="category" error={errors.categoryId?.message} {...register('categoryId')} />
+              <Select
+                label="Category"
+                options={categoryOptions}
+                id="category"
+                error={errors.categoryId?.message}
+                {...register('categoryId')}
+                disabled={retiredDefaultCategory}
+              />
             </div>
             <div className="flex w-full flex-col">
               <Input label="Price" type="number" step={0.01} min={0} id="price" error={errors.price?.message} {...register('price')} />
@@ -121,7 +143,7 @@ export const ProductForm = (): ReactElement => {
         <Button colour="white" onClick={productForm.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" onClick={handleSubmit(submitForm)} data-testid="submit-product">
+        <Button colour="yellow" onClick={handleSubmit(submitForm)} data-testid="submit-product" disabled={loading}>
           Save Item
         </Button>
       </div>

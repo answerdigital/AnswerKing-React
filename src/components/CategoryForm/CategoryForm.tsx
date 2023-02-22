@@ -62,38 +62,42 @@ export const CategoryForm = (): ReactElement => {
     }
   };
 
+  const loading = products.isLoading;
+
   return (
     <>
-      <form className="w-full overflow-auto">
-        <div className="grid grid-cols-4 gap-4 p-2">
-          <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
-            <FontAwesomeIcon icon={faPen} />
+      {!loading && (
+        <form className="w-full overflow-auto">
+          <div className="grid grid-cols-4 gap-4 p-2">
+            <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
+              <FontAwesomeIcon icon={faPen} />
+            </div>
+            <div className="col-span-2">
+              <Input label="Category Name" id="category-name" error={errors.name?.message} {...register('name')} />
+            </div>
+            <div className="col-span-2 row-span-2">
+              <TextArea
+                label="Category Description"
+                id="category-description"
+                rows={3}
+                error={errors.description?.message}
+                {...register('description')}
+              />
+            </div>
+            <Label className="col-span-4" error={errors.products?.message}>
+              Products
+            </Label>
+            {activeProducts.map((product) => {
+              return <Checkbox key={product.id} id={product.id.toString()} label={product.name} value={product.id} {...register('products')} />;
+            })}
           </div>
-          <div className="col-span-2">
-            <Input label="Category Name" id="category-name" error={errors.name?.message} {...register('name')} />
-          </div>
-          <div className="col-span-2 row-span-2">
-            <TextArea
-              label="Category Description"
-              id="category-description"
-              rows={3}
-              error={errors.description?.message}
-              {...register('description')}
-            />
-          </div>
-          <Label className="col-span-4" error={errors.products?.message}>
-            Products
-          </Label>
-          {activeProducts.map((product) => {
-            return <Checkbox key={product.id} id={product.id.toString()} label={product.name} value={product.id} {...register('products')} />;
-          })}
-        </div>
-      </form>
+        </form>
+      )}
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={categoryForm.closeForm}>
           Cancel
         </Button>
-        <Button colour="yellow" onClick={handleSubmit(submitForm)}>
+        <Button colour="yellow" onClick={handleSubmit(submitForm)} disabled={loading}>
           Save Category
         </Button>
       </div>
