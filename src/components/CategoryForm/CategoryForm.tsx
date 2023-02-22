@@ -13,6 +13,7 @@ import { Label } from 'components/Inputs/Label';
 import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
 import { useCategories } from 'hooks/useCategories';
 import { CategoryRequestDto } from 'dtos/CategoryRequestDto';
+import { toast } from 'react-toastify';
 
 export const CategoryForm = (): ReactElement => {
   const categoryForm = useCategoryFormContext();
@@ -54,12 +55,11 @@ export const CategoryForm = (): ReactElement => {
         .map((product) => product.id) || [];
 
     const tagOutput: CategoryRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
-    console.log(tagOutput);
 
     if (!categoryForm.initialCategory) {
       createCategory.mutate(tagOutput, {
         onSuccess: (returnProduct) => {
-          console.log(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
+          toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
           categoryForm.closeForm();
         },
       });
@@ -68,7 +68,7 @@ export const CategoryForm = (): ReactElement => {
         { id: categoryForm.initialCategory.id, requestDto: tagOutput },
         {
           onSuccess: (returnProduct) => {
-            console.log(`Product "${returnProduct.name}" was succesfully edited" .`);
+            toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
             categoryForm.closeForm();
           },
         }

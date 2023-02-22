@@ -16,6 +16,7 @@ import { Label } from 'components/Inputs/Label';
 import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
 import { ProductRequestDto } from 'dtos/ProductRequestDto';
 import { useProducts } from 'hooks/useProducts';
+import { toast } from 'react-toastify';
 
 export const ProductForm = (): ReactElement => {
   const productForm = useProductFormContext();
@@ -82,19 +83,16 @@ export const ProductForm = (): ReactElement => {
   });
 
   const submitForm = (data: ProductFormSchema): void => {
-    console.log(data);
     const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) || [];
 
     const categoryIdToSave = defaultCategoryisRetired ? productForm.initialProduct?.category?.id || activeCategories[0]?.id : data.categoryId;
 
-    console.log(data);
     const productOutput: ProductRequestDto = { ...data, categoryId: categoryIdToSave, tagsIds: (data.tagsIds as number[]).concat(legacyTagIds) };
-    console.log(productOutput);
 
     if (!productForm.initialProduct) {
       createProduct.mutate(productOutput, {
         onSuccess: (returnProduct) => {
-          console.log(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
+          toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
           productForm.closeForm();
         },
       });
@@ -103,7 +101,7 @@ export const ProductForm = (): ReactElement => {
         { id: productForm.initialProduct.id, requestDto: productOutput },
         {
           onSuccess: (returnProduct) => {
-            console.log(`Product "${returnProduct.name}" was succesfully edited" .`);
+            toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
             productForm.closeForm();
           },
         }

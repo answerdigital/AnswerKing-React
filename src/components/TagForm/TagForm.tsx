@@ -14,6 +14,7 @@ import { Label } from 'components/Inputs/Label';
 import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
 import { TagRequestDto } from 'dtos/TagRequestDto';
 import { useTags } from 'hooks/useTags';
+import { toast } from 'react-toastify';
 
 export const TagForm = (): ReactElement => {
   const tagForm = useTagFormContext();
@@ -53,12 +54,11 @@ export const TagForm = (): ReactElement => {
       products.data?.filter((product) => product.retired && tagForm.initialTag?.products?.includes(product.id)).map((product) => product.id) || [];
 
     const tagOutput: TagRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
-    console.log(tagOutput);
 
     if (!tagForm.initialTag) {
       createTag.mutate(tagOutput, {
         onSuccess: (returnProduct) => {
-          console.log(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
+          toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
           tagForm.closeForm();
         },
       });
@@ -67,7 +67,7 @@ export const TagForm = (): ReactElement => {
         { id: tagForm.initialTag.id, requestDto: tagOutput },
         {
           onSuccess: (returnProduct) => {
-            console.log(`Product "${returnProduct.name}" was succesfully edited" .`);
+            toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
             tagForm.closeForm();
           },
         }
