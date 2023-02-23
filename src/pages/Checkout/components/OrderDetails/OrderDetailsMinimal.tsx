@@ -7,7 +7,7 @@ interface Props {
 
 export const OrderDetailsMinimal = ({ items }: Props): ReactElement => {
   return (
-    <table className="w-full table-fixed text-[12px]">
+    <table className="w-full table-fixed text-xs">
       <tbody>
         {items.map((lineItem) => (
           <tr key={lineItem.product.id} className="flex justify-between py-2 [&:not(:last-child)]:border-b">

@@ -12,7 +12,7 @@ export const CheckoutFooter = ({ children }: Props): ReactElement => {
   return (
     <>
       <OrderFeesAndTotals lineItems={localOrder.lineItems} />
-      <div className="flex gap-5 font-[400]">{children}</div>
+      <div className="flex gap-5 font-normal">{children}</div>
     </>
   );
 };

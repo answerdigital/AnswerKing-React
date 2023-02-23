@@ -21,13 +21,13 @@ interface Props {
 
 export const CheckoutTabContainer = ({ tab }: Props): ReactElement => {
   return (
-    <div className="mb-6 flex text-[18px] font-light">
+    <div className="mb-6 flex text-lg font-light">
       <Tab active={tab === CheckoutTabType.Order}>Order</Tab>
-      <FontAwesomeIcon icon={faAngleRight} className={cn('mx-5 self-center', 'text-[15px]')} />
+      <FontAwesomeIcon icon={faAngleRight} className={cn('mx-5 self-center', 'text-base')} />
       <Tab active={tab === CheckoutTabType.PaymentDetails}>Payment Details</Tab>
-      <FontAwesomeIcon icon={faAngleRight} className={cn('mx-5 self-center', 'text-[15px]')} />
+      <FontAwesomeIcon icon={faAngleRight} className={cn('mx-5 self-center', 'text-base')} />
       <Tab active={tab === CheckoutTabType.Summary}>Summary</Tab>
-      <FontAwesomeIcon icon={faAngleRight} className={cn('mx-5 self-center', 'text-[15px]')} />
+      <FontAwesomeIcon icon={faAngleRight} className={cn('mx-5 self-center', 'text-base')} />
       <Tab active={tab === CheckoutTabType.Confirmation}>Confirmation</Tab>
     </div>
   );
