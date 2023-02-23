@@ -1,11 +1,11 @@
 import { ReactElement, useMemo } from 'react';
-import { PageLayout } from 'components/PageLayout/PageLayout';
+import { PageLayout } from 'common/PageLayout/PageLayout';
 import { useProducts } from 'hooks/useProducts';
-import { Button } from 'components/Buttons/Button';
+import { Button } from 'common/Buttons/Button';
 import { RouteConstants } from 'utilities/route-constants';
 import { useNavigate } from 'react-router-dom';
-import { AllergenTable } from 'components/AllergenTable/AllergenTable';
 import { ALLERGENS } from 'utilities/allergens';
+import { AllergenTable } from './components/AllergenTable/AllergenTable';
 
 export const AllergensPage = (): ReactElement => {
   const { products } = useProducts();

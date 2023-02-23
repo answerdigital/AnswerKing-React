@@ -7,8 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      assets: resolve(__dirname, 'src/assets'),
-      components: resolve(__dirname, 'src/components'),
+      common: resolve(__dirname, 'src/common'),
       dtos: resolve(__dirname, 'src/dtos'),
       hooks: resolve(__dirname, 'src/hooks'),
       pages: resolve(__dirname, 'src/pages'),
@@ -17,6 +16,7 @@ export default defineConfig({
       utilities: resolve(__dirname, 'src/utilities'),
       context: resolve(__dirname, 'src/context'),
       schemas: resolve(__dirname, 'src/schemas'),
+      tests: resolve(__dirname, 'src/tests'),
     },
   },
   server: {
