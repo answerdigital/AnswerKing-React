@@ -1,5 +1,5 @@
 import { CategoryDto } from 'dtos/CategoryDto';
-import { CategoryRequestDto } from 'dtos/CategoryRequestDto';
+import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
 import { categoryService } from 'services/categoryService';
 import { ProblemDetails } from 'services/orderService';

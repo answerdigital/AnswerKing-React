@@ -1,5 +1,5 @@
 import { TagDto } from 'dtos/TagDto';
-import { TagRequestDto } from 'dtos/TagRequestDto';
+import { TagRequestDto } from 'dtos/RequestDtos/TagRequestDto';
 import { httpClient } from 'utilities/http-client';
 
 const getAll = async (): Promise<TagDto[]> => {

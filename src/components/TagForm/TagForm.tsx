@@ -12,7 +12,7 @@ import { useProducts } from 'hooks/useProducts';
 import { Checkbox } from 'components/Inputs/Checkbox';
 import { Label } from 'components/Inputs/Label';
 import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
-import { TagRequestDto } from 'dtos/TagRequestDto';
+import { TagRequestDto } from 'dtos/RequestDtos/TagRequestDto';
 import { useTags } from 'hooks/useTags';
 import { toast } from 'react-toastify';
 
@@ -21,16 +21,13 @@ export const TagForm = (): ReactElement => {
   const { products } = useProducts();
   const { createTag, editTag } = useTags();
 
-  const activeProducts = useMemo(() => {
-    return products.data?.filter((product) => !product.retired) || [];
-  }, [products.data]);
-
   const productOptions = useMemo(() => {
+    const activeProducts = products.data?.filter((product) => !product.retired) || [];
     return (
       activeProducts.map((product) => {
         return {
           product: product,
-          selected: tagForm.initialTag?.products?.includes(product.id) as boolean,
+          selected: !!tagForm.initialTag?.products?.includes(product.id),
         };
       }) ?? []
     );
@@ -49,29 +46,23 @@ export const TagForm = (): ReactElement => {
     },
   });
 
-  const submitForm = (data: TagsFormSchema): void => {
+  const submitForm = async (data: TagsFormSchema): Promise<void> => {
     const legacyProductsIds =
       products.data?.filter((product) => product.retired && tagForm.initialTag?.products?.includes(product.id)).map((product) => product.id) || [];
 
     const tagOutput: TagRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
 
-    if (!tagForm.initialTag) {
-      createTag.mutate(tagOutput, {
-        onSuccess: (returnProduct) => {
-          toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
-          tagForm.closeForm();
-        },
-      });
-    } else {
-      editTag.mutate(
-        { id: tagForm.initialTag.id, requestDto: tagOutput },
-        {
-          onSuccess: (returnProduct) => {
-            toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
-            tagForm.closeForm();
-          },
-        }
-      );
+    try {
+      if (!tagForm.initialTag) {
+        const returnProduct = await createTag.mutateAsync(tagOutput);
+        toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
+      } else {
+        const returnProduct = await editTag.mutateAsync({ id: tagForm.initialTag.id, requestDto: tagOutput });
+        toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
+      }
+      tagForm.closeForm();
+    } catch (error) {
+      toast.error(error as string);
     }
   };
 
@@ -79,7 +70,7 @@ export const TagForm = (): ReactElement => {
 
   return (
     <>
-      {!loading && (
+      {!loading ? (
         <form className="w-full overflow-auto">
           <div className="grid grid-cols-4 gap-4 p-2">
             <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
@@ -103,12 +94,14 @@ export const TagForm = (): ReactElement => {
                   id={productOption.product.id.toString()}
                   defaultChecked={productOption.selected}
                   {...register(`products.${productOption.product.id}`)}
+                  disabled={productOption.product.retired}
                 />
               );
             })}
           </div>
-          <LoaderOverlay isEnabled={false} />
         </form>
+      ) : (
+        <LoaderOverlay isEnabled={true} />
       )}
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={tagForm.closeForm}>

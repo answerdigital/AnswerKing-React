@@ -1,5 +1,5 @@
 import { CategoryDto } from 'dtos/CategoryDto';
-import { CategoryRequestDto } from 'dtos/CategoryRequestDto';
+import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
 import { httpClient } from 'utilities/http-client';
 
 const getAll = async (): Promise<CategoryDto[]> => {

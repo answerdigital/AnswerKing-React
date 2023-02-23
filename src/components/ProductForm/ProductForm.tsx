@@ -14,7 +14,7 @@ import { useCategories } from 'hooks/useCategories';
 import { useTags } from 'hooks/useTags';
 import { Label } from 'components/Inputs/Label';
 import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
-import { ProductRequestDto } from 'dtos/ProductRequestDto';
+import { ProductRequestDto } from 'dtos/RequestDtos/ProductRequestDto';
 import { useProducts } from 'hooks/useProducts';
 import { toast } from 'react-toastify';
 
@@ -24,11 +24,8 @@ export const ProductForm = (): ReactElement => {
   const { categories } = useCategories();
   const { createProduct, editProduct } = useProducts();
 
-  const activeTags = useMemo(() => {
-    return tags.data?.filter((tag) => !tag.retired) || [];
-  }, [tags.data]);
-
   const tagOptions = useMemo(() => {
+    const activeTags = tags.data?.filter((tag) => !tag.retired) || [];
     return (
       activeTags.map((tag) => {
         return {
@@ -38,10 +35,6 @@ export const ProductForm = (): ReactElement => {
       }) ?? []
     );
   }, [categories.data]);
-
-  const activeDefaultTags = useMemo(() => {
-    return activeTags.filter((tag) => productForm.initialProduct?.tags.includes(tag.id));
-  }, [activeTags]);
 
   const activeCategories = useMemo(() => {
     return categories.data?.filter((category) => !category.retired) || [];
@@ -78,44 +71,36 @@ export const ProductForm = (): ReactElement => {
       price: productForm.initialProduct?.price,
       stock: 0,
       categoryId: activeDefaultCategory?.id,
-      tagsIds: activeDefaultTags.map((tag) => tag.id),
+      tagsIds: productForm.initialProduct?.tags,
     },
   });
 
-  const submitForm = (data: ProductFormSchema): void => {
+  const submitForm = async (data: ProductFormSchema): Promise<void> => {
     const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) || [];
 
     const categoryIdToSave = defaultCategoryisRetired ? productForm.initialProduct?.category?.id || activeCategories[0]?.id : data.categoryId;
 
     const productOutput: ProductRequestDto = { ...data, categoryId: categoryIdToSave, tagsIds: (data.tagsIds as number[]).concat(legacyTagIds) };
 
-    if (!productForm.initialProduct) {
-      createProduct.mutate(productOutput, {
-        onSuccess: (returnProduct) => {
-          toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
-          productForm.closeForm();
-        },
-      });
-    } else {
-      editProduct.mutate(
-        { id: productForm.initialProduct.id, requestDto: productOutput },
-        {
-          onSuccess: (returnProduct) => {
-            toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
-            productForm.closeForm();
-          },
-        }
-      );
+    try {
+      if (!productForm.initialProduct) {
+        const returnProduct = await createProduct.mutateAsync(productOutput);
+        toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
+      } else {
+        const returnProduct = await editProduct.mutateAsync({ id: productForm.initialProduct?.id, requestDto: productOutput });
+        toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
+      }
+      productForm.closeForm();
+    } catch (error) {
+      toast.error(error as string);
     }
-
-    productForm.closeForm();
   };
 
   const loading = tags.isLoading || categories.isLoading;
 
   return (
     <>
-      {!loading && (
+      {!loading ? (
         <form className="w-full overflow-auto">
           <div className="grid grid-cols-4 gap-4 p-2">
             <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
@@ -155,17 +140,14 @@ export const ProductForm = (): ReactElement => {
                   label={tagOption.tag.name}
                   id={tagOption.tag.id.toString()}
                   defaultChecked={tagOption.selected}
+                  disabled={tagOption.tag.retired}
                 />
               );
             })}
           </div>
-          <div>Original Tags:{activeTags.filter((tag) => productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.name)}</div>
-          <div>
-            Legacy Tags:{tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((product) => product.id)}
-          </div>
-          <div>Original Category:{productForm.initialProduct?.category?.name || 'none'}</div>
-          <LoaderOverlay isEnabled={false} />
         </form>
+      ) : (
+        <LoaderOverlay isEnabled={true} />
       )}
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={productForm.closeForm}>

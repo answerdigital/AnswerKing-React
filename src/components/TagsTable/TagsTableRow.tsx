@@ -16,12 +16,13 @@ export const TagsTableRow = ({ tag, padding }: Props): ReactElement => {
   const { removeTag } = useTags();
   const formContext = useTagFormContext();
 
-  const handleDelete = (): void => {
-    removeTag.mutate(tag.id, {
-      onSuccess: () => {
-        toast.success(`Product "${tag.name}" was succesfully removed.`);
-      },
-    });
+  const handleDelete = async (): Promise<void> => {
+    try {
+      await removeTag.mutateAsync(tag.id);
+      toast.success(`The Tag, ${tag.name}, was successfully retired.`);
+    } catch (error) {
+      toast.error(error as string);
+    }
   };
 
   return (

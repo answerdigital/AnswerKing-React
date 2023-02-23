@@ -1,5 +1,5 @@
 import { ProductDto } from 'dtos/ProductDto';
-import { ProductRequestDto } from 'dtos/ProductRequestDto';
+import { ProductRequestDto } from 'dtos/RequestDtos/ProductRequestDto';
 import { httpClient } from 'utilities/http-client';
 
 const getAll = async (): Promise<ProductDto[]> => {

@@ -17,12 +17,13 @@ export const ProductsTableRow = ({ product, formatting = '' }: Props): ReactElem
   const { removeProduct } = useProducts();
   const productForm = useProductFormContext();
 
-  const handleDelete = (): void => {
-    removeProduct.mutate(product.id, {
-      onSuccess: () => {
-        toast.success(`Product "${product.name}" was succesfully removed.`);
-      },
-    });
+  const handleDelete = async (): Promise<void> => {
+    try {
+      await removeProduct.mutateAsync(product.id);
+      toast.success(`The Product, ${product.name}, was successfully retired.`);
+    } catch (error) {
+      toast.error(error as string);
+    }
   };
 
   return (

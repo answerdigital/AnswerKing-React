@@ -12,24 +12,22 @@ import { useProducts } from 'hooks/useProducts';
 import { Label } from 'components/Inputs/Label';
 import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
 import { useCategories } from 'hooks/useCategories';
-import { CategoryRequestDto } from 'dtos/CategoryRequestDto';
+import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
 import { toast } from 'react-toastify';
+import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
 
 export const CategoryForm = (): ReactElement => {
   const categoryForm = useCategoryFormContext();
   const { products } = useProducts();
   const { createCategory, editCategory } = useCategories();
 
-  const activeProducts = useMemo(() => {
-    return products.data?.filter((product) => !product.retired) || [];
-  }, [products.data]);
-
   const productOptions = useMemo(() => {
+    const activeProducts = products.data?.filter((product) => !product.retired) || [];
     return (
       activeProducts.map((product) => {
         return {
           product: product,
-          selected: categoryForm.initialCategory?.products?.includes(product.id) as boolean,
+          selected: !!categoryForm.initialCategory?.products?.includes(product.id),
         };
       }) ?? []
     );
@@ -48,7 +46,7 @@ export const CategoryForm = (): ReactElement => {
     },
   });
 
-  const submitForm = (data: CategoryFormSchema): void => {
+  const submitForm = async (data: CategoryFormSchema): Promise<void> => {
     const legacyProductsIds =
       products.data
         ?.filter((product) => product.retired && categoryForm.initialCategory?.products?.includes(product.id))
@@ -56,23 +54,17 @@ export const CategoryForm = (): ReactElement => {
 
     const tagOutput: CategoryRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
 
-    if (!categoryForm.initialCategory) {
-      createCategory.mutate(tagOutput, {
-        onSuccess: (returnProduct) => {
-          toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
-          categoryForm.closeForm();
-        },
-      });
-    } else {
-      editCategory.mutate(
-        { id: categoryForm.initialCategory.id, requestDto: tagOutput },
-        {
-          onSuccess: (returnProduct) => {
-            toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
-            categoryForm.closeForm();
-          },
-        }
-      );
+    try {
+      if (!categoryForm.initialCategory) {
+        const returnCategory = await createCategory.mutateAsync(tagOutput);
+        toast.success(`Product "${returnCategory.name}" was succesfully added with ID:"${returnCategory.id}" .`);
+      } else {
+        const returnCategory = await editCategory.mutateAsync({ id: categoryForm.initialCategory.id, requestDto: tagOutput });
+        toast.success(`Product "${returnCategory.name}" was succesfully edited" .`);
+      }
+      categoryForm.closeForm();
+    } catch (error) {
+      toast.error(error as string);
     }
   };
 
@@ -80,7 +72,7 @@ export const CategoryForm = (): ReactElement => {
 
   return (
     <>
-      {!loading && (
+      {!loading ? (
         <form className="w-full overflow-auto">
           <div className="grid grid-cols-4 gap-4 p-2">
             <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
@@ -110,11 +102,14 @@ export const CategoryForm = (): ReactElement => {
                   value={productOption.product.id}
                   defaultChecked={productOption.selected}
                   {...register(`products.${productOption.product.id}`)}
+                  disabled={productOption.product.retired}
                 />
               );
             })}
           </div>
         </form>
+      ) : (
+        <LoaderOverlay isEnabled={true} />
       )}
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={categoryForm.closeForm}>

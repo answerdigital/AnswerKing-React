@@ -1,5 +1,5 @@
 import { TagDto } from 'dtos/TagDto';
-import { TagRequestDto } from 'dtos/TagRequestDto';
+import { TagRequestDto } from 'dtos/RequestDtos/TagRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
 import { tagService } from 'services/tagService';
 import { ProblemDetails } from 'services/orderService';

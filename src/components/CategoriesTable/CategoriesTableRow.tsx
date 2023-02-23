@@ -16,12 +16,13 @@ export const CategoriesTableRow = ({ category, formatting }: Props): ReactElemen
   const { removeCategory } = useCategories();
   const formContext = useCategoryFormContext();
 
-  const handleDelete = (): void => {
-    removeCategory.mutate(category.id, {
-      onSuccess: () => {
-        toast.success(`Product "${category.name}" was succesfully removed.`);
-      },
-    });
+  const handleDelete = async (): Promise<void> => {
+    try {
+      await removeCategory.mutateAsync(category.id);
+      toast.success(`The Category, ${category.name}, was successfully retired.`);
+    } catch (error) {
+      toast.error(error as string);
+    }
   };
 
   return (
