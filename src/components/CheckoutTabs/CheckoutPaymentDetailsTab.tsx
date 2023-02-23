@@ -19,7 +19,7 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
   return (
     <div className="flex min-h-[65vh] w-full flex-col items-stretch">
       <div className="w-full font-[400]">
-        <h1 className="mb-2 text-[20px] font-[600]">Your details</h1>
+        <h1 className="mb-2 text-xl font-[600]">Your details</h1>
       </div>
       <div className="mt-3 border-b-2 pb-5">
         <Input type="text" label="Order name" id="order-name" placeholder="Joe Bloggs" />
@@ -27,13 +27,13 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
       </div>
 
       <div className="mt-3 flex w-full gap-5 font-[400]">
-        <div className="align-center flex w-full flex-row justify-between">
-          <h1 className="mb-2 text-[20px] font-[600]">Payment</h1>
-          <div className="flex flex-row gap-1 text-[24px]">
-            <FontAwesomeIcon icon={faCcVisa} />
-            <FontAwesomeIcon icon={faCcMastercard} />
-            <FontAwesomeIcon icon={faCcAmex} />
-            <FontAwesomeIcon icon={faCreditCard} />
+        <div className="align-center text-xl flex w-full flex-row justify-between">
+          <h1 className="mb-2 font-[600]">Payment</h1>
+          <div className="flex flex-row gap-1" >
+            <FontAwesomeIcon size="lg" icon={faCcVisa} />
+            <FontAwesomeIcon size="lg" icon={faCcMastercard} />
+            <FontAwesomeIcon size="lg" icon={faCcAmex} />
+            <FontAwesomeIcon size="lg" icon={faCreditCard} />
           </div>
         </div>
       </div>

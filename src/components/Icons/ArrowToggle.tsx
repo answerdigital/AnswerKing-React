@@ -20,7 +20,7 @@ export const ArrowToggle = ({ icon, handleIndex, categories, maxItemsDisplayed }
             text-center hover:cursor-pointer group-hover:border-[#E4EAEB]"
           onClick={handleIndex}
         >
-          <FontAwesomeIcon icon={icon} className={cn('group-hover:text-ak-grey-5 text-[13px] text-white')} />
+          <FontAwesomeIcon icon={icon} className={cn('group-hover:text-ak-grey-5 text-white')} />
         </div>
       )}
     </>
