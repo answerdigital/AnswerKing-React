@@ -51,10 +51,10 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
               <div className="flex w-full flex-row gap-[20px]">
                 <img alt="burger" className="h-[18vh] w-[100%] rounded-[8px] object-cover" src={PlaceHolderImage} />
                 <div className="flex w-full flex-col items-start justify-between gap-2">
-                  <h5 className="text-[22px] font-[600]">{product.name}</h5>
+                  <h5 className="text-xl font-semibold">{product.name}</h5>
                   <p className="font-poly text-left italic">{product.description}</p>
                   <div className="flex w-full items-center justify-between gap-2">
-                    <div data-testid="product-attributes" className="font-[600]">
+                    <div data-testid="product-attributes" className="font-semibold">
                       V, Ve, GF
                     </div>
                     <div className="flex items-center">
@@ -69,8 +69,8 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
               </div>
 
               <div className="mt-[5%] flex w-full flex-col justify-items-start gap-[8px]">
-                <div className="font-poly text-ak-grey-4 text-left text-[16px] font-[400] italic">Contains Allergens</div>
-                <div data-testid="allergens" className="flex flex-row justify-items-start gap-[16px] text-[14px]">
+                <div className="font-poly text-ak-grey-4 text-left text-base font-normal italic">Contains Allergens</div>
+                <div data-testid="allergens" className="flex flex-row justify-items-start gap-[16px] text-sm">
                   {allergens ? (
                     allergens.map((allergen) => <label key={allergen}>{allergen}</label>)
                   ) : (
