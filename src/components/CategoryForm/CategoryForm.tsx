@@ -109,7 +109,7 @@ export const CategoryForm = (): ReactElement => {
                   label={productOption.product.name}
                   value={productOption.product.id}
                   defaultChecked={productOption.selected}
-                  {...register('products')}
+                  {...register(`products.${productOption.product.id}`)}
                 />
               );
             })}

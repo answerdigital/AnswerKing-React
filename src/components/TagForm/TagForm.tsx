@@ -102,7 +102,7 @@ export const TagForm = (): ReactElement => {
                   label={productOption.product.name}
                   id={productOption.product.id.toString()}
                   defaultChecked={productOption.selected}
-                  {...register('products')}
+                  {...register(`products.${productOption.product.id}`)}
                 />
               );
             })}
