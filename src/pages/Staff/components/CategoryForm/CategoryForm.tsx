@@ -14,7 +14,7 @@ import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSche
 import { useCategories } from 'hooks/useCategories';
 import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
 import { toast } from 'react-toastify';
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 
 export const CategoryForm = (): ReactElement => {
   const categoryForm = useCategoryFormContext();
