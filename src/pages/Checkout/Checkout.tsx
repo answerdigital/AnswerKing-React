@@ -15,7 +15,7 @@ export const CheckoutPage = (): ReactElement => {
   return (
     <PageLayout title={'Checkout - Answer King'}>
       <div className="font-poppins flex flex-col items-center">
-        <div className="mt-10 mb-5 items-center text-[40px] font-[300] leading-[54px]">Checkout</div>
+        <div className="mt-10 mb-5 items-center text-[40px] font-light leading-[54px]">Checkout</div>
         <CheckoutTabContainer tab={currentTab} />
         <form
           className="text-ak-grey-1 w-[80vw] rounded-[16px] bg-white p-[24px] md:w-[65vw] lg:w-[50vw] xl:w-[35vw]"

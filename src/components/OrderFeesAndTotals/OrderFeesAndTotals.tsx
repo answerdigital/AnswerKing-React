@@ -21,7 +21,7 @@ export const OrderFeesAndTotals = ({ lineItems, orderComplete }: Props): ReactEl
         </div>
       )}
 
-      <div className={cn('text-ak-grey-1 mt-2 mb-4 flex w-full justify-between text-xl font-[600]')}>
+      <div className={cn('text-ak-grey-1 mt-2 mb-4 flex w-full justify-between text-xl font-semibold')}>
         <span>{orderComplete ? 'Paid' : 'Total'}:</span>
         <span data-testid="total">
           {GBPFormat.format(lineItems.length > 0 ? lineItems.reduce((partialSum, a) => partialSum + a.subTotal, 0) + SERVICE_CHARGE : 0)}

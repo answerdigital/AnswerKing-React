@@ -19,11 +19,11 @@ export const CheckoutOrderTab = (): ReactElement => {
 
   return (
     <div className="flex min-h-[65vh] w-full flex-col">
-      <h1 className="text-ak-grey-1 m-1 text-xl font-[600]">Order</h1>
+      <h1 className="text-ak-grey-1 m-1 text-xl font-semibold">Order</h1>
       <div className={cn('flex h-full w-full grow flex-col', !orderExists && 'justify-center')}>
         {!orderExists ? (
           <ComponentTransition lineItemsExist={orderExists}>
-            <div className="text-ak-grey-1 text-center text-sm font-[400]">
+            <div className="text-ak-grey-1 text-center text-sm font-normal">
               <img src={CheckoutBurgerImg} className="mx-auto mb-[4%] h-[50px] w-[80px]"></img>
               <p>
                 Whoa, you&apos;ve not got <br></br> anything in your order yet

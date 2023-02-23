@@ -15,8 +15,8 @@ export const DeleteProductModal = ({ setIsOpen, onConfirm }: Props): ReactElemen
     >
       <ModalTransition>
         <div className="flex h-[21vh] w-[35vh] flex-col justify-between rounded-2xl bg-white p-4 text-center">
-          <h2 className="mb-1 text-xl font-[600]">Are you sure?</h2>
-          <p data-testid="are-you-sure" className="mb-4 text-sm font-[400]">
+          <h2 className="mb-1 text-xl font-semibold">Are you sure?</h2>
+          <p data-testid="are-you-sure" className="mb-4 text-sm font-normal">
             Do you want to permanently <br /> delete this item?
           </p>
           <div className="flex justify-center">

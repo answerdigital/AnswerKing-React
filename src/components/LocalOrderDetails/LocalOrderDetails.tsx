@@ -8,7 +8,7 @@ import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';
 import { ComponentTransition } from 'components/Transitions/ComponentTransition';
 
 export const LocalOrderDetails = (): ReactElement => {
-  const tableElement = 'py-4 text-ak-grey-1 font-[400] text-sm';
+  const tableElement = 'py-4 text-ak-grey-1 font-normal text-sm';
   const { localOrder, removeProduct } = useLocalOrder();
   const lineItemsExist = localOrder.lineItems?.length > 0;
   return (

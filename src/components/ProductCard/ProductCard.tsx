@@ -37,7 +37,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
                 {product.name}
               </h5>
               <div className="flex justify-center text-center">
-                <p data-testid="product-description" className="font-poly text-ak-grey-1 self-center text-base font-[400] italic">
+                <p data-testid="product-description" className="font-poly text-ak-grey-1 self-center text-base font-normal italic">
                   {product.description.length > 50 ? product.description.substring(0, 50) + '...' : product.description}
                 </p>
               </div>
@@ -50,7 +50,7 @@ export const ProductCard = ({ product }: Props): ReactElement => {
                 data-testid="show-product-modal"
                 onClick={() => setshowProductModal(true)}
                 colour="yellow"
-                className="w-full py-[8px] px-[16px] text-sm font-[400]"
+                className="w-full py-[8px] px-[16px] text-sm font-normal"
               >
                 Add to order
               </Button>

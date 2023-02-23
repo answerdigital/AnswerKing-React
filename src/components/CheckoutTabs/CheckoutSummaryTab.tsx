@@ -36,7 +36,7 @@ export const CheckoutSummaryTab = (): ReactElement => {
 
   return (
     <div className="flex min-h-[65vh] w-full flex-col">
-      <h1 className="mb-4 w-full text-xl font-[600]">Summary</h1>
+      <h1 className="mb-4 w-full text-xl font-semibold">Summary</h1>
       <CheckoutSection title="Order" onEditClick={() => setCurrentTab(CheckoutTabType.Order)}>
         <div className="flex w-full flex-col gap-2 border-b-2 px-2 pb-1">
           <OrderDetailsMinimal items={localOrder.lineItems} />

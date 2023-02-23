@@ -28,7 +28,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
 
   return (
     <div className="mt-8 flex flex-col items-center">
-      <p className="text-[36px] font-[300]">Menu</p>
+      <p className="text-[36px] font-light">Menu</p>
       <div className="divide-ak-grey-2 mt-5 w-[95%] divide-y-2 ">
         <div className="group flex items-center justify-between text-center">
           <ArrowToggle icon={faArrowLeft} handleIndex={handlePrev} categories={categories} maxItemsDisplayed={maxItemsDisplayed} />
@@ -39,7 +39,7 @@ export const MenuCategories = ({ categories, setSelectedCategory, selectedCatego
               animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
               className={cn(
                 'left-5 mx-[20px] h-[32px] w-[102px] rounded-full',
-                'bg-transparent px-1 text-base font-[300]',
+                'bg-transparent px-1 text-base font-light',
                 category.id === selectedCategory && 'border-ak-grey-1 text-ak-grey-1 bg-ak-grey-4',
                 category.id != selectedCategory && 'hover:border-ak-grey-1 hover:bg-ak-grey-1 text-white'
               )}

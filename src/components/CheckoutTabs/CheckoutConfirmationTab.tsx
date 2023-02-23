@@ -18,7 +18,7 @@ export const CheckoutConfirmationTab = (): ReactElement => {
     <div className="flex min-h-[65vh] w-full flex-col">
       <div className="flex w-full flex-col items-center justify-center">
         <img src={FoodPrepGif} className="aspect-square w-[150px]"></img>
-        <h1 className="text-ak-grey-1 mb-4 text-xl font-[600]">Order received</h1>
+        <h1 className="text-ak-grey-1 mb-4 text-xl font-semibold">Order received</h1>
       </div>
 
       <CheckoutSection title="Order">
@@ -37,7 +37,7 @@ export const CheckoutConfirmationTab = (): ReactElement => {
       <div className="mt-auto">
         <OrderFeesAndTotals lineItems={localOrder.lineItems} orderComplete={true} />
 
-        <div className="flex w-full gap-5 font-[400]">
+        <div className="flex w-full gap-5 font-normal">
           <Button colour="white" className="h-[45px] w-full" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
             Order Again
           </Button>
