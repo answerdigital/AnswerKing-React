@@ -1,11 +1,11 @@
-import { Button } from 'components/Buttons/Button';
+import { Button } from 'common/Buttons/Button';
 import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
-import BurgerHome from 'assets/burgerhome.png';
-import Logo from 'assets/icon_a.svg';
-import { Footer } from 'components/Footer/Footer';
-import { PageLayout } from 'components/PageLayout/PageLayout';
+import BurgerHome from '/images/burgerhome.png';
+import Logo from '/images/icon_a.svg';
+import { PageLayout } from 'common/PageLayout/PageLayout';
+import { Footer } from './components/Footer/Footer';
 
 export const HomePage = (): ReactElement => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const HomePage = (): ReactElement => {
               <span className="font-poppins not-italic">nswer</span> to <br></br> <span>your cravings</span>
             </h3>
           </div>
-          <Button onClick={handleClick} colour="yellow" className="px-[50px] py-[12px] text-[20px] font-[600]">
+          <Button onClick={handleClick} colour="yellow" className="px-[50px] py-[12px] text-xl font-semibold">
             Order Now
           </Button>
         </div>
