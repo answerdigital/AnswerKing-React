@@ -17,21 +17,18 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
   const orderExists = localOrder.lineItems?.length > 0;
 
   return (
-    <div className="flex h-full w-full flex-col">
-      <div className="w-full gap-5 font-[400]">
-        <div className="w-full">
-          <h1 className="mb-4 text-[20px] font-[600]">Your details</h1>
-        </div>
-
-        <div className="flex w-full gap-5">
-          <Input type="text" label="Order name" id="order-name" placeholder="Joe Bloggs" />
-          <Input type="email" label="Email address" id="email-address" placeholder="joebloggs@lukewarmmail.com" />
-        </div>
+    <div className="flex min-h-[65vh] w-full flex-col items-stretch">
+      <div className="w-full font-[400]">
+        <h1 className="mb-2 text-[20px] font-[600]">Your details</h1>
+      </div>
+      <div className="mt-3 border-b-2 pb-5">
+        <Input type="text" label="Order name" id="order-name" placeholder="Joe Bloggs" />
+        <Input type="email" label="Email address" className="py-2" id="email-address" placeholder="joebloggs@lukewarmmail.com" />
       </div>
 
-      <div className="mt-12 flex w-full gap-5 font-[400]">
+      <div className="mt-3 flex w-full gap-5 font-[400]">
         <div className="align-center flex w-full flex-row justify-between">
-          <h1 className="mb-4 text-[20px] font-[600]">Payment</h1>
+          <h1 className="mb-2 text-[20px] font-[600]">Payment</h1>
           <div className="flex flex-row gap-1 text-[24px]">
             <FontAwesomeIcon icon={faCcVisa} />
             <FontAwesomeIcon icon={faCcMastercard} />
@@ -41,24 +38,26 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
         </div>
       </div>
 
-      <div className="flex w-full gap-5">
+      <div className="mt-3 flex w-full gap-5">
         <Input type="number" label="Card number" id="card-number" placeholder="1234123412341234" />
         <Input type="number" label="Account number" id="account-number" placeholder="12341234" />
       </div>
 
-      <div className="mt-5 flex w-full gap-5">
+      <div className="mt-3 flex w-full gap-5">
         <Input type="number" label="CVV number" id="cvv-number" placeholder="123" />
         <CheckboxRow label="Save for next time" checked={saveLater} onClick={() => setSaveLater(!saveLater)} />
       </div>
 
-      <CheckoutFooter>
-        <Button colour="white" className="h-[45px] w-3/12" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
-          Back
-        </Button>
-        <Button colour="yellow" className="h-[45px] w-full" onClick={() => setCurrentTab(CheckoutTabType.Summary)} disabled={!orderExists}>
-          Continue to summary
-        </Button>
-      </CheckoutFooter>
+      <div className="mt-auto">
+        <CheckoutFooter>
+          <Button colour="white" className="h-[45px] w-3/12" onClick={() => setCurrentTab(CheckoutTabType.Order)}>
+            Back
+          </Button>
+          <Button colour="yellow" className="h-[45px] w-full" onClick={() => setCurrentTab(CheckoutTabType.Summary)} disabled={!orderExists}>
+            Continue to summary
+          </Button>
+        </CheckoutFooter>
+      </div>
     </div>
   );
 };

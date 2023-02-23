@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const QuantityIcon = ({ quantity }: Props): ReactElement => {
-  const iconClass = 'w-[33px] h-[33px] text-center text-[18px] font-[400] flex items-center justify-center rounded mr-[24px] rounded bg-ak-grey-5';
+  const iconClass = 'w-[33px] h-[33px] text-center text-[16px] font-[400] flex items-center justify-center rounded mr-[24px] rounded bg-ak-grey-5';
   return (
     <>
       <span data-testid="quantity" className={cn(iconClass)}>
