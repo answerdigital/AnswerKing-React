@@ -27,9 +27,9 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
       </div>
 
       <div className="mt-3 flex w-full gap-5 font-normal">
-        <div className="align-center text-xl flex w-full flex-row justify-between">
+        <div className="align-center flex w-full flex-row justify-between text-xl">
           <h1 className="mb-2 font-semibold">Payment</h1>
-          <div className="flex flex-row gap-1" >
+          <div className="flex flex-row gap-1">
             <FontAwesomeIcon size="lg" icon={faCcVisa} />
             <FontAwesomeIcon size="lg" icon={faCcMastercard} />
             <FontAwesomeIcon size="lg" icon={faCcAmex} />

@@ -18,7 +18,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ className, id, label
       )}
       <input
         type={type ?? 'text'}
-        className="text-ak-grey-1 text-sm placeholder:text-ak-grey-1 focus:pl-1 focus:placeholder:text-ak-text-grey-4"
+        className="text-ak-grey-1 placeholder:text-ak-grey-1 focus:placeholder:text-ak-text-grey-4 text-sm focus:pl-1"
         id={id}
         ref={ref}
         {...rest}
