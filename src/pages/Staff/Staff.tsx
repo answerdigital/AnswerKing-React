@@ -1,12 +1,12 @@
 import { ReactElement, useState } from 'react';
 import { PageLayout } from 'components/PageLayout/PageLayout';
-import { StaffNavBar } from 'components/StaffNavBar/StaffNavBar';
-import { StaffDetails } from 'components/StaffBody/StaffDetails';
-import { StaffInventory } from 'components/StaffBody/StaffInventory';
-import { StaffCategories } from 'components/StaffBody/StaffCategories';
-import { StaffTags } from 'components/StaffBody/StaffTags';
-import { StaffOrders } from 'components/StaffBody/StaffOrders';
 import { SearchContextProvider } from 'components/Search/SearchContext';
+import { StaffDetails } from './components/StaffBody/StaffDetails';
+import { StaffInventory } from './components/StaffBody/StaffInventory';
+import { StaffCategories } from './components/StaffBody/StaffCategories';
+import { StaffTags } from './components/StaffBody/StaffTags';
+import { StaffOrders } from './components/StaffBody/StaffOrders';
+import { StaffNavBar } from './components/StaffNavBar/StaffNavBar';
 
 export interface ISection {
   title: string;

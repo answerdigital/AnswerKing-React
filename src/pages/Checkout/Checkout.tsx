@@ -1,11 +1,11 @@
-import { CheckoutTabContainer } from 'components/CheckoutTabContainer/CheckoutTabContainer';
-import { CheckoutConfirmationTab } from 'components/CheckoutTabs/CheckoutConfirmationTab';
-import { CheckoutOrderTab } from 'components/CheckoutTabs/CheckoutOrderTab';
-import { CheckoutPaymentDetailsTab } from 'components/CheckoutTabs/CheckoutPaymentDetailsTab';
-import { CheckoutSummaryTab } from 'components/CheckoutTabs/CheckoutSummaryTab';
 import { PageLayout } from 'components/PageLayout/PageLayout';
 import { ReactElement, useMemo, useState } from 'react';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
+import { CheckoutTabContainer } from './components/CheckoutTabContainer/CheckoutTabContainer';
+import { CheckoutOrderTab } from './components/CheckoutTabs/CheckoutOrderTab';
+import { CheckoutPaymentDetailsTab } from './components/CheckoutTabs/CheckoutPaymentDetailsTab';
+import { CheckoutSummaryTab } from './components/CheckoutTabs/CheckoutSummaryTab';
+import { CheckoutConfirmationTab } from './components/CheckoutTabs/CheckoutConfirmationTab';
 
 export const CheckoutPage = (): ReactElement => {
   const [currentTab, setCurrentTab] = useState<CheckoutTabType>(CheckoutTabType.Order);
