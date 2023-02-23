@@ -1,5 +1,5 @@
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
-import { lineItemList } from '../../../cypress/data_helpers/component-test-data';
+import CustomMount from 'testHelpers/cypressHelpers/CustomMount';
+import { lineItemList } from '../../../../../cypress/data_helpers/component-test-data';
 import { OrderDetails } from './OrderDetails';
 
 describe('Order Details', () => {

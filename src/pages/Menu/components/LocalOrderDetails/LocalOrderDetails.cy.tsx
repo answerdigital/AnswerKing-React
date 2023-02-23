@@ -1,7 +1,7 @@
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
+import { LocalOrderContext } from 'context/OrderContext';
+import CustomMount from 'testHelpers/cypressHelpers/CustomMount';
+import { getExampleOrder } from '../../../../../cypress/data_helpers/component-test-data';
 import { LocalOrderDetails } from './LocalOrderDetails';
-import { getExampleOrder } from '../../../cypress/data_helpers/component-test-data';
-import { LocalOrderContext } from '../../context/OrderContext';
 
 describe('Local Order Details', () => {
   beforeEach(() => {

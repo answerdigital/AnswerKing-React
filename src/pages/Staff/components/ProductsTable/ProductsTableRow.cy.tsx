@@ -1,6 +1,6 @@
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'testHelpers/cypressHelpers/CustomMount';
+import { product } from '../../../../../cypress/data_helpers/component-test-data';
 import { ProductsTableRow } from './ProductsTableRow';
-import { product } from '../../../cypress/data_helpers/component-test-data';
 
 describe('Create Product Form', () => {
   beforeEach(() => {

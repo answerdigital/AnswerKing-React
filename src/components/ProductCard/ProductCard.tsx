@@ -1,11 +1,11 @@
 import PlaceHolderImage from 'assets/burger_transparent.png';
 import { BadgeIcon } from 'components/Icons/BadgeIcon';
 import { Button } from 'components/Buttons/Button';
-import { MenuProductModal } from 'components/Modals/MenuProductModal';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useState } from 'react';
 import { motion } from 'framer-motion';
 import { RoundingPrice } from 'utilities/RoundingPriceFormat';
+import { MenuProductModal } from 'pages/Menu/components/MenuProductModal/MenuProductModal';
 
 interface Props {
   product: ProductDto;

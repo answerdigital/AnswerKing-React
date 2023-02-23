@@ -1,4 +1,4 @@
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'testHelpers/cypressHelpers/CustomMount';
 import { Footer } from './Footer';
 
 describe('Footer', () => {
