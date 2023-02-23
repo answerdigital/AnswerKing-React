@@ -1,7 +1,7 @@
 import { LocalOrderContext } from 'context/OrderContext';
 import { LocalOrderDetails } from 'pages/Menu/components/LocalOrderDetails/LocalOrderDetails';
 import { getExampleOrder } from '../../../../../../cypress/data_helpers/component-test-data';
-import CustomMount from '../../../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Local Order Details', () => {
   beforeEach(() => {

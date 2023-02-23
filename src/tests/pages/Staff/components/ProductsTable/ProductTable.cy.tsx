@@ -1,6 +1,6 @@
 import { SearchContextProvider } from 'components/Search/SearchContext';
 import { ProductsTable } from 'pages/Staff/components/ProductsTable/ProductsTable';
-import CustomMount from '../../../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Create Product Form', () => {
   beforeEach(() => {

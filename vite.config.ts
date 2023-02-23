@@ -16,7 +16,7 @@ export default defineConfig({
       utilities: resolve(__dirname, 'src/utilities'),
       context: resolve(__dirname, 'src/context'),
       schemas: resolve(__dirname, 'src/schemas'),
-      testHelpers: resolve(__dirname, 'src/testHelpers'),
+      tests: resolve(__dirname, 'src/tests'),
     },
   },
   server: {

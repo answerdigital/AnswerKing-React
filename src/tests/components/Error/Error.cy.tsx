@@ -1,5 +1,5 @@
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
 import { Error } from 'components/Error/Error';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Errors', () => {
   beforeEach(() => {

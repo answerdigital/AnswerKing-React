@@ -1,4 +1,4 @@
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 import { ReactElement } from 'react';
 import { LocalOrderContext, useLocalOrder } from 'context/OrderContext';
 import { TrashIcon } from 'components/Icons/TrashIcon';

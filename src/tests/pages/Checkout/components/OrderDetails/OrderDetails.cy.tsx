@@ -1,6 +1,6 @@
 import { OrderDetails } from 'pages/Checkout/components/OrderDetails/OrderDetails';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 import { lineItemList } from '../../../../../../cypress/data_helpers/component-test-data';
-import CustomMount from '../../../../testHelpers/cypressHelpers/CustomMount';
 
 describe('Order Details', () => {
   beforeEach(() => {

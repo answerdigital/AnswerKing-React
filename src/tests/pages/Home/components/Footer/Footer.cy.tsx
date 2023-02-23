@@ -1,5 +1,5 @@
 import { Footer } from 'pages/Home/components/Footer/Footer';
-import CustomMount from '../../../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Footer', () => {
   beforeEach(() => {

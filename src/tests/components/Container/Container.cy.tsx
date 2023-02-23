@@ -1,5 +1,5 @@
 import { Container } from 'components/Container/Container';
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('container', () => {
   beforeEach(() => {

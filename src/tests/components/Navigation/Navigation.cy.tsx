@@ -1,5 +1,5 @@
 import { Navigation } from 'components/Navigation/Navigation';
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Local Order Details', () => {
   beforeEach(() => {

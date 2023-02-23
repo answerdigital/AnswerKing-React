@@ -1,6 +1,6 @@
 import { Button } from 'components/Buttons/Button';
 import { Layout } from 'components/Layout/Layout';
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Layout', () => {
   beforeEach(() => {

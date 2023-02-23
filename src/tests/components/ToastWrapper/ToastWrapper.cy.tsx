@@ -1,5 +1,5 @@
 import { ToastWrapper } from 'components/ToastWrapper/ToastWrapper';
-import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Toast Wrapper', () => {
   beforeEach(() => {

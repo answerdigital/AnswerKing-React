@@ -1,5 +1,5 @@
 import { LocalOrderContext } from 'context/OrderContext';
-import CustomMount from '../../../../testHelpers/cypressHelpers/CustomMount';
+import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 import { MenuItems } from 'pages/Menu/components/MenuItems/MenuItems';
 import { getExampleOrder, products } from '../../../../../../cypress/data_helpers/component-test-data';
 
