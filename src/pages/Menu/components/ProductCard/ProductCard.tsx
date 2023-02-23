@@ -1,6 +1,6 @@
 import PlaceHolderImage from '/images/burger_transparent.png';
-import { BadgeIcon } from 'components/Icons/BadgeIcon';
-import { Button } from 'components/Buttons/Button';
+import { BadgeIcon } from 'common/Icons/BadgeIcon';
+import { Button } from 'common/Buttons/Button';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement, useState } from 'react';
 import { motion } from 'framer-motion';

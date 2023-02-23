@@ -1,4 +1,4 @@
-import { Navigation } from 'components/Navigation/Navigation';
+import { Navigation } from 'common/Navigation/Navigation';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Local Order Details', () => {

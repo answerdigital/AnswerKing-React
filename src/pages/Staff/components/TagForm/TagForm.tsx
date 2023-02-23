@@ -1,16 +1,16 @@
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { ReactElement, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useTagFormContext } from './TagFormContext';
-import { Button } from 'components/Buttons/Button';
-import { Input } from 'components/Inputs/Input';
+import { Button } from 'common/Buttons/Button';
+import { Input } from 'common/Inputs/Input';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextArea } from 'components/Inputs/TextArea';
+import { TextArea } from 'common/Inputs/TextArea';
 import { useProducts } from 'hooks/useProducts';
-import { Checkbox } from 'components/Inputs/Checkbox';
-import { Label } from 'components/Inputs/Label';
+import { Checkbox } from 'common/Inputs/Checkbox';
+import { Label } from 'common/Inputs/Label';
 import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
 
 export const TagForm = (): ReactElement => {

@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCcVisa, faCcMastercard, faCcAmex } from '@fortawesome/free-brands-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'components/Buttons/Button';
-import { Input } from 'components/Inputs/Input';
+import { Button } from 'common/Buttons/Button';
+import { Input } from 'common/Inputs/Input';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
 import { ReactElement, useContext, useState } from 'react';
-import { CheckboxRow } from 'components/Inputs/CheckboxRow';
+import { CheckboxRow } from 'common/Inputs/CheckboxRow';
 import { CheckoutFooter } from '../CheckoutFooter/CheckoutFooter';
 
 export const CheckoutPaymentDetailsTab = (): ReactElement => {

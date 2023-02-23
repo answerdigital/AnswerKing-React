@@ -1,4 +1,4 @@
-import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
+import { OrderFeesAndTotals } from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
 import { useLocalOrder } from 'context/OrderContext';
 import { ReactElement } from 'react';
 

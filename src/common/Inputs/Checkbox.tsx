@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
 import cn from 'classnames';
-import { CheckBoxIcon } from 'components/Icons/CheckBoxIcon';
+import { CheckBoxIcon } from 'common/Icons/CheckBoxIcon';
 
 interface Props extends React.ComponentPropsWithRef<'input'> {
   label?: string;

@@ -1,4 +1,4 @@
-import { CheckBoxIcon } from 'components/Icons/CheckBoxIcon';
+import { CheckBoxIcon } from 'common/Icons/CheckBoxIcon';
 import cn from 'classnames';
 import { ReactElement } from 'react';
 

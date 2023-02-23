@@ -1,11 +1,11 @@
 import { TagsTableRow } from './TagsTableRow';
 import { useTags } from 'hooks/useTags';
 import { ReactElement } from 'react';
-import { useSearch } from 'components/Search/SearchContext';
-import { Search } from 'components/Search/Search';
-import { Button } from 'components/Buttons/Button';
+import { useSearch } from 'common/Search/SearchContext';
+import { Search } from 'common/Search/Search';
+import { Button } from 'common/Buttons/Button';
 import { TagDto } from 'dtos/TagDto';
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { useTagFormContext } from '../TagForm/TagFormContext';
 
 export const TagsTable = (): ReactElement => {

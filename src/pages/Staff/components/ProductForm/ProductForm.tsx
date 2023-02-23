@@ -1,18 +1,18 @@
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { ReactElement, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'components/Buttons/Button';
+import { Button } from 'common/Buttons/Button';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Select } from 'components/Inputs/Select';
-import { Input } from 'components/Inputs/Input';
-import { TextArea } from 'components/Inputs/TextArea';
-import { Checkbox } from 'components/Inputs/Checkbox';
+import { Select } from 'common/Inputs/Select';
+import { Input } from 'common/Inputs/Input';
+import { TextArea } from 'common/Inputs/TextArea';
+import { Checkbox } from 'common/Inputs/Checkbox';
 import { useProductFormContext } from './ProductFormContext';
 import { useCategories } from 'hooks/useCategories';
 import { useTags } from 'hooks/useTags';
-import { Label } from 'components/Inputs/Label';
+import { Label } from 'common/Inputs/Label';
 import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
 
 export const ProductForm = (): ReactElement => {

@@ -1,4 +1,4 @@
-import { Container } from 'components/Container/Container';
+import { Container } from 'common/Container/Container';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('container', () => {

@@ -1,5 +1,5 @@
-import { Button } from 'components/Buttons/Button';
-import { ComponentTransition } from 'components/Transitions/ComponentTransition';
+import { Button } from 'common/Buttons/Button';
+import { ComponentTransition } from 'common/Transitions/ComponentTransition';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
 import { ReactElement, useContext } from 'react';

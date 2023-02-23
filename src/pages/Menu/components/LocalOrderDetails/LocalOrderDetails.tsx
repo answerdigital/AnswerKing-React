@@ -2,10 +2,10 @@ import { ReactElement } from 'react';
 import { useLocalOrder } from 'context/OrderContext';
 import { GBPFormat } from 'utilities/GBPFormat';
 import cn from 'classnames';
-import { TrashIcon } from 'components/Icons/TrashIcon';
-import { QuantityIcon } from 'components/Icons/QuantityIcon';
+import { TrashIcon } from 'common/Icons/TrashIcon';
+import { QuantityIcon } from 'common/Icons/QuantityIcon';
 import CheckoutBurgerImg from '/images/icon_checkout_no_items.png';
-import { ComponentTransition } from 'components/Transitions/ComponentTransition';
+import { ComponentTransition } from 'common/Transitions/ComponentTransition';
 
 export const LocalOrderDetails = (): ReactElement => {
   const tableElement = 'py-4 text-ak-grey-1 font-normal text-sm';

@@ -1,6 +1,6 @@
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Tooltip } from 'components/Tooltip/Tooltip';
+import { Tooltip } from 'common/Tooltip/Tooltip';
 import { AnimatePresence } from 'framer-motion';
 import { ReactElement, useRef, useState } from 'react';
 

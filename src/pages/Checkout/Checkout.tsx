@@ -1,4 +1,4 @@
-import { PageLayout } from 'components/PageLayout/PageLayout';
+import { PageLayout } from 'common/PageLayout/PageLayout';
 import { ReactElement, useMemo, useState } from 'react';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { CheckoutTabContainer } from './components/CheckoutTabContainer/CheckoutTabContainer';

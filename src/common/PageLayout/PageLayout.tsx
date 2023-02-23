@@ -1,4 +1,4 @@
-import { PageTransition } from 'components/Transitions/PageTransition';
+import { PageTransition } from 'common/Transitions/PageTransition';
 import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 

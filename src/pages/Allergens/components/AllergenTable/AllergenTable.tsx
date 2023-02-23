@@ -1,4 +1,4 @@
-import { CheckBoxIcon } from 'components/Icons/CheckBoxIcon';
+import { CheckBoxIcon } from 'common/Icons/CheckBoxIcon';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement } from 'react';
 

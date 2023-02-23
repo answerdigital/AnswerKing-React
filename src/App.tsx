@@ -1,4 +1,4 @@
-import { Layout } from 'components/Layout/Layout';
+import { Layout } from 'common/Layout/Layout';
 import { HomePage } from 'pages/Home/Home';
 import { MenuPage } from 'pages/Menu/Menu';
 import { StaffPage } from 'pages/Staff/Staff';

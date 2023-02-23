@@ -2,14 +2,14 @@ import { ReactElement, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useCategoryFormContext } from './CategoryFormContext';
-import { Button } from 'components/Buttons/Button';
-import { Input } from 'components/Inputs/Input';
+import { Button } from 'common/Buttons/Button';
+import { Input } from 'common/Inputs/Input';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextArea } from 'components/Inputs/TextArea';
-import { Checkbox } from 'components/Inputs/Checkbox';
+import { TextArea } from 'common/Inputs/TextArea';
+import { Checkbox } from 'common/Inputs/Checkbox';
 import { useProducts } from 'hooks/useProducts';
-import { Label } from 'components/Inputs/Label';
+import { Label } from 'common/Inputs/Label';
 import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
 
 export const CategoryForm = (): ReactElement => {

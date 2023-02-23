@@ -2,7 +2,7 @@ import { CategoryDto } from 'dtos/CategoryDto';
 import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
-import { ArrowToggle } from 'components/Icons/ArrowToggle';
+import { ArrowToggle } from 'common/Icons/ArrowToggle';
 import cn from 'classnames';
 
 interface Props {

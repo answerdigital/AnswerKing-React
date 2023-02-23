@@ -1,5 +1,5 @@
-import { Button } from 'components/Buttons/Button';
-import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
+import { Button } from 'common/Buttons/Button';
+import { OrderFeesAndTotals } from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
 import { ReactElement, useContext } from 'react';

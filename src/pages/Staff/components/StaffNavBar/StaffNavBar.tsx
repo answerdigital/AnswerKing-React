@@ -1,4 +1,4 @@
-import { Button } from 'components/Buttons/Button';
+import { Button } from 'common/Buttons/Button';
 import { ISection } from 'pages/Staff/Staff';
 import { Dispatch, ReactElement, SetStateAction } from 'react';
 

@@ -1,7 +1,7 @@
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 import { ReactElement } from 'react';
 import { LocalOrderContext, useLocalOrder } from 'context/OrderContext';
-import { TrashIcon } from 'components/Icons/TrashIcon';
+import { TrashIcon } from 'common/Icons/TrashIcon';
 import { getExampleOrder, product } from '../../../../cypress/data_helpers/component-test-data';
 
 describe('Menu Product Modal', () => {

@@ -1,11 +1,11 @@
 import { ReactElement, useCallback, useState } from 'react';
 import { ProductDto } from 'dtos/ProductDto';
-import { Button } from 'components/Buttons/Button';
+import { Button } from 'common/Buttons/Button';
 import { useLocalOrder } from 'context/OrderContext';
 import PlaceHolderImage from '/images/burger_transparent.png';
-import { ModalTransition } from 'components/Transitions/ModalTransition';
+import { ModalTransition } from 'common/Transitions/ModalTransition';
 import { GBPFormat } from 'utilities/GBPFormat';
-import { PlusMinusButton } from 'components/Buttons/PlusMinusButton';
+import { PlusMinusButton } from 'common/Buttons/PlusMinusButton';
 
 interface Props {
   product: ProductDto;

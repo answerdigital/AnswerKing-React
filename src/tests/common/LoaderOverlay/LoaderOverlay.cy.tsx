@@ -1,4 +1,4 @@
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Loader Overlay', () => {

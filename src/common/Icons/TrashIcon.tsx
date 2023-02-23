@@ -1,5 +1,5 @@
 import { ReactElement, useState } from 'react';
-import { DeleteProductModal } from 'components/Modals/DeleteProductModal';
+import { DeleteProductModal } from 'common/Modals/DeleteProductModal';
 import cn from 'classnames';
 
 interface Props {

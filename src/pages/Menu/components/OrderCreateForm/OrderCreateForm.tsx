@@ -1,10 +1,10 @@
-import { Button } from 'components/Buttons/Button';
+import { Button } from 'common/Buttons/Button';
 import { useOrder } from 'hooks/useOrder';
 import { ReactElement, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocalOrder } from 'context/OrderContext';
-import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
+import { OrderFeesAndTotals } from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
 
 export const OrderCreateForm = (): ReactElement => {
   const { order } = useOrder();

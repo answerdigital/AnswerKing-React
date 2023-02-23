@@ -1,4 +1,4 @@
-import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTotals';
+import { OrderFeesAndTotals } from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
 import { lineItemList } from '../../../../cypress/data_helpers/component-test-data';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 

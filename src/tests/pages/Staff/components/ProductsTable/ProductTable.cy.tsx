@@ -1,4 +1,4 @@
-import { SearchContextProvider } from 'components/Search/SearchContext';
+import { SearchContextProvider } from 'common/Search/SearchContext';
 import { ProductsTable } from 'pages/Staff/components/ProductsTable/ProductsTable';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 

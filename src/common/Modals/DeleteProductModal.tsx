@@ -1,5 +1,5 @@
-import { Button } from 'components/Buttons/Button';
-import { ModalTransition } from 'components/Transitions/ModalTransition';
+import { Button } from 'common/Buttons/Button';
+import { ModalTransition } from 'common/Transitions/ModalTransition';
 import { ReactElement } from 'react';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
-import { PageLayout } from 'components/PageLayout/PageLayout';
-import { SearchContextProvider } from 'components/Search/SearchContext';
+import { PageLayout } from 'common/PageLayout/PageLayout';
+import { SearchContextProvider } from 'common/Search/SearchContext';
 import { StaffDetails } from './components/StaffBody/StaffDetails';
 import { StaffInventory } from './components/StaffBody/StaffInventory';
 import { StaffCategories } from './components/StaffBody/StaffCategories';

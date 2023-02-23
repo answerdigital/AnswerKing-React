@@ -1,11 +1,11 @@
 import { CategoriesTableRow } from './CategoriesTableRow';
 import { useCategories } from 'hooks/useCategories';
 import { ReactElement } from 'react';
-import { useSearch } from 'components/Search/SearchContext';
-import { Search } from 'components/Search/Search';
-import { Button } from 'components/Buttons/Button';
+import { useSearch } from 'common/Search/SearchContext';
+import { Search } from 'common/Search/Search';
+import { Button } from 'common/Buttons/Button';
 import { CategoryDto } from 'dtos/CategoryDto';
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { useCategoryFormContext } from '../CategoryForm/CategoryFormContext';
 
 export const CategoriesTable = (): ReactElement => {

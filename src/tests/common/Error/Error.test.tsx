@@ -1,6 +1,6 @@
 import { fireEvent } from '@testing-library/react';
 import { customRender } from 'custom-render';
-import { Error } from 'components/Error/Error';
+import { Error } from 'common/Error/Error';
 
 describe('Error Component', () => {
   it('should match the snapshot', () => {

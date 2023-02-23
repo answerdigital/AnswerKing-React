@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import AnswerLogo from '/images/logo.png';
-import { Button } from 'components/Buttons/Button';
+import { Button } from 'common/Buttons/Button';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocation, useNavigate } from 'react-router-dom';
 import cn from 'classnames';

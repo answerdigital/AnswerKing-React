@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'react-toastify';
-import { TrashIcon } from 'components/Icons/TrashIcon';
+import { TrashIcon } from 'common/Icons/TrashIcon';
 import { useProductFormContext } from '../ProductForm/ProductFormContext';
 
 interface Props {

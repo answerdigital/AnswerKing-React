@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 import { GBPFormat } from 'utilities/GBPFormat';
 import { LineItemDto } from 'dtos/LineItemDto';
-import { TrashIcon } from 'components/Icons/TrashIcon';
+import { TrashIcon } from 'common/Icons/TrashIcon';
 import cn from 'classnames';
-import { QuantityIcon } from 'components/Icons/QuantityIcon';
+import { QuantityIcon } from 'common/Icons/QuantityIcon';
 import { useLocalOrder } from 'context/OrderContext';
 
 interface Props {

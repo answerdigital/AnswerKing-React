@@ -1,11 +1,11 @@
 import { ProductsTableRow } from './ProductsTableRow';
 import { useProducts } from 'hooks/useProducts';
 import { ReactElement } from 'react';
-import { useSearch } from 'components/Search/SearchContext';
-import { Search } from 'components/Search/Search';
-import { Button } from 'components/Buttons/Button';
+import { useSearch } from 'common/Search/SearchContext';
+import { Search } from 'common/Search/Search';
+import { Button } from 'common/Buttons/Button';
 import { ProductDto } from 'dtos/ProductDto';
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { useProductFormContext } from '../ProductForm/ProductFormContext';
 
 export const ProductsTable = (): ReactElement => {

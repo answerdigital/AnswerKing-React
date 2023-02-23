@@ -1,9 +1,9 @@
 import './Menu.scss';
-import { LoaderOverlay } from 'components/LoaderOverlay/LoaderOverlay';
+import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { useCategories } from 'hooks/useCategories';
 import { useProducts } from 'hooks/useProducts';
 import { ReactElement, useEffect, useMemo, useState } from 'react';
-import { PageLayout } from 'components/PageLayout/PageLayout';
+import { PageLayout } from 'common/PageLayout/PageLayout';
 import { motion } from 'framer-motion';
 import { MenuCategories } from './components/MenuCategories/MenuCategories';
 import { MenuItems } from './components/MenuItems/MenuItems';

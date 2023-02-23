@@ -1,4 +1,4 @@
-import { Button } from 'components/Buttons/Button';
+import { Button } from 'common/Buttons/Button';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Buttons', () => {

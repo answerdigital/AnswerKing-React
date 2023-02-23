@@ -1,5 +1,5 @@
-import { Button } from 'components/Buttons/Button';
-import { Layout } from 'components/Layout/Layout';
+import { Button } from 'common/Buttons/Button';
+import { Layout } from 'common/Layout/Layout';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Layout', () => {
