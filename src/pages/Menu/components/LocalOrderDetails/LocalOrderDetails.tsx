@@ -4,7 +4,7 @@ import { GBPFormat } from 'utilities/GBPFormat';
 import cn from 'classnames';
 import { TrashIcon } from 'components/Icons/TrashIcon';
 import { QuantityIcon } from 'components/Icons/QuantityIcon';
-import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';
+import CheckoutBurgerImg from '/images/icon_checkout_no_items.png';
 import { ComponentTransition } from 'components/Transitions/ComponentTransition';
 
 export const LocalOrderDetails = (): ReactElement => {

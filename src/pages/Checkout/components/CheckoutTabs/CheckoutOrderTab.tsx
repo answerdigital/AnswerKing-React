@@ -5,7 +5,7 @@ import { useLocalOrder } from 'context/OrderContext';
 import { ReactElement, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from 'utilities/route-constants';
-import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';
+import CheckoutBurgerImg from '/images/icon_checkout_no_items.png';
 import cn from 'classnames';
 import { CheckoutFooter } from '../CheckoutFooter/CheckoutFooter';
 import { OrderDetails } from '../OrderDetails/OrderDetails';

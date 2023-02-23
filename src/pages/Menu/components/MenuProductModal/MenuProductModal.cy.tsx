@@ -1,7 +1,7 @@
-import { ProductCard } from 'components/ProductCard/ProductCard';
 import { LocalOrderContext } from 'context/OrderContext';
 import CustomMount from 'testHelpers/cypressHelpers/CustomMount';
 import { getExampleOrder, product } from '../../../../../cypress/data_helpers/component-test-data';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 describe('Menu Product Modal', () => {
   beforeEach(() => {

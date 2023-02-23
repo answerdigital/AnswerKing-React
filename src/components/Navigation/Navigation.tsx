@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import AnswerLogo from 'assets/logo.png';
+import AnswerLogo from '/images/logo.png';
 import { Button } from 'components/Buttons/Button';
 import { RouteConstants } from 'utilities/route-constants';
 import { useLocation, useNavigate } from 'react-router-dom';

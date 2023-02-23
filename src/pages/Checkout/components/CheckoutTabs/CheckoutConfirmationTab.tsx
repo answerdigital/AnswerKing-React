@@ -3,7 +3,7 @@ import { OrderFeesAndTotals } from 'components/OrderFeesAndTotals/OrderFeesAndTo
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
 import { ReactElement, useContext } from 'react';
-import FoodPrepGif from '../../assets/food-prep.gif';
+import FoodPrepGif from '/videos/food-prep.gif';
 import { CheckoutSection } from '../CheckoutSection/CheckoutSection';
 import { OrderDetailsMinimal } from '../OrderDetails/OrderDetailsMinimal';
 

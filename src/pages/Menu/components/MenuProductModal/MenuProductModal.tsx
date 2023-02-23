@@ -2,7 +2,7 @@ import { ReactElement, useCallback, useState } from 'react';
 import { ProductDto } from 'dtos/ProductDto';
 import { Button } from 'components/Buttons/Button';
 import { useLocalOrder } from 'context/OrderContext';
-import PlaceHolderImage from 'assets/burger_transparent.png';
+import PlaceHolderImage from '/images/burger_transparent.png';
 import { ModalTransition } from 'components/Transitions/ModalTransition';
 import { GBPFormat } from 'utilities/GBPFormat';
 import { PlusMinusButton } from 'components/Buttons/PlusMinusButton';

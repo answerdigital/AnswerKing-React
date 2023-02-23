@@ -1,6 +1,6 @@
-import { ProductCard } from 'components/ProductCard/ProductCard';
 import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement } from 'react';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 interface Props {
   products: ProductDto[];
