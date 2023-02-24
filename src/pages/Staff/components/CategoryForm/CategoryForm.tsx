@@ -40,8 +40,8 @@ export const CategoryForm = (): ReactElement => {
   } = useForm<CategoryFormSchema>({
     resolver: yupResolver(categoryFormSchema),
     defaultValues: {
-      name: categoryForm.initialCategory?.name || '',
-      description: categoryForm.initialCategory?.description || '',
+      name: categoryForm.initialCategory?.name ?? '',
+      description: categoryForm.initialCategory?.description ?? '',
       products: productOptions.map<boolean>((option) => categoryForm.initialCategory?.products?.includes(option.product.id) as boolean),
     },
   });
@@ -50,7 +50,7 @@ export const CategoryForm = (): ReactElement => {
     const legacyProductsIds =
       products.data
         ?.filter((product) => product.retired && categoryForm.initialCategory?.products?.includes(product.id))
-        .map((product) => product.id) || [];
+        .map((product) => product.id) ?? [];
     const ActiveProductIds = productOptions.filter((option, i) => (data.products ? data.products[i] : false)).map((option) => option.product.id);
 
     const categpryOutput: CategoryRequestDto = { ...data, products: ActiveProductIds.concat(legacyProductsIds) };

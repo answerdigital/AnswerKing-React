@@ -40,8 +40,8 @@ export const TagForm = (): ReactElement => {
   } = useForm<TagsFormSchema>({
     resolver: yupResolver(tagsFormSchema),
     defaultValues: {
-      name: tagForm.initialTag?.name || '',
-      description: tagForm.initialTag?.description || '',
+      name: tagForm.initialTag?.name ?? '',
+      description: tagForm.initialTag?.description ?? '',
       products: productOptions.map<boolean>((option) => tagForm.initialTag?.products?.includes(option.product.id) as boolean),
     },
   });

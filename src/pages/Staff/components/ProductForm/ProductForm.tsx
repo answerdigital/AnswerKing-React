@@ -62,20 +62,20 @@ export const ProductForm = (): ReactElement => {
   const { register, handleSubmit, formState } = useForm<ProductFormSchema>({
     resolver: yupResolver(productFormSchema),
     defaultValues: {
-      name: productForm.initialProduct?.name || '',
-      description: productForm.initialProduct?.description || '',
-      price: productForm.initialProduct?.price || 0,
-      categoryId: activeDefaultCategory?.id || 1,
-      tagsIds: tagOptions.map<boolean>((option) => productForm.initialProduct?.tags.includes(option.tag.id) as boolean),
+      name: productForm.initialProduct?.name ?? '',
+      description: productForm.initialProduct?.description ?? '',
+      price: productForm.initialProduct?.price ?? 0,
+      categoryId: activeDefaultCategory?.id ?? 1,
+      tagsIds: tagOptions.map<boolean>((option) => productForm.initialProduct?.tags.includes(option.tag.id) ?? false),
       stock: 0,
     },
   });
 
   const submitForm = async (data: ProductFormSchema): Promise<void> => {
-    const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) || [];
+    const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) ?? [];
     const ActiveTagIds = tagOptions.filter((option, i) => (data.tagsIds ? data.tagsIds[i] : false)).map((option) => option.tag.id);
 
-    const categoryIdToSave = defaultCategoryisRetired ? productForm.initialProduct?.category?.id || activeCategories[0]?.id : data.categoryId;
+    const categoryIdToSave = defaultCategoryisRetired ? productForm.initialProduct?.category?.id ?? activeCategories[0]?.id : data.categoryId;
 
     const productOutput: ProductRequestDto = {
       ...data,
