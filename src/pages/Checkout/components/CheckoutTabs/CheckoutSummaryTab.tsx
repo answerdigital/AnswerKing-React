@@ -4,8 +4,6 @@ import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext'
 import { useLocalOrder } from 'context/OrderContext';
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import useOrder from 'hooks/useOrder';
-import ServiceCharge from 'utilities/Constants/Service_Charge';
-import GBPFormat from 'utilities/GBPFormat';
 import CheckoutFooter from '../CheckoutFooter/CheckoutFooter';
 import CheckoutSection from '../CheckoutSection/CheckoutSection';
 import OrderDetailsMinimal from '../OrderDetails/OrderDetailsMinimal';

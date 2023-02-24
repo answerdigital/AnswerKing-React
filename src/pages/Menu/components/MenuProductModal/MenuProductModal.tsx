@@ -5,7 +5,6 @@ import ModalTransition from 'common/Transitions/ModalTransition';
 import { useLocalOrder } from 'context/OrderContext';
 import { ProductDto } from 'dtos/ProductDto';
 import GBPFormat from 'utilities/GBPFormat';
-// eslint-disable-next-line import/no-absolute-path
 import PlaceHolderImage from '/images/burger_transparent.png';
 
 interface Props {

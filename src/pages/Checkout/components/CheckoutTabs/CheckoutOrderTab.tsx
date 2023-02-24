@@ -4,7 +4,6 @@ import Button from 'common/Buttons/Button';
 import ComponentTransition from 'common/Transitions/ComponentTransition';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
-// eslint-disable-next-line import/no-absolute-path
 import CheckoutBurgerImg from '/images/icon_checkout_no_items.png';
 import { useNavigate } from 'react-router-dom';
 import PageRoutes from 'utilities/Constants/PageRoutes';

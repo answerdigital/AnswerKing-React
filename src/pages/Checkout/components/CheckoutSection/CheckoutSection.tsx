@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'common/Buttons/Button';
 
 interface Props {
   title: string;

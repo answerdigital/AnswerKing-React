@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import cn from 'classnames';
 import Button from 'common/Buttons/Button';
-// eslint-disable-next-line import/no-absolute-path
 import AnswerLogo from '/images/logo.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PageRoutes from '../../utilities/Constants/PageRoutes';

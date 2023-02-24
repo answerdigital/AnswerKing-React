@@ -1,5 +1,5 @@
-import OrderPanel from 'components/OrderPanel/OrderPanel';
 import { LocalOrderContext } from 'context/OrderContext';
+import OrderPanel from 'pages/Menu/components/OrderPanel/OrderPanel';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 import { getExampleOrder } from '../../../../../../cypress/data_helpers/component-test-data';
 

@@ -1,12 +1,11 @@
-/* eslint-disable import/no-absolute-path */
 import { ReactElement } from 'react';
 import Button from 'common/Buttons/Button';
 import PageLayout from 'common/PageLayout/PageLayout';
 import { useNavigate } from 'react-router-dom';
 import PageRoutes from 'utilities/Constants/PageRoutes';
 import Footer from './components/Footer/Footer';
-import BurgerHome from '/public/images/burgerhome.png';
-import Logo from '/public/images/icon_a.svg';
+import BurgerHome from '/images/burgerhome.png';
+import Logo from '/images/icon_a.svg';
 
 export default function HomePage(): ReactElement {
   const navigate = useNavigate();

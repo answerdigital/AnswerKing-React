@@ -3,7 +3,6 @@ import Button from 'common/Buttons/Button';
 import OrderFeesAndTotals from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
-// eslint-disable-next-line import/no-absolute-path
 import FoodPrepGif from '/videos/food-prep.gif';
 import CheckoutSection from '../CheckoutSection/CheckoutSection';
 import OrderDetailsMinimal from '../OrderDetails/OrderDetailsMinimal';

@@ -4,7 +4,6 @@ import BadgeIcon from 'common/Icons/BadgeIcon';
 import { ProductDto } from 'dtos/ProductDto';
 import { motion } from 'framer-motion';
 import GBPFormat from 'utilities/GBPFormat';
-// eslint-disable-next-line import/no-absolute-path
 import PlaceHolderImage from '/images/burger_transparent.png';
 import MenuProductModal from '../MenuProductModal/MenuProductModal';
 
