@@ -3,7 +3,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from 'common/Buttons/Button';
-import { Checkbox } from 'common/Inputs/Checkbox';
+import Checkbox from 'common/Inputs/Checkbox';
 import Input from 'common/Inputs/Input';
 import Label from 'common/Inputs/Label';
 import Select from 'common/Inputs/Select';

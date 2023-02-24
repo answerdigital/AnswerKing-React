@@ -18,10 +18,12 @@ export default function CheckoutSection({ title, onEditClick, children }: Props)
           <span
             className="bg-ak-grey-5 group flex h-[33px] w-[33px] cursor-pointer items-center justify-center rounded"
             onClick={onEditClick}
+            onKeyDown={onEditClick}
             role="button"
+            tabIndex={0}
           >
             <FontAwesomeIcon icon={faPencilAlt} />
-          </Button>
+          </span>
         )}
       </div>
       {children}

@@ -1,16 +1,17 @@
-import { Button } from 'common/Buttons/Button';
-import { ComponentTransition } from 'common/Transitions/ComponentTransition';
+import { ReactElement, useContext } from 'react';
+import cn from 'classnames';
+import Button from 'common/Buttons/Button';
+import ComponentTransition from 'common/Transitions/ComponentTransition';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
-import { ReactElement, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from 'utilities/route-constants';
+// eslint-disable-next-line import/no-absolute-path
 import CheckoutBurgerImg from '/images/icon_checkout_no_items.png';
-import cn from 'classnames';
-import { CheckoutFooter } from '../CheckoutFooter/CheckoutFooter';
-import { OrderDetails } from '../OrderDetails/OrderDetails';
+import { useNavigate } from 'react-router-dom';
+import PageRoutes from 'utilities/Constants/PageRoutes';
+import CheckoutFooter from '../CheckoutFooter/CheckoutFooter';
+import OrderDetails from '../OrderDetails/OrderDetails';
 
-export const CheckoutOrderTab = (): ReactElement => {
+export default function CheckoutOrderTab(): ReactElement {
   const { setCurrentTab } = useContext(CheckoutTabContext);
   const navigate = useNavigate();
   const { localOrder } = useLocalOrder();
@@ -24,11 +25,11 @@ export const CheckoutOrderTab = (): ReactElement => {
         {!orderExists ? (
           <ComponentTransition lineItemsExist={orderExists}>
             <div className="text-ak-grey-1 text-center text-sm font-normal">
-              <img src={CheckoutBurgerImg} className="mx-auto mb-[4%] h-[50px] w-[80px]"></img>
+              <img src={CheckoutBurgerImg} className="mx-auto mb-[4%] h-[50px] w-[80px]" alt="checkout-burger" />
               <p>
-                Whoa, you&apos;ve not got <br></br> anything in your order yet
+                Whoa, you&apos;ve not got <br /> anything in your order yet
               </p>
-              <Button colour="yellow" onClick={() => navigate(RouteConstants.MENU)} className="mt-[3%] h-[45px] w-[130px]">
+              <Button colour="yellow" onClick={() => navigate(PageRoutes.MENU)} className="mt-[3%] h-[45px] w-[130px]">
                 Go to menu
               </Button>
             </div>
@@ -48,4 +49,4 @@ export const CheckoutOrderTab = (): ReactElement => {
       </CheckoutFooter>
     </div>
   );
-};
+}

@@ -1,9 +1,10 @@
 import { ReactElement } from 'react';
-import AnswerLogo from 'assets/logo.png';
 import cn from 'classnames';
 import Button from 'common/Buttons/Button';
+// eslint-disable-next-line import/no-absolute-path
+import AnswerLogo from '/images/logo.png';
 import { useLocation, useNavigate } from 'react-router-dom';
-import PageRoutes from 'utilities/Constants/PageRoutes';
+import PageRoutes from '../../utilities/Constants/PageRoutes';
 
 export default function Navigation(): ReactElement {
   const navigate = useNavigate();

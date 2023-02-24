@@ -1,11 +1,12 @@
 import { ReactElement } from 'react';
 import cn from 'classnames';
-import { QuantityIcon } from 'common/Icons/QuantityIcon';
+import QuantityIcon from 'common/Icons/QuantityIcon';
 import TrashIcon from 'common/Icons/TrashIcon';
 import ComponentTransition from 'common/Transitions/ComponentTransition';
 import { useLocalOrder } from 'context/OrderContext';
 import GBPFormat from 'utilities/GBPFormat';
-import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';
+// eslint-disable-next-line import/no-absolute-path
+import CheckoutBurgerImg from '/images/icon_checkout_no_items.png';
 
 export default function LocalOrderDetails(): ReactElement {
   const { localOrder, removeProduct } = useLocalOrder();

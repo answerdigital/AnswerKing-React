@@ -1,10 +1,10 @@
 import { ReactElement, useMemo, useState } from 'react';
 import PageLayout from 'common/PageLayout/PageLayout';
-import CheckoutOrderTab from 'components/CheckoutTabs/CheckoutOrderTab';
-import CheckoutPaymentDetailsTab from 'components/CheckoutTabs/CheckoutPaymentDetailsTab';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import CheckoutTabContainer from './components/CheckoutTabContainer/CheckoutTabContainer';
 import CheckoutConfirmationTab from './components/CheckoutTabs/CheckoutConfirmationTab';
+import CheckoutOrderTab from './components/CheckoutTabs/CheckoutOrderTab';
+import CheckoutPaymentDetailsTab from './components/CheckoutTabs/CheckoutPaymentDetailsTab';
 import CheckoutSummaryTab from './components/CheckoutTabs/CheckoutSummaryTab';
 
 export default function CheckoutPage(): ReactElement {

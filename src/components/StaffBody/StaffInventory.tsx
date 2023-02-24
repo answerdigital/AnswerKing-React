@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { ProductFormContextProvider } from 'components/ProductForm/ProductFormContext';
-import ProductsTable from 'components/ProductsTable/ProductsTable';
+import { ProductFormContextProvider } from 'pages/Staff/components/ProductForm/ProductFormContext';
+import ProductsTable from 'pages/Staff/components/ProductsTable/ProductsTable';
 
 export default function StaffInventory(): ReactElement {
   return (

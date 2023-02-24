@@ -1,5 +1,5 @@
 import { customRender } from 'custom-render';
-import Footer from './Footer';
+import Footer from 'pages/Home/components/Footer/Footer';
 
 describe('Footer', () => {
   it('renders without crashing', () => {

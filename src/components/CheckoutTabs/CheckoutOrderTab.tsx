@@ -1,10 +1,10 @@
 import { ReactElement, useContext } from 'react';
-import Button from 'components/Buttons/Button';
-import CheckoutFooter from 'components/CheckoutFooter/CheckoutFooter';
-import OrderDetails from 'components/OrderDetails/OrderDetails';
-import ComponentTransition from 'components/Transitions/ComponentTransition';
+import Button from 'common/Buttons/Button';
+import ComponentTransition from 'common/Transitions/ComponentTransition';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
+import CheckoutFooter from 'pages/Checkout/components/CheckoutFooter/CheckoutFooter';
+import OrderDetails from 'pages/Checkout/components/OrderDetails/OrderDetails';
 import { useNavigate } from 'react-router-dom';
 import PageRoutes from 'utilities/Constants/PageRoutes';
 import CheckoutBurgerImg from '../../assets/icon_checkout_no_items.png';

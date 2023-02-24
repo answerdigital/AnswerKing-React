@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { TagFormContextProvider } from 'components/TagForm/TagFormContext';
-import TagsTable from 'components/TagsTable/TagsTable';
+import { TagFormContextProvider } from 'pages/Staff/components/TagForm/TagFormContext';
+import TagsTable from 'pages/Staff/components/TagsTable/TagsTable';
 
 export default function StaffTags(): ReactElement {
   return (

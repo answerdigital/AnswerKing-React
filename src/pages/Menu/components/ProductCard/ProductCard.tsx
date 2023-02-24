@@ -1,10 +1,11 @@
 import { ReactElement, useState } from 'react';
-import PlaceHolderImage from 'assets/burger_transparent.png';
 import Button from 'common/Buttons/Button';
 import BadgeIcon from 'common/Icons/BadgeIcon';
 import { ProductDto } from 'dtos/ProductDto';
 import { motion } from 'framer-motion';
 import GBPFormat from 'utilities/GBPFormat';
+// eslint-disable-next-line import/no-absolute-path
+import PlaceHolderImage from '/images/burger_transparent.png';
 import MenuProductModal from '../MenuProductModal/MenuProductModal';
 
 interface Props {
@@ -44,7 +45,7 @@ export default function ProductCard({ product }: Props): ReactElement {
               </h5>
               <div className="flex justify-center text-center">
                 <p data-testid="product-description" className="font-poly text-ak-grey-1 self-center text-base font-normal italic">
-                  {product.description.length > 50 ? `${product.description.substring(0, 50)  }...` : product.description}
+                  {product.description.length > 50 ? `${product.description.substring(0, 50)}...` : product.description}
                 </p>
               </div>
             </div>

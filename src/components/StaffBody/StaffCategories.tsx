@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import CategoriesTable from 'components/CategoriesTable/CategoriesTable';
-import { CategoryFormContextProvider } from 'components/CategoryForm/CategoryFormContext';
+import CategoriesTable from 'pages/Staff/components/CategoriesTable/CategoriesTable';
+import { CategoryFormContextProvider } from 'pages/Staff/components/CategoryForm/CategoryFormContext';
 
 export default function StaffCategories(): ReactElement {
   return (

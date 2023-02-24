@@ -1,11 +1,11 @@
 import { ReactElement, useState } from 'react';
 import PageLayout from 'common/PageLayout/PageLayout';
 import { SearchContextProvider } from 'common/Search/SearchContext';
-import StaffCategories from 'components/StaffBody/StaffCategories';
-import StaffInventory from 'components/StaffBody/StaffInventory';
-import StaffTags from 'components/StaffBody/StaffTags';
-import { StaffDetails } from './components/StaffBody/StaffDetails';
+import StaffCategories from './components/StaffBody/StaffCategories';
+import StaffDetails from './components/StaffBody/StaffDetails';
+import StaffInventory from './components/StaffBody/StaffInventory';
 import StaffOrders from './components/StaffBody/StaffOrders';
+import StaffTags from './components/StaffBody/StaffTags';
 import StaffNavBar from './components/StaffNavBar/StaffNavBar';
 
 export interface ISection {

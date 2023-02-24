@@ -1,11 +1,12 @@
 import { ReactElement, useCallback, useState } from 'react';
-import PlaceHolderImage from 'assets/burger_transparent.png';
 import Button from 'common/Buttons/Button';
 import PlusMinusButton from 'common/Buttons/PlusMinusButton';
 import ModalTransition from 'common/Transitions/ModalTransition';
 import { useLocalOrder } from 'context/OrderContext';
 import { ProductDto } from 'dtos/ProductDto';
 import GBPFormat from 'utilities/GBPFormat';
+// eslint-disable-next-line import/no-absolute-path
+import PlaceHolderImage from '/images/burger_transparent.png';
 
 interface Props {
   product: ProductDto;

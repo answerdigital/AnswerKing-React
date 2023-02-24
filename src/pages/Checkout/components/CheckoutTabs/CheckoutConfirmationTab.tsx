@@ -3,7 +3,8 @@ import Button from 'common/Buttons/Button';
 import OrderFeesAndTotals from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
-import FoodPrepGif from '../../assets/food-prep.gif';
+// eslint-disable-next-line import/no-absolute-path
+import FoodPrepGif from '/videos/food-prep.gif';
 import CheckoutSection from '../CheckoutSection/CheckoutSection';
 import OrderDetailsMinimal from '../OrderDetails/OrderDetailsMinimal';
 
@@ -17,7 +18,7 @@ export default function CheckoutConfirmationTab(): ReactElement {
   return (
     <div className="flex min-h-[65vh] w-full flex-col">
       <div className="flex w-full flex-col items-center justify-center">
-        <img src={FoodPrepGif} className="aspect-square w-[150px]" alt="food-prep"/>
+        <img src={FoodPrepGif} className="aspect-square w-[150px]" alt="food-prep" />
         <h1 className="text-ak-grey-1 mb-4 text-xl font-semibold">Order received</h1>
       </div>
 

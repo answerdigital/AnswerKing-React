@@ -2,12 +2,12 @@ import { ReactElement, useContext, useState } from 'react';
 import { faCcVisa, faCcMastercard, faCcAmex } from '@fortawesome/free-brands-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/Buttons/Button';
-import CheckoutFooter from 'components/CheckoutFooter/CheckoutFooter';
-import CheckboxRow from 'components/Inputs/CheckboxRow';
-import Input from 'components/Inputs/Input';
+import Button from 'common/Buttons/Button';
+import CheckboxRow from 'common/Inputs/CheckboxRow';
+import Input from 'common/Inputs/Input';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
+import CheckoutFooter from 'pages/Checkout/components/CheckoutFooter/CheckoutFooter';
 
 export default function CheckoutPaymentDetailsTab(): ReactElement {
   const { setCurrentTab } = useContext(CheckoutTabContext);

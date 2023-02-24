@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import cn from 'classnames';
-import { QuantityIcon } from 'common/Icons/QuantityIcon';
+import QuantityIcon from 'common/Icons/QuantityIcon';
 import TrashIcon from 'common/Icons/TrashIcon';
 import { useLocalOrder } from 'context/OrderContext';
 import { LineItemDto } from 'dtos/LineItemDto';

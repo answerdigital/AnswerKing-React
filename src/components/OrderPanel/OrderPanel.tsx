@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import LocalOrderDetails from 'components/LocalOrderDetails/LocalOrderDetails';
-import OrderCreateForm from 'components/OrderCreateForm/OrderCreateForm';
+import LocalOrderDetails from 'pages/Menu/components/LocalOrderDetails/LocalOrderDetails';
+import OrderCreateForm from 'pages/Menu/components/OrderCreateForm/OrderCreateForm';
 
 export default function OrderPanel(): ReactElement {
   return (

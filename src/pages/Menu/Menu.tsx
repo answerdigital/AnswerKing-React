@@ -1,13 +1,13 @@
 import { ReactElement, useEffect, useMemo, useState } from 'react';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
 import PageLayout from 'common/PageLayout/PageLayout';
-import OrderPanel from 'components/OrderPanel/OrderPanel';
 import { ProductDto } from 'dtos/ProductDto';
 import { motion } from 'framer-motion';
 import useCategories from 'hooks/useCategories';
 import useProducts from 'hooks/useProducts';
 import MenuCategories from './components/MenuCategories/MenuCategories';
 import MenuItems from './components/MenuItems/MenuItems';
+import OrderPanel from './components/OrderPanel/OrderPanel';
 
 export default function MenuPage(): ReactElement {
   const { products } = useProducts();
@@ -55,7 +55,7 @@ export default function MenuPage(): ReactElement {
         <div className="col-span-2" />
         <div className="col-span-6 text-center">
           <h6 className="font-poly text-ak-grey-5 mt-5 mb-6 text-lg italic">
-            {filteredCategories.find((category) => category.id == selectedCategory)?.description}
+            {filteredCategories.find((category) => category.id === selectedCategory)?.description}
           </h6>
           <motion.div
             role="tabpanel"
