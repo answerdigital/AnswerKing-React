@@ -40,17 +40,18 @@ export const TagForm = (): ReactElement => {
   } = useForm<TagsFormSchema>({
     resolver: yupResolver(tagsFormSchema),
     defaultValues: {
-      name: tagForm.initialTag?.name,
-      description: tagForm.initialTag?.description,
-      products: tagForm.initialTag?.products ?? [],
+      name: tagForm.initialTag?.name || '',
+      description: tagForm.initialTag?.description || '',
+      products: productOptions.map<boolean>((option) => tagForm.initialTag?.products?.includes(option.product.id) as boolean),
     },
   });
 
   const submitForm = async (data: TagsFormSchema): Promise<void> => {
     const legacyProductsIds =
       products.data?.filter((product) => product.retired && tagForm.initialTag?.products?.includes(product.id)).map((product) => product.id) || [];
+    const ActiveProductIds = productOptions.filter((option, i) => (data.products ? data.products[i] : false)).map((option) => option.product.id);
 
-    const tagOutput: TagRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
+    const tagOutput: TagRequestDto = { ...data, products: ActiveProductIds.concat(legacyProductsIds) };
 
     try {
       if (!tagForm.initialTag) {

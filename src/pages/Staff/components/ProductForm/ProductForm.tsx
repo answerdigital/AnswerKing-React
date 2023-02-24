@@ -30,7 +30,7 @@ export const ProductForm = (): ReactElement => {
       activeTags.map((tag) => {
         return {
           tag: tag,
-          selected: productForm.initialProduct?.tags.includes(tag.id) as boolean,
+          initiallySelected: productForm.initialProduct?.tags.includes(tag.id) as boolean,
         };
       }) ?? []
     );
@@ -59,28 +59,29 @@ export const ProductForm = (): ReactElement => {
     );
   }, [activeCategories]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ProductFormSchema>({
+  const { register, handleSubmit, formState } = useForm<ProductFormSchema>({
     resolver: yupResolver(productFormSchema),
     defaultValues: {
-      name: productForm.initialProduct?.name,
-      description: productForm.initialProduct?.description,
-      price: productForm.initialProduct?.price,
+      name: productForm.initialProduct?.name || '',
+      description: productForm.initialProduct?.description || '',
+      price: productForm.initialProduct?.price || 0,
+      categoryId: activeDefaultCategory?.id || 1,
+      tagsIds: tagOptions.map<boolean>((option) => productForm.initialProduct?.tags.includes(option.tag.id) as boolean),
       stock: 0,
-      categoryId: activeDefaultCategory?.id,
-      tagsIds: productForm.initialProduct?.tags,
     },
   });
 
   const submitForm = async (data: ProductFormSchema): Promise<void> => {
     const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) || [];
+    const ActiveTagIds = tagOptions.filter((option, i) => (data.tagsIds ? data.tagsIds[i] : false)).map((option) => option.tag.id);
 
     const categoryIdToSave = defaultCategoryisRetired ? productForm.initialProduct?.category?.id || activeCategories[0]?.id : data.categoryId;
 
-    const productOutput: ProductRequestDto = { ...data, categoryId: categoryIdToSave, tagsIds: (data.tagsIds as number[]).concat(legacyTagIds) };
+    const productOutput: ProductRequestDto = {
+      ...data,
+      categoryId: categoryIdToSave,
+      tagsIds: ActiveTagIds.concat(legacyTagIds),
+    };
 
     try {
       if (!productForm.initialProduct) {
@@ -107,10 +108,10 @@ export const ProductForm = (): ReactElement => {
               <FontAwesomeIcon icon={faPen} />
             </div>
             <div className="col-span-2">
-              <Input type="text" label="Item name" id="item-name" error={errors.name?.message} {...register('name')} />
+              <Input type="text" label="Item name" id="item-name" error={formState.errors.name?.message} {...register('name')} />
             </div>
             <div className="col-span-2 row-span-2">
-              <TextArea label="Item description" id="item-description" error={errors.description?.message} {...register('description')} />
+              <TextArea label="Item description" id="item-description" error={formState.errors.description?.message} {...register('description')} />
             </div>
             <div className="col-span-2">
               <Select
@@ -118,17 +119,17 @@ export const ProductForm = (): ReactElement => {
                 label="Category"
                 options={categoryOptions}
                 id="category"
-                error={errors.categoryId?.message}
+                error={formState.errors.categoryId?.message}
                 disabled={defaultCategoryisRetired}
               />
             </div>
             <div className="flex w-full flex-col">
-              <Input label="Price" type="number" step={0.01} min={0} id="price" error={errors.price?.message} {...register('price')} />
+              <Input label="Price" type="number" step={0.01} min={0} id="price" error={formState.errors.price?.message} {...register('price')} />
             </div>
             <div className="flex w-full flex-col">
-              <Input label="Stock" type="number" step={1} min={0} id="stock" error={errors.stock?.message} {...register('stock')} />
+              <Input label="Stock" type="number" step={1} min={0} id="stock" error={formState.errors.stock?.message} {...register('stock')} />
             </div>
-            <Label error={errors.tagsIds?.message} className="col-span-4">
+            <Label error={formState.errors.tagsIds?.message} className="col-span-4">
               Tags
             </Label>
             {tagOptions.map((tagOption) => {
@@ -136,10 +137,9 @@ export const ProductForm = (): ReactElement => {
                 <Checkbox
                   {...register(`tagsIds.${tagOption.tag.id}`)}
                   key={tagOption.tag.id}
-                  value={tagOption.tag.id}
                   label={tagOption.tag.name}
                   id={tagOption.tag.id.toString()}
-                  defaultChecked={tagOption.selected}
+                  defaultChecked={tagOption.initiallySelected}
                   disabled={tagOption.tag.retired}
                 />
               );

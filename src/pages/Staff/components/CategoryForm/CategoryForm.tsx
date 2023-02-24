@@ -27,7 +27,7 @@ export const CategoryForm = (): ReactElement => {
       activeProducts.map((product) => {
         return {
           product: product,
-          selected: !!categoryForm.initialCategory?.products?.includes(product.id),
+          initiallySelected: !!categoryForm.initialCategory?.products?.includes(product.id),
         };
       }) ?? []
     );
@@ -40,9 +40,9 @@ export const CategoryForm = (): ReactElement => {
   } = useForm<CategoryFormSchema>({
     resolver: yupResolver(categoryFormSchema),
     defaultValues: {
-      name: categoryForm.initialCategory?.name,
-      description: categoryForm.initialCategory?.description,
-      products: categoryForm.initialCategory?.products,
+      name: categoryForm.initialCategory?.name || '',
+      description: categoryForm.initialCategory?.description || '',
+      products: productOptions.map<boolean>((option) => categoryForm.initialCategory?.products?.includes(option.product.id) as boolean),
     },
   });
 
@@ -51,15 +51,16 @@ export const CategoryForm = (): ReactElement => {
       products.data
         ?.filter((product) => product.retired && categoryForm.initialCategory?.products?.includes(product.id))
         .map((product) => product.id) || [];
+    const ActiveProductIds = productOptions.filter((option, i) => (data.products ? data.products[i] : false)).map((option) => option.product.id);
 
-    const tagOutput: CategoryRequestDto = { ...data, products: (data.products as number[]).concat(legacyProductsIds) };
+    const categpryOutput: CategoryRequestDto = { ...data, products: ActiveProductIds.concat(legacyProductsIds) };
 
     try {
       if (!categoryForm.initialCategory) {
-        const returnCategory = await createCategory.mutateAsync(tagOutput);
+        const returnCategory = await createCategory.mutateAsync(categpryOutput);
         toast.success(`Product "${returnCategory.name}" was succesfully added with ID:"${returnCategory.id}" .`);
       } else {
-        const returnCategory = await editCategory.mutateAsync({ id: categoryForm.initialCategory.id, requestDto: tagOutput });
+        const returnCategory = await editCategory.mutateAsync({ id: categoryForm.initialCategory.id, requestDto: categpryOutput });
         toast.success(`Product "${returnCategory.name}" was succesfully edited" .`);
       }
       categoryForm.closeForm();
@@ -100,7 +101,7 @@ export const CategoryForm = (): ReactElement => {
                   id={productOption.product.id.toString()}
                   label={productOption.product.name}
                   value={productOption.product.id}
-                  defaultChecked={productOption.selected}
+                  defaultChecked={productOption.initiallySelected}
                   {...register(`products.${productOption.product.id}`)}
                   disabled={productOption.product.retired}
                 />
