@@ -1,9 +1,9 @@
-import { Footer } from 'pages/Home/components/Footer/Footer';
+import Footer from 'pages/Home/components/Footer/Footer';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 
 describe('Footer', () => {
   beforeEach(() => {
-    CustomMount(<Footer></Footer>);
+    CustomMount(<Footer />);
   });
 
   it('links to allergen board', () => {

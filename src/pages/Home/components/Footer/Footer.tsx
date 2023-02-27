@@ -1,21 +1,26 @@
 import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from 'utilities/route-constants';
+import PageRoutes from 'utilities/Constants/PageRoutes';
 
-export const Footer = (): ReactElement => {
+export default function Footer(): ReactElement {
   const navigate = useNavigate();
 
   return (
     <div className="text-ak-grey-5 grid grid-cols-3 justify-items-center gap-3 overflow-hidden">
-      <a className="cursor-pointer hover:text-white" data-testid="allergen-board-link" onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}>
+      <button
+        type="button"
+        className="cursor-pointer hover:text-white"
+        data-testid="allergen-board-link"
+        onClick={() => navigate(PageRoutes.ALLERGEN_BOARD)}
+      >
         View Allergen board
-      </a>
-      <a className="cursor-pointer hover:text-white" data-testid="languages-link" onClick={() => navigate(RouteConstants.LANGUAGE)}>
+      </button>
+      <button type="button" className="cursor-pointer hover:text-white" data-testid="languages-link" onClick={() => navigate(PageRoutes.LANGUAGE)}>
         Change Language
-      </a>
-      <a className="cursor-pointer hover:text-white" data-testid="policies-link" onClick={() => navigate(RouteConstants.POLICIES)}>
+      </button>
+      <button type="button" className="cursor-pointer hover:text-white" data-testid="policies-link" onClick={() => navigate(PageRoutes.POLICIES)}>
         View Policies
-      </a>
+      </button>
     </div>
   );
-};
+}

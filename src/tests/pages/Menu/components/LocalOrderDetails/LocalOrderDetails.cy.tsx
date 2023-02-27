@@ -1,13 +1,13 @@
 import { LocalOrderContext } from 'context/OrderContext';
-import { LocalOrderDetails } from 'pages/Menu/components/LocalOrderDetails/LocalOrderDetails';
-import { getExampleOrder } from '../../../../../../cypress/data_helpers/component-test-data';
+import LocalOrderDetails from 'pages/Menu/components/LocalOrderDetails/LocalOrderDetails';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
+import { getExampleOrder } from '../../../../../../cypress/data_helpers/component-test-data';
 
 describe('Local Order Details', () => {
   beforeEach(() => {
     CustomMount(
       <LocalOrderContext.Provider value={getExampleOrder()}>
-        <LocalOrderDetails></LocalOrderDetails>
+        <LocalOrderDetails />
       </LocalOrderContext.Provider>
     );
   });

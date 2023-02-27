@@ -1,13 +1,13 @@
-import { Button } from 'common/Buttons/Button';
-import { ModalTransition } from 'common/Transitions/ModalTransition';
 import { ReactElement } from 'react';
+import Button from 'common/Buttons/Button';
+import ModalTransition from 'common/Transitions/ModalTransition';
 
 interface Props {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onConfirm: () => void;
 }
 
-export const DeleteProductModal = ({ setIsOpen, onConfirm }: Props): ReactElement => {
+export default function DeleteProductModal({ setIsOpen, onConfirm }: Props): ReactElement {
   return (
     <div
       data-testid="delete-product-modal"
@@ -31,4 +31,4 @@ export const DeleteProductModal = ({ setIsOpen, onConfirm }: Props): ReactElemen
       </ModalTransition>
     </div>
   );
-};
+}

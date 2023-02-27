@@ -1,6 +1,6 @@
-import { HomePage } from 'pages/Home/Home';
-import { RouteConstants } from 'utilities/route-constants';
-import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
+import HomePage from 'pages/Home/Home';
+import PageRoutes from 'utilities/Constants/PageRoutes';
+import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
 
 describe('HomePage tests', () => {
   it('mounts', () => {
@@ -10,7 +10,7 @@ describe('HomePage tests', () => {
   it('Navigates to menu when "Menu" button is clicked', () => {
     CustomMount(<HomePage />);
 
-    cy.get('button').click();
-    cy.location('pathname').should('contain', RouteConstants.MENU);
+    cy.get('button').contains('Order Now').click();
+    cy.location('pathname').should('contain', PageRoutes.MENU);
   });
 });

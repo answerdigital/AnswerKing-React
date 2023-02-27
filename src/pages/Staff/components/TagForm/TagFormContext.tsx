@@ -1,6 +1,6 @@
+import { createContext, useContext, useState, useMemo, ReactNode } from 'react';
 import { TagDto } from 'dtos/TagDto';
-import { createContext, useContext, useState, useMemo } from 'react';
-import { TagForm } from './TagForm';
+import TagForm from './TagForm';
 
 interface ITagFormContext {
   startEditing: (tag: TagDto) => void;
@@ -16,7 +16,7 @@ const TagFormContext = createContext<ITagFormContext>({
 });
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const TagFormContextProvider: React.FC<Props> = ({ children }) => {
@@ -41,24 +41,14 @@ export const TagFormContextProvider: React.FC<Props> = ({ children }) => {
   const contextValues: ITagFormContext = useMemo(
     () => ({
       startEditing: editTag,
-      openForm: openForm,
-      closeForm: closeForm,
-      initialTag: initialTag,
+      openForm,
+      closeForm,
+      initialTag,
     }),
     [initialTag]
   );
 
-  return (
-    <TagFormContext.Provider value={contextValues}>
-      {formOpen ? (
-        <>
-          <TagForm />
-        </>
-      ) : (
-        <>{children}</>
-      )}
-    </TagFormContext.Provider>
-  );
+  return <TagFormContext.Provider value={contextValues}>{formOpen ? <TagForm /> : children}</TagFormContext.Provider>;
 };
 
 export const useTagFormContext = (): ITagFormContext => useContext(TagFormContext);

@@ -1,4 +1,4 @@
-export const RouteConstants = {
+export default {
   HOME: '/',
   MENU: '/menu',
   STAFF: '/staff',

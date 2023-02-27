@@ -1,11 +1,12 @@
 import { ReactElement } from 'react';
-import { GBPFormat } from 'utilities/GBPFormat';
 import { LineItemDto } from 'dtos/LineItemDto';
+import GBPFormat from 'utilities/GBPFormat';
+
 interface Props {
   items: LineItemDto[];
 }
 
-export const OrderDetailsMinimal = ({ items }: Props): ReactElement => {
+export default function OrderDetailsMinimal({ items }: Props): ReactElement {
   return (
     <table className="w-full table-fixed text-xs">
       <tbody>
@@ -23,4 +24,4 @@ export const OrderDetailsMinimal = ({ items }: Props): ReactElement => {
       </tbody>
     </table>
   );
-};
+}

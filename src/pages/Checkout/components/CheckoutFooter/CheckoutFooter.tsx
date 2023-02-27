@@ -1,12 +1,12 @@
-import { OrderFeesAndTotals } from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
-import { useLocalOrder } from 'context/OrderContext';
 import { ReactElement } from 'react';
+import OrderFeesAndTotals from 'common/OrderFeesAndTotals/OrderFeesAndTotals';
+import { useLocalOrder } from 'context/OrderContext';
 
 interface Props {
   children: React.ReactNode;
 }
 
-export const CheckoutFooter = ({ children }: Props): ReactElement => {
+export default function CheckoutFooter({ children }: Props): ReactElement {
   const { localOrder } = useLocalOrder();
 
   return (
@@ -15,4 +15,4 @@ export const CheckoutFooter = ({ children }: Props): ReactElement => {
       <div className="flex gap-5 font-normal">{children}</div>
     </>
   );
-};
+}

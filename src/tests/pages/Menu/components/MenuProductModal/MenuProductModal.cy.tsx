@@ -1,13 +1,13 @@
 import { LocalOrderContext } from 'context/OrderContext';
-import { ProductCard } from 'pages/Menu/components/ProductCard/ProductCard';
-import { getExampleOrder, product } from '../../../../../../cypress/data_helpers/component-test-data';
+import ProductCard from 'pages/Menu/components/ProductCard/ProductCard';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
+import { getExampleOrder, product } from '../../../../../../cypress/data_helpers/component-test-data';
 
 describe('Menu Product Modal', () => {
   beforeEach(() => {
     CustomMount(
       <LocalOrderContext.Provider value={getExampleOrder()}>
-        <ProductCard product={product}></ProductCard>
+        <ProductCard product={product} />
       </LocalOrderContext.Provider>
     );
     cy.getBySel('show-product-modal').click();

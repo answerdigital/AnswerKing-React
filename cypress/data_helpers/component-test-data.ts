@@ -1,7 +1,7 @@
-import { ProductDto } from '../../src/dtos/ProductDto';
 import { ILocalOrder } from '../../src/context/OrderContext';
-import { LineItemDto } from '../../src/dtos/LineItemDto';
 import { CategoryDto } from '../../src/dtos/CategoryDto';
+import { LineItemDto } from '../../src/dtos/LineItemDto';
+import { ProductDto } from '../../src/dtos/ProductDto';
 
 export const product: ProductDto = {
   name: 'This is a product',
@@ -71,7 +71,7 @@ export const categories: CategoryDto[] = [
   },
 ];
 
-export const lineItem = { product: product, quantity: 5, subTotal: 2500 };
+export const lineItem = { product, quantity: 5, subTotal: 2500 };
 const lineItemTwo: LineItemDto = { product: secondProduct, quantity: 1, subTotal: 750 };
 
 export const lineItemList: LineItemDto[] = [];
@@ -83,17 +83,13 @@ export const localOrderData = { id: 1, lineItems: lineItemList };
 export function getExampleOrder(): ILocalOrder {
   return {
     localOrder: localOrderData,
-    addToLocalOrder(product: ProductDto): void {
+    addToLocalOrder(): void {
       expect(product.name).to.equal('This is a product');
     },
-    removeLocalOrder(): void {
-      return;
-    },
-    removeProduct(product: ProductDto): void {
+    removeLocalOrder(): void {},
+    removeProduct(): void {
       expect(product.name).to.equal('This is a product');
     },
-    setOrderId(id: number): void {
-      return;
-    },
+    setOrderId(id: number): void {},
   };
 }

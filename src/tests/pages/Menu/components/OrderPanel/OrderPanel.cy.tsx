@@ -1,13 +1,13 @@
 import { LocalOrderContext } from 'context/OrderContext';
-import { OrderPanel } from 'pages/Menu/components/OrderPanel/OrderPanel';
-import { getExampleOrder } from '../../../../../../cypress/data_helpers/component-test-data';
+import OrderPanel from 'pages/Menu/components/OrderPanel/OrderPanel';
 import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
+import { getExampleOrder } from '../../../../../../cypress/data_helpers/component-test-data';
 
 describe('Order Panel', () => {
   beforeEach(() => {
     CustomMount(
       <LocalOrderContext.Provider value={getExampleOrder()}>
-        <OrderPanel></OrderPanel>
+        <OrderPanel />
       </LocalOrderContext.Provider>
     );
   });

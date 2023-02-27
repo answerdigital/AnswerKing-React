@@ -1,22 +1,22 @@
 import { ReactElement, useMemo } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { useCategoryFormContext } from './CategoryFormContext';
-import { Button } from 'common/Buttons/Button';
-import { Input } from 'common/Inputs/Input';
-import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextArea } from 'common/Inputs/TextArea';
-import { Checkbox } from 'common/Inputs/Checkbox';
-import { useProducts } from 'hooks/useProducts';
-import { Label } from 'common/Inputs/Label';
+import Button from 'common/Buttons/Button';
+import Checkbox from 'common/Inputs/Checkbox';
+import Input from 'common/Inputs/Input';
+import Label from 'common/Inputs/Label';
+import TextArea from 'common/Inputs/TextArea';
+import useProducts from 'hooks/useProducts';
+import { useForm } from 'react-hook-form';
 import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
 import { useCategories } from 'hooks/useCategories';
 import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
 import { toast } from 'react-toastify';
-import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import { useCategoryFormContext } from './CategoryFormContext';
 
-export const CategoryForm = (): ReactElement => {
+export default function CategoryForm(): ReactElement {
   const categoryForm = useCategoryFormContext();
   const { products } = useProducts();
   const { createCategory, editCategory } = useCategories();
@@ -122,4 +122,4 @@ export const CategoryForm = (): ReactElement => {
       </div>
     </>
   );
-};
+}

@@ -7,9 +7,9 @@ interface Props {
   children: React.ReactNode;
 }
 
-const TOOLTIP_GAP_ABOVE_PARENT = 10; //px
+const TOOLTIP_GAP = 10;
 
-export const Tooltip = ({ parentRef, children }: Props): ReactElement => {
+export default function Tooltip({ parentRef, children }: Props): ReactElement {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleParentResize = useCallback(() => {
@@ -24,7 +24,7 @@ export const Tooltip = ({ parentRef, children }: Props): ReactElement => {
     const tooltipRect = tooltipElement.getBoundingClientRect();
 
     const middlePos = parentRect.left + parentRect.width / 2;
-    const topPos = parentRect.top - (tooltipRect.height + TOOLTIP_GAP_ABOVE_PARENT);
+    const topPos = parentRect.top - (tooltipRect.height + TOOLTIP_GAP);
 
     ref.current.style.top = `${topPos}px`;
     ref.current.style.left = `${middlePos}px`;
@@ -49,8 +49,8 @@ export const Tooltip = ({ parentRef, children }: Props): ReactElement => {
       className={cn('text-ak-grey-1 absolute w-fit max-w-sm -translate-x-1/2 rounded-lg bg-white p-2 text-sm shadow-md')}
       ref={ref}
     >
-      <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-white"></div>
+      <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-white" />
       {children}
     </motion.div>
   );
-};
+}

@@ -1,6 +1,6 @@
-import { ErrorIcon } from './ErrorIcon';
-import cn from 'classnames';
 import { ReactElement } from 'react';
+import cn from 'classnames';
+import ErrorIcon from './ErrorIcon';
 
 interface Props {
   forId?: string;
@@ -9,7 +9,7 @@ interface Props {
   className?: string;
 }
 
-export const Label = ({ children, className, error, forId }: Props): ReactElement => {
+export default function Label({ children, className, error, forId }: Props): ReactElement {
   return (
     <div className={cn('flex flex-row gap-2', className)}>
       {children && (
@@ -20,4 +20,4 @@ export const Label = ({ children, className, error, forId }: Props): ReactElemen
       {error && <ErrorIcon message={error} />}
     </div>
   );
-};
+}

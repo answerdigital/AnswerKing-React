@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
-import AnswerLogo from '/images/logo.png';
-import { Button } from 'common/Buttons/Button';
-import { RouteConstants } from 'utilities/route-constants';
-import { useLocation, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
+import Button from 'common/Buttons/Button';
+import AnswerLogo from '/images/logo.png';
+import { useLocation, useNavigate } from 'react-router-dom';
+import PageRoutes from '../../utilities/Constants/PageRoutes';
 
-export const Navigation = (): ReactElement => {
+export default function Navigation(): ReactElement {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -13,14 +13,14 @@ export const Navigation = (): ReactElement => {
     <nav className="bg-ak-grey-2 p-5">
       <div data-testid="navigation" className="container mx-auto flex flex-wrap items-center justify-between">
         <a data-testid="home-button" href="/" className="ml-16">
-          <img src={AnswerLogo} className="h-[60.18px] w-[170px]"></img>
+          <img src={AnswerLogo} className="h-[60.18px] w-[170px]" alt="answer-logo" />
         </a>
 
         <div className="mr-16 flex flex-row items-center gap-[10px] md:order-2">
           <Button
             colour="clear"
-            onClick={() => navigate(RouteConstants.MENU)}
-            className={cn('font-poly h-[32px] px-[20px] italic', location.pathname == '/menu' && 'text-ak-yellow')}
+            onClick={() => navigate(PageRoutes.MENU)}
+            className={cn('font-poly h-[32px] px-[20px] italic', location.pathname === '/menu' && 'text-ak-yellow')}
             hover={false}
           >
             Menu
@@ -28,8 +28,8 @@ export const Navigation = (): ReactElement => {
           <Button
             colour="clear"
             data-testid="allergen-board-btn"
-            onClick={() => navigate(RouteConstants.ALLERGEN_BOARD)}
-            className={cn('font-poly h-[32px] px-[20px] italic', location.pathname == '/allergens' && 'text-ak-yellow')}
+            onClick={() => navigate(PageRoutes.ALLERGEN_BOARD)}
+            className={cn('font-poly h-[32px] px-[20px] italic', location.pathname === '/allergens' && 'text-ak-yellow')}
             hover={false}
           >
             Allergy Info
@@ -44,4 +44,4 @@ export const Navigation = (): ReactElement => {
       </div>
     </nav>
   );
-};
+}

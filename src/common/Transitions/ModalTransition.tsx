@@ -1,11 +1,11 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import { ReactElement } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const ModalTransition = (props: Props): ReactElement => {
+export default function ModalTransition({ children }: Props): ReactElement {
   return (
     <AnimatePresence>
       <motion.div
@@ -30,8 +30,8 @@ export const ModalTransition = (props: Props): ReactElement => {
           },
         }}
       >
-        {props.children}
+        {children}
       </motion.div>
     </AnimatePresence>
   );
-};
+}

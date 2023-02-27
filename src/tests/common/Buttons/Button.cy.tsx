@@ -1,12 +1,9 @@
-import { Button } from 'common/Buttons/Button';
-import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
+import Button from 'common/Buttons/Button';
+import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
 
 describe('Buttons', () => {
   beforeEach(() => {
-    const mockMethod = function (): undefined {
-      return undefined;
-    };
-
+    const mockMethod = (): undefined => undefined;
     CustomMount(
       <div>
         <div>
@@ -17,7 +14,7 @@ describe('Buttons', () => {
           <Button data-testid="large-button">Large</Button>
         </div>
         <div>
-          <Button data-testid="disabled-button" disabled={true}>
+          <Button data-testid="disabled-button" disabled>
             Disabled
           </Button>
         </div>
@@ -28,7 +25,7 @@ describe('Buttons', () => {
           <Button colour="yellow">Yellow</Button>
         </div>
         <div>
-          <Button active={true}>Active</Button>
+          <Button active>Active</Button>
         </div>
         <div>
           <Button className="order_load_form__button" type="submit">

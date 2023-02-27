@@ -4,7 +4,7 @@ interface Props {
   children: string;
 }
 
-export const BadgeIcon = ({ children }: Props): ReactElement => {
+export default function BadgeIcon({ children }: Props): ReactElement {
   return (
     <div
       className="bg-backdrop-blur-md bg-white-25 bg-ak-grey-1 absolute top-3 left-3
@@ -14,4 +14,4 @@ export const BadgeIcon = ({ children }: Props): ReactElement => {
       <span>{children}</span>
     </div>
   );
-};
+}

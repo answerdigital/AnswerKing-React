@@ -1,13 +1,13 @@
-import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 import { ReactElement } from 'react';
+import TrashIcon from 'common/Icons/TrashIcon';
 import { LocalOrderContext, useLocalOrder } from 'context/OrderContext';
-import { TrashIcon } from 'common/Icons/TrashIcon';
 import { getExampleOrder, product } from '../../../../cypress/data_helpers/component-test-data';
+import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
 
 describe('Menu Product Modal', () => {
   const Wrapper = (): ReactElement => {
     const { removeProduct } = useLocalOrder();
-    return <TrashIcon onClick={() => removeProduct(product)}></TrashIcon>;
+    return <TrashIcon onClick={() => removeProduct(product)} />;
   };
 
   beforeEach(() => {

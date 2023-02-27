@@ -1,5 +1,5 @@
-import { PageTransition } from 'common/Transitions/PageTransition';
 import { ReactElement } from 'react';
+import PageTransition from 'common/Transitions/PageTransition';
 import { Helmet } from 'react-helmet-async';
 
 type Props = {
@@ -7,13 +7,13 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const PageLayout = (props: Props): ReactElement => {
+export default function PageLayout({ title, children }: Props): ReactElement {
   return (
     <>
       <Helmet>
-        <title>{props.title}</title>
+        <title>{title}</title>
       </Helmet>
-      <PageTransition>{props.children}</PageTransition>
+      <PageTransition>{children}</PageTransition>
     </>
   );
-};
+}

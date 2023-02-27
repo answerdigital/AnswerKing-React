@@ -1,7 +1,8 @@
 import { ProductDto } from 'dtos/ProductDto';
 import { ProductRequestDto } from 'dtos/RequestDtos/ProductRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { ProblemDetails, ItemService } from 'services/itemService';
+import { ProblemDetails } from 'services/itemService';
+import productService from 'services/productService';
 
 interface UpdateProductProps {
   id: number;
@@ -25,10 +26,8 @@ interface UseProductsResult {
   removeProduct: UseMutationResult<void, ProblemDetails, number>;
 }
 
-export const useProducts = (): UseProductsResult => {
-  const productService = new ItemService<ProductDto,ProductRequestDto>('products');
-
-  const products = useQuery<ProductDto[]>(['items'], productService.getAll);
+export default function useProducts(): UseProductsResult {
+  const products = useQuery<ProductDto[]>(['products'], productService.getAll);
 
   const createProduct = useMutation<ProductDto, productProblemDetails, ProductRequestDto>((requestDto) => productService.create(requestDto), {
     onSuccess: () => {
@@ -42,7 +41,7 @@ export const useProducts = (): UseProductsResult => {
     },
   });
 
-  const removeProduct = useMutation<void, productProblemDetails, number>((id) => productService.remove(id), {
+  const removeProduct = useMutation<void, productProblemDetails, number>((id) => productService.retire(id), {
     onSuccess: () => {
       products.refetch();
     },

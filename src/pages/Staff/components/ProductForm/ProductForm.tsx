@@ -1,24 +1,24 @@
-import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { ReactElement, useMemo } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'common/Buttons/Button';
-import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Select } from 'common/Inputs/Select';
-import { Input } from 'common/Inputs/Input';
-import { TextArea } from 'common/Inputs/TextArea';
-import { Checkbox } from 'common/Inputs/Checkbox';
-import { useProductFormContext } from './ProductFormContext';
-import { useCategories } from 'hooks/useCategories';
-import { useTags } from 'hooks/useTags';
-import { Label } from 'common/Inputs/Label';
+import Button from 'common/Buttons/Button';
+import Checkbox from 'common/Inputs/Checkbox';
+import Input from 'common/Inputs/Input';
+import Label from 'common/Inputs/Label';
+import Select from 'common/Inputs/Select';
+import TextArea from 'common/Inputs/TextArea';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import useCategories from 'hooks/useCategories';
+import useTags from 'hooks/useTags';
+import { useForm } from 'react-hook-form';
 import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
 import { ProductRequestDto } from 'dtos/RequestDtos/ProductRequestDto';
-import { useProducts } from 'hooks/useProducts';
+import useProducts from 'hooks/useProducts';
 import { toast } from 'react-toastify';
+import { useProductFormContext } from './ProductFormContext';
 
-export const ProductForm = (): ReactElement => {
+export default function ProductForm(): ReactElement {
   const productForm = useProductFormContext();
   const { tags } = useTags();
   const { categories } = useCategories();
@@ -159,4 +159,4 @@ export const ProductForm = (): ReactElement => {
       </div>
     </>
   );
-};
+}

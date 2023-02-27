@@ -537,9 +537,7 @@ module.exports = {
       '3xl': '1.5rem',
       full: '9999px',
     },
-    borderSpacing: ({ theme }) => ({
-      ...theme('spacing'),
-    }),
+    borderSpacing: ({ theme }) => ({ ...theme('spacing') }),
     borderWidth: {
       DEFAULT: '1px',
       0: '0px',
@@ -890,22 +888,14 @@ module.exports = {
       full: '100%',
     }),
     keyframes: {
-      spin: {
-        to: {
-          transform: 'rotate(360deg)',
-        },
-      },
+      spin: { to: { transform: 'rotate(360deg)' } },
       ping: {
         '75%, 100%': {
           transform: 'scale(2)',
           opacity: '0',
         },
       },
-      pulse: {
-        '50%': {
-          opacity: '.5',
-        },
-      },
+      pulse: { '50%': { opacity: '.5' } },
       bounce: {
         '0%, 100%': {
           transform: 'translateY(-25%)',
@@ -1111,9 +1101,7 @@ module.exports = {
       125: '1.25',
       150: '1.5',
     },
-    scrollMargin: ({ theme }) => ({
-      ...theme('spacing'),
-    }),
+    scrollMargin: ({ theme }) => ({ ...theme('spacing') }),
     scrollPadding: ({ theme }) => theme('spacing'),
     sepia: {
       0: '0',
@@ -1127,9 +1115,7 @@ module.exports = {
       6: '6deg',
       12: '12deg',
     },
-    space: ({ theme }) => ({
-      ...theme('spacing'),
-    }),
+    space: ({ theme }) => ({ ...theme('spacing') }),
     stroke: ({ theme }) => ({
       none: 'none',
       ...theme('colors'),
@@ -1158,9 +1144,7 @@ module.exports = {
       4: '4px',
       8: '8px',
     },
-    textIndent: ({ theme }) => ({
-      ...theme('spacing'),
-    }),
+    textIndent: ({ theme }) => ({ ...theme('spacing') }),
     textOpacity: ({ theme }) => theme('opacity'),
     transformOrigin: {
       center: 'center',

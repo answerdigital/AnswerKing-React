@@ -6,7 +6,7 @@ interface Props extends React.ComponentPropsWithoutRef<'div'> {
   className?: string;
 }
 
-export const CheckBoxIcon = ({ checked, className, ...rest }: Props): ReactElement => {
+export default function CheckBoxIcon({ checked, className, ...rest }: Props): ReactElement {
   return (
     <div className="fill-ak-grey-1 flex h-[30px] w-[30px] items-center justify-center" {...rest}>
       {checked ? (
@@ -30,4 +30,4 @@ export const CheckBoxIcon = ({ checked, className, ...rest }: Props): ReactEleme
       )}
     </div>
   );
-};
+}

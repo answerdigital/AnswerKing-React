@@ -1,55 +1,26 @@
 import { CategoryDto } from 'dtos/CategoryDto';
 import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
-import { httpClient } from 'utilities/http-client';
+import { handleDeleteResponse, handleResponse } from 'utilities/HandleHttpResponses';
+import HttpClient from 'utilities/HttpClient';
 
-const getAll = async (): Promise<CategoryDto[]> => {
-  const response = await httpClient.get('/categories');
+export default {
+  getAll: async (): Promise<CategoryDto[]> => {
+    const response = await HttpClient.get('/categories');
+    return handleResponse<CategoryDto[]>(response);
+  },
 
-  if (!response.ok) {
-    try {
-      return Promise.reject(await response.json());
-    } catch {
-      return Promise.reject();
-    }
-  }
+  create: async (createDto: CategoryRequestDto): Promise<CategoryDto> => {
+    const response = await HttpClient.post('/categories', createDto);
+    return handleResponse<CategoryDto>(response);
+  },
 
-  return await response.json();
+  edit: async (id: number, updateDto: CategoryRequestDto): Promise<CategoryDto> => {
+    const response = await HttpClient.put(`/categories/${id}`, updateDto);
+    return handleResponse<CategoryDto>(response);
+  },
+
+  retire: async (id: number): Promise<void> => {
+    const response = await HttpClient.removeOrRetire(`/categories/${id}`);
+    return handleDeleteResponse(response);
+  },
 };
-
-const create = async (createDto: CategoryRequestDto): Promise<CategoryDto> => {
-  const response = await httpClient.post('/categories', createDto);
-
-  if (!response.ok) {
-    try {
-      return Promise.reject(await response.json());
-    } catch {
-      return Promise.reject();
-    }
-  }
-
-  return await response.json();
-};
-
-const edit = async (Id: number, UpdateDto: CategoryRequestDto): Promise<CategoryDto> => {
-  const response = await httpClient.put(`/categories/${Id}`, UpdateDto);
-
-  if (!response.ok) {
-    try {
-      return Promise.reject(await response.json());
-    } catch {
-      return Promise.reject();
-    }
-  }
-
-  return await response.json();
-};
-
-const remove = async (id: number): Promise<void> => {
-  const response = await httpClient.remove('/categories/' + id);
-
-  if (!response.ok) {
-    return Promise.reject();
-  }
-};
-
-export const categoryService = { getAll, create, edit, remove };

@@ -1,22 +1,22 @@
-import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { ReactElement, useMemo } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { useTagFormContext } from './TagFormContext';
-import { Button } from 'common/Buttons/Button';
-import { Input } from 'common/Inputs/Input';
-import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextArea } from 'common/Inputs/TextArea';
-import { useProducts } from 'hooks/useProducts';
-import { Checkbox } from 'common/Inputs/Checkbox';
-import { Label } from 'common/Inputs/Label';
+import Button from 'common/Buttons/Button';
+import Checkbox from 'common/Inputs/Checkbox';
+import Input from 'common/Inputs/Input';
+import Label from 'common/Inputs/Label';
+import TextArea from 'common/Inputs/TextArea';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import useProducts from 'hooks/useProducts';
+import { useForm } from 'react-hook-form';
 import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
 import { TagRequestDto } from 'dtos/RequestDtos/TagRequestDto';
 import { useTags } from 'hooks/useTags';
 import { toast } from 'react-toastify';
+import { useTagFormContext } from './TagFormContext';
 
-export const TagForm = (): ReactElement => {
+export default function TagForm(): ReactElement {
   const tagForm = useTagFormContext();
   const { products } = useProducts();
   const { createTag, editTag } = useTags();
@@ -114,4 +114,4 @@ export const TagForm = (): ReactElement => {
       </div>
     </>
   );
-};
+}

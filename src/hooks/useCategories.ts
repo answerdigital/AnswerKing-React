@@ -1,18 +1,19 @@
 import { CategoryDto } from 'dtos/CategoryDto';
 import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { ProblemDetails, ItemService } from 'services/itemService';
+import { ProblemDetails } from 'services/itemService';
+import categoryService from 'services/categoryService';
 
 interface UpdateCategoryProps {
   id: number;
   requestDto: CategoryRequestDto;
 }
 
-export interface CategoryProblemDetails extends ProblemDetails {
-  errors: Errors;
+export interface categoryProblemDetails extends ProblemDetails {
+  errors: errors;
 }
 
-export interface Errors {
+export interface errors {
   name: string[];
   price: string[];
   description: string[];
@@ -20,29 +21,27 @@ export interface Errors {
 
 interface UseCategoriesResult {
   categories: UseQueryResult<CategoryDto[]>;
-  createCategory: UseMutationResult<CategoryDto, CategoryProblemDetails, CategoryRequestDto>;
-  editCategory: UseMutationResult<CategoryDto, CategoryProblemDetails, UpdateCategoryProps>;
-  removeCategory: UseMutationResult<void, CategoryProblemDetails, number>;
+  createCategory: UseMutationResult<CategoryDto, categoryProblemDetails, CategoryRequestDto>;
+  editCategory: UseMutationResult<CategoryDto, categoryProblemDetails, UpdateCategoryProps>;
+  removeCategory: UseMutationResult<void, ProblemDetails, number>;
 }
 
-export const useCategories = (): UseCategoriesResult => {
-  const categoryService = new ItemService<CategoryDto,CategoryRequestDto>('orders');
-
+export default function useCategories(): UseCategoriesResult {
   const categories = useQuery<CategoryDto[]>(['categories'], categoryService.getAll);
 
-  const createCategory = useMutation<CategoryDto, CategoryProblemDetails, CategoryRequestDto>((requestDto) => categoryService.create(requestDto), {
+  const createCategory = useMutation<CategoryDto, categoryProblemDetails, CategoryRequestDto>((requestDto) => categoryService.create(requestDto), {
     onSuccess: () => {
       categories.refetch();
     },
   });
 
-  const editCategory = useMutation<CategoryDto, CategoryProblemDetails, UpdateCategoryProps>((props) => categoryService.edit(props.id, props.requestDto), {
+  const editCategory = useMutation<CategoryDto, categoryProblemDetails, UpdateCategoryProps>((props) => categoryService.edit(props.id, props.requestDto), {
     onSuccess: () => {
       categories.refetch();
     },
   });
 
-  const removeCategory = useMutation<void, CategoryProblemDetails, number>((id) => categoryService.remove(id), {
+  const removeCategory = useMutation<void, categoryProblemDetails, number>((id) => categoryService.retire(id), {
     onSuccess: () => {
       categories.refetch();
     },

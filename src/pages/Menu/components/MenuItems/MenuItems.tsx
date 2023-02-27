@@ -1,12 +1,12 @@
-import { ProductDto } from 'dtos/ProductDto';
 import { ReactElement } from 'react';
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductDto } from 'dtos/ProductDto';
+import ProductCard from '../ProductCard/ProductCard';
 
 interface Props {
   products: ProductDto[];
 }
 
-export const MenuItems = ({ products }: Props): ReactElement => {
+export default function MenuItems({ products }: Props): ReactElement {
   if (products.length === 0) {
     return <div />;
   }
@@ -18,4 +18,4 @@ export const MenuItems = ({ products }: Props): ReactElement => {
       ))}
     </div>
   );
-};
+}
