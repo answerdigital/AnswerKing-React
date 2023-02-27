@@ -48,4 +48,4 @@ export default function useTags(): UseTagsResult {
   });
 
   return { tags, createTag, editTag, removeTag };
-};
+}

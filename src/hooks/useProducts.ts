@@ -48,4 +48,4 @@ export default function useProducts(): UseProductsResult {
   });
 
   return { products, createProduct, editProduct, removeProduct };
-};
+}

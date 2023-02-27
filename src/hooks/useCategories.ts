@@ -35,11 +35,14 @@ export default function useCategories(): UseCategoriesResult {
     },
   });
 
-  const editCategory = useMutation<CategoryDto, categoryProblemDetails, UpdateCategoryProps>((props) => categoryService.edit(props.id, props.requestDto), {
-    onSuccess: () => {
-      categories.refetch();
-    },
-  });
+  const editCategory = useMutation<CategoryDto, categoryProblemDetails, UpdateCategoryProps>(
+    (props) => categoryService.edit(props.id, props.requestDto),
+    {
+      onSuccess: () => {
+        categories.refetch();
+      },
+    }
+  );
 
   const removeCategory = useMutation<void, categoryProblemDetails, number>((id) => categoryService.retire(id), {
     onSuccess: () => {
@@ -48,4 +51,4 @@ export default function useCategories(): UseCategoriesResult {
   });
 
   return { categories, createCategory, editCategory, removeCategory };
-};
+}
