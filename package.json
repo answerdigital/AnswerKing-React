@@ -80,8 +80,8 @@
     "vite": "^4.0.1"
   },
   "engines": {
-    "node": "^18.14",
-    "npm": "^9"
+    "node": "^18.14 || ^16",
+    "npm": "^9 || ^8"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": "npm run formatPretty",
