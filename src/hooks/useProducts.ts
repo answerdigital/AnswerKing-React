@@ -1,39 +1,29 @@
-import { ProductDto } from 'dtos/ProductDto';
 import { CreatedProductDto } from 'dtos/CreatedProductDto';
+import { ProductProblemDetails } from 'dtos/ProblemDetails';
+import { ProductDto } from 'dtos/ProductDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { productService } from 'services/productService';
-import { ProblemDetails } from 'services/orderService';
-
-export interface productProblemDetails extends ProblemDetails {
-  errors: errors;
-}
-
-export interface errors {
-  name: string[];
-  price: string[];
-  description: string[];
-}
+import ProductService from 'services/productService';
 
 interface UseProductsResult {
   products: UseQueryResult<ProductDto[]>;
-  createProduct: UseMutationResult<ProductDto, productProblemDetails, CreatedProductDto>;
-  removeProduct: UseMutationResult<void, ProblemDetails, number>;
+  createProduct: UseMutationResult<ProductDto, ProductProblemDetails, CreatedProductDto>;
+  removeProduct: UseMutationResult<void, ProductProblemDetails, number>;
 }
 
-export const useProducts = (): UseProductsResult => {
-  const products = useQuery<ProductDto[]>(['items'], productService.getAll);
+export default function useProducts(): UseProductsResult {
+  const products = useQuery<ProductDto[]>(['items'], ProductService.getAll);
 
-  const createProduct = useMutation<ProductDto, productProblemDetails, CreatedProductDto>((createDto) => productService.create(createDto), {
+  const createProduct = useMutation<ProductDto, ProductProblemDetails, CreatedProductDto>((createDto) => ProductService.create(createDto), {
     onSuccess: () => {
       products.refetch();
     },
   });
 
-  const removeProduct = useMutation<void, productProblemDetails, number>((id) => productService.remove(id), {
+  const removeProduct = useMutation<void, ProductProblemDetails, number>((id) => ProductService.retire(id), {
     onSuccess: () => {
       products.refetch();
     },
   });
 
   return { products, createProduct, removeProduct };
-};
+}

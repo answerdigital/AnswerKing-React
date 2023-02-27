@@ -1,19 +1,19 @@
 import { ReactElement, useState } from 'react';
-import { PageLayout } from 'common/PageLayout/PageLayout';
+import PageLayout from 'common/PageLayout/PageLayout';
 import { SearchContextProvider } from 'common/Search/SearchContext';
-import { StaffDetails } from './components/StaffBody/StaffDetails';
-import { StaffInventory } from './components/StaffBody/StaffInventory';
-import { StaffCategories } from './components/StaffBody/StaffCategories';
-import { StaffTags } from './components/StaffBody/StaffTags';
-import { StaffOrders } from './components/StaffBody/StaffOrders';
-import { StaffNavBar } from './components/StaffNavBar/StaffNavBar';
+import StaffCategories from './components/StaffBody/StaffCategories';
+import StaffDetails from './components/StaffBody/StaffDetails';
+import StaffInventory from './components/StaffBody/StaffInventory';
+import StaffOrders from './components/StaffBody/StaffOrders';
+import StaffTags from './components/StaffBody/StaffTags';
+import StaffNavBar from './components/StaffNavBar/StaffNavBar';
 
 export interface ISection {
   title: string;
   component: ReactElement;
 }
 
-export const StaffPage = (): ReactElement => {
+export default function StaffPage(): ReactElement {
   const sections: ISection[] = [
     { title: 'Details', component: StaffDetails() },
     { title: 'Inventory', component: StaffInventory() },
@@ -24,9 +24,11 @@ export const StaffPage = (): ReactElement => {
   const [selectedSection, setselectedSection] = useState<ISection>(sections[0]);
 
   return (
-    <PageLayout title={'Admin - Answer King'}>
+    <PageLayout title="Admin - Answer King">
       <div className="staff font-poppins font-200 flex h-full flex-col items-center p-14">
-        <a className="items-center text-4xl font-extralight">Administrator</a>
+        <a className="items-center text-4xl font-extralight" href="/staff">
+          Administrator
+        </a>
         <StaffNavBar setSelectedSection={setselectedSection} selectedSection={selectedSection} sections={sections} className="p-6" />
         <SearchContextProvider>
           {sections.map((section) => (section.title === selectedSection.title ? section.component : null))}
@@ -34,4 +36,4 @@ export const StaffPage = (): ReactElement => {
       </div>
     </PageLayout>
   );
-};
+}

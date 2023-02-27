@@ -1,4 +1,4 @@
-export const ALLERGENS = [
+export default [
   'Milk',
   'Celery',
   'Sesame',

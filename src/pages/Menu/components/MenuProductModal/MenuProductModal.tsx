@@ -1,11 +1,11 @@
 import { ReactElement, useCallback, useState } from 'react';
-import { ProductDto } from 'dtos/ProductDto';
-import { Button } from 'common/Buttons/Button';
+import Button from 'common/Buttons/Button';
+import PlusMinusButton from 'common/Buttons/PlusMinusButton';
+import ModalTransition from 'common/Transitions/ModalTransition';
 import { useLocalOrder } from 'context/OrderContext';
+import { ProductDto } from 'dtos/ProductDto';
+import GBPFormat from 'utilities/GBPFormat';
 import PlaceHolderImage from '/images/burger_transparent.png';
-import { ModalTransition } from 'common/Transitions/ModalTransition';
-import { GBPFormat } from 'utilities/GBPFormat';
-import { PlusMinusButton } from 'common/Buttons/PlusMinusButton';
 
 interface Props {
   product: ProductDto;
@@ -13,15 +13,15 @@ interface Props {
   disableShow: (isShow: boolean) => void;
 }
 
-export const MenuProductModal = ({ product, showProductModal, disableShow }: Props): ReactElement => {
+export default function MenuProductModal({ product, showProductModal, disableShow }: Props): ReactElement {
   const { addToLocalOrder, removeProduct, localOrder } = useLocalOrder();
 
-  const checkQuantity = (product: ProductDto): number => {
+  const checkQuantity = (): number => {
     const existingItem = localOrder.lineItems.find((item) => item.product.id === product.id);
     return existingItem ? existingItem.quantity : 1;
   };
 
-  const [counter, setCounter] = useState(checkQuantity(product));
+  const [counter, setCounter] = useState(checkQuantity());
 
   const changeCount = (action: number): void => {
     if (counter + action >= 0) {
@@ -36,17 +36,23 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
   const allergens = ['Milk', 'Peanuts', 'Celery', 'Soy', 'Gluten'];
 
   return (
-    <>
+    <div>
       {showProductModal && (
         <div
           data-testid="menu-product-modal"
           className="fixed top-0 left-0 z-10 flex h-full w-full items-center justify-center bg-black bg-opacity-75 shadow-sm"
           onClick={() => disableShow(false)}
+          onKeyDown={() => disableShow(false)}
+          role="button"
+          tabIndex={0}
         >
           <ModalTransition>
             <div
               className="text-ak-grey-1 flex w-[60vh] flex-col items-center rounded-2xl bg-white p-[20px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
               onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => e.stopPropagation()}
+              role="button"
+              tabIndex={0}
             >
               <div className="flex w-full flex-row gap-[20px]">
                 <img alt="burger" className="h-[18vh] w-[100%] rounded-[8px] object-cover" src={PlaceHolderImage} />
@@ -58,11 +64,11 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
                       V, Ve, GF
                     </div>
                     <div className="flex items-center">
-                      <PlusMinusButton action={-1} onClick={changeCount}></PlusMinusButton>
+                      <PlusMinusButton action={-1} onClick={changeCount} />
                       <div data-testid="quantity" className="mx-2 w-4">
                         {counter}
                       </div>
-                      <PlusMinusButton data-testid="reduce-quantity" action={1} onClick={changeCount}></PlusMinusButton>
+                      <PlusMinusButton data-testid="reduce-quantity" action={1} onClick={changeCount} />
                     </div>
                   </div>
                 </div>
@@ -72,7 +78,11 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
                 <div className="font-poly text-ak-grey-4 text-left text-base font-normal italic">Contains Allergens</div>
                 <div data-testid="allergens" className="flex flex-row justify-items-start gap-[16px] text-sm">
                   {allergens ? (
-                    allergens.map((allergen) => <label key={allergen}>{allergen}</label>)
+                    allergens.map((allergen) => (
+                      <label htmlFor="allergen" key={allergen}>
+                        {allergen}
+                      </label>
+                    ))
                   ) : (
                     <div>This product does not contain any allergens</div>
                   )}
@@ -116,6 +126,6 @@ export const MenuProductModal = ({ product, showProductModal, disableShow }: Pro
           </ModalTransition>
         </div>
       )}
-    </>
+    </div>
   );
-};
+}

@@ -1,13 +1,12 @@
 import { TagDto } from 'dtos/TagDto';
 import { useQuery, UseQueryResult } from 'react-query';
-import { tagService } from 'services/tagService';
+import TagService from 'services/tagService';
 
 interface UseTagsResult {
   tags: UseQueryResult<TagDto[]>;
 }
 
-export const useTags = (): UseTagsResult => {
-  const tags = useQuery<TagDto[]>(['tags'], tagService.getAll);
-
+export default function useTags(): UseTagsResult {
+  const tags = useQuery<TagDto[]>(['tags'], TagService.getAll);
   return { tags };
-};
+}

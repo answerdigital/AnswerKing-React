@@ -9,17 +9,15 @@ interface TabProps {
   active?: boolean;
 }
 
-const Tab = ({ children, active }: TabProps): ReactElement => {
-  return (
-    <div className={cn('mx-5 select-none self-center', { 'bg-ak-grey-4 text-ak-grey-1 rounded-full px-4 py-1 shadow-md': active })}>{children}</div>
-  );
-};
+const Tab = ({ children, active }: TabProps): ReactElement => (
+  <div className={cn('mx-5 select-none self-center', { 'bg-ak-grey-4 text-ak-grey-1 rounded-full px-4 py-1 shadow-md': active })}>{children}</div>
+);
 
 interface Props {
   tab: CheckoutTabType;
 }
 
-export const CheckoutTabContainer = ({ tab }: Props): ReactElement => {
+export default function CheckoutTabContainer({ tab }: Props): ReactElement {
   return (
     <div className="mb-6 flex text-lg font-light">
       <Tab active={tab === CheckoutTabType.Order}>Order</Tab>
@@ -31,4 +29,4 @@ export const CheckoutTabContainer = ({ tab }: Props): ReactElement => {
       <Tab active={tab === CheckoutTabType.Confirmation}>Confirmation</Tab>
     </div>
   );
-};
+}

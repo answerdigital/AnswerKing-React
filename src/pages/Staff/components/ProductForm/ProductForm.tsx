@@ -1,21 +1,23 @@
-import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
 import { ReactElement, useMemo } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'common/Buttons/Button';
-import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Select } from 'common/Inputs/Select';
-import { Input } from 'common/Inputs/Input';
-import { TextArea } from 'common/Inputs/TextArea';
-import { Checkbox } from 'common/Inputs/Checkbox';
-import { useProductFormContext } from './ProductFormContext';
-import { useCategories } from 'hooks/useCategories';
-import { useTags } from 'hooks/useTags';
-import { Label } from 'common/Inputs/Label';
+import Button from 'common/Buttons/Button';
+import Checkbox from 'common/Inputs/Checkbox';
+import Input from 'common/Inputs/Input';
+import Label from 'common/Inputs/Label';
+import Select from 'common/Inputs/Select';
+import TextArea from 'common/Inputs/TextArea';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import { CategoryDto } from 'dtos/CategoryDto';
+import { TagDto } from 'dtos/TagDto';
+import useCategories from 'hooks/useCategories';
+import useTags from 'hooks/useTags';
+import { useForm } from 'react-hook-form';
 import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
+import { useProductFormContext } from './ProductFormContext';
 
-export const ProductForm = (): ReactElement => {
+export default function ProductForm(): ReactElement {
   const productForm = useProductFormContext();
   const { tags } = useTags();
   const { categories } = useCategories();
@@ -35,23 +37,21 @@ export const ProductForm = (): ReactElement => {
     },
   });
 
-  const categoryOptions = useMemo(() => {
-    return (
-      categories.data?.map((category) => {
-        return {
-          label: category.name ?? '',
-          value: category.id.toString(),
-        };
-      }) ?? []
-    );
-  }, [categories.data]);
+  const categoryOptions = useMemo(
+    () =>
+      categories.data?.map((category: CategoryDto) => ({
+        label: category.name ?? '',
+        value: category.id.toString(),
+      })) ?? [],
+    [categories.data]
+  );
 
   const submitForm = (data: ProductFormSchema): void => {
     console.log(data);
   };
 
   return (
-    <>
+    <div>
       {!tags.isLoading && !categories.isLoading && (
         <>
           <form className="w-full overflow-auto">
@@ -77,9 +77,9 @@ export const ProductForm = (): ReactElement => {
               <Label error={errors.tags?.message} className="col-span-4">
                 Tags
               </Label>
-              {tags.data?.map((tag) => {
-                return <Checkbox key={tag.id} value={tag.id} label={tag.name} id={tag.id.toString()} {...register('tags')} />;
-              })}
+              {tags.data?.map((tag: TagDto) => (
+                <Checkbox key={tag.id} value={tag.id} label={tag.name} id={tag.id.toString()} {...register('tags')} />
+              ))}
             </div>
             <LoaderOverlay isEnabled={false} />
           </form>
@@ -94,6 +94,6 @@ export const ProductForm = (): ReactElement => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
-};
+}

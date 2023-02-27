@@ -1,19 +1,19 @@
-import { TagsTableRow } from './TagsTableRow';
-import { useTags } from 'hooks/useTags';
 import { ReactElement } from 'react';
+import Button from 'common/Buttons/Button';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import Search from 'common/Search/Search';
 import { useSearch } from 'common/Search/SearchContext';
-import { Search } from 'common/Search/Search';
-import { Button } from 'common/Buttons/Button';
 import { TagDto } from 'dtos/TagDto';
-import { LoaderOverlay } from 'common/LoaderOverlay/LoaderOverlay';
+import useTags from 'hooks/useTags';
+import TagsTableRow from './TagsTableRow';
 import { useTagFormContext } from '../TagForm/TagFormContext';
 
-export const TagsTable = (): ReactElement => {
+export default function TagsTable(): ReactElement {
   const { tags } = useTags();
   const formatting = ' px-2 py-2 font-normal ';
-  const searchString = useSearch().searchString;
+  const { searchString } = useSearch();
   const displayTags: TagDto[] =
-    tags.data?.filter((tag) => !tag.retired && tag.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
+    tags.data?.filter((tag: TagDto) => !tag.retired && tag.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
   const tagForm = useTagFormContext();
 
   return (
@@ -23,9 +23,9 @@ export const TagsTable = (): ReactElement => {
           <thead className="sticky top-0 w-full bg-white/90">
             <tr>
               <th className={formatting}>ID</th>
-              <th className={'w-full text-left ' + formatting}>Tag Name</th>
-              <th className={'whitespace-nowrap text-center ' + formatting}>No. Items</th>
-              <th />
+              <th className={`w-full text-left ${formatting}`}>Tag Name</th>
+              <th className={`whitespace-nowrap text-center ${formatting}`}>No. Items</th>
+              <th>{}</th>
             </tr>
           </thead>
           <tbody className="font-poppins font-200 divide-ak-grey-5 divide-y text-sm">
@@ -44,4 +44,4 @@ export const TagsTable = (): ReactElement => {
       </div>
     </>
   );
-};
+}

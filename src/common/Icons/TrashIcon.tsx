@@ -1,12 +1,12 @@
 import { ReactElement, useState } from 'react';
-import { DeleteProductModal } from 'common/Modals/DeleteProductModal';
 import cn from 'classnames';
+import DeleteProductModal from 'common/Modals/DeleteProductModal';
 
 interface Props {
   onClick: () => void;
 }
 
-export const TrashIcon = ({ onClick }: Props): ReactElement => {
+export default function TrashIcon({ onClick }: Props): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -15,8 +15,17 @@ export const TrashIcon = ({ onClick }: Props): ReactElement => {
         data-testid="trash-product-btn"
         className="bg-ak-grey-5 group mr-[24px] flex h-[33px] w-[33px] cursor-pointer flex-col rounded"
         onClick={() => setIsOpen(true)}
+        onKeyDown={() => setIsOpen(true)}
+        role="button"
+        tabIndex={0}
       >
-        <div className="group my-auto flex cursor-pointer flex-col" onClick={() => setIsOpen(true)}>
+        <div
+          className="group my-auto flex cursor-pointer flex-col"
+          onClick={() => setIsOpen(true)}
+          onKeyDown={() => setIsOpen(true)}
+          role="button"
+          tabIndex={0}
+        >
           <div className="flex flex-col items-center justify-center text-center">
             <svg
               className={cn(!isOpen && 'duration-300 group-hover:-translate-y-[1px] group-hover:rotate-[7deg]')}
@@ -43,4 +52,4 @@ export const TrashIcon = ({ onClick }: Props): ReactElement => {
       </div>
     </>
   );
-};
+}

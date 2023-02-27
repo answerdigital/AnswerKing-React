@@ -1,6 +1,6 @@
-import { CategoryDto } from 'dtos/CategoryDto';
 import { createContext, useContext, useState, useMemo } from 'react';
-import { CategoryForm } from './CategoryForm';
+import { CategoryDto } from 'dtos/CategoryDto';
+import CategoryForm from './CategoryForm';
 
 interface ICategoryFormContext {
   startEditing: (category: CategoryDto) => void;
@@ -41,24 +41,14 @@ export const CategoryFormContextProvider: React.FC<Props> = ({ children }) => {
   const contextValues: ICategoryFormContext = useMemo(
     () => ({
       startEditing: editCategory,
-      openForm: openForm,
-      closeForm: closeForm,
-      initialCategory: initialCategory,
+      openForm,
+      closeForm,
+      initialCategory,
     }),
     [initialCategory]
   );
 
-  return (
-    <CategoryFormContext.Provider value={contextValues}>
-      {formOpen ? (
-        <>
-          <CategoryForm />
-        </>
-      ) : (
-        <>{children}</>
-      )}
-    </CategoryFormContext.Provider>
-  );
+  return <CategoryFormContext.Provider value={contextValues}>{formOpen ? <CategoryForm /> : children}</CategoryFormContext.Provider>;
 };
 
 export const useCategoryFormContext = (): ICategoryFormContext => useContext(CategoryFormContext);

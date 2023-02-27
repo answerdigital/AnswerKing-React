@@ -1,15 +1,15 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ReactElement, useContext, useState } from 'react';
 import { faCcVisa, faCcMastercard, faCcAmex } from '@fortawesome/free-brands-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'common/Buttons/Button';
-import { Input } from 'common/Inputs/Input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from 'common/Buttons/Button';
+import CheckboxRow from 'common/Inputs/CheckboxRow';
+import Input from 'common/Inputs/Input';
 import { CheckoutTabContext, CheckoutTabType } from 'context/CheckoutTabContext';
 import { useLocalOrder } from 'context/OrderContext';
-import { ReactElement, useContext, useState } from 'react';
-import { CheckboxRow } from 'common/Inputs/CheckboxRow';
-import { CheckoutFooter } from '../CheckoutFooter/CheckoutFooter';
+import CheckoutFooter from '../CheckoutFooter/CheckoutFooter';
 
-export const CheckoutPaymentDetailsTab = (): ReactElement => {
+export default function CheckoutPaymentDetailsTab(): ReactElement {
   const { setCurrentTab } = useContext(CheckoutTabContext);
   const { localOrder } = useLocalOrder();
   const [saveLater, setSaveLater] = useState(false);
@@ -60,4 +60,4 @@ export const CheckoutPaymentDetailsTab = (): ReactElement => {
       </div>
     </div>
   );
-};
+}

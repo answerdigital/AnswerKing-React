@@ -1,7 +1,7 @@
-import { TrashIcon } from 'common/Icons/TrashIcon';
+import TrashIcon from 'common/Icons/TrashIcon';
 import { LocalOrderContext, useLocalOrder } from 'context/OrderContext';
-import CustomMount from 'tests/testHelpers/cypressHelpers/CustomMount';
 import { getExampleOrder, product } from '../../../../cypress/data_helpers/component-test-data';
+import CustomMount from '../../testHelpers/cypressHelpers/CustomMount';
 
 describe('Footer', () => {
   const order = getExampleOrder();
@@ -9,7 +9,7 @@ describe('Footer', () => {
   beforeEach(() => {
     CustomMount(
       <LocalOrderContext.Provider value={order}>
-        <TrashIcon onClick={() => useLocalOrder().removeProduct(product)}></TrashIcon>
+        <TrashIcon onClick={() => useLocalOrder().removeProduct(product)} />
       </LocalOrderContext.Provider>
     );
   });

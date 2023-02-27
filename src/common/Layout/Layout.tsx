@@ -1,13 +1,13 @@
-import { Container } from 'common/Container/Container';
-import { Navigation } from 'common/Navigation/Navigation';
-import { ToastWrapper } from 'common/ToastWrapper/ToastWrapper';
 import { ReactElement, ReactNode } from 'react';
+import Container from 'common/Container/Container';
+import Navigation from 'common/Navigation/Navigation';
+import ToastWrapper from 'common/ToastWrapper/ToastWrapper';
 
 interface Props {
   children: ReactNode;
 }
 
-export const Layout = ({ children }: Props): ReactElement => {
+export default function Layout({ children }: Props): ReactElement {
   return (
     <>
       <Navigation />
@@ -15,4 +15,4 @@ export const Layout = ({ children }: Props): ReactElement => {
       <Container>{children}</Container>
     </>
   );
-};
+}
