@@ -36,14 +36,11 @@ export const useCategories = (): UseCategoriesResult => {
     },
   });
 
-  const editCategory = useMutation<CategoryDto, CategoryProblemDetails, UpdateCategoryProps>(
-    (props) => categoryService.edit(props.id, props.requestDto),
-    {
-      onSuccess: () => {
-        categories.refetch();
-      },
-    }
-  );
+  const editCategory = useMutation<CategoryDto, CategoryProblemDetails, UpdateCategoryProps>((props) => categoryService.edit(props.id, props.requestDto), {
+    onSuccess: () => {
+      categories.refetch();
+    },
+  });
 
   const removeCategory = useMutation<void, CategoryProblemDetails, number>((id) => categoryService.remove(id), {
     onSuccess: () => {
