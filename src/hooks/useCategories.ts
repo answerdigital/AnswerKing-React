@@ -16,8 +16,10 @@ interface UseCategoriesResult {
   removeCategory: UseMutationResult<void, CategoryProblemDetails, number>;
 }
 
-export default function useCategories(): UseCategoriesResult {
-  const categories = useQuery<CategoryDto[]>(['categories'], categoryService.getAll);
+export default function useCategories(filtered = false): UseCategoriesResult {
+  const categories = useQuery<CategoryDto[]>(['categories'], categoryService.getAll, {
+    select: (data) => (filtered ? data.filter((category) => !category.retired || (category.products && category.products.length > 0)) : data),
+  });
 
   const createCategory = useMutation<CategoryDto, CategoryProblemDetails, CategoryRequestDto>((requestDto) => categoryService.create(requestDto), {
     onSuccess: () => {

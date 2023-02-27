@@ -12,10 +12,9 @@ export default function ProductsTable(): ReactElement {
   const { products } = useProducts();
   const productForm = useProductFormContext();
   const { searchString } = useSearch();
-
   const formatting = 'px-4 py-2 font-normal';
   const displayProducts: ProductDto[] =
-    products.data?.filter((product) => !product.retired && product.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
+    products.data?.filter((product) => product.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
 
   return (
     <>
