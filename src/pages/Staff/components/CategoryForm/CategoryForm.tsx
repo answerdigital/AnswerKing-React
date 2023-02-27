@@ -18,18 +18,17 @@ import { useCategoryFormContext } from './CategoryFormContext';
 
 export default function CategoryForm(): ReactElement {
   const categoryForm = useCategoryFormContext();
-  const { products } = useProducts();
+  const { products } = useProducts(true);
   const { createCategory, editCategory } = useCategories();
 
-  const productOptions = useMemo(() => {
-    const activeProducts = products.data?.filter((product) => !product.retired) || [];
-    return (
-      activeProducts.map((product) => ({
+  const productOptions = useMemo(
+    () =>
+      products.data?.map((product) => ({
         product,
         initiallySelected: !!categoryForm.initialCategory?.products?.includes(product.id),
-      })) ?? []
-    );
-  }, [products.data]);
+      })) ?? [],
+    [products.data]
+  );
 
   const {
     register,

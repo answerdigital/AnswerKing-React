@@ -18,18 +18,17 @@ import { useTagFormContext } from './TagFormContext';
 
 export default function TagForm(): ReactElement {
   const tagForm = useTagFormContext();
-  const { products } = useProducts();
+  const { products } = useProducts(true);
   const { createTag, editTag } = useTags();
 
-  const productOptions = useMemo(() => {
-    const activeProducts = products.data?.filter((product) => !product.retired) || [];
-    return (
-      activeProducts.map((product) => ({
+  const productOptions = useMemo(
+    () =>
+      products.data?.map((product) => ({
         product,
-        selected: !!tagForm.initialTag?.products?.includes(product.id),
-      })) ?? []
-    );
-  }, [products.data]);
+        initiallySelected: !!tagForm.initialTag?.products?.includes(product.id),
+      })) ?? [],
+    [products.data]
+  );
 
   const {
     register,
@@ -90,7 +89,7 @@ export default function TagForm(): ReactElement {
                 value={productOption.product.id}
                 label={productOption.product.name}
                 id={productOption.product.id.toString()}
-                defaultChecked={productOption.selected}
+                defaultChecked={productOption.initiallySelected}
                 {...register(`products.${productOption.product.id}`)}
                 disabled={productOption.product.retired}
               />

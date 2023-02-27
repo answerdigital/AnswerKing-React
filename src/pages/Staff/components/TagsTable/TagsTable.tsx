@@ -9,11 +9,10 @@ import TagsTableRow from './TagsTableRow';
 import { useTagFormContext } from '../TagForm/TagFormContext';
 
 export default function TagsTable(): ReactElement {
-  const { tags } = useTags();
+  const { tags } = useTags(true);
   const formatting = ' px-2 py-2 font-normal ';
   const { searchString } = useSearch();
-  const displayTags: TagDto[] =
-    tags.data?.filter((tag: TagDto) => !tag.retired && tag.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
+  const displayTags: TagDto[] = tags.data?.filter((tag: TagDto) => tag.name?.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) || [];
   const tagForm = useTagFormContext();
 
   return (

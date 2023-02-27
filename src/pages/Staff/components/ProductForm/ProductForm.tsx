@@ -20,39 +20,36 @@ import { useProductFormContext } from './ProductFormContext';
 
 export default function ProductForm(): ReactElement {
   const productForm = useProductFormContext();
-  const { tags } = useTags();
-  const { categories } = useCategories();
+  const { tags } = useTags(true);
+  const { categories } = useCategories(true);
   const { createProduct, editProduct } = useProducts();
 
-  const tagOptions = useMemo(() => {
-    const activeTags = tags.data?.filter((tag) => !tag.retired) || [];
-    return (
-      activeTags.map((tag) => ({
+  const tagOptions = useMemo(
+    () =>
+      tags.data?.map((tag) => ({
         tag,
         initiallySelected: productForm.initialProduct?.tags.includes(tag.id) as boolean,
-      })) ?? []
-    );
-  }, [categories.data]);
-
-  const activeCategories = useMemo(() => categories.data?.filter((category) => !category.retired) || [], [categories.data]);
-
-  const activeDefaultCategory = useMemo(
-    () => activeCategories.find((category) => category.id === productForm.initialProduct?.category?.id),
-    [activeCategories]
+      })) ?? [],
+    [categories.data]
   );
 
-  const defaultCategoryisRetired = useMemo(
-    () => !activeDefaultCategory && productForm.initialProduct !== undefined,
+  const activeDefaultCategory = useMemo(
+    () => categories.data?.find((category) => category.id === productForm.initialProduct?.category?.id),
+    [categories.data]
+  );
+
+  const defaultRetiredCategory = useMemo(
+    () => (activeDefaultCategory ? productForm.initialProduct : undefined),
     [activeDefaultCategory, productForm.initialProduct]
   );
 
   const categoryOptions = useMemo(
     () =>
-      activeCategories.map((category) => ({
+      categories.data?.map((category) => ({
         label: category.name ?? '',
         value: category.id.toString(),
       })) ?? [],
-    [activeCategories]
+    [categories.data]
   );
 
   const { register, handleSubmit, formState } = useForm<ProductFormSchema>({
@@ -71,7 +68,7 @@ export default function ProductForm(): ReactElement {
     const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) ?? [];
     const ActiveTagIds = tagOptions.filter((option, i) => (data.tagsIds ? data.tagsIds[i] : false)).map((option) => option.tag.id);
 
-    const categoryIdToSave = defaultCategoryisRetired ? productForm.initialProduct?.category?.id ?? activeCategories[0]?.id : data.categoryId;
+    const categoryIdToSave = defaultRetiredCategory?.id ?? data.categoryId;
 
     const productOutput: ProductRequestDto = {
       ...data,
@@ -116,7 +113,7 @@ export default function ProductForm(): ReactElement {
                 options={categoryOptions}
                 id="category"
                 error={formState.errors.categoryId?.message}
-                disabled={defaultCategoryisRetired}
+                disabled={defaultRetiredCategory !== undefined}
               />
             </div>
             <div className="flex w-full flex-col">

@@ -9,7 +9,7 @@ import ProductsTableRow from './ProductsTableRow';
 import { useProductFormContext } from '../ProductForm/ProductFormContext';
 
 export default function ProductsTable(): ReactElement {
-  const { products } = useProducts();
+  const { products } = useProducts(true);
   const productForm = useProductFormContext();
   const { searchString } = useSearch();
   const formatting = 'px-4 py-2 font-normal';

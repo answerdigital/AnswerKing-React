@@ -16,8 +16,10 @@ interface UseTagsResult {
   removeTag: UseMutationResult<void, TagProblemDetails, number>;
 }
 
-export default function useTags(): UseTagsResult {
-  const tags = useQuery<TagDto[]>(['tags'], tagService.getAll);
+export default function useTags(filtered = false): UseTagsResult {
+  const tags = useQuery<TagDto[]>(['tags'], tagService.getAll, {
+    select: (data) => (filtered ? data.filter((tag) => !tag.retired) : data),
+  });
 
   const createTag = useMutation<TagDto, TagProblemDetails, TagRequestDto>((requestDto) => tagService.create(requestDto), {
     onSuccess: () => {
