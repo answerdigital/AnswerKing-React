@@ -3,7 +3,7 @@ import Button from 'common/Buttons/Button';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
 import Search from 'common/Search/Search';
 import { useSearch } from 'common/Search/SearchContext';
-import { ProductDto } from 'dtos/ProductDto';
+import ProductDto from 'dtos/Product/ProductDto';
 import useProducts from 'hooks/useProducts';
 import ProductsTableRow from './ProductsTableRow';
 import { useProductFormContext } from '../ProductForm/ProductFormContext';

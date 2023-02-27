@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrashIcon from 'common/Icons/TrashIcon';
-import { CategoryDto } from 'dtos/CategoryDto';
+import CategoryDto from 'dtos/Category/CategoryDto';
 import { toast } from 'react-toastify';
 import useCategories from 'hooks/useCategories';
 import { useCategoryFormContext } from '../CategoryForm/CategoryFormContext';

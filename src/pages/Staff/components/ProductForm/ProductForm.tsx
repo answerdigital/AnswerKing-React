@@ -13,7 +13,7 @@ import useCategories from 'hooks/useCategories';
 import useTags from 'hooks/useTags';
 import { useForm } from 'react-hook-form';
 import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
-import { ProductRequestDto } from 'dtos/RequestDtos/ProductRequestDto';
+import ProductRequestDto from 'dtos/Product/ProductRequestDto';
 import useProducts from 'hooks/useProducts';
 import { toast } from 'react-toastify';
 import { useProductFormContext } from './ProductFormContext';

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import cn from 'classnames';
-import { LineItemDto } from 'dtos/LineItemDto';
+import LineItemDto from 'dtos/LineItemDto';
 import Service_Charge from 'utilities/Constants/Service_Charge';
 import GBPFormat from 'utilities/GBPFormat';
 

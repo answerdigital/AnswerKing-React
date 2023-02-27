@@ -1,4 +1,4 @@
-export interface Errors {
+export default interface Errors {
   name: string[];
   price: string[];
   description: string[];

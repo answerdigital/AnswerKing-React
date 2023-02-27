@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrashIcon from 'common/Icons/TrashIcon';
-import { TagDto } from 'dtos/TagDto';
+import TagDto from 'dtos/Tag/TagDto';
 import { toast } from 'react-toastify';
 import useTags from 'hooks/useTags';
 import { useTagFormContext } from '../TagForm/TagFormContext';

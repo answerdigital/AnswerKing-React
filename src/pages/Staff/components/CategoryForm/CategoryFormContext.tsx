@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useMemo } from 'react';
-import { CategoryDto } from 'dtos/CategoryDto';
+import CategoryDto from 'dtos/Category/CategoryDto';
 import CategoryForm from './CategoryForm';
 
 interface ICategoryFormContext {

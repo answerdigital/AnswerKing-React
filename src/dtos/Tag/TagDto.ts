@@ -1,4 +1,4 @@
-export interface TagDto {
+export default interface TagDto {
   id: number;
   name?: string;
   description?: string;

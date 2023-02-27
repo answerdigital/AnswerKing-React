@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import Button from 'common/Buttons/Button';
 import PageLayout from 'common/PageLayout/PageLayout';
-import { ProductDto } from 'dtos/ProductDto';
+import ProductDto from 'dtos/Product/ProductDto';
 import useProducts from 'hooks/useProducts';
 import { useNavigate } from 'react-router-dom';
 import Allergens from 'utilities/Constants/Allergens';

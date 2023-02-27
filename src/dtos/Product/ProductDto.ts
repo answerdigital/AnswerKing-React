@@ -4,7 +4,7 @@ export interface ProductCategoryDto {
   name: string;
 }
 
-export interface ProductDto {
+export default interface ProductDto {
   id: number;
   name: string;
   price: number;

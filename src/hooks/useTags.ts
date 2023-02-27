@@ -1,6 +1,6 @@
-import { ProblemDetails } from 'dtos/ProblemDetails';
-import { TagDto } from 'dtos/TagDto';
-import { TagRequestDto } from 'dtos/RequestDtos/TagRequestDto';
+import TagDto from 'dtos/Tag/TagDto';
+import TagProblemDetails from 'dtos/Tag/TagProblemDetails';
+import TagRequestDto from 'dtos/Tag/TagRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
 import tagService from 'services/tagService';
 
@@ -9,39 +9,29 @@ interface UpdateTagProps {
   requestDto: TagRequestDto;
 }
 
-export interface tagProblemDetails extends ProblemDetails {
-  errors: errors;
-}
-
-export interface errors {
-  name: string[];
-  price: string[];
-  description: string[];
-}
-
 interface UseTagsResult {
   tags: UseQueryResult<TagDto[]>;
-  createTag: UseMutationResult<TagDto, tagProblemDetails, TagRequestDto>;
-  editTag: UseMutationResult<TagDto, tagProblemDetails, UpdateTagProps>;
-  removeTag: UseMutationResult<void, ProblemDetails, number>;
+  createTag: UseMutationResult<TagDto, TagProblemDetails, TagRequestDto>;
+  editTag: UseMutationResult<TagDto, TagProblemDetails, UpdateTagProps>;
+  removeTag: UseMutationResult<void, TagProblemDetails, number>;
 }
 
 export default function useTags(): UseTagsResult {
   const tags = useQuery<TagDto[]>(['tags'], tagService.getAll);
 
-  const createTag = useMutation<TagDto, tagProblemDetails, TagRequestDto>((requestDto) => tagService.create(requestDto), {
+  const createTag = useMutation<TagDto, TagProblemDetails, TagRequestDto>((requestDto) => tagService.create(requestDto), {
     onSuccess: () => {
       tags.refetch();
     },
   });
 
-  const editTag = useMutation<TagDto, tagProblemDetails, UpdateTagProps>((props) => tagService.edit(props.id, props.requestDto), {
+  const editTag = useMutation<TagDto, TagProblemDetails, UpdateTagProps>((props) => tagService.edit(props.id, props.requestDto), {
     onSuccess: () => {
       tags.refetch();
     },
   });
 
-  const removeTag = useMutation<void, tagProblemDetails, number>((id) => tagService.retire(id), {
+  const removeTag = useMutation<void, TagProblemDetails, number>((id) => tagService.retire(id), {
     onSuccess: () => {
       tags.refetch();
     },

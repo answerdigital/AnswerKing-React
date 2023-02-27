@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, useReducer } from 'react';
-import { LineItemDto } from 'dtos/LineItemDto';
+import LineItemDto from 'dtos/LineItemDto';
 import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
-import { ProductDto } from 'dtos/ProductDto';
+import ProductDto from 'dtos/Product/ProductDto';
 import { ActionType, orderReducer } from './orderReducer';
 
 const initialLineItems: LineItemDto[] = [];

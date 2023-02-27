@@ -1,5 +1,5 @@
-import { TagDto } from 'dtos/TagDto';
-import { TagRequestDto } from 'dtos/RequestDtos/TagRequestDto';
+import TagDto from 'dtos/Tag/TagDto';
+import TagRequestDto from 'dtos/Tag/TagRequestDto';
 import { handleDeleteResponse, handleResponse } from 'utilities/HandleHttpResponses';
 import HttpClient from 'utilities/HttpClient';
 

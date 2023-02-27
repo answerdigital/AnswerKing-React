@@ -1,7 +1,7 @@
-import { ProductDto } from 'dtos/ProductDto';
-import { ProductRequestDto } from 'dtos/RequestDtos/ProductRequestDto';
+import ProductDto from 'dtos/Product/ProductDto';
+import ProductProblemDetails from 'dtos/Product/ProductProblemDetails';
+import ProductRequestDto from 'dtos/Product/ProductRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { ProblemDetails } from 'dtos/ProblemDetails';
 import productService from 'services/productService';
 
 interface UpdateProductProps {
@@ -9,39 +9,29 @@ interface UpdateProductProps {
   requestDto: ProductRequestDto;
 }
 
-export interface productProblemDetails extends ProblemDetails {
-  errors: errors;
-}
-
-export interface errors {
-  name: string[];
-  price: string[];
-  description: string[];
-}
-
 interface UseProductsResult {
   products: UseQueryResult<ProductDto[]>;
-  createProduct: UseMutationResult<ProductDto, productProblemDetails, ProductRequestDto>;
-  editProduct: UseMutationResult<ProductDto, productProblemDetails, UpdateProductProps>;
-  removeProduct: UseMutationResult<void, ProblemDetails, number>;
+  createProduct: UseMutationResult<ProductDto, ProductProblemDetails, ProductRequestDto>;
+  editProduct: UseMutationResult<ProductDto, ProductProblemDetails, UpdateProductProps>;
+  removeProduct: UseMutationResult<void, ProductProblemDetails, number>;
 }
 
 export default function useProducts(): UseProductsResult {
   const products = useQuery<ProductDto[]>(['products'], productService.getAll);
 
-  const createProduct = useMutation<ProductDto, productProblemDetails, ProductRequestDto>((requestDto) => productService.create(requestDto), {
+  const createProduct = useMutation<ProductDto, ProductProblemDetails, ProductRequestDto>((requestDto) => productService.create(requestDto), {
     onSuccess: () => {
       products.refetch();
     },
   });
 
-  const editProduct = useMutation<ProductDto, productProblemDetails, UpdateProductProps>((props) => productService.edit(props.id, props.requestDto), {
+  const editProduct = useMutation<ProductDto, ProductProblemDetails, UpdateProductProps>((props) => productService.edit(props.id, props.requestDto), {
     onSuccess: () => {
       products.refetch();
     },
   });
 
-  const removeProduct = useMutation<void, productProblemDetails, number>((id) => productService.retire(id), {
+  const removeProduct = useMutation<void, ProductProblemDetails, number>((id) => productService.retire(id), {
     onSuccess: () => {
       products.refetch();
     },

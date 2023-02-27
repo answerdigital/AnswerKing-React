@@ -11,7 +11,7 @@ import useProducts from 'hooks/useProducts';
 import { useForm } from 'react-hook-form';
 import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
 import useCategories from 'hooks/useCategories';
-import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
+import CategoryRequestDto from 'dtos/Category/CategoryRequestDto';
 import { toast } from 'react-toastify';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
 import { useCategoryFormContext } from './CategoryFormContext';

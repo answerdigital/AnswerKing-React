@@ -3,7 +3,7 @@ import Button from 'common/Buttons/Button';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
 import Search from 'common/Search/Search';
 import { useSearch } from 'common/Search/SearchContext';
-import { TagDto } from 'dtos/TagDto';
+import TagDto from 'dtos/Tag/TagDto';
 import useTags from 'hooks/useTags';
 import TagsTableRow from './TagsTableRow';
 import { useTagFormContext } from '../TagForm/TagFormContext';

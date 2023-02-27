@@ -1,6 +1,6 @@
-import { ProductDto } from './ProductDto';
+import ProductDto from './Product/ProductDto';
 
-export interface LineItemDto {
+export default interface LineItemDto {
   product: ProductDto;
   quantity: number;
   subTotal: number;

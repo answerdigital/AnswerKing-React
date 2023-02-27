@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrashIcon from 'common/Icons/TrashIcon';
-import { ProductDto } from 'dtos/ProductDto';
+import ProductDto from 'dtos/Product/ProductDto';
 import useProducts from 'hooks/useProducts';
 import { toast } from 'react-toastify';
 import GBPFormat from 'utilities/GBPFormat';
