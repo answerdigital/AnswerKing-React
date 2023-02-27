@@ -1,7 +1,7 @@
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { OrderDto } from 'dtos/Order/OrderDto';
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from 'react-query';
-import { orderService, ProblemDetails } from 'services/orderService';
+import { ProblemDetails, ItemService } from 'services/itemService';
 
 interface UpdateOrderProps {
   id: number;
@@ -18,6 +18,8 @@ interface UseOrderResult {
 }
 
 export const useOrder = (): UseOrderResult => {
+  const orderService = new ItemService<OrderDto,CreatedOrderDto>('orders');
+
   const queryClient = useQueryClient();
 
   const order = useQuery<OrderDto>(['order'], { enabled: false });
@@ -38,7 +40,7 @@ export const useOrder = (): UseOrderResult => {
 
   const clearOrder = (): Promise<void> => queryClient.resetQueries(['order']);
 
-  const updateOrder = useMutation<OrderDto, ProblemDetails, UpdateOrderProps>((props) => orderService.update(props.id, props.updatedOrder), {
+  const updateOrder = useMutation<OrderDto, ProblemDetails, UpdateOrderProps>((props) => orderService.edit(props.id, props.updatedOrder), {
     onSuccess: (orderResult) => {
       queryClient.setQueryData(['order'], orderResult);
     },

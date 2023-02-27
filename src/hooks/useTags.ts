@@ -1,8 +1,7 @@
 import { TagDto } from 'dtos/TagDto';
 import { TagRequestDto } from 'dtos/RequestDtos/TagRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { tagService } from 'services/tagService';
-import { ProblemDetails } from 'services/orderService';
+import { ProblemDetails,ItemService } from 'services/itemService';
 
 interface UpdateTagProps {
   id: number;
@@ -27,6 +26,8 @@ interface UseTagsResult {
 }
 
 export const useTags = (): UseTagsResult => {
+  const tagService = new ItemService<TagDto,TagRequestDto>('tags');
+
   const tags = useQuery<TagDto[]>(['tags'], tagService.getAll);
 
   const createTag = useMutation<TagDto, TagProblemDetails, TagRequestDto>((requestDto) => tagService.create(requestDto), {

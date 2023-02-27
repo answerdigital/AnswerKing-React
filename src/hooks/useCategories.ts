@@ -1,8 +1,7 @@
 import { CategoryDto } from 'dtos/CategoryDto';
 import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { categoryService } from 'services/categoryService';
-import { ProblemDetails } from 'services/orderService';
+import { ProblemDetails, ItemService } from 'services/itemService';
 
 interface UpdateCategoryProps {
   id: number;
@@ -27,6 +26,8 @@ interface UseCategoriesResult {
 }
 
 export const useCategories = (): UseCategoriesResult => {
+  const categoryService = new ItemService<CategoryDto,CategoryRequestDto>('orders');
+
   const categories = useQuery<CategoryDto[]>(['categories'], categoryService.getAll);
 
   const createCategory = useMutation<CategoryDto, CategoryProblemDetails, CategoryRequestDto>((requestDto) => categoryService.create(requestDto), {

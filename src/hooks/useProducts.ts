@@ -1,8 +1,7 @@
 import { ProductDto } from 'dtos/ProductDto';
 import { ProductRequestDto } from 'dtos/RequestDtos/ProductRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { productService } from 'services/productService';
-import { ProblemDetails } from 'services/orderService';
+import { ProblemDetails, ItemService } from 'services/itemService';
 
 interface UpdateProductProps {
   id: number;
@@ -27,6 +26,8 @@ interface UseProductsResult {
 }
 
 export const useProducts = (): UseProductsResult => {
+  const productService = new ItemService<ProductDto,ProductRequestDto>('products');
+
   const products = useQuery<ProductDto[]>(['items'], productService.getAll);
 
   const createProduct = useMutation<ProductDto, productProblemDetails, ProductRequestDto>((requestDto) => productService.create(requestDto), {
