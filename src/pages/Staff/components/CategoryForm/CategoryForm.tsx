@@ -1,4 +1,4 @@
-import { ReactElement, useMemo } from 'react';
+import { ReactElement } from 'react';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -14,7 +14,7 @@ import { useCategoryFormContext } from './CategoryFormContext';
 
 export default function CategoryForm(): ReactElement {
   const categoryForm = useCategoryFormContext();
-  const { products } = useProducts();
+  const { products } = useProducts(true);
 
   const {
     register,
@@ -33,8 +33,6 @@ export default function CategoryForm(): ReactElement {
     console.log(data);
   };
 
-  const filteredProducts = useMemo(() => products.data?.filter((product) => !product.retired), [products.data]);
-
   return (
     <>
       <form className="w-full overflow-auto">
@@ -51,7 +49,7 @@ export default function CategoryForm(): ReactElement {
           <Label className="col-span-4" error={errors.products?.message}>
             Products
           </Label>
-          {filteredProducts?.map((product) => (
+          {products.data?.map((product) => (
             <Checkbox key={product.id} id={product.id.toString()} label={product.name} value={product.id} {...register('products')} />
           ))}
         </div>

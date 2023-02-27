@@ -1,4 +1,4 @@
-import { ReactElement, useMemo } from 'react';
+import { ReactElement } from 'react';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -27,13 +27,11 @@ export default function TagForm(): ReactElement {
       products: tagForm.initialTag?.products ?? [],
     },
   });
-  const { products } = useProducts();
+  const { products } = useProducts(true);
 
   const submitForm = (data: TagsFormSchema): void => {
     console.log(data);
   };
-
-  const filteredProducts = useMemo(() => products.data?.filter((product) => !product.retired), [products.data]);
 
   return (
     <>
@@ -51,7 +49,7 @@ export default function TagForm(): ReactElement {
           <Label className="col-span-4" error={errors.products?.message}>
             Products
           </Label>
-          {filteredProducts?.map((product) => (
+          {products.data?.map((product) => (
             <Checkbox key={product.id} value={product.id} label={product.name} id={product.id.toString()} {...register('products')} />
           ))}
         </div>
