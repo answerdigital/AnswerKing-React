@@ -7,13 +7,13 @@ import Checkbox from 'common/Inputs/Checkbox';
 import Input from 'common/Inputs/Input';
 import Label from 'common/Inputs/Label';
 import TextArea from 'common/Inputs/TextArea';
+import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import CategoryRequestDto from 'dtos/Category/CategoryRequestDto';
+import useCategories from 'hooks/useCategories';
 import useProducts from 'hooks/useProducts';
 import { useForm } from 'react-hook-form';
-import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
-import useCategories from 'hooks/useCategories';
-import CategoryRequestDto from 'dtos/Category/CategoryRequestDto';
 import { toast } from 'react-toastify';
-import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import { categoryFormSchema, CategoryFormSchema } from 'schemas/CategoryFormSchema';
 import { useCategoryFormContext } from './CategoryFormContext';
 
 export default function CategoryForm(): ReactElement {
@@ -24,12 +24,10 @@ export default function CategoryForm(): ReactElement {
   const productOptions = useMemo(() => {
     const activeProducts = products.data?.filter((product) => !product.retired) || [];
     return (
-      activeProducts.map((product) => {
-        return {
-          product: product,
-          initiallySelected: !!categoryForm.initialCategory?.products?.includes(product.id),
-        };
-      }) ?? []
+      activeProducts.map((product) => ({
+        product,
+        initiallySelected: !!categoryForm.initialCategory?.products?.includes(product.id),
+      })) ?? []
     );
   }, [products.data]);
 
@@ -94,23 +92,21 @@ export default function CategoryForm(): ReactElement {
             <Label className="col-span-4" error={errors.products?.message}>
               Products
             </Label>
-            {productOptions.map((productOption) => {
-              return (
-                <Checkbox
-                  key={productOption.product.id}
-                  id={productOption.product.id.toString()}
-                  label={productOption.product.name}
-                  value={productOption.product.id}
-                  defaultChecked={productOption.initiallySelected}
-                  {...register(`products.${productOption.product.id}`)}
-                  disabled={productOption.product.retired}
-                />
-              );
-            })}
+            {productOptions.map((productOption) => (
+              <Checkbox
+                key={productOption.product.id}
+                id={productOption.product.id.toString()}
+                label={productOption.product.name}
+                value={productOption.product.id}
+                defaultChecked={productOption.initiallySelected}
+                {...register(`products.${productOption.product.id}`)}
+                disabled={productOption.product.retired}
+              />
+            ))}
           </div>
         </form>
       ) : (
-        <LoaderOverlay isEnabled={true} />
+        <LoaderOverlay isEnabled />
       )}
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={categoryForm.closeForm}>

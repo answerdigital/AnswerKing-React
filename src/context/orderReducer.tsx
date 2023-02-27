@@ -1,5 +1,5 @@
 import { LocalOrderDto } from 'dtos/Order/LocalOrderDto';
-import ProductDto from 'dtos/Product/ProductDto';
+import { ProductDto } from 'dtos/Product/ProductDto';
 
 export enum ActionType {
   AddToLocalOrder = 'ADD_TO_LOCAL_ORDER',

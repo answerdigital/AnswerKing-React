@@ -1,6 +1,6 @@
-import Errors from './ProductErrors';
-import ProblemDetails from '../ProblemDetails';
+import { ProductErrors } from './ProductErrors';
+import { ProblemDetails } from '../ProblemDetails';
 
-export default interface ProductProblemDetails extends ProblemDetails {
-  errors: Errors;
+export interface ProductProblemDetails extends ProblemDetails {
+  errors: ProductErrors;
 }

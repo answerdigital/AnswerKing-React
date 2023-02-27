@@ -8,12 +8,12 @@ import Input from 'common/Inputs/Input';
 import Label from 'common/Inputs/Label';
 import TextArea from 'common/Inputs/TextArea';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import { TagRequestDto } from 'dtos/Tag/TagRequestDto';
 import useProducts from 'hooks/useProducts';
-import { useForm } from 'react-hook-form';
-import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
-import TagRequestDto from 'dtos/Tag/TagRequestDto';
 import useTags from 'hooks/useTags';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
 import { useTagFormContext } from './TagFormContext';
 
 export default function TagForm(): ReactElement {
@@ -24,12 +24,10 @@ export default function TagForm(): ReactElement {
   const productOptions = useMemo(() => {
     const activeProducts = products.data?.filter((product) => !product.retired) || [];
     return (
-      activeProducts.map((product) => {
-        return {
-          product: product,
-          selected: !!tagForm.initialTag?.products?.includes(product.id),
-        };
-      }) ?? []
+      activeProducts.map((product) => ({
+        product,
+        selected: !!tagForm.initialTag?.products?.includes(product.id),
+      })) ?? []
     );
   }, [products.data]);
 
@@ -86,23 +84,21 @@ export default function TagForm(): ReactElement {
             <Label className="col-span-4" error={errors.products?.message}>
               Products
             </Label>
-            {productOptions.map((productOption) => {
-              return (
-                <Checkbox
-                  key={productOption.product.id}
-                  value={productOption.product.id}
-                  label={productOption.product.name}
-                  id={productOption.product.id.toString()}
-                  defaultChecked={productOption.selected}
-                  {...register(`products.${productOption.product.id}`)}
-                  disabled={productOption.product.retired}
-                />
-              );
-            })}
+            {productOptions.map((productOption) => (
+              <Checkbox
+                key={productOption.product.id}
+                value={productOption.product.id}
+                label={productOption.product.name}
+                id={productOption.product.id.toString()}
+                defaultChecked={productOption.selected}
+                {...register(`products.${productOption.product.id}`)}
+                disabled={productOption.product.retired}
+              />
+            ))}
           </div>
         </form>
       ) : (
-        <LoaderOverlay isEnabled={true} />
+        <LoaderOverlay isEnabled />
       )}
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={tagForm.closeForm}>

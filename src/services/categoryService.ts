@@ -1,5 +1,5 @@
-import CategoryDto from 'dtos/Category/CategoryDto';
-import CategoryRequestDto from 'dtos/Category/CategoryRequestDto';
+import { CategoryDto } from 'dtos/Category/CategoryDto';
+import { CategoryRequestDto } from 'dtos/Category/CategoryRequestDto';
 import { handleDeleteResponse, handleResponse } from 'utilities/HandleHttpResponses';
 import HttpClient from 'utilities/HttpClient';
 

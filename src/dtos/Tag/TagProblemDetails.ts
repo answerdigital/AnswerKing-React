@@ -1,6 +1,6 @@
-import Errors from './TagErrors';
-import ProblemDetails from '../ProblemDetails';
+import { TagErrors } from './TagErrors';
+import { ProblemDetails } from '../ProblemDetails';
 
-export default interface TagProblemDetails extends ProblemDetails {
-  errors: Errors;
+export interface TagProblemDetails extends ProblemDetails {
+  errors: TagErrors;
 }

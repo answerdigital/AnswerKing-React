@@ -1,4 +1,4 @@
-import LineItemDto from '../LineItemDto';
+import { LineItemDto } from '../LineItemDto';
 
 export interface LocalOrderDto {
   id?: number;

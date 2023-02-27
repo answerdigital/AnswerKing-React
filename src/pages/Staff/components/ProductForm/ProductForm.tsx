@@ -9,13 +9,13 @@ import Label from 'common/Inputs/Label';
 import Select from 'common/Inputs/Select';
 import TextArea from 'common/Inputs/TextArea';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import { ProductRequestDto } from 'dtos/Product/ProductRequestDto';
 import useCategories from 'hooks/useCategories';
+import useProducts from 'hooks/useProducts';
 import useTags from 'hooks/useTags';
 import { useForm } from 'react-hook-form';
-import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
-import ProductRequestDto from 'dtos/Product/ProductRequestDto';
-import useProducts from 'hooks/useProducts';
 import { toast } from 'react-toastify';
+import { ProductFormSchema, productFormSchema } from 'schemas/ProductFormSchema';
 import { useProductFormContext } from './ProductFormContext';
 
 export default function ProductForm(): ReactElement {
@@ -27,37 +27,33 @@ export default function ProductForm(): ReactElement {
   const tagOptions = useMemo(() => {
     const activeTags = tags.data?.filter((tag) => !tag.retired) || [];
     return (
-      activeTags.map((tag) => {
-        return {
-          tag: tag,
-          initiallySelected: productForm.initialProduct?.tags.includes(tag.id) as boolean,
-        };
-      }) ?? []
+      activeTags.map((tag) => ({
+        tag,
+        initiallySelected: productForm.initialProduct?.tags.includes(tag.id) as boolean,
+      })) ?? []
     );
   }, [categories.data]);
 
-  const activeCategories = useMemo(() => {
-    return categories.data?.filter((category) => !category.retired) || [];
-  }, [categories.data]);
+  const activeCategories = useMemo(() => categories.data?.filter((category) => !category.retired) || [], [categories.data]);
 
-  const activeDefaultCategory = useMemo(() => {
-    return activeCategories.find((category) => category.id === productForm.initialProduct?.category?.id);
-  }, [activeCategories]);
+  const activeDefaultCategory = useMemo(
+    () => activeCategories.find((category) => category.id === productForm.initialProduct?.category?.id),
+    [activeCategories]
+  );
 
-  const defaultCategoryisRetired = useMemo(() => {
-    return !activeDefaultCategory && productForm.initialProduct !== undefined;
-  }, [activeDefaultCategory, productForm.initialProduct]);
+  const defaultCategoryisRetired = useMemo(
+    () => !activeDefaultCategory && productForm.initialProduct !== undefined,
+    [activeDefaultCategory, productForm.initialProduct]
+  );
 
-  const categoryOptions = useMemo(() => {
-    return (
-      activeCategories.map((category) => {
-        return {
-          label: category.name ?? '',
-          value: category.id.toString(),
-        };
-      }) ?? []
-    );
-  }, [activeCategories]);
+  const categoryOptions = useMemo(
+    () =>
+      activeCategories.map((category) => ({
+        label: category.name ?? '',
+        value: category.id.toString(),
+      })) ?? [],
+    [activeCategories]
+  );
 
   const { register, handleSubmit, formState } = useForm<ProductFormSchema>({
     resolver: yupResolver(productFormSchema),
@@ -132,22 +128,20 @@ export default function ProductForm(): ReactElement {
             <Label error={formState.errors.tagsIds?.message} className="col-span-4">
               Tags
             </Label>
-            {tagOptions.map((tagOption) => {
-              return (
-                <Checkbox
-                  {...register(`tagsIds.${tagOption.tag.id}`)}
-                  key={tagOption.tag.id}
-                  label={tagOption.tag.name}
-                  id={tagOption.tag.id.toString()}
-                  defaultChecked={tagOption.initiallySelected}
-                  disabled={tagOption.tag.retired}
-                />
-              );
-            })}
+            {tagOptions.map((tagOption) => (
+              <Checkbox
+                {...register(`tagsIds.${tagOption.tag.id}`)}
+                key={tagOption.tag.id}
+                label={tagOption.tag.name}
+                id={tagOption.tag.id.toString()}
+                defaultChecked={tagOption.initiallySelected}
+                disabled={tagOption.tag.retired}
+              />
+            ))}
           </div>
         </form>
       ) : (
-        <LoaderOverlay isEnabled={true} />
+        <LoaderOverlay isEnabled />
       )}
       <div className="mt-4 grid h-[45px] w-full flex-none grid-cols-2 gap-4">
         <Button colour="white" onClick={productForm.closeForm}>

@@ -1,4 +1,4 @@
-export default interface ProductRequestDto {
+export interface ProductRequestDto {
   name: string;
   description?: string;
   price: number;

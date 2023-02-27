@@ -1,7 +1,7 @@
 import { ReactElement, useState } from 'react';
 import Button from 'common/Buttons/Button';
 import BadgeIcon from 'common/Icons/BadgeIcon';
-import ProductDto from 'dtos/Product/ProductDto';
+import { ProductDto } from 'dtos/Product/ProductDto';
 import { motion } from 'framer-motion';
 import GBPFormat from 'utilities/GBPFormat';
 import PlaceHolderImage from '/images/burger_transparent.png';

@@ -1,6 +1,8 @@
-import Errors from './CategoryErrors';
-import ProblemDetails from '../ProblemDetails';
+import { CategoryErrors } from './CategoryErrors';
+import { ProblemDetails } from '../ProblemDetails';
 
-export default interface CategoryProblemDetails extends ProblemDetails {
-  errors: Errors;
+export interface CategoryProblemDetails extends ProblemDetails {
+  errors: CategoryErrors;
 }
+
+export default CategoryProblemDetails;

@@ -1,6 +1,6 @@
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { OrderDto } from 'dtos/Order/OrderDto';
-import ProblemDetails from 'dtos/ProblemDetails';
+import { ProblemDetails } from 'dtos/ProblemDetails';
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from 'react-query';
 import OrderService from 'services/orderService';
 

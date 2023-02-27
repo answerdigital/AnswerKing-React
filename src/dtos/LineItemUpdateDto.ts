@@ -1,3 +1,3 @@
-export default interface LineItemUpdateDto {
+export interface LineItemUpdateDto {
   quantity: number;
 }

@@ -1,7 +1,9 @@
-export default interface CategoryDto {
+export interface CategoryDto {
   id: number;
   name?: string;
   description?: string;
   products?: number[];
   retired?: boolean;
 }
+
+export default CategoryDto;

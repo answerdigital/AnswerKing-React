@@ -1,5 +1,5 @@
-import ProductDto from 'dtos/Product/ProductDto';
-import ProductRequestDto from 'dtos/Product/ProductRequestDto';
+import { ProductDto } from 'dtos/Product/ProductDto';
+import { ProductRequestDto } from 'dtos/Product/ProductRequestDto';
 import { handleDeleteResponse, handleResponse } from 'utilities/HandleHttpResponses';
 import HttpClient from 'utilities/HttpClient';
 

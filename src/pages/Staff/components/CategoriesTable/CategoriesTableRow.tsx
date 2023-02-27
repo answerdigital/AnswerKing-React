@@ -3,8 +3,8 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrashIcon from 'common/Icons/TrashIcon';
 import CategoryDto from 'dtos/Category/CategoryDto';
-import { toast } from 'react-toastify';
 import useCategories from 'hooks/useCategories';
+import { toast } from 'react-toastify';
 import { useCategoryFormContext } from '../CategoryForm/CategoryFormContext';
 
 interface Props {

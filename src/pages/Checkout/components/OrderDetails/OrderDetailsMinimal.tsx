@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import LineItemDto from 'dtos/LineItemDto';
+import { LineItemDto } from 'dtos/LineItemDto';
 import GBPFormat from 'utilities/GBPFormat';
 
 interface Props {
