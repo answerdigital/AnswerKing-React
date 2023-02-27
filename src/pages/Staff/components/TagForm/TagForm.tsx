@@ -12,7 +12,7 @@ import useProducts from 'hooks/useProducts';
 import { useForm } from 'react-hook-form';
 import { tagsFormSchema, TagsFormSchema } from 'schemas/TagsFormSchema';
 import { TagRequestDto } from 'dtos/RequestDtos/TagRequestDto';
-import { useTags } from 'hooks/useTags';
+import useTags from 'hooks/useTags';
 import { toast } from 'react-toastify';
 import { useTagFormContext } from './TagFormContext';
 

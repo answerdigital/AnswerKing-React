@@ -1,7 +1,7 @@
 import { ProductDto } from 'dtos/ProductDto';
 import { ProductRequestDto } from 'dtos/RequestDtos/ProductRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { ProblemDetails } from 'services/itemService';
+import { ProblemDetails } from 'dtos/ProblemDetails';
 import productService from 'services/productService';
 
 interface UpdateProductProps {

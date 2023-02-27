@@ -1,7 +1,7 @@
 import { CategoryDto } from 'dtos/CategoryDto';
 import { CategoryRequestDto } from 'dtos/RequestDtos/CategoryRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
-import { ProblemDetails } from 'services/itemService';
+import { ProblemDetails } from 'dtos/ProblemDetails';
 import categoryService from 'services/categoryService';
 
 interface UpdateCategoryProps {
