@@ -1,6 +1,6 @@
 import { CreatedOrderDto } from 'dtos/Order/CreatedOrderDto';
 import { OrderDto } from 'dtos/Order/OrderDto';
-import { handleResponse } from 'utilities/HandleHttpResponses';
+import { handleDeleteResponse, handleResponse } from 'utilities/HandleHttpResponses';
 import HttpClient from 'utilities/HttpClient';
 
 export default {
@@ -26,9 +26,6 @@ export default {
 
   remove: async (id: number): Promise<void> => {
     const response = await HttpClient.removeOrRetire(`/orders/${id}`);
-    if (!response.ok) {
-      return Promise.reject();
-    }
-    return Promise.resolve();
+    return handleDeleteResponse(response);
   },
 };
