@@ -14,7 +14,7 @@ interface Props {
 export default function MenuCategories({ categories, setSelectedCategory, selectedCategory }: Props): ReactElement {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState('');
-  const maxItemsDisplayed = 4;
+  const maxItemsDisplayed = categories.length % 4 === 1 || categories.length % 4 === 2 ? 3 : 4;
 
   const handleNext = (): void => {
     setIndex((prevIndex) => (prevIndex + maxItemsDisplayed >= categories.length ? 0 : prevIndex + maxItemsDisplayed));
@@ -30,7 +30,7 @@ export default function MenuCategories({ categories, setSelectedCategory, select
     <div className="mt-8 flex flex-col items-center">
       <p className="text-[36px] font-light">Menu</p>
       <div className="divide-ak-grey-2 mt-5 w-[95%] divide-y-2 ">
-        <div className="group flex items-center justify-between text-center">
+        <div className="group flex items-center justify-between gap-5 text-center">
           <ArrowToggle icon={faArrowLeft} handleIndex={handlePrev} categories={categories} maxItemsDisplayed={maxItemsDisplayed} />
           {categories.slice(index, index + maxItemsDisplayed).map((category) => (
             <motion.button
