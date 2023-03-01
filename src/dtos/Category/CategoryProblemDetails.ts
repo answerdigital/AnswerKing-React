@@ -1,7 +1,13 @@
-import { CategoryErrors } from './CategoryErrors';
 import { ProblemDetails } from '../ProblemDetails';
 
-export interface CategoryProblemDetails extends ProblemDetails {
+interface CategoryErrors {
+  category?: string[];
+  name?: string[];
+  products?: string[];
+  description?: string[];
+}
+
+interface CategoryProblemDetails extends ProblemDetails {
   errors: CategoryErrors;
 }
 
