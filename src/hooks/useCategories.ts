@@ -17,7 +17,7 @@ interface UseCategoriesResult {
 }
 
 export default function useCategories(filtered = false): UseCategoriesResult {
-  const categories = useQuery<CategoryDto[]>(['categories'], categoryService.getAll, {
+  const categories = useQuery<CategoryDto[]>([filtered ? 'activeCategories' : 'allCategories'], categoryService.getAll, {
     select: (data) => (filtered ? data.filter((category) => !category.retired || (category.products && category.products.length > 0)) : data),
   });
 

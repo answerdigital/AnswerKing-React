@@ -17,7 +17,7 @@ interface UseProductsResult {
 }
 
 export default function useProducts(filtered = false): UseProductsResult {
-  const products = useQuery<ProductDto[]>(['products'], productService.getAll, {
+  const products = useQuery<ProductDto[]>([filtered ? 'activeProducts' : 'allProducts'], productService.getAll, {
     select: (data) => (filtered ? data.filter((product) => !product.retired || !product.category) : data),
   });
 

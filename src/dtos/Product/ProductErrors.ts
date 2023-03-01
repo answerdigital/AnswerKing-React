@@ -1,7 +1,9 @@
 export interface ProductErrors {
-  name: string[];
-  price: string[];
-  description: string[];
-  categoryId: string[];
-  tagsIds: string[];
+  product?: string[];
+  name?: string[];
+  price?: string[];
+  description?: string[];
+  categoryId?: string[];
+  tagsIds?: string[];
+  stock?: string[];
 }

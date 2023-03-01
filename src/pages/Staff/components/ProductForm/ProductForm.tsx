@@ -1,4 +1,4 @@
-import { ReactElement, useMemo } from 'react';
+import { ReactElement, useEffect, useMemo, useState } from 'react';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,6 +9,7 @@ import Label from 'common/Inputs/Label';
 import Select from 'common/Inputs/Select';
 import TextArea from 'common/Inputs/TextArea';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import { ProductProblemDetails } from 'dtos/Product/ProductProblemDetails';
 import { ProductRequestDto } from 'dtos/Product/ProductRequestDto';
 import useCategories from 'hooks/useCategories';
 import useProducts from 'hooks/useProducts';
@@ -52,7 +53,11 @@ export default function ProductForm(): ReactElement {
     [categories.data]
   );
 
-  const { register, handleSubmit, formState } = useForm<ProductFormSchema>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ProductFormSchema>({
     resolver: yupResolver(productFormSchema),
     defaultValues: {
       name: productForm.initialProduct?.name ?? '',
@@ -64,29 +69,77 @@ export default function ProductForm(): ReactElement {
     },
   });
 
-  const submitForm = async (data: ProductFormSchema): Promise<void> => {
-    const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) ?? [];
-    const ActiveTagIds = tagOptions.filter((option, i) => (data.tagsIds ? data.tagsIds[i] : false)).map((option) => option.tag.id);
+  const [nameErrors, setNameErrors] = useState<string>('');
+  const [descriptionErrors, setDescriptionErrors] = useState<string>('');
+  const [priceErrors, setPriceErrors] = useState<string>('');
+  const [stockErrors, setStockErrors] = useState<string>('');
+  const [categoryErrors, setCategoryErrors] = useState<string>('');
+  const [tagsErrors, setTagsErrors] = useState<string>('');
 
-    const categoryIdToSave = defaultRetiredCategory?.id ?? data.categoryId;
+  useEffect(() => {
+    setNameErrors(errors.name?.message ?? '');
+    setDescriptionErrors(errors.description?.message ?? '');
+    setPriceErrors(errors.price?.message ?? '');
+    setStockErrors(errors.stock?.message ?? '');
+    setCategoryErrors(errors.categoryId?.message ?? '');
+    setTagsErrors(errors.tagsIds?.message ?? '');
+  }, [errors]);
+
+  const displayErrors = (BackendProblems: ProductProblemDetails): void => {
+    if (BackendProblems.errors.name) {
+      setNameErrors(String(BackendProblems.errors.name));
+    }
+    if (BackendProblems.errors.description) {
+      setDescriptionErrors(String(BackendProblems.errors.description));
+    }
+    if (BackendProblems.errors.price) {
+      setPriceErrors(String(BackendProblems.errors.price));
+    }
+    if (BackendProblems.errors.stock) {
+      setNameErrors(String(BackendProblems.errors.stock));
+    }
+    if (BackendProblems.errors.categoryId) {
+      setDescriptionErrors(String(BackendProblems.errors.categoryId));
+    }
+    if (BackendProblems.errors.tagsIds) {
+      setPriceErrors(String(BackendProblems.errors.tagsIds));
+    }
+    if (BackendProblems.errors.product) {
+      toast.error(String(BackendProblems.errors.product));
+    }
+  };
+
+  const submitForm = async (formData: ProductFormSchema): Promise<void> => {
+    const legacyTagIds = tags.data?.filter((tag) => tag.retired && productForm.initialProduct?.tags.includes(tag.id)).map((tag) => tag.id) ?? [];
+    const selectedTagIds = tagOptions.filter((option, i) => (formData.tagsIds ? formData.tagsIds[i] : false)).map((option) => option.tag.id);
+
+    const categoryIdToSave = defaultRetiredCategory?.id ?? formData.categoryId;
 
     const productOutput: ProductRequestDto = {
-      ...data,
+      ...formData,
       categoryId: categoryIdToSave,
-      tagsIds: ActiveTagIds.concat(legacyTagIds),
+      tagsIds: selectedTagIds.concat(legacyTagIds),
     };
 
-    try {
-      if (!productForm.initialProduct) {
-        const returnProduct = await createProduct.mutateAsync(productOutput);
-        toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
-      } else {
-        const returnProduct = await editProduct.mutateAsync({ id: productForm.initialProduct?.id, requestDto: productOutput });
-        toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
-      }
-      productForm.closeForm();
-    } catch (error) {
-      toast.error(error as string);
+    if (!productForm.initialProduct) {
+      createProduct.mutate(productOutput, {
+        onSuccess: (data) => {
+          toast.success(`${data.name} has been successfully added with an id of ${data.id}`);
+          productForm.closeForm();
+        },
+        onError: displayErrors,
+      });
+    } else {
+      editProduct.mutate(
+        { id: productForm.initialProduct.id, requestDto: productOutput },
+        {
+          onSuccess: (data) => {
+            toast.success(`${data.name} has been successfully updated.`);
+            productForm.closeForm();
+          },
+          onError: displayErrors,
+        }
+      );
     }
   };
 
@@ -95,16 +148,16 @@ export default function ProductForm(): ReactElement {
   return (
     <>
       {!loading ? (
-        <form className="w-full overflow-auto">
+        <form className="w-full overflow-auto" onSubmit={(e) => e.preventDefault()}>
           <div className="grid grid-cols-4 gap-4 p-2">
             <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
               <FontAwesomeIcon icon={faPen} />
             </div>
             <div className="col-span-2">
-              <Input type="text" label="Item name" id="item-name" error={formState.errors.name?.message} {...register('name')} />
+              <Input type="text" label="Item name" id="item-name" error={nameErrors} {...register('name')} />
             </div>
             <div className="col-span-2 row-span-2">
-              <TextArea label="Item description" id="item-description" error={formState.errors.description?.message} {...register('description')} />
+              <TextArea label="Item description" id="item-description" error={descriptionErrors} {...register('description')} />
             </div>
             <div className="col-span-2">
               <Select
@@ -112,17 +165,17 @@ export default function ProductForm(): ReactElement {
                 label="Category"
                 options={categoryOptions}
                 id="category"
-                error={formState.errors.categoryId?.message}
+                error={categoryErrors}
                 disabled={defaultRetiredCategory !== undefined}
               />
             </div>
             <div className="flex w-full flex-col">
-              <Input label="Price" type="number" step={0.01} min={0} id="price" error={formState.errors.price?.message} {...register('price')} />
+              <Input label="Price" type="number" step={0.01} min={0} id="price" error={priceErrors} {...register('price')} />
             </div>
             <div className="flex w-full flex-col">
-              <Input label="Stock" type="number" step={1} min={0} id="stock" error={formState.errors.stock?.message} {...register('stock')} />
+              <Input label="Stock" type="number" step={1} min={0} id="stock" error={stockErrors} {...register('stock')} />
             </div>
-            <Label error={formState.errors.tagsIds?.message} className="col-span-4">
+            <Label error={tagsErrors} className="col-span-4">
               Tags
             </Label>
             {tagOptions.map((tagOption) => (

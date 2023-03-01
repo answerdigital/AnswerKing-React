@@ -1,6 +1,7 @@
 export async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
     const error = await response.json();
+    console.log('HTTP Error!');
     return Promise.reject(error);
   }
   return response.json();

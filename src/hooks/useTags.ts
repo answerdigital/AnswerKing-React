@@ -17,7 +17,7 @@ interface UseTagsResult {
 }
 
 export default function useTags(filtered = false): UseTagsResult {
-  const tags = useQuery<TagDto[]>(['tags'], tagService.getAll, {
+  const tags = useQuery<TagDto[]>([filtered ? 'activeTags' : 'allTags'], tagService.getAll, {
     select: (data) => (filtered ? data.filter((tag) => !tag.retired) : data),
   });
 

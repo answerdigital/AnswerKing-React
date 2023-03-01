@@ -1,4 +1,4 @@
-import { ReactElement, useMemo } from 'react';
+import { ReactElement, useEffect, useMemo, useState } from 'react';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,6 +8,7 @@ import Input from 'common/Inputs/Input';
 import Label from 'common/Inputs/Label';
 import TextArea from 'common/Inputs/TextArea';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
+import { TagProblemDetails } from 'dtos/Tag/TagProblemDetails';
 import { TagRequestDto } from 'dtos/Tag/TagRequestDto';
 import useProducts from 'hooks/useProducts';
 import useTags from 'hooks/useTags';
@@ -43,24 +44,60 @@ export default function TagForm(): ReactElement {
     },
   });
 
-  const submitForm = async (data: TagsFormSchema): Promise<void> => {
+  const [nameErrors, setNameErrors] = useState<string>('');
+  const [descriptionErrors, setDescriptionErrors] = useState<string>('');
+  const [productsErrors, setProductsErrors] = useState<string>('');
+
+  useEffect(() => {
+    setNameErrors(errors.name?.message ?? '');
+    setDescriptionErrors(errors.description?.message ?? '');
+    setProductsErrors(errors.products?.message ?? '');
+  }, [errors]);
+
+  const displayErrors = (BackendProblems: TagProblemDetails): void => {
+    if (BackendProblems.errors.name) {
+      setNameErrors(String(BackendProblems.errors.name));
+    }
+    if (BackendProblems.errors.products) {
+      setProductsErrors(String(BackendProblems.errors.products));
+    }
+    if (BackendProblems.errors.description) {
+      setDescriptionErrors(String(BackendProblems.errors.description));
+    }
+    if (BackendProblems.errors.tag) {
+      toast.error(String(BackendProblems.errors.tag));
+    }
+  };
+
+  const submitForm = async (formData: TagsFormSchema): Promise<void> => {
     const legacyProductsIds =
       products.data?.filter((product) => product.retired && tagForm.initialTag?.products?.includes(product.id)).map((product) => product.id) || [];
-    const ActiveProductIds = productOptions.filter((option, i) => (data.products ? data.products[i] : false)).map((option) => option.product.id);
 
-    const tagOutput: TagRequestDto = { ...data, products: ActiveProductIds.concat(legacyProductsIds) };
+    const selectedProductIds = productOptions
+      .filter((option, i) => (formData.products ? formData.products[i] : false))
+      .map((option) => option.product.id);
 
-    try {
-      if (!tagForm.initialTag) {
-        const returnProduct = await createTag.mutateAsync(tagOutput);
-        toast.success(`Product "${returnProduct.name}" was succesfully added with ID:"${returnProduct.id}" .`);
-      } else {
-        const returnProduct = await editTag.mutateAsync({ id: tagForm.initialTag.id, requestDto: tagOutput });
-        toast.success(`Product "${returnProduct.name}" was succesfully edited" .`);
-      }
-      tagForm.closeForm();
-    } catch (error) {
-      toast.error(error as string);
+    const tagOutput: TagRequestDto = { ...formData, products: selectedProductIds.concat(legacyProductsIds) };
+
+    if (!tagForm.initialTag) {
+      createTag.mutate(tagOutput, {
+        onSuccess: (data) => {
+          toast.success(`${data.name} has been successfully added with an id of ${data.id}`);
+          tagForm.closeForm();
+        },
+        onError: displayErrors,
+      });
+    } else {
+      editTag.mutate(
+        { id: tagForm.initialTag.id, requestDto: tagOutput },
+        {
+          onSuccess: (data) => {
+            toast.success(`${data.name} has been successfully updated.`);
+            tagForm.closeForm();
+          },
+          onError: displayErrors,
+        }
+      );
     }
   };
 
@@ -69,18 +106,18 @@ export default function TagForm(): ReactElement {
   return (
     <>
       {!loading ? (
-        <form className="w-full overflow-auto">
+        <form className="w-full overflow-auto" onSubmit={(e) => e.preventDefault()}>
           <div className="grid grid-cols-4 gap-4 p-2">
             <div className="bg-ak-grey-5 col-span-2 row-span-3 flex h-full w-full items-center justify-center">
               <FontAwesomeIcon icon={faPen} />
             </div>
             <div className="col-span-2">
-              <Input label="Tag Name" id="tag-name" error={errors.name?.message} {...register('name')} />
+              <Input label="Tag Name" id="tag-name" error={nameErrors} {...register('name')} />
             </div>
             <div className="col-span-2 row-span-2">
-              <TextArea label="Text Description" id="text-description" rows={3} error={errors.description?.message} {...register('description')} />
+              <TextArea label="Text Description" id="text-description" rows={3} error={descriptionErrors} {...register('description')} />
             </div>
-            <Label className="col-span-4" error={errors.products?.message}>
+            <Label className="col-span-4" error={productsErrors}>
               Products
             </Label>
             {productOptions.map((productOption) => (

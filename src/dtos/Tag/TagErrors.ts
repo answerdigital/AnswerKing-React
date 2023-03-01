@@ -1,5 +1,6 @@
 export interface TagErrors {
-  name: string[];
-  price: string[];
-  description: string[];
+  tag?: string[];
+  name?: string[];
+  products?: string[];
+  description?: string[];
 }

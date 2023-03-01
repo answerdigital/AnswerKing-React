@@ -1,5 +1,6 @@
 export interface CategoryErrors {
-  name: string[];
-  price: string[];
-  description: string[];
+  category?: string[];
+  name?: string[];
+  products?: string[];
+  description?: string[];
 }
