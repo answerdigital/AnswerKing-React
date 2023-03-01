@@ -1,5 +1,5 @@
 import { ProductDto } from 'dtos/Product/ProductDto';
-import { ProductProblemDetails } from 'dtos/Product/ProductProblemDetails';
+import ProductProblemDetails from 'dtos/Product/ProductProblemDetails';
 import { ProductRequestDto } from 'dtos/Product/ProductRequestDto';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
 import productService from 'services/productService';

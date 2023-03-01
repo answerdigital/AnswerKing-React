@@ -8,7 +8,7 @@ import Input from 'common/Inputs/Input';
 import Label from 'common/Inputs/Label';
 import TextArea from 'common/Inputs/TextArea';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
-import { TagProblemDetails } from 'dtos/Tag/TagProblemDetails';
+import TagProblemDetails from 'dtos/Tag/TagProblemDetails';
 import { TagRequestDto } from 'dtos/Tag/TagRequestDto';
 import useProducts from 'hooks/useProducts';
 import useTags from 'hooks/useTags';

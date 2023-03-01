@@ -9,7 +9,7 @@ import Label from 'common/Inputs/Label';
 import Select from 'common/Inputs/Select';
 import TextArea from 'common/Inputs/TextArea';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
-import { ProductProblemDetails } from 'dtos/Product/ProductProblemDetails';
+import ProductProblemDetails from 'dtos/Product/ProductProblemDetails';
 import { ProductRequestDto } from 'dtos/Product/ProductRequestDto';
 import useCategories from 'hooks/useCategories';
 import useProducts from 'hooks/useProducts';
