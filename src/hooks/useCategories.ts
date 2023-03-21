@@ -21,25 +21,23 @@ export default function useCategories(filtered = false): UseCategoriesResult {
     select: (data) => (filtered ? data.filter((category) => !category.retired || (category.products && category.products.length > 0)) : data),
   });
 
+  const success = (): void => {
+    categories.refetch();
+  };
+
   const createCategory = useMutation<CategoryDto, CategoryProblemDetails, CategoryRequestDto>((requestDto) => categoryService.create(requestDto), {
-    onSuccess: () => {
-      categories.refetch();
-    },
+    onSuccess: success,
   });
 
   const editCategory = useMutation<CategoryDto, CategoryProblemDetails, UpdateCategoryProps>(
     (props) => categoryService.edit(props.id, props.requestDto),
     {
-      onSuccess: () => {
-        categories.refetch();
-      },
+      onSuccess: success,
     }
   );
 
   const removeCategory = useMutation<void, CategoryProblemDetails, number>((id) => categoryService.retire(id), {
-    onSuccess: () => {
-      categories.refetch();
-    },
+    onSuccess: success,
   });
 
   return { categories, createCategory, editCategory, removeCategory };

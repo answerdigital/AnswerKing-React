@@ -21,22 +21,20 @@ export default function useTags(filtered = false): UseTagsResult {
     select: (data) => (filtered ? data.filter((tag) => !tag.retired) : data),
   });
 
+  const success = (): void => {
+    tags.refetch();
+  };
+
   const createTag = useMutation<TagDto, TagProblemDetails, TagRequestDto>((requestDto) => tagService.create(requestDto), {
-    onSuccess: () => {
-      tags.refetch();
-    },
+    onSuccess: success,
   });
 
   const editTag = useMutation<TagDto, TagProblemDetails, UpdateTagProps>((props) => tagService.edit(props.id, props.requestDto), {
-    onSuccess: () => {
-      tags.refetch();
-    },
+    onSuccess: success,
   });
 
   const removeTag = useMutation<void, TagProblemDetails, number>((id) => tagService.retire(id), {
-    onSuccess: () => {
-      tags.refetch();
-    },
+    onSuccess: success,
   });
 
   return { tags, createTag, editTag, removeTag };

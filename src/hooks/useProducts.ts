@@ -21,22 +21,20 @@ export default function useProducts(filtered = false): UseProductsResult {
     select: (data) => (filtered ? data.filter((product) => !product.retired || !product.category) : data),
   });
 
+  const success = (): void => {
+    products.refetch();
+  };
+
   const createProduct = useMutation<ProductDto, ProductProblemDetails, ProductRequestDto>((requestDto) => productService.create(requestDto), {
-    onSuccess: () => {
-      products.refetch();
-    },
+    onSuccess: success,
   });
 
   const editProduct = useMutation<ProductDto, ProductProblemDetails, UpdateProductProps>((props) => productService.edit(props.id, props.requestDto), {
-    onSuccess: () => {
-      products.refetch();
-    },
+    onSuccess: success,
   });
 
   const removeProduct = useMutation<void, ProductProblemDetails, number>((id) => productService.retire(id), {
-    onSuccess: () => {
-      products.refetch();
-    },
+    onSuccess: success,
   });
 
   return { products, createProduct, editProduct, removeProduct };
