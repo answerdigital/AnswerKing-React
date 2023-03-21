@@ -3,6 +3,7 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrashIcon from 'common/Icons/TrashIcon';
 import CategoryDto from 'dtos/Category/CategoryDto';
+import CategoryProblemDetails from 'dtos/Category/CategoryProblemDetails';
 import useCategories from 'hooks/useCategories';
 import { toast } from 'react-toastify';
 import { useCategoryFormContext } from '../CategoryForm/CategoryFormContext';
@@ -12,17 +13,32 @@ interface Props {
   formatting: string;
 }
 
+const displayErrors = (BackendProblems: CategoryProblemDetails): void => {
+  if (BackendProblems.errors.name) {
+    toast.error(String(BackendProblems.errors.name));
+  }
+  if (BackendProblems.errors.products) {
+    toast.error(String(BackendProblems.errors.products));
+  }
+  if (BackendProblems.errors.description) {
+    toast.error(String(BackendProblems.errors.description));
+  }
+  if (BackendProblems.errors.category) {
+    toast.error(String(BackendProblems.errors.category));
+  }
+};
+
 export default function CategoriesTableRow({ category, formatting }: Props): ReactElement {
   const { removeCategory } = useCategories();
   const formContext = useCategoryFormContext();
 
   const handleDelete = async (): Promise<void> => {
-    try {
-      await removeCategory.mutateAsync(category.id);
-      toast.success(`The Category, ${category.name}, was successfully retired.`);
-    } catch (error) {
-      toast.error(error as string);
-    }
+    await removeCategory.mutateAsync(category.id, {
+      onSuccess: (): void => {
+        toast.success(`The Category, ${category.name}, was successfully retired.`);
+      },
+      onError: displayErrors,
+    });
   };
 
   return (

@@ -3,6 +3,7 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrashIcon from 'common/Icons/TrashIcon';
 import { ProductDto } from 'dtos/Product/ProductDto';
+import ProductProblemDetails from 'dtos/Product/ProductProblemDetails';
 import useProducts from 'hooks/useProducts';
 import { toast } from 'react-toastify';
 import GBPFormat from 'utilities/GBPFormat';
@@ -13,17 +14,41 @@ interface Props {
   formatting?: string;
 }
 
+const displayErrors = (BackendProblems: ProductProblemDetails): void => {
+  if (BackendProblems.errors.name) {
+    toast.error(String(BackendProblems.errors.name));
+  }
+  if (BackendProblems.errors.description) {
+    toast.error(String(BackendProblems.errors.description));
+  }
+  if (BackendProblems.errors.price) {
+    toast.error(String(BackendProblems.errors.price));
+  }
+  if (BackendProblems.errors.stock) {
+    toast.error(String(BackendProblems.errors.stock));
+  }
+  if (BackendProblems.errors.categoryId) {
+    toast.error(String(BackendProblems.errors.categoryId));
+  }
+  if (BackendProblems.errors.tagsIds) {
+    toast.error(String(BackendProblems.errors.tagsIds));
+  }
+  if (BackendProblems.errors.product) {
+    toast.error(String(BackendProblems.errors.product));
+  }
+};
+
 export default function ProductsTableRow({ product, formatting = '' }: Props): ReactElement {
   const { removeProduct } = useProducts();
   const productForm = useProductFormContext();
 
   const handleDelete = async (): Promise<void> => {
-    try {
-      await removeProduct.mutateAsync(product.id);
-      toast.success(`The Product, ${product.name}, was successfully retired.`);
-    } catch (error) {
-      toast.error(error as string);
-    }
+    await removeProduct.mutateAsync(product.id, {
+      onSuccess: (): void => {
+        toast.success(`The Product, ${product.name}, was successfully retired.`);
+      },
+      onError: displayErrors,
+    });
   };
 
   return (
