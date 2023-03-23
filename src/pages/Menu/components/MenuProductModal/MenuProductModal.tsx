@@ -3,7 +3,7 @@ import Button from 'common/Buttons/Button';
 import PlusMinusButton from 'common/Buttons/PlusMinusButton';
 import ModalTransition from 'common/Transitions/ModalTransition';
 import { useLocalOrder } from 'context/OrderContext';
-import { ProductDto } from 'dtos/ProductDto';
+import { ProductDto } from 'dtos/Product/ProductDto';
 import GBPFormat from 'utilities/GBPFormat';
 import PlaceHolderImage from '/images/burger_transparent.png';
 

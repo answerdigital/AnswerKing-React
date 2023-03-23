@@ -1,5 +1,5 @@
-import { CreatedProductDto } from 'dtos/CreatedProductDto';
-import { ProductDto } from 'dtos/ProductDto';
+import { ProductDto } from 'dtos/Product/ProductDto';
+import { ProductRequestDto } from 'dtos/Product/ProductRequestDto';
 import { handleDeleteResponse, handleResponse } from 'utilities/HandleHttpResponses';
 import HttpClient from 'utilities/HttpClient';
 
@@ -9,8 +9,13 @@ export default {
     return handleResponse<ProductDto[]>(response);
   },
 
-  create: async (createDto: CreatedProductDto): Promise<ProductDto> => {
+  create: async (createDto: ProductRequestDto): Promise<ProductDto> => {
     const response = await HttpClient.post('/products', createDto);
+    return handleResponse<ProductDto>(response);
+  },
+
+  edit: async (id: number, updateDto: ProductRequestDto): Promise<ProductDto> => {
+    const response = await HttpClient.put(`/products/${id}`, updateDto);
     return handleResponse<ProductDto>(response);
   },
 

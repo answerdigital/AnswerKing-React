@@ -1,7 +1,7 @@
 import { ILocalOrder } from '../../src/context/OrderContext';
-import { CategoryDto } from '../../src/dtos/CategoryDto';
+import { CategoryDto } from '../../src/dtos/Category/CategoryDto';
 import { LineItemDto } from '../../src/dtos/LineItemDto';
-import { ProductDto } from '../../src/dtos/ProductDto';
+import { ProductDto } from '../../src/dtos/Product/ProductDto';
 
 export const product: ProductDto = {
   name: 'This is a product',

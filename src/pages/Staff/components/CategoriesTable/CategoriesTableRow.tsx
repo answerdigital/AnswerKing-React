@@ -2,7 +2,9 @@ import { ReactElement } from 'react';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrashIcon from 'common/Icons/TrashIcon';
-import { CategoryDto } from 'dtos/CategoryDto';
+import CategoryDto from 'dtos/Category/CategoryDto';
+import CategoryProblemDetails from 'dtos/Category/CategoryProblemDetails';
+import useCategories from 'hooks/useCategories';
 import { toast } from 'react-toastify';
 import { useCategoryFormContext } from '../CategoryForm/CategoryFormContext';
 
@@ -11,11 +13,32 @@ interface Props {
   formatting: string;
 }
 
+const displayErrors = (BackendProblems: CategoryProblemDetails): void => {
+  if (BackendProblems.errors.name) {
+    toast.error(String(BackendProblems.errors.name));
+  }
+  if (BackendProblems.errors.products) {
+    toast.error(String(BackendProblems.errors.products));
+  }
+  if (BackendProblems.errors.description) {
+    toast.error(String(BackendProblems.errors.description));
+  }
+  if (BackendProblems.errors.category) {
+    toast.error(String(BackendProblems.errors.category));
+  }
+};
+
 export default function CategoriesTableRow({ category, formatting }: Props): ReactElement {
+  const { removeCategory } = useCategories();
   const formContext = useCategoryFormContext();
 
-  const handleDelete = (): void => {
-    toast.success(`Product "${category.name}" was succesfully removed.`);
+  const handleDelete = async (): Promise<void> => {
+    await removeCategory.mutateAsync(category.id, {
+      onSuccess: (): void => {
+        toast.success(`The Category, ${category.name}, was successfully retired.`);
+      },
+      onError: displayErrors,
+    });
   };
 
   return (
@@ -33,7 +56,7 @@ export default function CategoriesTableRow({ category, formatting }: Props): Rea
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </span>
-        <TrashIcon onClick={() => handleDelete} />
+        <TrashIcon onClick={handleDelete} />
       </td>
     </tr>
   );

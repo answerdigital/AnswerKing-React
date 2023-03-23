@@ -3,7 +3,7 @@ import Button from 'common/Buttons/Button';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
 import Search from 'common/Search/Search';
 import { useSearch } from 'common/Search/SearchContext';
-import { CategoryDto } from 'dtos/CategoryDto';
+import CategoryDto from 'dtos/Category/CategoryDto';
 import useCategories from 'hooks/useCategories';
 import CategoriesTableRow from './CategoriesTableRow';
 import { useCategoryFormContext } from '../CategoryForm/CategoryFormContext';

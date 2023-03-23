@@ -2,7 +2,9 @@ import { ReactElement } from 'react';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrashIcon from 'common/Icons/TrashIcon';
-import { TagDto } from 'dtos/TagDto';
+import { TagDto } from 'dtos/Tag/TagDto';
+import TagProblemDetails from 'dtos/Tag/TagProblemDetails';
+import useTags from 'hooks/useTags';
 import { toast } from 'react-toastify';
 import { useTagFormContext } from '../TagForm/TagFormContext';
 
@@ -11,11 +13,32 @@ interface Props {
   padding: string;
 }
 
+const displayErrors = (BackendProblems: TagProblemDetails): void => {
+  if (BackendProblems.errors.name) {
+    toast.error(String(BackendProblems.errors.name));
+  }
+  if (BackendProblems.errors.products) {
+    toast.error(String(BackendProblems.errors.products));
+  }
+  if (BackendProblems.errors.description) {
+    toast.error(String(BackendProblems.errors.description));
+  }
+  if (BackendProblems.errors.tag) {
+    toast.error(String(BackendProblems.errors.tag));
+  }
+};
+
 export default function TagsTableRow({ tag, padding }: Props): ReactElement {
   const formContext = useTagFormContext();
+  const { removeTag } = useTags();
 
-  const handleDelete = (): void => {
-    toast.success(`Product "${tag.name}" was succesfully removed.`);
+  const handleDelete = async (): Promise<void> => {
+    await removeTag.mutateAsync(tag.id, {
+      onSuccess: (): void => {
+        toast.success(`The Tag, ${tag.name}, was successfully retired.`);
+      },
+      onError: displayErrors,
+    });
   };
 
   return (
@@ -33,7 +56,7 @@ export default function TagsTableRow({ tag, padding }: Props): ReactElement {
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </span>
-        <TrashIcon onClick={() => handleDelete} />
+        <TrashIcon onClick={handleDelete} />
       </td>
     </tr>
   );

@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from 'react';
 import LoaderOverlay from 'common/LoaderOverlay/LoaderOverlay';
 import PageLayout from 'common/PageLayout/PageLayout';
-import { ProductDto } from 'dtos/ProductDto';
+import { ProductDto } from 'dtos/Product/ProductDto';
 import { motion } from 'framer-motion';
 import useCategories from 'hooks/useCategories';
 import useProducts from 'hooks/useProducts';

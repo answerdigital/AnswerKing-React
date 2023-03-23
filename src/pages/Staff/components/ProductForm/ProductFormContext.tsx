@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useMemo } from 'react';
-import { ProductDto } from 'dtos/ProductDto';
+import { ProductDto } from 'dtos/Product/ProductDto';
 import ProductForm from './ProductForm';
 
 interface IProductFormContext {

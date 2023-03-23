@@ -1,5 +1,3 @@
-import { Errors } from './Errors';
-
 export interface ProblemDetails {
   type: string;
   title: string;
@@ -7,8 +5,4 @@ export interface ProblemDetails {
   status: number;
   traceId: string;
   instance?: string;
-}
-
-export interface ProductProblemDetails extends ProblemDetails {
-  errors: Errors;
 }

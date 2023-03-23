@@ -23,7 +23,15 @@ export default function DeleteProductModal({ setIsOpen, onConfirm }: Props): Rea
             <Button data-testid="delete-cancel" colour="white" className="mr-4 h-[45px] w-[129.5px] text-sm" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button data-testid="delete-yes" colour="yellow" className="h-[45px] w-[129.5px] text-sm" onClick={() => onConfirm()}>
+            <Button
+              data-testid="delete-yes"
+              colour="yellow"
+              className="h-[45px] w-[129.5px] text-sm"
+              onClick={() => {
+                onConfirm();
+                setIsOpen(false);
+              }}
+            >
               Yes
             </Button>
           </div>

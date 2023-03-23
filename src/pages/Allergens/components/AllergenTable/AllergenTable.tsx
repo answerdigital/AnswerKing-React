@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import CheckBoxIcon from 'common/Icons/CheckBoxIcon';
-import { ProductDto } from 'dtos/ProductDto';
+import { ProductDto } from 'dtos/Product/ProductDto';
 
 interface Props {
   products: ProductDto[];

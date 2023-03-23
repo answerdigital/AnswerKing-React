@@ -1,4 +1,4 @@
-import { ProductDto } from './ProductDto';
+import { ProductDto } from './Product/ProductDto';
 
 export interface LineItemDto {
   product: ProductDto;

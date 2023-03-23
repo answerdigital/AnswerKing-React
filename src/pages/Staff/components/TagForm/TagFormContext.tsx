@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useMemo, ReactNode } from 'react';
-import { TagDto } from 'dtos/TagDto';
+import { TagDto } from 'dtos/Tag/TagDto';
 import TagForm from './TagForm';
 
 interface ITagFormContext {

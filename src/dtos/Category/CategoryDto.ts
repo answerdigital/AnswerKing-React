@@ -5,3 +5,5 @@ export interface CategoryDto {
   products?: number[];
   retired?: boolean;
 }
+
+export default CategoryDto;
