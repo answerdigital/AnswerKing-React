@@ -11,6 +11,7 @@ cypress/videos
 cypress/screenshots
 
 # Terraform
-deploy/*terraform*
+deploy/*/*terraform*
+archive.zip
 
 
