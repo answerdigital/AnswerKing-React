@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_forward_logs_s3_cloudwatch_role" {
-  name                 = "${var.environment}-lambda-forward-logs-s3-cloudwatch-role"
+  name = "${var.environment}-lambda-forward-logs-s3-cloudwatch-role"
 
   assume_role_policy = <<EOF
 {
@@ -17,7 +17,7 @@ resource "aws_iam_role" "lambda_forward_logs_s3_cloudwatch_role" {
 EOF
   tags = merge({
     Name = "${var.environment}-iam-role"
-  },
+    },
   )
 }
 

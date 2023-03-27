@@ -12,7 +12,6 @@ let logGroupName = process.env.logGroupName;
 let logStreamName;
 
 exports.handler = (event, context, callback) => {
-
   logStreamName = context.logStreamName;
   console.log('S3 object is:', event.Records[0].s3);
   const bucket = event.Records[0].s3.bucket.name;
@@ -142,7 +141,7 @@ exports.handler = (event, context, callback) => {
 
     rl.on('line', (line) => {
       ++line_count;
-      if (line[0] != "#") {
+      if (line[0] != '#') {
         let timeValue = Date.parse(line.split('\t')[0]);
 
         const event_size = line.length + LOG_EVENT_OVERHEAD;
@@ -165,8 +164,8 @@ exports.handler = (event, context, callback) => {
     rl.on('close', () => {
       if (batch.length > 0) {
         batches.push(batch);
-    }
-    sendBatches(sequenceToken, batches);
+      }
+      sendBatches(sequenceToken, batches);
     });
   }
 

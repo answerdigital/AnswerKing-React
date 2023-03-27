@@ -18,9 +18,7 @@
       "Resource": "*"
     },
     {
-      "Action": [
-        "s3:GetObject"
-      ],
+      "Action": ["s3:GetObject"],
       "Effect": "Allow",
       "Resource": ["*"]
     }
