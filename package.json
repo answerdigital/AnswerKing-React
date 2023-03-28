@@ -84,7 +84,7 @@
     "npm": "^9 || ^8"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "npm run formatPretty",
-    "src/**/*.{js,jsx,ts,tsx,css,scss,md}": "npm run formatLint"
+    "src/**/*.{js,jsx,ts,tsx,tf}": "npm run formatPretty",
+    "src/**/*.{js,jsx,ts,tsx,css,scss,md,tf}": "npm run formatLint"
   }
 }
